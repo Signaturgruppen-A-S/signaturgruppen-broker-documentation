@@ -5,6 +5,7 @@ nav_order: 6
 ---
 
 ## Terminology
+
 | Term | Description |
 | --- | --- |
 | Nets eID Broker (NEB) | Nets eID Broker. Certified MitID Broker and general broker and identity provider for enterprise services. |
