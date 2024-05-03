@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Identity providers
 layout: home
 nav_order: 25
 ---
