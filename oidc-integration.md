@@ -1,5 +1,5 @@
 ---
-title: Technical reference
+title: OpenID Connect integration
 layout: home
 nav_order: 10
 ---
