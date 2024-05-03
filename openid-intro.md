@@ -71,49 +71,37 @@ https://pp.netseidbroker.dk/op/connect/authorize?client_id=0a775a87-878c-4b83-ab
 
 4. Retrieve the access token from the response and manually query the Userinfo endpoint using Postman or another API client. Refer to the readme in the .NET Core demo for endpoint details.
 
-## Signing authentication requests
+## Signing Authentication Requests
 
-### Signing request parameters
+### Signing Request Parameters
 
-The OpenID Connect Request Object specifies a “request” parameter serialized as a signed and optionally encrypted JWT token holding (most) of the parameters for the flow.
+OpenID Connect's Request Object can encapsulate most parameters in a signed (and optionally encrypted) JWT. This approach is optional but recommended for transactional services like MitID.
 
-When using the Request Object parameter, most of the parameters will be included inside JWT token instead of passed as separate query parameters in the authorization flow.
+NEB supports both Request Object by value and by reference (using `request_uri`). Both `client_id` and `redirect_uri` must be included as query parameters when using signed requests.
 
-Using the Request Object parameter is optional but is recommended for flows with transactional fees, like MitID.
+**Note:** Signing requires a configured client secret.
 
-NEB supports both Request Object by value and by reference (i.e., using the request_uri parameter).
+See [https://docs.duendesoftware.com/identityserver/v7/tokens/jar/](Duende Identity Server JAR spec)
 
-An option is available to enforce the use of the Request Object parameter for all authentication flows for a client via ADM-UI, enabling a requirement for signed requests for all flows for the client.
+### Example: Request Object by Reference
 
-Note, that both the client_id and the redirect_uri parameters must be set as query parameter when signing requests towards NEB. Also note, that it is perfectly allowed to include any parameter both as a query parameter as well as included in the signed JWT. The values specified in the signed JWT will be used.
-
-Signing the Request Object parameter must be done with one of the configured client secrets.
-
-See [ROBJ] for reference and specification.
-
-#### Example of Request Object by reference
-
-An example of a valid authentication request with a Request Object parameter:
-
-> client_id: bcc7595b-2ed0-445d-a507-42ca21382877
+Example of a signed authentication request:
 
 ```
-request: eyJhbGciOiJIUzI1NiIsImtpZCI6bnVsbCwidHlwIjoiSldUIn0.eyJjbGllbnRfaWQiOiJiY2M3NTk1Yi0yZWQwLTQ0NWQtYTUwNy00MmNhMjEzODI4NzciLCJyZWRpcmVjdF91cmkiOiJodHRwczovL2xvY2FsaG9zdDo1MDE1L3NpZ25pbi1vaWRjIiwicmVzcG9uc2VfdHlwZSI6ImNvZGUiLCJjb2RlX2NoYWxsZW5nZSI6ImlaWFppX3RMbWhrc2FSZVdsR0JqbERSU1FuLXdrWUVsdXVsak0zbDZRSkUiLCJjb2RlX2NoYWxsZW5nZV9tZXRob2QiOiJTMjU2IiwicmVzcG9uc2VfbW9kZSI6ImZvcm1fcG9zdCIsIm5vbmNlIjoiNjM3NTcwMjAwNDg3MjI4MTg2LlpqUmpOV1V4TWpjdE1tWXdZeTAwTjJZeExXRXlZelF0T0RBek5qY3hZbVV4T0dFek16UTJOak13Wm1FdE1HUXlOQzAwTVdSaExXRTJZVEV0Tm1VelpEYzNaV1E0WVRabCIsInNjb3BlIjoib3BlbmlkIiwiaWRwX3ZhbHVlcyI6IiIsImlkcF9wYXJhbXMiOiJ7XCJtaXRpZFwiOntcImVuYWJsZV9hcHBfc3dpdGNoXCI6ZmFsc2UsXCJlbmFibGVfc3RlcF91cFwiOmZhbHNlfSxcIm1pdGlkX2RlbW9cIjp7XCJlbmFibGVfYXBwX3N3aXRjaFwiOmZhbHNlLFwiZW5hYmxlX3N0ZXBfdXBcIjpmYWxzZX0sXCJuZW1pZFwiOntcInByaXZhdGVfdG9fYnVzaW5lc3NcIjpmYWxzZX19IiwiYXVkIjoiaHR0cHM6Ly9icm9rZXJkZXYuc2lnbmF0dXJncnVwcGVuLmRrL29wIiwiZXhwIjoiMTYyMTQyMzU0OCIsImlzcyI6ImJjYzc1OTViLTJlZDAtNDQ1ZC1hNTA3LTQyY2EyMTM4Mjg3NyIsImlhdCI6IjE2MjE0MjMyNDgiLCJuYmYiOiIxNjIxNDIzMjQ4In0.dHgZoyUTgiFBr_Y57whuzPGknorl5C-Jh_kZboN_OlA
+client_id: bcc7595b-2ed0-445d-a507-42ca21382877
+
+request: eyJhbGciOiJIUzI1NiIsImtpZCI6bnVsbCwidHlwIjoiSldUIn0.eyJjbGllbnRfaWQiOiJiY2M3NTk1Yi0yZWQwLTQ0NWQtYTUwNy00MmNhMjEzODI4NzciLCJyZWRpcmVjdF91cmkiOiJodHRwczovL2xvY2FsaG9zdDo1MDE1L3NpZ25pbi1vaWRjIiwicmVzcG9uc2VfdHlwZSI6ImNvZGUiLCJjb2RlX2NoYWxsZW5nZSI6ImlaWFppX3RMbWhrc2FSZVdsR0JqbERSU1FuLXdrWUVsdXVsak0zbDZRSkUiLCJjb2RlX2NoYWxsZW5nZV9tZXRob2QiOiJTMjU2IiwicmVzcG9uc2VfbW9kZSI6ImZvcm1fcG9zdCIsIm5vbmNlIjoiNjM3NTcwMjAwNDg3MjI4MTg2LlpqUmpOV1V4TWpjdE1tWXdZeTAwTjJZeExXRXlZelF0T0RBek5qY3hZbVV4T0dFek16UTJOak13Wm1F...
 ```
 
-Note that the example contains optional parameters, like the PKCE and identity provider specific parameters included here.
+### NEB Allows Any Redirect URI for Signed Requests
 
-#### NEB Allow any redirect URI for signed requests
+When using signed requests, clients can specify any redirect URI, allowing dynamic protocol usage and avoiding the whitelist approach.
 
-For signed requests, the client can specify any redirect URI (the redirect_uri authentication parameter). This enables a more dynamic use of the protocol and avoids the whitelist approach normally used.
+## Signing Token Endpoint Requests with Private Key JWTs
 
-### Signing Token endpoint requests with private key JWT’s
+The OIDC specification recommends client authentication via asymmetric keys. Instead of transmitting the shared secret over the network, the client generates a JWT signed with its private key.
 
-The OpenID Connect specification recommends a client authentication method based on asymmetric keys. With this approach, instead of transmitting the shared secret over the network, the client creates a JWT and signs it with its private key.
-
-More information is found in the Client Authentication section of the OIDC specification found in [CLIENT-AUTHENTICATION].
-
-#### Example
+### Example
 
 A private key JWT is prepared and signed with the following format
 
@@ -128,7 +116,6 @@ A private key JWT is prepared and signed with the following format
   "aud": ""
 }
 ```
-
 
 And heres a curl example of the post request:
 
@@ -145,21 +132,15 @@ curl --location --request POST '' \
 
 More details for .Net can be found here: https://docs.duendesoftware.com/identityserver/v5/tokens/authentication/jwt/.
 
-## Encrypting requests
+## Encrypting Requests
 
-If using the signed request object parameter described in the previous section, it is possible to encrypt the request object as a JWE as well.
+Using the signed request object parameter allows for encryption using a JWE. Follow these steps:
 
-In effect, it will then be a signed and encrypted JWT used in the request or request_uri parameter.
+1. Retrieve the request encryption certificate from the JWKS endpoint.
+2. Cache the certificate unless updated due to security concerns.
+3. Create a JWE from the signed request object JWS.
 
-To encrypt the request object, follow these steps
-
-Fetch the request encryption certificate from the discovery JWKS endpoint: (.well-known/openid-configuration/jwks). The first certificate found in the list with the “use” =” enc” is selected.
-
-It is recommended to cache this certificate, as it will only be changed if mandated by a security incident or other security assessment.
-
-Then create a JWE from the signed request object JWS previously generated (or do this in one operation).
-
-The algorithm supported for this operation is . Which is the default for many JWE implementations when using an RSA certificate for encryption.
+Supported algorithms can be found in JWE implementations.
 
 ### Example of encrypted request
 
@@ -205,9 +186,3 @@ Discovery entry of encryption certificate:
 ```
 {"kty":"RSA","use":"enc","kid":"9660F7AFFF397D67B77C92ED96F22A5A151F14C6","x5t":"9660F7AFFF397D67B77C92ED96F22A5A151F14C6","x5c":["MIIDGzCCAgOgAwIBAgIJAMbMrcpa3IbfMA0GCSqGSIb3DQEBCwUAMDQxMjAwBgNVBAMTKU5ldHMgZUlEIEJyb2tlciBjbGllbnQgcmVxdWVzdCBlbmNyeXB0aW9uMCAXDTIyMDIwNzEzMzcyNVoYDzIxMTIwMjA4MTMzNzI1WjA0MTIwMAYDVQQDEylOZXRzIGVJRCBCcm9rZXIgY2xpZW50IHJlcXVlc3QgZW5jcnlwdGlvbjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALwXpFf5YpFNL3M1BEA4P8BJKmuoRe57vNDBLc\u002BekPWE2roH3I40z0X/uAlv6NVxULpQ3ILX8J4/G8xP8JUyrpAswI3ydT6R/iUDzswzzfNHwv4lp/ifbmLo\u002BQOXtvh\u002BYC2NcLHs54r9hugk0LjdLSaqGip84cMgYjE25PPoC/3aPtVN6I4hqPTK8GFqjRJjf5hlTaV1Ft3rZBqeYaTUYFimmytDbPz03I/Sv3RbiCI05PCVJlEituraECePJtXZYhTyFBjmJc0Yn33EO1skJ3wvPXXmpq2UJBNQMBkkZ0njza35NDbp2Y6QIkqbpsKQejh6ATPmyhbi8urjF94deI0CAwEAAaMuMCwwCwYDVR0PBAQDAgQQMB0GA1UdDgQWBBTS1x/H5ASUPiO51qufsHR6hC5IDjANBgkqhkiG9w0BAQsFAAOCAQEAuOAMuB4d81/O\u002BwAR8Ki52abP2jErdpE2NgZPRS\u002BxUsnJQjOtJc0FZYV54qwtYFokUEMFCaaNCVvimX5/1cJzmZ50cl78gZA0shL4WcKr2\u002BAOzbR6hmsvylYELMYefqQroskZFhbKM\u002BTvbbuTmiDtvEgj317WV2Z8Dyo4r11IBQKJE0\u002BOKz7Vvcg9b991Oq/JFNOyjNRr5yyZT9yIScTpZPKB5bQ8ZFE8lmn8hnHpx5bxBNGPTQ4dzLLTCGC4PkGmnwC/b55JFhRedpGJT9STgJ2aOCRUjjYHCTTFx8V9LnR6cqOpNDhtye83eX8RyIxIjYvJDja030QK2he5Xsinbw=="],"alg":"http://www.w3.org/2001/04/xmlenc#rsa-oaep"}
 ```
-
-## References
-
-[OIDC WEB] “OpenID Connect Home”: https://openid.net/connect/
-
-[OAuth] “The OAuth 2.0 Authorization Framework”: https://tools.ietf.org/html/rfc6749
