@@ -8,9 +8,11 @@ nav_order: 10
 APIs are provided as REST APIs, available over HTTPS (HTTP/1.1 protected by TLS 1.2 or higher).
 
 ### Swagger endpoint
-| Swagger endpoint URL | Description |
-| --- | --- |
-| [Authority URL]/swagger/index.html | The swagger description of the available Nets eID Broker API |
+
+Swagger definition endpoint URL
+```
+[Authority URL]/swagger/index.html
+```
 
 ### API specification
 All APIs are specified according to the OpenAPI 3.0 specification (previously known as “Swagger”). In practice this means that the APIs are described in machine-readable YAML documents, describing the resources exposed in the APIs, the available methods etc. as well as human-readable descriptions of the API. The YAML files can then be used to create API-specific clients asnd stubs or be used as input into tools for API testing. They can also be used for generating documentation. The API documentation is delivered in the form of HTML files generated from the YAML specifications
