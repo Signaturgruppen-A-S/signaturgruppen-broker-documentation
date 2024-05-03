@@ -35,9 +35,19 @@ Embedded browsers are not supported and not allowed (\* they are allowed in ifra
 
 ### Example JSON for identity providers
 
-**{“mitid”:{“loa_value”:”substantial”, “enable_step_up”:true, “uuid_hint”: “efc7ffb4-e086-4f5f-a1d5-b3c7227db629”}}**
+```json
+{
+  "mitid": {
+    "loa_value": "substantial",
+    "enable_step_up": true,
+    "uuid_hint": "efc7ffb4-e086-4f5f-a1d5-b3c7227db629"
+  }
+}
+```
 
-**idp_params=%7B%E2%80%9Cmitid%E2%80%9D%3A%7B%E2%80%9Cloa_value%E2%80%9D%3A%E2%80%9Dsubstantial%E2%80%9D%2C%20%E2%80%9Cenable_step_up%E2%80%9D%3Atrue%2C%20%E2%80%9Cuuid_hint%E2%80%9D%3A%20%E2%80%9Cefc7ffb4-e086-4f5f-a1d5-b3c7227db629%E2%80%9D%7D%7D**
+```URL
+idp_params=%7B%E2%80%9Cmitid%E2%80%9D%3A%7B%E2%80%9Cloa_value%E2%80%9D%3A%E2%80%9Dsubstantial%E2%80%9D%2C%20%E2%80%9Cenable_step_up%E2%80%9D%3Atrue%2C%20%E2%80%9Cuuid_hint%E2%80%9D%3A%20%E2%80%9Cefc7ffb4-e086-4f5f-a1d5-b3c7227db629%E2%80%9D%7D%7D
+```
 
 ### Supported scope values
 
