@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Terminology
 layout: home
 nav_order: 6
 ---
