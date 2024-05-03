@@ -1,14 +1,10 @@
 ---
-title: Issued tokens
+title: Issued claims and tokens
 layout: home
 nav_order: 15
 ---
 
-## Issued tokens
-This section describes the available tokens issued by NEB. All tokens are issued via the Token endpoint by the Code Authorization Grant or the Client Credentials Grant.
-Some integrations will also/only get the ID token via the end-user browser (Hybrid- and Implicit flows).
-
-### User flow authentication result
+## User flow authentication result
 A user flow results in one or more of the following tokens
 ID token: Describing the authenticated end-user.
 Access token: Providing access to configured endpoints on behalf of the end-user.
@@ -127,3 +123,19 @@ Transaction tokens issued always include the following claims:
 | spec_ver | 0.9 for this version. (Still under development) |
 
 The receiving party should store both the transaction token and the OCSP response. Optionally, the signing certificate can be stored.
+
+## Organization specific subject claims
+The subject claim, sub, issued in all ID tokens are the primary identity identifier and is always a unique organization specific GUID representing the identity for the receiving organization.
+All services under the same organization, defined in the NEB administrative interface, will receive the same sub claim from the same identity.
+This enables all service within an organization to map the same sub claim to the same identity.
+If the same identity logs into a service under a different organization NEB will issue a different sub claim for this service/organization.
+If a more global identifier is needed, the different identity providers will typically allow for identity provider specific identifiers to be requested such as the globally scoped MitID UUID – which will be available via the Userinfo endpoint.
+
+### Choosing between ID token sub claim or identity provider specific identifiers
+It is a common problem for an integrating service to decide how to map the incoming user from the incoming claims to a local user context.
+Taking MitID as an example (replace with any specific identity provider), the choice is between registering a new user using the sub claim from the ID token or using the mitid.uuid claim, available from the Userinfo endpint.
+Using the sub claim allows for minimizing the sensitivity of the received identifiers and information about the end-user, whereas the mitid.uuid claim is a global identifier providing a perhaps more useful identifier.
+On a privacy note, it is always recommended to use the ID token sub, as this has the lowest impact on traceability of the end-user. On the other hand, mitid.uuid is perhaps required if a global identifier of the end-user is needed.
+If only the ID token sub claim is needed, then a authentication flow does not even have to invoke the Userinfo endpoint after completion, thus minimizing both traffic and exchanged userinfo.
+The recommendation is to consider whether the ID token sub can be used as the primary identifier for the end-users and only if this consideration determines that it is not sufficient, a move to the available global identifiers of the end-users should be considered.
+
