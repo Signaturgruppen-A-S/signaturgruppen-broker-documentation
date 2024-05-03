@@ -1,3 +1,9 @@
+---
+title: Security
+layout: home
+nav_order: 20
+---
+
 ## Security
 This section will cover supported cryptographic algorithms, supported TLS versions, certificate pinning and other security related issues.
 OpenID Connect provides a high level of security, but for some application require additional security hardening. This section will cover the available options.
