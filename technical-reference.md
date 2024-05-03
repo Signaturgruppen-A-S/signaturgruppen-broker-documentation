@@ -1,6 +1,3 @@
-Technical reference
-for service providers
-Version 1.2.6 2023
 # Terminology
 | Term | Description |
 | --- | --- |
