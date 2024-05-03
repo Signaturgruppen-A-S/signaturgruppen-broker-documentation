@@ -27,9 +27,19 @@ Note here, that if the user enters the MitID flow for authentication, the specif
 
 ### Example JSON for identity providers (JSON URL encoded)
 
-**{“mitid_erhverv”:{“allow_private”:true}}**
+```json
 
-**idp_params=%7B%E2%80%9Cmitid_erhverv%E2%80%9D%3A%7B%E2%80%9Callow_private%E2%80%9D%3Atrue%7D%7D**
+{
+  "mitid_erhverv": {
+    "allow_private": true
+  }
+}
+
+```
+
+```URL
+idp_params=%7B%E2%80%9Cmitid_erhverv%E2%80%9D%3A%7B%E2%80%9Callow_private%E2%80%9D%3Atrue%7D%7D
+```
 
 ### Supported scope values
 
