@@ -75,7 +75,7 @@ NEB supports both Request Object by value and by reference (using `request_uri`)
 
 **Note:** Signing requires a configured client secret.
 
-See [https://docs.duendesoftware.com/identityserver/v7/tokens/jar/](Duende Identity Server JAR spec)
+See [Duende docs on signed requests](https://docs.duendesoftware.com/identityserver/v7/tokens/jar/)
 
 ### Example: Request Object by Reference
 
