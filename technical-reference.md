@@ -1,70 +1,11 @@
 ---
 title: Home
 layout: home
-nav_order: 5
+nav_order: 10
 ---
 
 # Technical reference
 
-## Terminology
-| Term | Description |
-| --- | --- |
-| Nets eID Broker (NEB) | Nets eID Broker. Certified MitID Broker and general broker and identity provider for enterprise services. |
-| Nets eID Broker Administration web-interface (ADM-UI) | Nets eID Broker Administration web-interface. Interface allowing configuration and administration of the integration |
-| OpenID Connect (OIDC) | OpenID Connect 1.0 is an identity layer on top of the OAuth 2.0 protocol |
-| OAuth | OAuth 2.0 is the industry-standard protocol for authorization. OAuth 2.0 focuses on client developer simplicity while providing specific authorization flows for web applications, desktop applications, mobile phones, and living room devices. This specification and its extensions are being developed within the IETF OAuth Working Group. |
-| JWT (JSON Web Token) | JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties. |
-| JWS | JSON Web Signature (JWS) represents content secured with digital signatures or Message Authentication Codes (MACs) using JSON-based data structures. Cryptographic algorithms and identifiers for use with this specification are described in the separate JSON Web Algorithms (JWA) specification and an IANA registry defined by that specification. Related encryption capabilities are described in the separate JSON Web Encryption (JWE) specification. |
-| JWE | JSON Web Encryption (JWE) represents encrypted content using JSON-based data structures. Cryptographic algorithms and identifiers for use with this specification are described in the separate JSON Web Algorithms (JWA) specification and IANA registries defined by that specification. Related digital signature and Message Authentication Code (MAC) capabilities are described in the separate JSON Web Signature (JWS) specification. |
-| National Standard for Identiteters Sikringsniveauer (NSIS) | Collaboration for trust to digital identities and digital identity-services in Denmark. |
-| MitID | National identity and authentication solution in Denmark. |
-| NemID | National identity and authentication solution in Denmark. Is being replaced by MitID in 2021. |
-| MitID Broker | Certified MitID Identity Broker. Trusted part of the MitID ecosystem. |
-| NemLog-In3 (NL3) | NL3 plays a central role in Denmark’s digital infrastructure by making it possible for Danish citizens and companies to log in to public self service solutions. NL3 provides the CA services for the Oces3 PKI. |
-| Offentlige Certifikater til Elektronisk Service (OCES) | OCES-standard / The OCES-standard. OCES is a Danish public standard for “Public Certificates for Electronic Service”. |
-| VOCES3 | Company certificate issued under the OCES3 standard by the NemLog-In3 CA. |
-
-## Nets eID Broker documentation documents
-This document services as the primary source of technical documentation. The collected list of technical documents for NEB is listed here.
-All documents can be found at
-| Title | Description |
-| --- | --- |
-| Nets eID Broker Technical Reference [NEB-TECHREF] | The primary source of technical documentation for the integration to Nets eID Broker (this document). |
-| Nets eID Broker Frontend Guide [NEB-FRONTEND] | Examples and guides for the frontend integration to Nets eID Broker and OpenID Connect in general. Also covering mobile apps. |
-| Nets eID Broker Sessions [NEB-SESSIONS] | Technical information about sessions in the NEB platform. Contains information about how NEB handles session and the various ways service providers can utilize and handle this in their integration. |
-| Nets eID Broker OpenID Connect Intro [NEB-INTRO] |  |
-| Nets eID Broker Identity Providers [NEB-IDP] | Contains technical information about the available identity providers supported by NEB. |
-
-## Changelog
-### Version 1.2.6
-Removed error codes from this document and moved them to the new error codes endpoint. See the updated “Error codes” section in this document.
-### Version 1.2.5
-New errorcode introduced: invalid_idp_params.
-### Version 1.2.4
-Added private_to_business_user_aborted error code
-### Version 1.2.3
-Added description of transaction token transaction_actions claim
-### Version 1.2.2
-Added description of Userinfo endpoint specific claim idp_identity_id
-### Version 1.2.1
-Added description of response_mode request parameter.
-### Version 1.2
-Added sections “Implicit flow and CORS” and “Backend for Frontend Pattern”
-### Version 1.1
-Added description of general error “no_ctx”
-### Version 1.0
-Updated description of OCSP response and verification in transaction tokens.
-Removed incorrect description of nonce in transaction tokens. Nonce is set in ID token and can be correlated via transaction_id between ID token and transaction tokens if needed.
-Updated transaction token validation description of signing certificate
-### Version 0.9.10
-Moving general information about session and session handling to separate document “Nets eID Broker Sessions”. Removed several entries and sections from this document.
-Added section “Nets eID Broker documentation documents”.
-Removed information about Administration API and Privilege API, these will get their own documentation at a later stage, when ready for general integration.
-Moving general guides and introduction help for OpenID Connect to “Nets eID Broker OpenID Connect Intro”.
-Moving specific identity provider information to “Nets eID Broker Identity Providers”
-Added swagger endpoint description for Nets eID Broker API
-Added subsection “Choosing between ID token sub claim or identity provider specific identifiers”
-## 
 ## Introduction
 This document describes the technical integration with the Nets eID Broker (NEB) and should be considered the primary resource when service providers integrate with the NEB.
 The intended audiences are IT developers and IT architects.
