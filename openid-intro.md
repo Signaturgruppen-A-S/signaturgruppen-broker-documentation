@@ -10,9 +10,9 @@ nav_order: 4
 
 ### 03-05-2024
 * Created this online version.
+* Renamed to Signaturgruppen Broker
 
 ## Introduction
-
 This document aims at introducing OpenID Connect with respect to the integration to Signaturgruppen Broker. Simple guides and the most basic functionality will be described in this document.
 
 Refer to the “Nets eID Broker Technical Reference” for a more in-depth technical documentation.
