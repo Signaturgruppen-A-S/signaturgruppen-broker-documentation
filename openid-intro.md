@@ -55,19 +55,21 @@ Authorization Code Flow: The recommended OIDC flow for most applications. The cl
 
 Hybrid Flow: Combining Implicit and Authorization Code flows, here, the ID Token is returned directly to the RP, but the access token is not. Instead, an authorization code is returned that is exchanged for an access token. As an example, the OWIN framework in .Net requires the receival of the ID token, and thus does not support the Authorization Code Flow.
 
-## Basic OpenID Connect flow
+## Basic OIDC Flow
 
-Let’s start off with a success and jump right into it!
+To get started:
 
-1: Copy the following URL into a browser:
+1. Open this URL in a browser:
 
+```
 https://pp.netseidbroker.dk/op/connect/authorize?client_id=0a775a87-878c-4b83-abe3-ee29c720c3e7&redirect_uri=https://openidconnect.net/callback&response_type=code&scope=openid mitid
+```
 
-2: Complete the login using a MitID or NemID test-user. Information and help for creating a MitID test user is found at the login screen.
+2. Log in using a MitID test user. Instructions for creating a test user are provided on the login screen.
 
-3:  Follow the guided steps at , to exchange the received authorization code to tokens and verify their content.
+3. Follow the provided steps to exchange the authorization code for tokens and verify their contents.
 
-4: Grab the access token from the output and invoke the Userinfo endpoint manually using Postman or another API client. Information about endpoints and example of request see our Postman collection found via the readme at our .net core demo found here:
+4. Retrieve the access token from the response and manually query the Userinfo endpoint using Postman or another API client. Refer to the readme in the .NET Core demo for endpoint details.
 
 ## Signing authentication requests
 
