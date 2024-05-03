@@ -2,6 +2,7 @@
 title: Identity providers
 layout: home
 nav_order: 25
+has_children: true
 ---
 
 ## Identity Providers
