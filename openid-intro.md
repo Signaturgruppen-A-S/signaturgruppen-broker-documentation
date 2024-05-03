@@ -21,27 +21,29 @@ The intended audiences are IT developers and IT architects.
 
 General information, online demonstration, documentation (including newest version of this document) and example code is found at .
 
-## What is OpenID Connect
+## What is OpenID Connect?
 
-OpenID Connect (OIDC) [OIDC] is an identity protocol that utilizes the authorization and authentication mechanisms of OAuth 2.0 [OAuth].
+OpenID Connect (OIDC) is an identity protocol that extends OAuth 2.0 to enable identity verification. It supports web, mobile, and single sign-on (SSO) applications.
 
-A wide variety of clients may use OIDC to identify end-users, from single-page applications (SPA) to native and mobile apps. It may also be used for Single Sign-On (SSO) across applications. OIDC uses JSON Web Tokens (JWT), HTTP flows and avoids sharing user credentials with services.
+### Key Features:
+- Uses OAuth 2.0 for authorization and authentication.
+- Provides standardized identity tokens in JWT format.
+- Focuses on authentication rather than authorization.
 
-OIDC uses OAuth 2.0 as an underlying protocol. The principal extensions are the special scope value “openid”, the use of the extra token, the ID Token, which encapsulates the identity claims in JSON format and the emphasis on authentication rather than authorization.
+### OIDC Tokens
 
-The OIDC provider performs user authentication, user consent, and token issuance.  The client or service requesting a user’s identity is normally called the Relying Party (RP). It can be, for example, a web application, but also a JavaScript application or a mobile app.
+1. **ID Token:** Contains information about the end-user authentication in JWT format.
+2. **Access Token:** Grants access to user resources based on the requested scopes. Used to query the Userinfo endpoint for more user details.
 
-Being built on top of OAuth 2.0, OpenID Connect uses tokens to provide a simple identity layer integrated with the underlying authorization framework.
+**Note:** Tokens are signed by the OIDC provider.
 
-### OpenID Connect tokens
+### OIDC Flows
 
-The most basic usage of OIDC entails receiving the following tokens.
+Select an OpenID Connect flow based on your application's requirements:
 
-ID Token: Specific to OIDC, the primary use of this token in JWT format is to provide information about the authentication performed by the end-user. In the context of Nets eID Broker it contains a minimum of information about the end-user and authentication needed to authenticate the end-user. This information, which is provided as claims in the JWT structure of the token, contains information such as subject identifier (sub), issuer, receiver, authentication time, authentication strength.
-
-Access Token: Defined in OAuth2, it provides access to specific user resources as defined in the scope values in the request to the authorization server. The primary usage for access tokens is to access the Userinfo endpoint at the OIDC provider, which provides additional and extended information about the end-user.
-
-All tokens are signed by the OIDC provider.
+1. **Implicit Flow:** Ideal for SPA clients, tokens are directly returned to the relying party.
+2. **Authorization Code Flow:** The recommended flow for most applications, exchanging an authorization code for tokens via the token endpoint.
+3. **Hybrid Flow:** Combines implicit and authorization code flows. Returns the ID token directly but exchanges the authorization code for the access token.
 
 ### OIDC Flows
 
