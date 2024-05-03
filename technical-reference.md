@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Technical reference
 layout: home
 nav_order: 10
 ---
