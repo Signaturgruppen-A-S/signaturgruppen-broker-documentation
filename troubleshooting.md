@@ -1,5 +1,5 @@
 ---
-title: Integration troubleshooting
+title: Troubleshooting
 layout: home
 nav_order: 60
 ---
