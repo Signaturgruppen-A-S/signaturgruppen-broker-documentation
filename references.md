@@ -16,7 +16,7 @@ nav_order: 100
 - [OAuth] "The OAuth 2.0 Authorization Framework": [https://tools.ietf.org/html/rfc6749](https://tools.ietf.org/html/rfc6749)
 - [OAuth Native] "OAuth 2.0 for Native Apps": [https://tools.ietf.org/html/rfc8252](https://tools.ietf.org/html/rfc8252)
 - [Chrome Ext Tabs] "Chrome custom tabs": [https://developer.chrome.com/docs/android/custom-tabs/](https://developer.chrome.com/docs/android/custom-tabs/)
-- [PKCE] "Proof Key for Code Exchange": [https://tools.ietf.org/html/rfc7636](https://tools.ietf.org/html/rfc7636)
+- [PKCE]<a name="pkce"></a> "Proof Key for Code Exchange": [https://tools.ietf.org/html/rfc7636](https://tools.ietf.org/html/rfc7636)
 - [JWT JWS JWE] "JWT, JWS and JWE": [https://medium.facilelogin.com/jwt-jws-and-jwe-for-not-so-dummies-b63310d201a3](https://medium.facilelogin.com/jwt-jws-and-jwe-for-not-so-dummies-b63310d201a3)
 - [OIO PRIV] "OIO Basic Privilege Profile": [https://digst.dk/media/20999/oiosaml-basic-privilege-profile-1_2.pdf](https://digst.dk/media/20999/oiosaml-basic-privilege-profile-1_2.pdf)
 - [OIOSAML] "OIOSAML 3.0.1": [https://digst.dk/media/21892/oiosaml-web-sso-profile-301.pdf](https://digst.dk/media/21892/oiosaml-web-sso-profile-301.pdf)
