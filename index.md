@@ -11,6 +11,8 @@ nav_order: 1
 Visit https://broker.signaturgruppen.dk for current versions of documentation.
 
 ## Changelog
+### 06-05-2024
+* Added "Troubleshooting" page
 
 ### 03-05-2024
 * Created this online version.
