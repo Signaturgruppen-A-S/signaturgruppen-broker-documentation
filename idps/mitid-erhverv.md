@@ -56,3 +56,9 @@ idp_params=%7B%E2%80%9Cmitid_erhverv%E2%80%9D%3A%7B%E2%80%9Callow_private%E2%80%
 Transaction token MitID specific claims
 
 <table><tbody><tr><th><p><strong>Claim value</strong></p></th><th><p><strong>Possible values</strong></p></th></tr><tr><td><p>mitid.reference_text</p></td><td><p>Passthrough of the MitID <strong>reference_text</strong> identity provider parameter.</p></td></tr><tr><td><p>mitid.psd2</p></td><td><p>The mitid.psd2 claim is always issued as a transaction token MitID specific claim.</p></td></tr><tr><td><p>transaction_actions</p></td><td><p>Type: string (single value) or JSON list</p><p>Only set, if one or more of the following transaction actions where performed:</p><ul><li>mitid.login (Login completed)</li><li>mitid_erhverv.identity_selected</li></ul></td></tr></tbody></table>
+
+## Lokal IdP
+MitID Erhverv natively supports the "Lokal IdP" setup as a built-in choice for end-users as part of the authentication experience for MitID Erhverv.
+
+As illustrated by the pictures here, the MitID Erhverv flow has an extra tab that allows the user to search for the specific Lokal IdP of choice and Signaturgruppen Broker will handle the integration as part of the MitID Erhverv flow. 
+The output of the flow is still an official MitID Erhverv identity.
