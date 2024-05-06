@@ -129,7 +129,7 @@ Here are some strategies you can use to handle this scenario:
 1. **State Parameter**: The OpenID Connect protocol includes the **state** parameter, which is intended to maintain state between the authentication request and the callback from the authorization server. This parameter is returned to your callback URL unchanged and is useful for correlating the request with the response or for storing user states like the original URL. You can store your invitation ID in the **state** parameter.
 2. **Use a Persistent Cookie**: Set a cookie with the invitation ID before redirecting the user to the authentication provider (MitID/NEB). Once the authentication process completes and the user is redirected back to your application, you can retrieve the invitation ID from the cookie.
 3. **Session Management**: Store the invitation ID in the server-side session before redirecting the user. After the user is authenticated and redirected back to your application, retrieve the invitation ID from the session.
-4. **Customize the Redirect URI**: Include the invitation ID directly in the **redirect_uri** if permissible. Notet that this would require you to either sign your requests or have whitelisted a redirect origin to have all url below a given domain accepted as valid
+4. **Customize the Redirect URI**: If you sign your OpenID Connect requests, Signaturgruppen Broker allows dynamic **redirect_uri**'s, which enables setting the id or invitation link directly in the **redirect_uri**.
 
 Given your specific integration with MitID, the most robust and standard approach would involve using the **state** parameter. Here’s how you can implement it:
 
