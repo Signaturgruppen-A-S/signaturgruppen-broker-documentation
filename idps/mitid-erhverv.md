@@ -62,3 +62,7 @@ MitID Erhverv natively supports the "Lokal IdP" setup as a built-in choice for e
 
 As illustrated by the pictures here, the MitID Erhverv flow has an extra tab that allows the user to search for the specific Lokal IdP of choice and Signaturgruppen Broker will handle the integration as part of the MitID Erhverv flow. 
 The output of the flow is still an official MitID Erhverv identity.
+
+MitID Erhverv default             |  MitID Erhverv Lokal Idp
+:-------------------------:|:-------------------------:
+![MitID Erhverv default](mitid_erhverv_1.PNG)  |  ![MitID Erhverv default](mitid_erhverv_2.PNG)
