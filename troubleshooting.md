@@ -138,5 +138,3 @@ Given your specific integration with MitID, the most robust and standard approac
 - After the user is authenticated and redirected back, decode the **state** parameter to extract the invitation ID.
 
 This approach ensures that the invitation ID is preserved without relying on browser cookies or session, and aligns with the OpenID Connect specifications which are designed to handle scenarios like this securely.
-
-c
