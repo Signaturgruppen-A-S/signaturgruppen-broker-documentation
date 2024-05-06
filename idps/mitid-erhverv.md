@@ -13,7 +13,7 @@ More information is found here: <https://digst.dk/it-loesninger/mitid-erhverv/>.
 
 ### Supported OIDC parameters
 
-| **Request parameter** | **Description** |
+| **Request parameter** | **Value** |
 | --- | --- |
 | idp_values | **mitid_erhverv** |
 
