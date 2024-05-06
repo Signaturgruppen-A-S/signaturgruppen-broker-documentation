@@ -69,7 +69,3 @@ Specific Userinfo endpoint claims
 | Claim | Value |
 | --- | --- |
 | idp_identity_id | The identity provider specific identifier for the end-user. This is typically the same as some other identity provider specific claim also issued (based on scopes requested). For example, the Danish MitID identity provider issues a global UUID as identifier for the MitID identity, which is set in the mitid.uuid claim for MitID flows, here the idp_identity_id also contains the mitid.uuid. This claim can be used as a generic identity provider specific identification of the end-user identity. |
-
-### Logout and sessions
-Refer to [NEB-SESSIONS] for details on how to log out the end-user and various ways to utilize the standard sessions of NEB.
-Refer to the Broker API swagger endpoint defined above, for technical details on the API endpoints.
