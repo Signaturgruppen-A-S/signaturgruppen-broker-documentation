@@ -11,7 +11,7 @@ OpenID Connect provides a high level of security, but for some application requi
 ### PKCE
 Proof Key for Code Exchange by OAuth Public Clients (PKCE) is an extension to the Authorization Code flow to prevent certain attacks and to be able to securely perform the OAuth exchange from public clients.
 This is prevalent and recommended when integrating from a mobile (Android and iOS) platform and allows the initiating app to be the only one who can retrieve the issued tokens, even though the client is a public client.
-PKCE is fully supported. See [PKCE](https://oauth.net/2/pkce/) for reference.
+PKCE is fully supported. See [PKCE](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/references.html#pkce) for reference.
 
 ### Server certificate validation for TLS
 When calling any of the NEB APIs or endpoints the integrity of the TLS certificate presented can be verified using the following checks
