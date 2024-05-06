@@ -7,23 +7,24 @@ nav_order: 20
 ## Security
 This section will cover supported cryptographic algorithms, supported TLS versions, certificate pinning and other security related issues.
 OpenID Connect provides a high level of security, but for some application require additional security hardening. This section will cover the available options.
-All algorithms specified in this section is specified in [JWA].
 
 ### PKCE
 Proof Key for Code Exchange by OAuth Public Clients (PKCE) is an extension to the Authorization Code flow to prevent certain attacks and to be able to securely perform the OAuth exchange from public clients.
-This is prevalent and recommended when integrating to NEB from a mobile (Android and iOS) platform and allows the initiating app to be the only one who can retrieve the issued tokens, even though the client is a public client.
-PKCE is fully supported. See [PKCE] for reference.
+This is prevalent and recommended when integrating from a mobile (Android and iOS) platform and allows the initiating app to be the only one who can retrieve the issued tokens, even though the client is a public client.
+PKCE is fully supported. See [PKCE](https://oauth.net/2/pkce/) for reference.
 
 ### Server certificate validation for TLS
 When calling any of the NEB APIs or endpoints the integrity of the TLS certificate presented can be verified using the following checks
-That the host name indicated in the certificate matches the host name of the APIs URL
-That the presented certificate is issued by one of the publicly trusted CA’s listed in the documentation
-That the certificate is within its validity period
-That the signature in the certificate is valid
+
+* That the host name indicated in the certificate matches the host name of the APIs URL
+* That the presented certificate is issued by one of the publicly trusted CA’s listed in the documentation
+* That the certificate is within its validity period
+* That the signature in the certificate is valid
+
 As an example, this can be used to verify the validity of the signing keys available from the Discovery endpoint.
 
-### Nets eID Broker signing keys
-Unless otherwise specified or configured all signed tokens issued by NEB will be signed by an HSM protected key at compliance level supporting the [FIPS 140-2] level 3 or equivalent.
+### Signaturgruppen Broker signing keys
+Unless otherwise specified or configured all signed tokens issued by NEB will be signed by an HSM protected key at compliance level supporting the [FIPS 140-2](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/references.html#fips1402) level 3 or equivalent.
 All publicly available certificates are found through the OpenID Connect Discovery endpoint (TLS protected).
 When signing tokens, NEB will use the algorithm ES256 (ECDSA using P-256 and SHA-256) or stronger.
 
