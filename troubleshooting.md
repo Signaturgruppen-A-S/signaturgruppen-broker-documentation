@@ -62,14 +62,15 @@ After the user has completed the flow he is returned to the service provider typ
 
 The following parameters are posted
 
+```
+POST https://pp.netseidbroker.dk/op/connect/token
+
 grant_type: "authorization_code"
-
 redirect_uri: "<https://openidconnect.net/callback>"
-
 code: "53261AB9D54E62E01A84C0AA8DF4812CD8BC9420B577D72E3743DE5C830EB953-1"
-
 client_id: "80e5e4c4-d8f1-424f-8411-589caf1c05cd"  
 client_secret: "DcOwmQBDGy/L85so1X/onNDLPEUNCENJAl2rY5nt7k4HzztXYrUKKgk1jaY51JB6iir4FuMbz3prtZYHrq5SWQ=="
+```
 
 ## Possible error states
 
@@ -82,7 +83,11 @@ The table below shows some normal causes for errors observed when accessing the 
 
 # Calling Userinfo or other endpoints
 
-After fetching the tokens from the token endpoint the normal next step is to call eg the userinfo endpoint in order to get access to user information. Calling is based on using the received access token as Bearer token. The userinfo endpoint can again be localized from the discovery endpoint and it is available at <https://pp.netseidbroker.dk/op/connect/userinfo>
+After fetching the tokens from the token endpoint the normal next step is to call eg the userinfo endpoint in order to get access to user information. Calling is based on using the received access token as Bearer token. The userinfo endpoint can again be localized from the discovery endpoint and it is available at 
+
+```
+https://pp.netseidbroker.dk/op/connect/userinfo
+```
 
 ## Possible error states
 
@@ -98,7 +103,10 @@ Note especially that missing CPR is most often due to not having ssn inicluded i
 # Performing browser-based logout
 
 User sessions can be manipulated in various ways. See the **\[NEB-SESSIONS\]** for details. If you wish to log-out the user from his MitID/Broker-session through the browser this is done with a redirect to a URL available at the discovery endpoint. The URL looks something like this  
-<https://pp.netseidbroker.dk/op/connect/endsession?post_logout_redirect_uri=https://brokerdemo-pp.signaturgruppen.dk/signout-callback-oidc&id_token_hint=eyJhbGciOiJSUzI1NiIsImtpZCI6>...
+
+```
+https://pp.netseidbroker.dk/op/connect/endsession?post_logout_redirect_uri=https://brokerdemo-pp.signaturgruppen.dk/signout-callback-oidc&id_token_hint=eyJhbGciOiJSUzI1NiIsImtpZCI6>...
+```
 
 ## Possible error states
 
