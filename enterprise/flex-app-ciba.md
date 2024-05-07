@@ -1,8 +1,8 @@
 ---
 title: Ciba integration
 layout: home
-nav_order: 1
 parent: MitID Flex app
+nav_order: 1
 ---
 
 # Ciba integration
