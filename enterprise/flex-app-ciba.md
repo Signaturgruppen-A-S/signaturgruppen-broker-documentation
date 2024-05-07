@@ -83,3 +83,10 @@ When the flow has completed successfully (example):
 }
 ```
 
+## Cancel
+To cancel a flow, invoke the cancel API endpoint using the received **auth_req_id** received when initiating the flow.
+
+```url
+curl --location --request DELETE 'https://pp.netseidbroker.dk/op/api/v1/ciba/0A2179A15B686CB..3AC29A5A6A-1' \
+```
+
