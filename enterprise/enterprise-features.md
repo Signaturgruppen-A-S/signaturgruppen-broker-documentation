@@ -1,5 +1,5 @@
 ---
-title: PostMan demo example
+title: Enterprise features
 layout: home
 nav_order: 75
 has_children: true
