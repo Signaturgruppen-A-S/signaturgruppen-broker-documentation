@@ -13,3 +13,27 @@ The usecases includes applications on smart-TVs, over-the-phone support and help
 Contact Signaturgruppen for more information.
 
 > Note: It is not a variant of MitID that is generally available and it has to be accepted and certified for each usecase.
+
+## Client Initiated Backchannel Authentication
+The MitID Flex app variant has been implemented using the Client Initiated Backchannel Authentication (CIBA) specification. 
+A general overview of this protocol is outlined here:
+
+Integrating to CIBA involves several technical steps designed to ensure a secure and efficient authentication process. Here's an overview of the steps involved:
+
+1. **Client Registration**: Use our free demo client or contact Signaturgruppen for your own client.
+
+3. **Authentication Request Initiation**:
+    - The client application initiates an authentication request to the authentication server, providing necessary information about the end-user that is to be authenticated.
+    - This request includes parameters like `scope`, `client_id`, and the `login_hint` to identify the user.
+
+4. **User Notification**:
+    - The authentication server processes the request and, if the user is recognized, sends a notification to the user’s device via an out-of-band method (e.g., a mobile app push notification).
+
+5. **End-User Authentication**:
+    - The user receives the notification and performs authentication on their device, which could involve biometrics, a PIN, or another form of user verification.
+
+6. **Token Issuance**:
+    - Upon successful user authentication, Signaturgruppen Broker sends a response back to the client. This requires the client to poll the server for the token.
+    - The server issues tokens (like ID token and access token) following the successful authentication.
+
+These steps ensure that the authentication process is user-friendly, secure, and adheres to the OpenID Connect standards which underpin the CIBA flow. This setup is particularly useful for decoupling device scenarios where the device requesting authentication is not the same as the user's device, allowing for more flexible authentication methods.
