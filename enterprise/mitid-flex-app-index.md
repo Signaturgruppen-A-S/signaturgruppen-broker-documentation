@@ -12,7 +12,7 @@ The usecases includes applications on smart-TVs, over-the-phone support and help
 
 Contact Signaturgruppen for more information.
 
-> Note: It is not a variant of MitID that is generally available and it has to be accepted and certified for each usecase.
+> Please note that this version of MitID is not generally available and must be accepted and certified for each specific use case.
 
 ## Client Initiated Backchannel Authentication
 The MitID Flex app variant has been implemented using the Client Initiated Backchannel Authentication (CIBA) specification. 
