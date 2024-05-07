@@ -10,9 +10,13 @@ Signaturgruppen Broker has implemented the MitID Flexibility app (addon) using t
 
 This section describes the technical details needed in order to integrate to the setup.
 
+# Getting started
+To familiarize yourself with the setup, it is recommended to start out using our open and free demo setup for the PP environment, which includes
 
+* **A preconfigured demo service provider**: Approved for Flex app and approved for no channel binding.
+* **Demo client credentials**: Preconfigured and openly available **client_id** and **client_secret**.
 
-## Starting new flow
+# Starting the flow
 
 ```url
 curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
