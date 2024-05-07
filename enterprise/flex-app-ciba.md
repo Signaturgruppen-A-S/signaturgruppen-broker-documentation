@@ -2,7 +2,8 @@
 title: Ciba integration
 layout: home
 parent: MitID Flex app
-nav_order: 1
+grand_parent: Enterprise features
+nav_order: 2
 ---
 
 # Ciba integration
