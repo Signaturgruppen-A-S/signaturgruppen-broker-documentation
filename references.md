@@ -27,3 +27,4 @@ nav_order: 100
 - [ERROR-RESPONSES] "OAuth 2.0 Error Responses": [https://tools.ietf.org/html/rfc6749#section-4.1.2.1](https://tools.ietf.org/html/rfc6749#section-4.1.2.1)
 - [CLIENT-AUTHENTICATION] "OpenID Connect Client Authentication": [https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)
 - \[FIPS 140-2\]<a name="fips1402"></a>: [https://csrc.nist.gov/pubs/fips/140-2/upd2/final](https://csrc.nist.gov/pubs/fips/140-2/upd2/final)
+- [CIBA]<a name="ciba"></a> : [https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html)
