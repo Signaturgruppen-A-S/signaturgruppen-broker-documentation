@@ -9,6 +9,10 @@ This page contains the technical documentation for the Signaturgruppen Broker.
 
 ## Changelog
 
+### 07-05-2024
+* Added Enterprise features section, including some info on MitID Flex app
+* Small changes througout
+
 ### 06-05-2024
 * Added "Troubleshooting" page
 * Going live with this repository and GitHub Pages variant. Old documentation will not be updated, but moved here going forward.
