@@ -37,3 +37,11 @@ Integrating to CIBA involves several technical steps designed to ensure a secure
     - The server issues tokens (like ID token and access token) following the successful authentication.
 
 These steps ensure that the authentication process is user-friendly, secure, and adheres to the OpenID Connect standards which underpin the CIBA flow. This setup is particularly useful for decoupling device scenarios where the device requesting authentication is not the same as the user's device, allowing for more flexible authentication methods.
+
+# Online demo example
+We have constructed an [online demo](https://brokerdemo-pp.signaturgruppen.dk/flexapp) showcasing a standard phone helpdesk usecase. 
+
+MitID Flex app is by design a backchannel protocol, which enables services to initiate the MitID app authenticator directly using a backend to backend API published by Signaturgruppen Broker. 
+
+It is important to note, that this is just one possible usecase. As a guiding principle, the flow should mimic the real MitID flow in as much as possible, in terms of UX, behavior and user information, but as showcased in the demo it is possible to have a complete UI-less MitID experience, if no UI rendering is possible.
+
