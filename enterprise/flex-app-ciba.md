@@ -27,7 +27,7 @@ client_secret: "mIpxk84FI1wpc7cP7nodFLfgQQ1ScZHYO44FZ9wPOqrB0ha9S5RUNYPXMkrCWwRj
 
 ## Initiating
 
-```url
+```
 curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --header 'Cookie: X-Correlation-Id=75fc0535-ea72-44bd-9690-9cd55070b274' \
@@ -39,7 +39,7 @@ curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
 ```
 This would result in a response on the following form
 
-```JSON
+```
 {
     "auth_req_id": "0A2179A15B686CB..3AC29A5A6A-1",
     "expires_in": 300,
@@ -52,7 +52,7 @@ Using the **auth_req_id** received in the initiation response, you can then poll
 
 > Note that the **interval** in the init response specifies the required interval between polls in seconds.
 
-```url
+```
 curl --location 'https://pp.netseidbroker.dk/op/connect/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --header 'Cookie: X-Correlation-Id=75fc0535-ea72-44bd-9690-9cd55070b274' \
@@ -65,7 +65,7 @@ curl --location 'https://pp.netseidbroker.dk/op/connect/token' \
 
 If the flow is still pending you will receive the following response:
 
-```JSON
+```
 {
     "error": "authorization_pending"
 }
@@ -73,7 +73,7 @@ If the flow is still pending you will receive the following response:
 
 When the flow has completed successfully (example):
 
-```JSON
+```
 {
     "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjA0ODA1OEJCNTlGNEQzMDA3MDQ1ODk2RkQ0ODhDRTgxRjRFQjQ5MjMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3BwLm5ldHNlaWRicm9rZXIuZGsvb3AiLCJuYmYiOjE3MTUwODc0NTMsImlhdCI6MTcxNTA4NzQ1MywiZXhwIjoxNzE1MDg3NzUzLCJhdWQiOiI2MmI4Y2MwMy1hYTczLTRkNmEtOTIyYy03YzhmYjBhNGExZDkiLCJhdF9oYXNoIjoiaW9NTjhaVndrdWs5czdxNk1sc1NGQSIsInN1YiI6IjdjOTQ4NGY1LTQ0YmYtNGUyOS1hNjgzLTg0NTQ4OTUxZDNiOCIsImF1dGhfdGltZSI6MTcxNTA4NzQ1MywiaWRwIjoibWl0aWQiLCJtaXRpZC51dWlkIjoiZWVlNGIyNzItNmEzMy00MGRhLWFiMGItNWNlMmFiZDQyZTc4IiwibWl0aWQuYWdlIjoiODgiLCJtaXRpZC5kYXRlX29mX2JpcnRoIjoiMTkzNi0wNC0wOCIsIm1pdGlkLmhhc19jcHIiOiJ0cnVlIiwibWl0aWQuaWRlbnRpdHlfbmFtZSI6IklsZXlhIEplbnNlbiIsIm1pdGlkLnBzZDIiOiJmYWxzZSIsIm1pdGlkLnJlZmVyZW5jZV90ZXh0Ijoib3N0ZW1hd2QgOj0pIiwibWl0aWQudHJhbnNhY3Rpb25faWQiOiI5NTgxYmFiNi05ZjhhLTQ1MjYtOWRkYy1kZmQzOTgxMjYzYjkiLCJpZHBfdHJhbnNhY3Rpb25faWQiOiI5NTgxYmFiNi05ZjhhLTQ1MjYtOWRkYy1kZmQzOTgxMjYzYjkiLCJpZHRva2VuX3R5cGUiOiJjaWJhIn0.FINs1cD2vMnnifJ0ccHi7GgMD1m4u8uZAqbVnGLncYbx3FUuW7Hl64VLQj8IAABXv8jGlX1BoYh1dKhNaJTmka-VKhR_rh1hAFrEInFvS4DYX0HKk5mVm1VOMdGcl2dzKfAjEVDq1tGcCr-HPWA7DR3Mt4vbwWJ5-ZOEJ0mA-49YZsCwNB855dcNf3PdmI0mCknUPmHLf4-ZSIfda4_tW2AmHAmJWtfWUPEQDGMLbEqkbggkETy50J06y9NM4GbczT035PW9EzeJjrqjzvgVtSy3eizRbl2W0IR95hDV1UoJTqW9xn8pt6Qs897TKbjXAmjOPphJ_jE1uGozId1RiQ",
     "access_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjA0ODA1OEJCNTlGNEQzMDA3MDQ1ODk2RkQ0ODhDRTgxRjRFQjQ5MjMiLCJ0eXAiOiJhdCtqd3QifQ.eyJpc3MiOiJodHRwczovL3BwLm5ldHNlaWRicm9rZXIuZGsvb3AiLCJuYmYiOjE3MTUwODc0NTMsImlhdCI6MTcxNTA4NzQ1MywiZXhwIjoxNzE1MDkxMDUzLCJzY29wZSI6WyJvcGVuaWQiLCJtaXRpZCJdLCJjbGllbnRfaWQiOiI2MmI4Y2MwMy1hYTczLTRkNmEtOTIyYy03YzhmYjBhNGExZDkiLCJzdWIiOiI3Yzk0ODRmNS00NGJmLTRlMjktYTY4My04NDU0ODk1MWQzYjgiLCJhdXRoX3RpbWUiOjE3MTUwODc0NTMsImlkcCI6Im1pdGlkIiwiaWRwX3RyYW5zYWN0aW9uX2lkIjoiOTU4MWJhYjYtOWY4YS00NTI2LTlkZGMtZGZkMzk4MTI2M2I5IiwianRpIjoiNUIwODQ1QkREQUNGQkJERDgxMzFBNkJEOENEQkI1NDcifQ.qjU0PUBmTR90OLhm6CI6VitHr9MRVPicl2ukXBAFu5ZVI0zFTYtHKcU2yYcP5rosDEojffWdo4HxRrqx0UztGQT6RWaUBetMDv3VU0kodVJwkmmchgKL6_P7CMGnC0e2ktC-8inAiNRsPGT_P2j8p3g8cALXeSKjZKadF4e-NNpqrb37Od9cIR2otHv44IXKuUu2wxDfdeCKGYMS4pFbfB_n9aav8P1JADazX2TAkmE02N8M-J2XVFsBzzZ2G5_Us93KEYqIa2rRKGYaEWtQtYHvcfkNKor9LzB6DbIL0N3R4-IJipa2On6W9aJF6IbqnARe4PAC-iNeEtjZsx9k9A",
