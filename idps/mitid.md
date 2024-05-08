@@ -2,6 +2,7 @@
 title: MitID
 layout: home
 parent: Identity providers
+has_children: true
 nav_order: 1
 ---
 
