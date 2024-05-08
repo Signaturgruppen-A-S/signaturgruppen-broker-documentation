@@ -2,7 +2,7 @@
 title: MitID Erhverv
 layout: home
 parent: Identity providers
-nav_order: 3
+nav_order: 10
 ---
 
 ## MitID Erhverv
