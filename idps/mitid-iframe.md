@@ -87,15 +87,15 @@ Example:
   "body":
   {
     "mode": "urlencoded",
-    "urlencoded": \[
+    "urlencoded": [
     {"client_id": "879ddd62-31c6-415a-af32-cdec47917ddd"},
     {"client_secret": "…/RuQjsTHlKoXmSuaQ=="},
-    {"redirect_uri": "<https://redirect.uri"}>,
+    {"redirect_uri": "https://redirect.uri"},
     {"response_type": "code"},
     {"scope": "openid mitid ssn"},
     {"idp_params": "{\\"mitid\\":{\\"cpr_hint\\": \\"CPR-NUMBER\\", \\"authenticators\\": \\"app code_token\\", "iframe_mode\\": \\"minimized\\"}}" },
     {"idp_values: "mitid"}
-    \]
+    ]
   }
 }
 ```
@@ -123,47 +123,42 @@ Iframe cross-document protocol steps
 
 1. When the iframe has loaded, the “ready” command will be sent from NEB iframe to parent
 
+```
 {
-
-"command": "ready"
-
+ "command": "ready"
 }
+```
+
 
 1. The parent then sends the auth_token with the following message
 
+```
 {
-
-"command": "auth_token",
-
-"auth_token": "\[auth_token\]"
-
+ "command": "auth_token",
+ "auth_token": "\[auth_token\]"
 }
+```
+
 
 1. The response from the started authentication is either “error” or “auth_code”
 
+```
 {
-
-"command": "error",
-
-"error": "error code",
-
-"error_description": "error description"
-
+ "command": "error",
+ "error": "error code",
+ "error_description": "error description"
 }
+```
 
+```
 {
-
-"command": "auth_code",
-
-"auth_code": "\[auth_code\]"
-
+ "command": "auth_code",
+ "auth_code": "\[auth_code\]"
 }
+```
+
 
 ### 3) Token endpoint and tokens
 
-When the iframe flow has finished an auth_token will be communicated back via the cross-document messaging which can be used in the standard way to exchange for tokens via the Token endpoint, see **\[NEB-TECHREF\]**.
+When the iframe flow has finished an auth_token will be communicated back via the cross-document messaging which can be used in the standard way to exchange for tokens via the Token endpoint.
 
-# References
-
-- Cross-document messaging: <https://html.spec.whatwg.org/multipage/web-messaging.html>
-- PAR: <https://www.rfc-editor.org/info/rfc9126>
