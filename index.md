@@ -9,6 +9,9 @@ This page contains the technical documentation for the Signaturgruppen Broker.
 
 ## Changelog
 
+### 08-05-2024
+* Added sessions section to documentation
+
 ### 07-05-2024
 * Added Enterprise features section, including some info on MitID Flex app
 * Small changes througout
