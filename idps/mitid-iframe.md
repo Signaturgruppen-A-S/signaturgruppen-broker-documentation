@@ -8,59 +8,21 @@ nav_order: 3
 
 # MitID Iframe
 
-# Terminology
-
-**Nets eID Broker documentation documents**
-
-This document services as the primary source of technical documentation. The collected list of technical documents for NEB is listed here.
-
-All documents can be found at [https://broker.signaturgruppen.dk/](https://broker.signaturgruppen.dk/teknisk-dokumentation)
-
-&nbsp;
-
-| **Title** | **Description** |
-| --- | --- |
-| Nets eID Broker Technical Reference **\[NEB-TECHREF\]** | The primary source of technical documentation for the integration to Nets eID Broker.<br><br>Contains the full list of technical documents available. |
-| Nets eID Broker OpenID Connect Intro **\[NEB-INTRO\]** | Introduction to the OpenID Connect integration to Nets eID Broker. |
-| Nets eID Broker MitID mobile app integration **\[MITID-APP\]** | Technical description of MitID app integration. |
-
-&nbsp;
-
-# Changelog
-
-## Version 1.1 24-11-2023
-
-- Updated with information about code token and minimized mode parameters.
-
-## Version 1.0 06-2022
-
-- General updates.
-
-## Version 0.2, 21-03-2022
-
-- Updated with overall description of the flow
-
-## Version 0.1
-
-- Created this document.
-
-# Introduction
+## Introduction
 
 This document describes the MitID iframe flow available as an alternative MitID flow.
 
-The intended audience is architects and developers, as well as stakeholders with interest in the protocol and security of the flow and protocol.
-
-The MitID iframe variant, is available as MitID reauthentication only, which requires the initiating service provider to have some form of authentication with the end-user when starting the MitID and is required to provide either the MitID UUID or the Danish CPR.
 
 ## Iframe model
 
 MitID supports a restricted iframe model that allows to complete the MitID flow within an iframe as alternative to the normal full-page or pop-up OpenID Connect flows.
+The MitID iframe variant, is available as MitID reauthentication only, which requires the initiating service provider to have some form of authentication with the end-user when starting the MitID and is required to provide either the MitID UUID or the Danish CPR.
 
 This model has several restrictions that includes
 
 - Only the MitID app and code-display authenticators are available.
 - Must be initialized with end-user MitID UUID or Danish CPR.
-- Still requires MitID accepted browsers, the same list as for normal MitID (embedded browsers are not allowed).
+- Still requires MitID accepted browsers, the same list as for normal MitID, i.e. **embedded browsers are not allowed**.
 
 But in return has some advantages as well
 
@@ -72,7 +34,7 @@ The iframe variant is generally available to service providers, but can only be 
 
 It must be noted that the end-user MitID UUID or Danish CPR is part of the initialization of the flow and must be supplied as part of the input parameters to Nets eID Broker when starting an iframe flow.
 
-# Nets eID Broker MitID iframe protocol
+## Nets eID Broker MitID iframe protocol
 
 Overall, the flow will be handled by server-to-server API calls for initializing the flow and retrieving the signed ID token as well as setting up an iframe and communicating with Nets eID Broker through the iframe using cross-document messaging.
 
