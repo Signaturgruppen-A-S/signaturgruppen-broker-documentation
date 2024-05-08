@@ -1,7 +1,8 @@
 ---
 title: MitID appswitch
 layout: home
-parent: Identity providers
+parent: MitID
+grand_parent: Identity providers
 nav_order: 2
 ---
 
