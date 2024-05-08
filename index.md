@@ -11,7 +11,7 @@ This page contains the technical documentation for the Signaturgruppen Broker.
 
 ### 08-05-2024
 * Added sessions section to documentation
-* Added MitID appswitch section
+* Added MitID appswitch and iframe sections
 * Added Transaction signing section
 
 ### 07-05-2024
