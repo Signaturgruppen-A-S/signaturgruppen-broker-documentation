@@ -16,8 +16,8 @@ The returned ID token contains the following claims relevant for session handlin
 
 | Claim | Description |
 | --- | --- |
-| session\_expiry | Session expiry.Contains the absolute expiry time of the issued NEB end-user session in Epoch Unix Timestamp format.This time also indicates the period of which other session may be created based on the ID token. If the authentication from NEB is used to create an internal setup with e.g., a SSO setup, then the session expiry indicates when it is no longer allowed to create new logins and session based on the ID token issued by NEB. |
-| neb\_sid | Session identifier.Reference to the active NEB session. |
+| session\_expiry | Session expiry.Contains the absolute expiry time of the issued Signaturgruppen Broker end-user session in Epoch Unix Timestamp format.This time also indicates the period of which other session may be created based on the ID token. If the authentication from Signaturgruppen Broker is used to create an internal setup with e.g., a SSO setup, then the session expiry indicates when it is no longer allowed to create new logins and session based on the ID token issued by Signaturgruppen Broker. |
+| neb\_sid | Session identifier.Reference to the active Signaturgruppen Broker session. |
 | auth\_time | Authentication time.Time when the end-user authentication occurred in Epoch Unix Timestamp format. |
 
 
@@ -25,10 +25,10 @@ The returned ID token contains the following claims relevant for session handlin
 
 | **Parameter**| **Description**|
 | --- | --- |
-| max\_age | Maximum Authentication Age. Specifies the allowable elapsed time in seconds since the last time the end-user was actively authenticated by NEB. If the elapsed time is greater than this value, NEB will ensure to actively re-authenticate the end-user. **Note:** If special scopes for handling of special claims (CPR and "Private to Business"-mappings) are used max\_age should allow for these flows to complete within the session. |
+| max\_age | Maximum Authentication Age. Specifies the allowable elapsed time in seconds since the last time the end-user was actively authenticated by Signaturgruppen Broker. If the elapsed time is greater than this value, Signaturgruppen Broker will ensure to actively re-authenticate the end-user. **Note:** If special scopes for handling of special claims (CPR and "Private to Business"-mappings) are used max\_age should allow for these flows to complete within the session. |
 | prompt | Space delimited, case sensitive list of ASCII string values that specifies whether the Authorization Server prompts the end-user for reauthentication.Supported values are <ul><li>**none** (no ui for authentication)</li><li>**login** (force authentication request)</li><li>**select\_account** (enable idp selection)</li></ul> |
 
-If **login** is used, the end-user will be forced to complete the requested authentication flow. This can be used anytime it is required that the end-user completes the requested authentication flow, i.e. when requesting a signature from the end-user.If **none** is used, a request for automatic login based on the end-user session is requested. If the automatic login could not be honored, an error will be returned to the service.If **select\_account** is used, the end-user will be allowed to select among the available identity providers for the given flow, even though the end-user has an active session with NEB. It does not trigger a forced reauthentication, so if the end-user selects the same identity provider for which he has an active session, he will be automatically reauthenticated. |
+If **login** is used, the end-user will be forced to complete the requested authentication flow. This can be used anytime it is required that the end-user completes the requested authentication flow, i.e. when requesting a signature from the end-user.If **none** is used, a request for automatic login based on the end-user session is requested. If the automatic login could not be honored, an error will be returned to the service.If **select\_account** is used, the end-user will be allowed to select among the available identity providers for the given flow, even though the end-user has an active session with Signaturgruppen Broker. It does not trigger a forced reauthentication, so if the end-user selects the same identity provider for which he has an active session, he will be automatically reauthenticated. |
 
 ###
 
@@ -67,7 +67,7 @@ See "Nets eID Broker Technical Reference" for reference to API swagger informati
 
 The OpenID Connect End Session Endpoint is supported.
 
-A valid ID token sent in the id\_token\_hint parameter is mandatory when calling the NEB End session endpoint.
+A valid ID token sent in the id\_token\_hint parameter is mandatory when calling the Signaturgruppen Broker End session endpoint.
 
 Redirecting the end-user to the End Session endpoint with a valid ID token will result in the session identified by the ID token will be terminated and all clients who have actively participated in the session will have their registered Back-Channel endpoint called with a Logout Token notification.
 
@@ -75,11 +75,11 @@ See [[OIDC-BACK-CHANNEL] section 2.6](https://openid.net/specs/openid-connect-ba
 
 When done, the optional post\_logout\_redirect\_uri parameter is used to redirect the end-user back to the post logout URI if specified. If a valid post\_logout\_redirect\_uri is omitted, the end-user will not be redirected back to the service provider.
 
-NEB will ensure to call required logout endpoints at the external identity provider if required.
+Signaturgruppen Broker will ensure to call required logout endpoints at the external identity provider if required.
 
 ## Logout API endpoint
 
-The Logout endpoint is a NEB specific endpoint performing the SLO ceremony involved for logging out the end-user session.
+The Logout endpoint is a Signaturgruppen Broker specific endpoint performing the SLO ceremony involved for logging out the end-user session.
 
 Calling the API endpoint with a valid ID token will result in the session identified by the ID token will be terminated and all clients who have actively participated in the session will have their Back-Channel endpoint called with a Logout Token notification. Note, that it is optional to register a Back-Channel endpoint.
 
@@ -87,10 +87,10 @@ See [[OIDC-BACK-CHANNEL] section 2.6](https://openid.net/specs/openid-connect-ba
 
 After calling the Logout API endpoint the ID token should be discarded.
 
-NEB will ensure to call required logout endpoints at the external identity provider if required.
+Signaturgruppen Broker will ensure to call required logout endpoints at the external identity provider if required.
 
 # Single-Sign-On and Single-Log-Out (SSO and SLO)
 
-Neb supports various setups utilizing SSO either directly through NEB or identity providers like MitID.
+Signaturgruppen Broker supports various setups utilizing SSO either directly through Signaturgruppen Broker or identity providers like MitID.
 
-This section will be updated at a later stage. Contact Signaturgruppen if you plan on utilizing SSO either directly through NEB or via MitID.
+This section will be updated at a later stage. Contact Signaturgruppen if you plan on utilizing SSO either directly through Signaturgruppen Broker or via MitID.
