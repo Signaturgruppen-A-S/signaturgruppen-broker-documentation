@@ -22,3 +22,6 @@ nav_order: 6
 | NemLog-In3 (NL3) | NL3 plays a central role in Denmark’s digital infrastructure by making it possible for Danish citizens and companies to log in to public self service solutions. NL3 provides the CA services for the Oces3 PKI. |
 | Offentlige Certifikater til Elektronisk Service (OCES) | OCES-standard / The OCES-standard. OCES is a Danish public standard for “Public Certificates for Electronic Service”. |
 | VOCES3 | Company certificate issued under the OCES3 standard by the NemLog-In3 CA. |
+| Web messaging or cross-document messaging | Allows web-documents to communicate with each other regardless of their source domain, in a way designed to not enable cross-site scripting attacks. |
+| Pushed authorization request (PAR) | Allows clients to push the payload of an OAuth 2.0 authorization request to the authorization server via a direct request and provides them with a request URI that is used as reference to the data in a subsequent call to the authorization endpoint. |
+
