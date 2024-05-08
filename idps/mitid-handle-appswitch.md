@@ -5,15 +5,13 @@ parent: Identity providers
 nav_order: 2
 ---
 
-# MitID mobile app integration
-
-## Terminology
+# Terminology
 
 | **Term** | **Description** |
 | --- | --- |
 | Android Custom Tabs (**TAB**)<br><br>iOS SFSafariViewController (**TAB**) | The Android Custom Tabs and the iOS SFSafariViewController are a platform specific sandbox of the system default browser, which enables are more seamless and secure browser integration from native apps. |
 
-## Introduction
+# Introduction
 
 This document is a technical guide for MitID app integration.
 
@@ -25,15 +23,13 @@ MitID only tests and support the browsers that have at least 2% market share and
 
 On Android it is possible to detect if Chrome or the Samsung browser is available before starting the Custom Tabs intent.
 
-It is a security requirement that the end-user is presented with the address bar from the browser to allow the end-user to verify the <https://mitid.dk> domain during the MitID flow. It is not allowed to hide the address bar for the Custom Tabs or SFSafariViewController instances.
+It is a security requirement that the end-user is presented with the address bar from the browser to allow the end-user to verify the **mitid.dk** domain during the MitID flow. It is not allowed to hide the address bar for the Custom Tabs or SFSafariViewController instances.
 
 **Embedded browsers, i.e.WebViews, are not supported and not allowed – thus integrations must adhere strictly using to the Android Custom Tabs (Chrome or Samsung browser) or iOS SFSafariViewController (**TAB**) for all MitID integration flows.**
 
 **MitID requires that the address bar is visible, such that the end-user can see the https and MitID domain when authenticating with MitID.**
 
-Android Custom Tabs: <https://developer.chrome.com/docs/android/custom-tabs/>
-
-iOS SFSafariViewController: <https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller>
+For reference, see [Android Custom Tabs](https://developer.chrome.com/docs/android/custom-tabs) and [iOS SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller).
 
 # OpenID Connect and app backend
 
@@ -50,21 +46,21 @@ In broad terms, the flow can be described in the following way:
 - When the flow is completed in the MitID app, the end-user is redirected back to the specified app-switch url, AppLinks / Universal Link handled, and is app-switched back to the app.
 - The MitID flows are completed in the TAB and the app can complete the flow based on information received from the app backend or from the TAB.
 
-### App backend handles all OIDC flows directly with the NEB API endpoints using a secure OIDC client
+## App backend handles all OIDC flows directly with the NEB API endpoints using a secure OIDC client
 
 Only allowing the app backend to request the signed tokens and access the APIs on the NEB platform using a secure client strengthens the security of the setup. It is highly recommended, that both web- and app applications utilizes this approach to have no OIDC client configured client-side, but have the app-backend setup and handle all the specific integrations (except opening the browser with the generated OIDC URL).
 
-# Custom Tabs and SFSafariViewController differences
+## Custom Tabs and SFSafariViewController differences
 
 The two implementations are in many ways identical, but with respect to the MitID app-switch integration, there are some key differences that affect how the general handling can and should be implemented.
 
-### Custom Schemes
+## Custom Schemes
 
 The TAB implementations do not offer the same control for the app as a standard WebView and does not offer any useful way for the app to get notified on redirects and URL changes in the browser.
 
 The standard way to detect, complete and close the browser-flow in a TAB has been to utilize custom schemes, such as custom-scheme://oidc-redirect-url, to enable the browser flow to automatically generate an event in the app. This still works on iOS, but Chrome has begun to require user-interaction for this to work, which for most intends and purposes breaks this on Android.
 
-### Part of app instance or not?
+## Part of app instance or not?
 
 On iOS the SFSafariViewController is part of the app instance and thus when navigating from the TAB to the MitID app and back to the app using app-switch, the TAB will be in focus.
 
