@@ -9,6 +9,9 @@ This page contains the technical documentation for the Signaturgruppen Broker.
 
 ## Changelog
 
+### 23-05-2024
+* Added "MitID Erhverv Testing" subsection under idp->MitID Erhverv
+
 ### 08-05-2024
 * Added sessions section to documentation
 * Added MitID appswitch and iframe sections
