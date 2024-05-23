@@ -6,7 +6,7 @@ grand_parent: Identity providers
 nav_order: 1
 ---
 
-# MitID Erhverv Testing and Test-Users**
+# MitID Erhverv Testing and Test-Users
 
 ## Introduction
 
