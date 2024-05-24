@@ -7,6 +7,9 @@ nav_order: 2
 # Updates
 This section contains information about the changes made to the technical documentation.
 
+### 24-05-2024
+* Moved changelog to (this) "Updates" section
+
 ### 23-05-2024
 * Added "MitID Erhverv Testing" subsection under idp->MitID Erhverv
 
