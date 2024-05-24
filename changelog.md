@@ -9,6 +9,7 @@ This section contains information about the changes made to the technical docume
 
 ### 24-05-2024
 * Moved changelog to (this) "Updates" section
+* Added "Issued claims and tokens" subsection: "Transaction token"
 
 ### 23-05-2024
 * Added "MitID Erhverv Testing" subsection under idp->MitID Erhverv
