@@ -1,6 +1,7 @@
 ---
 title: Issued claims and tokens
 layout: home
+has_children: true
 nav_order: 15
 ---
 
