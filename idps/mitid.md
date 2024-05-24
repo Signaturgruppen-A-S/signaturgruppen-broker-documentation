@@ -18,6 +18,19 @@ MitID follows the “National Standarder for Identiteters Sikringsniveauer” (N
 
 A zip file containing the official communication kit for MitID can be [downloaded here](https://signaturgruppen.dk/download/broker/docs/mitid-kommunikationsmaterialer-v01.zip)
 
+### Security Advice for MitID Users
+
+The security advice below will help protect the MitID user against frauad both during the migration proces and in the subsequent use. 
+
+Below you will find material from MitID, which you can use when communicating with your users with respect to MitID through relevant channels.
+
+The "Look out for MitID" animation:
+
+There are two animations tht give the user valuable information as of how to protect their digital lives including MitID. The videos are in Danish:
+
+Long version at MitID.dk: <https://www.youtube.com/watch?v=4HN3N3xJ9W8>
+Short versiont at MitID Youtube channel: <https://www.youtube.com/watch?v=8pu8LefqVlY>
+
 ### Supported browsers
 
 MitID only test and support the browsers that have at least 2% market share and thus it is a requirement, that app switch integrations utilize the default browsers of the respective OS in question.
