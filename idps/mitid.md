@@ -14,6 +14,10 @@ More information is found here: <https://digst.dk/it-loesninger/mitid/>.
 
 MitID follows the “National Standarder for Identiteters Sikringsniveauer” (NSIS) and all MitID flows is mapped to one of authentication Level of Assurance’s (LoA) found in the NSIS specification: <https://digst.dk/it-loesninger/nemlog-in/det-kommende-nemlog-in/vejledninger-og-standarder/nsis-standarden/>.
 
+### MitID official communication material
+
+A zip file containing the official communication kit for MitID can be [downloaded here](https://signaturgruppen.dk/download/broker/docs/mitid-kommunikationsmaterialer-v01.zip)
+
 ### Supported browsers
 
 MitID only test and support the browsers that have at least 2% market share and thus it is a requirement, that app switch integrations utilize the default browsers of the respective OS in question.
