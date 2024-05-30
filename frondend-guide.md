@@ -9,7 +9,7 @@ nav_exclude: true
 
 ## UX assessment
 
-It’s possible to display the Nets eID Broker to the user with either a pop-up or redirecting the browser to Nets eID Broker. They are equally secure ways to authenticate the end-user. The user experience is quite different, and the decision is up to you.
+You can integrate with the Signaturgruppen Broker using either a pop-up window or a full-screen browser redirect. Both methods provide equally secure user authentication. The choice between them depends on your preferred user experience.
 
 > See the [GitHub .net core demo](https://github.com/Signaturgruppen-A-S/signaturgruppen-broker-demo) for example code
 
@@ -29,7 +29,7 @@ It’s possible to display the Nets eID Broker to the user with either a pop-up 
                <li>With the pop-up the user has an extra browser window which incidentally can be closed or set the focus to the parent page. It’s recommended to handle those scenarios also to ensure a great user experience.<br></li>
                <li>Opening the pop-up with default size, might cause scrollbars if users with low vision resizes the text size.<br></li>
                <li>Some flows might require more space and are not suited for pop-ups.</li>
-               <li>Not able to fully utilize Nets eID Broker custom branding and layout theming.</li>
+               <li>Not able to fully utilize Signaturgruppen Broker custom branding and layout theming.</li>
             </ul>
          </td>
       </tr>
@@ -68,10 +68,10 @@ We have tested this implementation with the following setups.
       <tr>
          <td>
             <ul>
-               <li>It can be initialized automatically on a page load. This makes it possible to have an absolute URL on your domain i.e., mydomain.dk/login that redirects to Nets eID Brokers login. With the pop-up you need the onclick event, to ensure the pop-up is opened correct.</li>
+               <li>It can be initialized automatically on a page load. This makes it possible to have an absolute URL on your domain i.e., mydomain.dk/login that redirects to Signaturgruppen Brokers login. With the pop-up you need the onclick event, to ensure the pop-up is opened correct.</li>
                <li>Easier implementation with less JavaScript event handling.</li>
                <li>The entire screen is dedicated to the login experience and flow.</li>
-               <li>Possible to setup custom branding, themes, and general layout via the Nets eID Broker administration</li>
+               <li>Possible to setup custom branding, themes, and general layout via the Signaturgruppen Broker administration</li>
             </ul>
          </td>
       </tr>
@@ -92,7 +92,7 @@ We have tested this implementation with the following setups.
                <li>Same implementation as for limited size pop-up</li>
                <li>A blend of both pop-up and redirect flow. It opens up in a new browser tab which allows fullscreen usage and can improve error handling in many circumstances as the initiaing webpage UX state can be maintained, even when the end-user closes the opened tab</li>
                <li>The entire screen is dedicated to the login experience and flow.</li>
-               <li>Possible to setup custom branding, themes, and general layout via the Nets eID Broker administration</li>
+               <li>Possible to setup custom branding, themes, and general layout via the Signaturgruppen Broker administration</li>
             </ul>
          </td>
       </tr>
@@ -101,7 +101,7 @@ We have tested this implementation with the following setups.
 
 ## Branding
 
-We support a wide range of options to customize the branding and UX experience of Nets eID Broker. In our administration interface, it’s possible to setup multiple UX profiles for your services. Each UX profile will be based upon a set of base layouts, where you can tailor it to your need. With the UX profiles we take care of CSS, responsive behavior, and accessibility.
+We support a wide range of options to customize the branding and UX experience of Signaturgruppen Broker. In our administration interface, it’s possible to setup multiple UX profiles for your services. Each UX profile will be based upon a set of base layouts, where you can tailor it to your need. With the UX profiles we take care of CSS, responsive behavior, and accessibility.
 
 We support customization of:
 
@@ -120,11 +120,11 @@ _Pop-up backdrop with support-text example_
 
 # Theming
 
-It’s possible to tailor the look and feel of the Nets eID Broker to a great extent. In most cases it’s possible to create a broker theme that’s compliant with your company design guideline in the theme editor section of Nets eID Broker Admin tool.
+It’s possible to tailor the look and feel of the Signaturgruppen Broker to a great extent. In most cases it’s possible to create a broker theme that’s compliant with your company design guideline in the theme editor section of Signaturgruppen Broker Admin tool.
 
 The themes are based upon a model where the foundation is a predefined base layout combined with multiple variables defining the specific theme.
 
-It’s possible to have multiple themes for different purposes. By default, Nets eID broker uses a built-in default theme that has a neutral look and feel. When you start working with themes, you need to access the Nets eID Broker admin tool and go to the Theme menu item. If you don’t have access to this menu item, then contact your local administrator.
+It’s possible to have multiple themes for different purposes. By default, Signaturgruppen broker uses a built-in default theme that has a neutral look and feel. When you start working with themes, you need to access the Signaturgruppen Broker admin tool and go to the Theme menu item. If you don’t have access to this menu item, then contact your local administrator.
 
 ## Layout template
 
@@ -169,7 +169,7 @@ _Please be aware: The layout template Top bar and the features Mobile top bar is
 
 ## Colors
 
-Nets eID broker support colors in many different formats: HEX, RGB and HSL.
+Signaturgruppen broker support colors in many different formats: HEX, RGB and HSL.
 
 Please note that print colors like CMYK and Pantone is not supported on screen devices. If you don’t have the needed color codes in the supported formats, you can try a tool like this <https://codebeautify.org/pantone-to-rgb-converter> or <https://www.cmyk2rgb.com/>.
 
@@ -177,7 +177,7 @@ You will find the color option in the “Colors” tab of your theme.
 
 For background it’s possible to use both solid colors and gradients. Gradients is a color that goes from one specific color to another. For texts only solid colors is supported.
 
-When you type in colors in the Nets eID broker admin tool, you’ll see a preview of the selected color on a small preview.
+When you type in colors in the Signaturgruppen broker admin tool, you’ll see a preview of the selected color on a small preview.
 
 When defining gradients, you have the option to let the colors change from top to bottom or from left to right.
 
@@ -189,7 +189,7 @@ Fonts
 
 In the font tab it’s possible to specify font related options to the soft content.
 
-You can specify different fonts for heading and body text. All levels of headings will have the same font but can have different size and weight. There are three levels for headings in Nets eID Broker. Heading, Subheading and Small subheading. They represent an H1, H2 and H3 on HTML page level.
+You can specify different fonts for heading and body text. All levels of headings will have the same font but can have different size and weight. There are three levels for headings in Signaturgruppen Broker. Heading, Subheading and Small subheading. They represent an H1, H2 and H3 on HTML page level.
 
 It’s a good accessibility practice to have one heading(h1). The heading provides an important navigation point for users of assistive technologies, allowing them to easily find the main content of the page.
 
@@ -213,7 +213,7 @@ If you don’t have the opportunity to host the logo file yourself, it’s also 
 
 ### SSN consent text
 
-For SSN, Social Security Number, flows it possible to specify your own consent text. Danish, English and Greenlandic languages is supported. If a text is not specified Nets eID Broker will use the default text defined by the broker.
+For SSN, Social Security Number, flows it possible to specify your own consent text. Danish, English and Greenlandic languages is supported. If a text is not specified Signaturgruppen Broker will use the default text defined by the broker.
 
 Please note, if you don’t specify a text for a specific language the user will get the default text.
 
@@ -273,17 +273,17 @@ _Please note that the buttons don’t affect the design of buttons inside MitID 
 
 ### Custom Themes
 
-The theming options in Nets eID Broker is designed to cater for many different layout options. It’s also possible to get a completely customized theme, created by the developers of Nets eID Broker. Contact us for more information about this option.
+The theming options in Signaturgruppen Broker is designed to cater for many different layout options. It’s also possible to get a completely customized theme, created by the developers of Signaturgruppen Broker. Contact us for more information about this option.
 
 ## Export / Import themes
 
 It’s possible to export themes into a JSON file you can store on your machine or share with a colleague. The JSON file contains all the options chosen in the visual editor. The JSON file is ideal when moving themes between pre-production and production to minimize the risk of human errors.
 
-The JSON file format has a built-in format version, to ensure that the file is compatible with the current state of Nets eID Broker. Old files might not be compatible with the latest version.
+The JSON file format has a built-in format version, to ensure that the file is compatible with the current state of Signaturgruppen Broker. Old files might not be compatible with the latest version.
 
 ## Assigning themes
 
-Themes are assigned to services. By default, all services use the “Nets eID Broker standard theme”. Go to the specific service and assign the theme you want to activate. It’s possible to have multiple themes that’s not active.
+Themes are assigned to services. By default, all services use the “Signaturgruppen Broker standard theme”. Go to the specific service and assign the theme you want to activate. It’s possible to have multiple themes that’s not active.
 
 # Soft content
 
@@ -335,13 +335,13 @@ Preview functionality is building a preview with the theme options. This doesn't
 
 It’s possible to export soft content structures into a JSON file you can store on your machine or share with a colleague. The JSON file contains all the content in all languages. The JSON file is ideal when moving themes between pre-production and production to minimize the risk of human errors.
 
-The JSON file format has a built-in format version, to ensure that the file is compatible with the current state of Nets eID Broker. Old files might not be compatible with the latest version.
+The JSON file format has a built-in format version, to ensure that the file is compatible with the current state of Signaturgruppen Broker. Old files might not be compatible with the latest version.
 
 # User Interface elements
 
 ## Accessibility
 
-If the button or link for opening the Nets eID Broker is anything else than an &lt;a&gt; or &lt;button&gt; element, you should add role="link" tabindex="0" to the DOM element, to make it accessible for keyboard navigation and screen readers according to the WCAG 3.0 standard.
+If the button or link for opening the Signaturgruppen Broker is anything else than an &lt;a&gt; or &lt;button&gt; element, you should add role="link" tabindex="0" to the DOM element, to make it accessible for keyboard navigation and screen readers according to the WCAG 3.0 standard.
 
 We advise you to put helping text on functions that opens in a new window. You can use either of these two ways:
 
