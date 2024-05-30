@@ -17,10 +17,49 @@ It’s possible to display the Nets eID Broker to the user with either a pop-up 
 
 The intended audiences are frontend developers and UX designers.
 
-<table><tbody><tr><th><p><br><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAYtJREFUWIXtmDFuwjAUhj9Qh0odyBHSG2ToDr0BY0eOwBU4QXuBCsaO7QlITwAZOnVounUMW7d08IvygDhUIsQG5ZOsZydG/u3He7ENHRdOT9VHwFBsW8TAu9ha5kDusMzrxE2l0ysQ/mvezREATzL+1NZpBaTSufjRB/As7RdpB8AD8Cm2SdbUuDnfeTmmXHpUfQwspb5sWGCsxtviytL5DTMrgBkQyfMME1izhgXWsruCLrCuILiN3qryhYnqAIy7cmBD6VIX3AE3mJwIJh9nwC346eJI2ou+Gz0HWWNWc+irwILQd4GVedAF12KH6tmgqPgQJD9Y0o4vLk7F3quSgD8u/hWrPZkB+LKCVjqBx9IJPJazEPiNytqOGIiOPfqY3BMBkzYVKSaUR4o9epida4qZxRqTIEOx2YnFBSJuo8YsiFHf5gBYiNA2t/epjFsceTUHzymuNxAxHm0WrJytwAQ/Uk9ie1lcKD1S/Qc+JYGMW3uhBCa6XB7gF7B9gVnFSJW2iFXpuHz+ACi+20Yp5xkfAAAAAElFTkSuQmCC"><br></p><h2><a id="_Toc110416978"></a>Pop-up UX assessment</h2></th></tr><tr><td><ul><li>Your existing page branding is visible behind the pop-up when displayed on PC. When used on mobile devices (including iPad) the popup opens in a new tab.<br></li><li>With the pop-up the user has an extra browser window which incidentally can be closed or set the focus to the parent page. It’s recommended to handle those scenarios also to ensure a great user experience.<br></li><li>Opening the pop-up with default size, might cause scrollbars if users with low vision resizes the text size.<br></li><li>Some flows might require more space and are not suited for pop-ups.</li><li>Not able to fully utilize Nets eID Broker custom branding and layout theming.</li></ul></td></tr></tbody></table>
+<table>
+   <tbody>
+      <tr>
+         <th>
+            <p><br><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAYtJREFUWIXtmDFuwjAUhj9Qh0odyBHSG2ToDr0BY0eOwBU4QXuBCsaO7QlITwAZOnVounUMW7d08IvygDhUIsQG5ZOsZydG/u3He7ENHRdOT9VHwFBsW8TAu9ha5kDusMzrxE2l0ysQ/mvezREATzL+1NZpBaTSufjRB/As7RdpB8AD8Cm2SdbUuDnfeTmmXHpUfQwspb5sWGCsxtviytL5DTMrgBkQyfMME1izhgXWsruCLrCuILiN3qryhYnqAIy7cmBD6VIX3AE3mJwIJh9nwC346eJI2ou+Gz0HWWNWc+irwILQd4GVedAF12KH6tmgqPgQJD9Y0o4vLk7F3quSgD8u/hWrPZkB+LKCVjqBx9IJPJazEPiNytqOGIiOPfqY3BMBkzYVKSaUR4o9epida4qZxRqTIEOx2YnFBSJuo8YsiFHf5gBYiNA2t/epjFsceTUHzymuNxAxHm0WrJytwAQ/Uk9ie1lcKD1S/Qc+JYGMW3uhBCa6XB7gF7B9gVnFSJW2iFXpuHz+ACi+20Yp5xkfAAAAAElFTkSuQmCC"><br></p>
+            <h2><a id="_Toc110416978"></a>Pop-up UX assessment</h2>
+         </th>
+      </tr>
+      <tr>
+         <td>
+            <ul>
+               <li>Your existing page branding is visible behind the pop-up when displayed on PC. When used on mobile devices (including iPad) the popup opens in a new tab.<br></li>
+               <li>With the pop-up the user has an extra browser window which incidentally can be closed or set the focus to the parent page. It’s recommended to handle those scenarios also to ensure a great user experience.<br></li>
+               <li>Opening the pop-up with default size, might cause scrollbars if users with low vision resizes the text size.<br></li>
+               <li>Some flows might require more space and are not suited for pop-ups.</li>
+               <li>Not able to fully utilize Nets eID Broker custom branding and layout theming.</li>
+            </ul>
+         </td>
+      </tr>
+   </tbody>
+</table>
 
-<table><tbody><tr><th><p><br><a id="_Toc64863080"></a><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAfRJREFUWIXtmDFOwzAUhr8iJoQgM0IqTIyEE1Bu0JGxEys5AjcgNwBO0M4sZWZpmBhpT9B0YEIiDM8mTuqkQm5ihnxS1MR5bv48P9vvBXJOgDHwAWQtHjPgHgiw0DPEzdR1YjNsmEv13IsqgymQIkJ9MES8eVdlkAGPlg6viOs/gS91/qzu3WxZ5Bx4KTfulgw02pPHStSe0X6gzo8aEHheJ9AkVh0S9XuFCE2AayDE8rZbYG2imAL7SLBqlqqtjwzp0ri/xPK2jhzaGvUszrb8MBd65oXpwSeKE6VtYjbEoHUWtUhqa9xpW8Vf6QS60gl0pRPoyn8TuCg3VCULPhhhSRZ8ejBASoxbda2zpwK+h/gU2YMfqKhJNLXpdoMEwIS8eAqrDH0J1ETkOefQZuBbIMAAyWgypAwtkCGx4BtdVmRIpfkbl3OkYG+LITIxptQX9d89o8MYSVgnuBXvq5r+A2T4zMnwRjFZ3QfO1O+72TkijwGXoyorjwybWIktM0QmSqbsiwWK8ZYupKx7MEYW5AWyY9heQtuslNDWyo8R4pEE+2IckMdilU1jBMiQVX33CcmH1MsqEmPEU4lA3UsRL3vBmgAYRNRsb00TIh6auPxJk9mMDnanD6JNCtTLldNy4Tsf3Egn0JUmBSbItjXfZFjHD1M5ol9UfQFpAAAAAElFTkSuQmCC"><br></p><h1><a id="_Toc110416979"></a>Redirect UX assessment</h1></th></tr><tr><td><ul><li>It can be initialized automatically on a page load. This makes it possible to have an absolute URL on your domain i.e., mydomain.dk/login that redirects to Nets eID Brokers login. With the pop-up you need the onclick event, to ensure the pop-up is opened correct.</li><li>Easier implementation with less JavaScript event handling.</li><li>The entire screen is dedicated to the login experience and flow.</li><li>Possible to setup custom branding, themes, and general layout via the Nets eID Broker administration</li></ul></td></tr></tbody></table>
 
+<table>
+   <tbody>
+      <tr>
+         <th>
+            <p><br><a id="_Toc64863080"></a><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAfRJREFUWIXtmDFOwzAUhr8iJoQgM0IqTIyEE1Bu0JGxEys5AjcgNwBO0M4sZWZpmBhpT9B0YEIiDM8mTuqkQm5ihnxS1MR5bv48P9vvBXJOgDHwAWQtHjPgHgiw0DPEzdR1YjNsmEv13IsqgymQIkJ9MES8eVdlkAGPlg6viOs/gS91/qzu3WxZ5Bx4KTfulgw02pPHStSe0X6gzo8aEHheJ9AkVh0S9XuFCE2AayDE8rZbYG2imAL7SLBqlqqtjwzp0ri/xPK2jhzaGvUszrb8MBd65oXpwSeKE6VtYjbEoHUWtUhqa9xpW8Vf6QS60gl0pRPoyn8TuCg3VCULPhhhSRZ8ejBASoxbda2zpwK+h/gU2YMfqKhJNLXpdoMEwIS8eAqrDH0J1ETkOefQZuBbIMAAyWgypAwtkCGx4BtdVmRIpfkbl3OkYG+LITIxptQX9d89o8MYSVgnuBXvq5r+A2T4zMnwRjFZ3QfO1O+72TkijwGXoyorjwybWIktM0QmSqbsiwWK8ZYupKx7MEYW5AWyY9heQtuslNDWyo8R4pEE+2IckMdilU1jBMiQVX33CcmH1MsqEmPEU4lA3UsRL3vBmgAYRNRsb00TIh6auPxJk9mMDnanD6JNCtTLldNy4Tsf3Egn0JUmBSbItjXfZFjHD1M5ol9UfQFpAAAAAElFTkSuQmCC"><br></p>
+            <h2><a id="_Toc110416979"></a>Redirect UX assessment</h2>
+         </th>
+      </tr>
+      <tr>
+         <td>
+            <ul>
+               <li>It can be initialized automatically on a page load. This makes it possible to have an absolute URL on your domain i.e., mydomain.dk/login that redirects to Nets eID Brokers login. With the pop-up you need the onclick event, to ensure the pop-up is opened correct.</li>
+               <li>Easier implementation with less JavaScript event handling.</li>
+               <li>The entire screen is dedicated to the login experience and flow.</li>
+               <li>Possible to setup custom branding, themes, and general layout via the Nets eID Broker administration</li>
+            </ul>
+         </td>
+      </tr>
+   </tbody>
+</table>
 <br/>
 # Comparing the NemID and the MitID user experience
 
