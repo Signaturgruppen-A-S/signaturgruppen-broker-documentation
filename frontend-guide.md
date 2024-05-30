@@ -1,10 +1,10 @@
 ---
-title: Frondend guide
+title: Frontend guide
 layout: home
 nav_order: 12
 ---
 
-# Frondend guide
+# Frontend guide
 {: .no_toc }
 
 - TOC
