@@ -103,6 +103,8 @@ We have tested this implementation with the following setups.
    </tbody>
 </table>
 
+![](images/redirect-login.png)
+
 ## Branding
 
 We support a wide range of options to customize the branding and UX experience of Signaturgruppen Broker. In our administration interface, it’s possible to setup multiple UX profiles for your services. Each UX profile will be based upon a set of base layouts, where you can tailor it to your need. With the UX profiles we take care of CSS, responsive behavior, and accessibility.
@@ -119,6 +121,7 @@ We support customization of:
 To ensure the best user experience, we encourage you to make a pop-up backdrop on your webpage, that put focus to the pop-up. It could be an transparent color overlay or a graphical backdrop. It’s also recommended to implement support-text behind the pop-up, if the user minimizes or closes the pop-up unintended.
 
 ![](images/pop-up-overlay-example.png)
+![](images/pop-up-with-background1.png)
 
 _Pop-up backdrop with support-text example_
 
