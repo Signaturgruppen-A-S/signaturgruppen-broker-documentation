@@ -7,6 +7,9 @@ nav_order: 2
 # Updates
 This section contains information about the changes made to the technical documentation.
 
+### 04-06-2024
+* Updated the MitID app switch documentation with more direct recommendation on App Links and Universal Links.
+
 ### 24-05-2024
 * Moved changelog to (this) "Updates" section
 * Added "Issued claims and tokens" subsection: "Transaction token"
