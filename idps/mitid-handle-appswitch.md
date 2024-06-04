@@ -11,6 +11,7 @@ nav_order: 2
 | **Term** | **Description** |
 | --- | --- |
 | Android Custom Tabs (**TAB**)<br><br>iOS SFSafariViewController (**TAB**) | The Android Custom Tabs and the iOS SFSafariViewController are a platform specific sandbox of the system default browser, which enables are more seamless and secure browser integration from native apps. |
+| Android App Links <br><br>iOS Universal Links | [Android App Links](https://developer.android.com/training/app-links) and [iOS Universal Links](https://developer.apple.com/ios/universal-links/) is the best and required way to implement appswitching for MitID.<br/> |
 
 # Introduction
 
@@ -55,11 +56,13 @@ Only allowing the app backend to request the signed tokens and access the APIs o
 
 The two implementations are in many ways identical, but with respect to the MitID app-switch integration, there are some key differences that affect how the general handling can and should be implemented.
 
-## Custom Schemes
+## Custom Schemes vs App Links and Universal Links
+The standard way for many integrations to detect, complete and close the browser-flow in a **TAB** has been to utilize custom schemes, such as custom-scheme://oidc-redirect-url, to enable the browser flow to automatically generate an event in the app. 
+This still works on iOS, but Chrome has begun to require user-interaction for this to work, which for most intends and purposes breaks this on Android. From a security perspective, the custom scheme protocol should not be used.
 
-The TAB implementations do not offer the same control for the app as a standard WebView and does not offer any useful way for the app to get notified on redirects and URL changes in the browser.
+The **TAB** implementations do not offer the same control for the app as a standard WebView and does not offer any useful way for the app to get notified on redirects and URL changes in the browser, which introduces some of the changes required in order to properly implement app switch for MitID and other high-security scenarios.
 
-The standard way to detect, complete and close the browser-flow in a TAB has been to utilize custom schemes, such as custom-scheme://oidc-redirect-url, to enable the browser flow to automatically generate an event in the app. This still works on iOS, but Chrome has begun to require user-interaction for this to work, which for most intends and purposes breaks this on Android.
+It is **highly recommended**, and the only option we will endorse, to utilize the Android App Links and iOS Universal Links protocols for app switching back to your initiating app.
 
 ## Part of app instance or not?
 
