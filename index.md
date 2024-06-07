@@ -5,7 +5,7 @@ nav_order: 1
 ---
 
 # Technical documentation
-This page contains the technical documentation for the Signaturgruppen Broker.
+This page contains the technical documentation for the Signaturgruppen Broker..
 
 ## Seamless Integration with Signaturgruppen Broker
 The Signaturgruppen Broker supports the OpenID Connect protocol, providing a robust and flexible solution for integrating virtually any client application or service. By leveraging OpenID Connect, Signaturgruppen Broker ensures compatibility and ease of integration, allowing developers to implement secure and reliable authentication mechanisms with minimal effort.
