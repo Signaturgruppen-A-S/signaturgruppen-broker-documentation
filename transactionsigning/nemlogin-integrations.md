@@ -9,12 +9,14 @@ nav_order: 25
 
 The signtext api integrates and exposes some functionality supplied by NemLog-in3.
 
-## Cpr matches signer id
+## Cpr matches signer ID
 
-NemLog-in3 provides a service for qualified signatures. Within the signed AdES documents, NemLog-in3 supplies either an unique identifier, which can be matched to a cpr using their own webservices.
-
+NemLog-in3 provides a service for qualified signatures. Within the signed AdES documents, NemLog-in3 supplies an unique identifier which can be matched to a cpr using NemLog-In webservices.
 We provide an intgration to this service. The integration is part of signtext api and can be accessed using the same authorization.
 
+### CPR match signer ID API example
+
+Invoke the match, setting both CPR and the unique identifier found in the received signed AdES document.
 ```
 curl --location 'https://pp.netseidbroker.dk/transactionsigning/api/v2/signtext/nemlogin/cprmatch' \
 --header 'Content-Type: application/json' \
@@ -25,7 +27,7 @@ curl --location 'https://pp.netseidbroker.dk/transactionsigning/api/v2/signtext/
 }'
 ```
 
-The response is on the form
+The response is on the form, informing if the CPR and signer ID matches:
 ```
 {
   "match": "bool"
