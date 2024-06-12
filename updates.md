@@ -7,6 +7,9 @@ nav_order: 2
 # Updates
 This section contains information about the changes made to the technical documentation.
 
+### 12-06-2024
+* Added subsection under transaction signing: NemLog-In CPR matches Signer ID API extension
+
 ### 04-06-2024
 * Updated the MitID app switch documentation with more direct recommendation on App Links and Universal Links.
 
