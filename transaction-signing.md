@@ -2,6 +2,7 @@
 title: Transaction signing
 layout: home
 nav_order: 22
+has_children: true
 ---
 
 # Transaction signing
