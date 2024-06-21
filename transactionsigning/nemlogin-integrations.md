@@ -27,7 +27,7 @@ curl --location 'https://pp.netseidbroker.dk/transactionsigning/api/v2/signtext/
 }'
 ```
 
-The response is on the form, informing if the CPR and signer ID matches:
+The response is on the following form, informing if the CPR and signer ID matches:
 ```
 {
   "match": "bool"
