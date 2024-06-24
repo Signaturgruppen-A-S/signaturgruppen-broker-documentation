@@ -74,7 +74,7 @@ Depending on configuration, capabilities, roles, permissions and granted access 
 Access specified APIs from NEB, like the Userinfo endpoint or the Privilege API.
 Access internal APIs (i.e. internal to the Organization/Service in question)
 Access external APIs
-Default expiry for access tokens is 1 hour.
+Expiry for access tokens is 3 hours.
 
 ### Service token (Client Credentials Grant)
 If allowed, a service can retrieve a service token from the Token endpoint.
