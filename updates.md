@@ -7,6 +7,9 @@ nav_order: 2
 # Updates
 This section contains information about the changes made to the technical documentation.
 
+### 24-06-2024
+* Access token lifetime extended to 3 hours (change coming to production ultimo june).
+
 ### 12-06-2024
 * Added subsection under transaction signing: NemLog-In CPR matches Signer ID API extension
 
