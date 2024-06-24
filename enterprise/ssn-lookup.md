@@ -6,7 +6,7 @@ nav_order: 6
 ---
 
 # SSN Lookup
-As outline in [SSN details claims for MitID flows](../idps/mitid.html#ssn-details-claims-for-mitid-flows) it is possible to request detailed information about a person's name and address by including the OpenID Connect scopes `ssn.details_name` and `ssn.details_address` in the authentication request.
+As outlined in [SSN details claims for MitID flows](../idps/mitid.html#ssn-details-claims-for-mitid-flows) it is possible to request detailed information about a person's name and address by including the OpenID Connect scopes `ssn.details_name` and `ssn.details_address` in the authentication request.
 The Signaturgruppen Broker uses the GCTP service offered by CPR as source for these details.
 
 ## Test data
@@ -23,7 +23,7 @@ It is not possible to create multiple MitID Test Tool identities with the same S
 > Please note that all test data is fictional and does not contain personal data.
 
 ## Operational status
-Signaturgruppen does not provide operational status for CPR, but encourage our customers, who rely on this data in their authentications to subscribe CPR's newsletters and status pages:
+Signaturgruppen does not provide operational status for CPR, but encourage our customers who rely on this data in their authentications to subscribe CPR's newsletters and status pages:
 
 - Newsletter: https://www.cpr.dk/cpr-nyt/nyhedsbreve
 - Status page (PP): https://cprdkdemo.statuspage.io/
