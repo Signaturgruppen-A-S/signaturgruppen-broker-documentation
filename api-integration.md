@@ -56,6 +56,7 @@ The OAuth2 Client Credentials Flow is a method for an application to authenticat
 
 * The client sends a POST request to the authorization server's token endpoint.
 * Example:
+
 ```
 POST /oauth2/token HTTP/1.1
 Host: authorization-server.com
@@ -66,11 +67,13 @@ grant_type=client_credentials
 &client_secret=YOUR_CLIENT_SECRET
 &scope=DESIRED_SCOPE
 ```
+
 3. **Token Response:**
 
 * The authorization server verifies the client's credentials.
 * If valid, the server responds with an access token.
 * Example:
+
 ```
 {
   "access_token": "2YotnFZFEjr1zCsicMWpAA",
@@ -78,16 +81,20 @@ grant_type=client_credentials
   "expires_in": 3600
 }
 ```
+
 4. **Accessing Resources:**
 
 * The client uses the access token to access the protected resource.
 * Example request:
+
 ```
 GET /resource HTTP/1.1
 Host: api.resource-server.com
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 ```
+
 * Example response:
+
 ```
 {
   "data": "Here is the protected data."
@@ -100,6 +107,7 @@ Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 * Client Secret: secret
 
 Token Request:
+
 ```
 POST /oauth2/token HTTP/1.1
 Host: authorization-server.com
@@ -109,6 +117,7 @@ grant_type=client_credentials&client_id=abc123&client_secret=secret
 ```
 
 Token Response:
+
 ```
 {
   "access_token": "mF_9.B5f-4.1JqM",
@@ -125,6 +134,7 @@ Authorization: Bearer mF_9.B5f-4.1JqM
 ```
 
 Resource Server Response:
+
 ```
 {
   "data": "This is the protected data."
