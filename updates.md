@@ -7,6 +7,9 @@ nav_order: 2
 # Updates
 This section contains information about the changes made to the technical documentation.
 
+### 25-06-2024
+* Added "Api integration" section, with information about API client integration (client credentials).
+
 ### 24-06-2024
 * Access token lifetime extended to 3 hours (change coming to production ultimo june).
 
