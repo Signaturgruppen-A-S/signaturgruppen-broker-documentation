@@ -11,6 +11,8 @@ Signaturgruppen Broker and supporting services utilizes to primary ways to autho
 
 This section will focus on the basics for utilizing an API client for client credentials flow.
 
+> Note, that we describe access tokens issues using the client credentials flow as service tokens
+
 ## Getting an API client
 The Signaturgruppen Broker admin interface allows for the creation of clients for either OpenID Connect or client credentials (API clients) integration.
 
