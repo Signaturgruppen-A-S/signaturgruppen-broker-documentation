@@ -245,17 +245,3 @@ https://pp.netseidbroker.dk/op/connect/authorize
 &response_type=code
 &signtext_id=text_e2619d37d45cbf0d78f2f63d5eb..cc53d8e09b0c8
 ```
-
-### Look’n’feel:
-
-#### Text
-
-![Text example](images/looknfeel1.png)
-
-#### Html
-
-![Text example](images/looknfeelhtml.png)
-
-#### PDF
-
-![Text example](images/looknfeelpdf.png)
