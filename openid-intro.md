@@ -107,7 +107,7 @@ A private key JWT is prepared and signed with the following format
   "nbf": 1619296461,
   "exp": 1619296581,
   "iss": "bcc7595b-2ed0-445d-a507-42ca21382877",
-  "aud": ""
+  "aud": "https://pp.netseidbroker.dk/op"
 }
 ```
 
