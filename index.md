@@ -16,7 +16,14 @@ The Signaturgruppen Broker supports the OpenID Connect protocol, providing a rob
 * Scalability and Flexibility: Whether you're developing a small application or a large-scale service, Signaturgruppen Broker's integration capabilities can scale to meet your needs, providing a future-proof solution.
 * Enhanced Security: By utilizing industry-standard protocols, Signaturgruppen Broker offers robust security features, protecting your users' data and ensuring secure authentication processes.
 
+## Online Demo of Signaturgruppen Broker
+* For PP environment: <https://brokerdemo-pp.signaturgruppen.dk/>
+* For Production environment: <https://brokerdemo.signaturgruppen.dk/>
+
 ## GitHub demo projects
+
+### MitID Age verification - simple HTML and JavaScript
+<https://github.com/Signaturgruppen-A-S/signaturgruppen-age-verification-demo>
 
 ### .Net 4.7 OWIN
 <https://github.com/Signaturgruppen-A-S/netseidbroker-dotnet-demo>
