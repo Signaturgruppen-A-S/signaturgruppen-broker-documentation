@@ -9,7 +9,7 @@ MitID offers a strong autentification and identification and already includes th
 This document is targeting services that does not already have an active MitID intgration or services that looks to utilize the more streamlined age verification flows supported by Signaturgruppen Broker. 
 
 There is a cost associated with each started MitID transaction, so first thing to consider is how often your service is asking for MitID age verification in your workflows. As an example, your service could ask for a standard (full) MitID flow as part of a user registration process that would enable to user to register name, age and bithday using his or her MitID as a one time operation, that would allow frictionless age verification using this user registration for future workflows.
-For workflows in which the end-user is prompted with an age verification step that has to be as frictionless as possible, a more dedicated age verification MitID flow might be required. 
+For workflows in which the end-user is prompted with an age verification step, a more dedicated age verification MitID flow might be desireable. 
 
 To support these various workflows, Signaturgruppen Broker has implemented to overall approaches to Age Verification:
 
@@ -21,7 +21,14 @@ It is possible for services to utilize one or multiple variants dynamically. We 
 ### Standard MitID integration support
 A standard MitID integration is based on the Signaturgruppen Broker OIDC interface and results in a standard MitID flow for the end-user and the full set of end-user MitID claims is returned to the service, with all associated requirements for these integrations.
 
+As an example, see our [online demo](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/#online-demo-of-signaturgruppen-broker)
+
 ### Specialized Age Verification flows
 Signaturgruppen Broker has implemented a couple of Age Verification specific flows that is more streamlined to the age verification process for both services and end-users. These flows supports OIDC integrations for both code authorization and implicit flow, as well as a pure JavaScript and REST API based variant that allows all types of services to integrate to these flows. 
+
 In addition to being simple for services, the end-user will be informed as part of the MitID flow on the context and what data is returned to the service. 
 The service only receives back the actual age verification result and nothing else, which enables maximum user privacy, minimal data transfer and no additional GDPR considerations for receiving services.
+
+See our [live demo in pp](https://brokerdemo-pp.signaturgruppen.dk/ageverify) (MitID testusers) and our [live demo in production](http://brokerdemo.signaturgruppen.dk/ageverify) for an interactive demonstration.
+
+We have also published a [demo example made with HTML and vanilla JavaScript](https://github.com/Signaturgruppen-A-S/signaturgruppen-age-verification-demo), to illustrate how an integration can be done without OpenID Connect or OAuth.
