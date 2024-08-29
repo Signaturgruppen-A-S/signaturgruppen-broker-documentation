@@ -32,3 +32,26 @@ The service only receives back the actual age verification result and nothing el
 See our [live demo in pp](https://brokerdemo-pp.signaturgruppen.dk/ageverify) (MitID testusers) and our [live demo in production](http://brokerdemo.signaturgruppen.dk/ageverify) for an interactive demonstration.
 
 We have also published a [demo example made with HTML and vanilla JavaScript](https://github.com/Signaturgruppen-A-S/signaturgruppen-age-verification-demo), to illustrate how an integration can be done without OpenID Connect or OAuth.
+
+## Age Verification flows
+
+* ID token returns age verification result.
+* Response and tokens does only contain age verification response, nothing else.
+* User is informed by the flow and inside the MitID client/app, exactly what is being approved and what data is handed out to the services.
+
+### Example
+
+
+### Age Verification with OpenID Connect
+Signaturgruppen Broker has introduced a streamlined OpenID Connect flow that makes MitID age verification easily available and ensures that only the specific age verification request is answered in the returned data, allowing for a data-minimized and GDPR friendly integration. 
+Notable for these flows:
+* Available as both Code Authorization and Implicit flow types
+* Does not require client secret, i.e. public clients (embedded in apps) are perfectly fine (see section on requirements and considerations).
+
+### Age Verification with HTML and JavaScript
+Signaturgruppen Broker has introduced a JavaScript cross-document messaging API, that allows integrating clients using the implicit flowtype to handle the request and response in vanilla JavaScript without any need to handle the redirect response from OpenID Connect/OAuth flows. An online demonstration has been published [here](https://github.com/Signaturgruppen-A-S/signaturgruppen-age-verification-demo).
+
+The idea with integration is to allow easy integration from webapplications that does not otherwise have any OpenID Connect/OAuth integrations, but is able to utilize JavaScript to setup and handle the MitID Age Verification. 
+
+
+## Requirements and considerations for a strong age verification
