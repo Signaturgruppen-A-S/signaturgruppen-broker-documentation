@@ -33,14 +33,50 @@ See our [live demo in pp](https://brokerdemo-pp.signaturgruppen.dk/ageverify) (M
 
 We have also published a [demo example made with HTML and vanilla JavaScript](https://github.com/Signaturgruppen-A-S/signaturgruppen-age-verification-demo), to illustrate how an integration can be done without OpenID Connect or OAuth.
 
+## Getting started - open quick testing
+Here we are introducing two open test clients usable in our PP environment and have included a set of MitID testusers with different ages.
+
+
+### MitID Test clients 
+> All have MitID password: '**AgeTest1234**'
+
+MitID testusers
+* **age_verify_1985** (born in 1985)
+* **age_verify_2008** (born in 2008)
+* **age_verify_2011** (born in 2011)
+
+Two demo clients. 
+Both supporting any redirect_uri (does not apply for production integration).
+
+```
+Code:
+client_id: 0b5ac04e-5dbb-4bb8-a697-93152896a2f6
+client_secret: lk9JFkNkvodVPNA7E4Aui7oMal2HraIXwCqvOjEo1ymToAmsEdmLSPX8fevqvAaKSxmi1HHYufKnBOY9KCsLNQ==
+example url: https://pp.netseidbroker.dk/op/connect/authorize?client_id=0b5ac04e-5dbb-4bb8-a697-93152896a2f6&redirect_uri=https://oidcdebugger.com/debug&response_type=code&scope=openid%20age_verify:16&prompt=login
+```
+The flow will return at **https://oidcdebugger.com/debug**, which will guide you through the last step of retriving the ID token from the Token endpoint using the **client_id** and **client_secret** from above. 
+
+```
+Implicit (no secret)
+client_id: 9d3c7d79-96c4-43bc-8562-f0bf88ef69b8
+example url: https://pp.netseidbroker.dk/op/connect/authorize?client_id=9d3c7d79-96c4-43bc-8562-f0bf88ef69b8&redirect_uri=https://oidcdebugger.com/debug&response_type=id_token&scope=openid%20age_verify:16&prompt=login&nonce=new-nonce
+```
+
+The Implicit flows returns a signed ID token directly back to the redirect_uri specified in the request, here **https://oidcdebugger.com/debug**,  which will show you the contents of this, examplified here:
+
+```
+{
+   ...
+   "idbrokerdk_age_verified": "16:true"
+}
+```
+The important claim from the ID token, is the **idbrokerdk_age_verified** which has the value of the age verified and the verification result, 16:true/false for this demonstration. 
+
 ## Age Verification flows
 
 * ID token returns age verification result.
 * Response and tokens does only contain age verification response, nothing else.
 * User is informed by the flow and inside the MitID client/app, exactly what is being approved and what data is handed out to the services.
-
-### Example
-
 
 ### Age Verification with OpenID Connect
 Signaturgruppen Broker has introduced a streamlined OpenID Connect flow that makes MitID age verification easily available and ensures that only the specific age verification request is answered in the returned data, allowing for a data-minimized and GDPR friendly integration. 
@@ -53,5 +89,32 @@ Signaturgruppen Broker has introduced a JavaScript cross-document messaging API,
 
 The idea with integration is to allow easy integration from webapplications that does not otherwise have any OpenID Connect/OAuth integrations, but is able to utilize JavaScript to setup and handle the MitID Age Verification. 
 
+## Verifying the ID token
+The ID token received from either the OpenID Connect flowtypes or the [JavaScript cross-document messaging example](https://github.com/Signaturgruppen-A-S/signaturgruppen-age-verification-demo), will contain the following datastructure (example from PP)
 
-## Requirements and considerations for a strong age verification
+```
+{
+   "iss": "https://pp.netseidbroker.dk/op",
+   "nbf": 1725009225,
+   "iat": 1725009225,
+   "exp": 1725009525,
+   "aud": "9d3c7d79-96c4-43bc-8562-f0bf88ef69b8",
+   "nonce": "new-nonce",
+   "sid": "2d08c82b-dd1f-441f-ae7d-5b690c4d23fa",
+   "sub": "624256d3-4cac-44d1-8a97-0e967c015b6c",
+   "auth_time": 1725009225,
+   "idp": "idbrokerdk",
+   "neb_sid": "2d08c82b-dd1f-441f-ae7d-5b690c4d23fa",
+   "transaction_id": "90aceda9-da54-40aa-97ac-cd99eca38332",
+   "idtoken_type": "idbroker.dk",
+   "idbrokerdk_age_verified": "16:false"
+}
+```
+This is a standard JWT ID token, which is issued towards the calling client_id (aud). The important claim of note for the Age Verification flow, is the **idbrokerdk_age_verified** claim, which contain the age verified and the verification result in the "[age]:[true/false]" format.
+The **nonce** claim will mirror the provided nonce from the starting request, and should be validated by the receiving service.
+The **sub** claim is a pr. request random UUID and cannot be used to track the user across multiple requests.
+
+This ID token can validated as a standard OpenID Connect/OAuth ID token using the discovery endpoint of the Signaturgruppen Broker or by using the [Token Validation API endpoint](https://pp.netseidbroker.dk/op/swagger/index.html).
+
+> It is strongly recommended that the nonce generation and validation of nonce and ID token is done in a backend implementation. It is possible, as demonstrated in our HTML+JS demo, to setup the integration entirely in-browser and not utilize any backend for this, but this exposes the 
+> validation to tampering in-browser by users who want to circumvent this validation mechanism. Signaturgruppen has provided the means to integrate a strong age verification into any web or app context, it is ultimately up to the integrating service to secure their integration.
