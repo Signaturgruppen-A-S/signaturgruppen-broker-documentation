@@ -1,3 +1,9 @@
+---
+title: Age Verification
+layout: home
+nav_order: 85
+---
+
 # Signaturgruppen Age Verification
 
 In order to strongly verify the age of an end-user online, Signaturgruppen Broker has implemented a range of possible age verification flows that allows almost any website or online service to integrate a strong age verification with MitID into their existing workflows. 
