@@ -37,7 +37,7 @@ We have also published a [demo example made with HTML and vanilla JavaScript](ht
 Here we are introducing two open test clients usable in our PP environment and have included a set of MitID testusers with different ages.
 
 
-### MitID Test clients 
+### MitID Test users
 > All have MitID password: '**AgeTest1234**'
 
 MitID testusers
@@ -45,6 +45,7 @@ MitID testusers
 * **age_verify_2008** (born in 2008)
 * **age_verify_2011** (born in 2011)
 
+### Test clients
 Two demo clients. 
 Both supporting any redirect_uri (does not apply for production integration).
 
@@ -89,7 +90,7 @@ Signaturgruppen Broker has introduced a JavaScript cross-document messaging API,
 
 The idea with integration is to allow easy integration from webapplications that does not otherwise have any OpenID Connect/OAuth integrations, but is able to utilize JavaScript to setup and handle the MitID Age Verification. 
 
-## Verifying the ID token
+## ID token result
 The ID token received from either the OpenID Connect flowtypes or the [JavaScript cross-document messaging example](https://github.com/Signaturgruppen-A-S/signaturgruppen-age-verification-demo), will contain the following datastructure (example from PP)
 
 ```
