@@ -129,7 +129,7 @@ The ID token received from either the OpenID Connect flowtypes or the [JavaScrip
 }
 ```
 This is a standard JWT ID token, which is issued towards the calling client_id (aud). The important claim of note for the Age Verification flow, is the **idbrokerdk_age_verified** claim, which contain the age verified and the verification result in the "[age]:[true/false]" format.
-The **nonce** claim will mirror the provided nonce from the starting request, and should be validated by the receiving service.
+The **nonce** claim will mirror the provided nonce from the starting request, and should be validated by the receiving service. The **nonce** provides replay protection and transaction linking for integrating services.
 The **sub** claim is a pr. request random UUID and cannot be used to track the user across multiple requests.
 
 This ID token can validated as a standard OpenID Connect/OAuth ID token using the discovery endpoint of the Signaturgruppen Broker or by using the [Token Validation API endpoint](https://pp.netseidbroker.dk/op/swagger/index.html).
