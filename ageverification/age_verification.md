@@ -10,7 +10,7 @@ In order to strongly verify the age of an end-user online, Signaturgruppen Broke
 This document outlines the various technical options available for strong age verification when integrating to Signaturgruppen Broker.
 
 ## Introduction
-MitID offers a strong autentification and identification and already includes the age and birthday of the end-user as standard MitID claims to the service provider for standard MitID flows. Thus, for services that already integrate to MitID the age and birthday claims returned could naturally be utilized as the basis for a strong age verification implementation.
+MitID offers a strong authentification and identification and already includes the age and birthday of the end-user as standard MitID claims to the service provider for standard MitID flows. Thus, for services that already integrate to MitID the age and birthday claims returned could naturally be utilized as the basis for a strong age verification implementation.
 
 This document is targeting services that does not already have an active MitID intgration or services that looks to utilize the more streamlined age verification flows supported by Signaturgruppen Broker. 
 
