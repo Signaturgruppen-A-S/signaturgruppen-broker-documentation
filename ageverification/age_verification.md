@@ -107,6 +107,10 @@ Signaturgruppen Broker has introduced a JavaScript cross-document messaging API,
 
 The idea with integration is to allow easy integration from webapplications that does not otherwise have any OpenID Connect/OAuth integrations, but is able to utilize JavaScript to setup and handle the MitID Age Verification. 
 
+The JavaScript example provided utilizes the open PP implicit client to setup a pop-up window starting an OIDC implicit flow and using a special endpoint available at Signaturgruppen Broker as redirect uri that enables the resulting ID token to be received through JavaScript cross-document messaging and then verifies the ID token using the [Token Validation API endpoint](https://pp.netseidbroker.dk/op/swagger/index.html) to verify the ID token, parsing the result specifically for the age verification scenario. 
+
+With this, one possible integration is demonstrated, which is usable by almost any web application and can be embedded without interrupting existing workflows.
+
 ## ID token result
 The ID token received from either the OpenID Connect flowtypes or the [JavaScript cross-document messaging example](https://github.com/Signaturgruppen-A-S/signaturgruppen-age-verification-demo), will contain the following datastructure (example from PP)
 
