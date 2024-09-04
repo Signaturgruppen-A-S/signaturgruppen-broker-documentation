@@ -51,6 +51,9 @@ We provide two open test clients in our PP environment, along with MitID test us
 ### Test Clients
 Two demo clients are available, both supporting any redirect_uri (not applicable for production integration).
 
+> Note that the following examples are running standard OpenID Connect flows and is provided as a quick example of the integration. 
+> It is highly recommended that a standard library supporting OpenID Connect is utilized, which is available for almost any platform.
+
 **Code Authorization Example:**
 ```
 client_id: 0b5ac04e-5dbb-4bb8-a697-93152896a2f6
