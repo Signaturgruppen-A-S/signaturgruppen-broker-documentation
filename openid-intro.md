@@ -49,7 +49,51 @@ Authorization Code Flow: The recommended OIDC flow for most applications. The cl
 
 Hybrid Flow: Combining Implicit and Authorization Code flows, here, the ID Token is returned directly to the RP, but the access token is not. Instead, an authorization code is returned that is exchanged for an access token. As an example, the OWIN framework in .Net requires the receival of the ID token, and thus does not support the Authorization Code Flow.
 
-## Basic OIDC Flow
+## Authorization Code Flow - Technical Steps
+
+1. **User Initiates Login**:  
+   The client (your application) redirects the user to the authorization server’s login page.
+
+2. **Authorization Request**:  
+   The client sends an authorization request to the authorization server. This request includes:
+   - `client_id`: Client’s identifier.
+   - `redirect_uri`: URL to return the user after authorization.
+   - `response_type=code`: Specifies that the client expects an authorization code.
+   - `scope`: Defines the OpenID Connect scopes (e.g., `openid`).
+   - **Authorization Endpoint**:  
+     The request is sent to the following PP environment authorization endpoint:  
+     `https://pp.signaturgruppen.dk/op/connect/authorize`
+
+3. **User Authenticates**:  
+   The user logs in at the authorization server and approves the client’s access request.
+
+4. **Authorization Code Issued**:  
+   Upon successful authentication, the authorization server redirects the user to the client’s `redirect_uri`, with an authorization code appended as a query parameter (`?code=...`).
+
+5. **Authorization Code Exchange**:  
+   The client sends a POST request to the authorization server’s token endpoint to exchange the authorization code for an access token. The request includes:
+   - `grant_type=authorization_code`
+   - `code`: The received authorization code.
+   - `redirect_uri`: Must match the one used in the authorization request.
+   - `client_id` and `client_secret`: For client authentication.
+   - **Token Endpoint**:  
+     The token exchange is made with the PP environment token endpoint:  
+     `https://pp.signaturgruppen.dk/op/connect/token`
+
+6. **Token Response**:  
+   The authorization server returns a response containing:
+   - `id_token`: User's identity details.
+   - `access_token`: For accessing protected resources.
+   - `refresh_token` (optional): For obtaining a new access token when it expires.
+
+7. **User Information Retrieval** (Optional):  
+   The client can now use the `access_token` to make requests to the resource server (e.g., `/userinfo` endpoint) to retrieve user details.
+
+---
+
+By using the PP environment endpoints for authorization and token requests, you ensure secure communication between the client and the authorization server.
+
+## QUICK test of OIDC Flow
 
 To get started:
 
