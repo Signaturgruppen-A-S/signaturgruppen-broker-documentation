@@ -59,7 +59,7 @@ Hybrid Flow: Combining Implicit and Authorization Code flows, here, the ID Token
    - `client_id`: Client’s identifier.
    - `redirect_uri`: URL to return the user after authorization.
    - `response_type=code`: Specifies that the client expects an authorization code.
-   - `scope`: Defines the OpenID Connect scopes (e.g., `openid`).
+   - `scope`: Defines the OpenID Connect scopes (e.g., `openid mitid`).
    - **Authorization Endpoint**:  
      The request is sent to the following PP environment authorization endpoint:  
      `https://pp.signaturgruppen.dk/op/connect/authorize`
@@ -84,7 +84,7 @@ Hybrid Flow: Combining Implicit and Authorization Code flows, here, the ID Token
    The authorization server returns a response containing:
    - `id_token`: User's identity details.
    - `access_token`: For accessing protected resources.
-   - `refresh_token` (optional): For obtaining a new access token when it expires.
+   - (optional): Additional tokens are available for some flows.
 
 7. **User Information Retrieval** (Optional):  
    The client can now use the `access_token` to make requests to the resource server (e.g., `/userinfo` endpoint) to retrieve user details.
