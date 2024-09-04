@@ -59,6 +59,8 @@ Example URL: https://pp.netseidbroker.dk/op/connect/authorize?client_id=0b5ac04e
 ```
 The flow will return to **https://oidcdebugger.com/debug**, guiding you through the final step of retrieving the ID token from the Token endpoint using the **client_id** and **client_secret** provided.
 
+For an introduction, please refer to our introduction guide to [Authorization Code Flow](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/openid-intro.html#authorization-code-flow---technical-steps).
+
 **Implicit Flow Example:**
 ```
 client_id: 9d3c7d79-96c4-43bc-8562-f0bf88ef69b8
