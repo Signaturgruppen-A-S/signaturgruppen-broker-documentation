@@ -185,3 +185,14 @@ The [Token Validation API endpoint](https://pp.netseidbroker.dk/op/swagger/index
 
 #### Browser tampering
 The backend steps are required to ensure that the user is unable to alter the age verification check in-browser. The resulting ID token is signed and thus any modification to this JWT token, will cause the validation to fail when done in the backend.
+
+## Getting ready for production
+When you have completed your integration to our PP environment and are ready to move on to your production setup, then reach out to Signaturgruppen to have your production integration enabled.
+
+You will need a production **client_id** and optionally a **client_secret** for Authorization Code flows. To correctly set this up for you, we need:
+* For OIDC flows: your redirect uris
+* For HTML+JS flows: your sites origin, e.g. 'https://yoursite.dk' if you are running our JavaScript at https://yoursite.dk/somepath
+
+You will need to change the appropriate configuration to our production endpoints (e.g. https://netseidbroker.dk/op instead of https://pp.netseidbroker.dk/op).
+
+> We are looking into automation for this step. Until we have finalised the requirements and features, just write to us and we will help you as fast as we can.
