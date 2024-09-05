@@ -134,6 +134,11 @@ To enable a strong age verification, some parts of the flow should be moved to y
 3. Receive reponse including ID token and close popup
 4. Validate nonce and ID token in your backend, at any stage of your flow.
 
+### Sequence diagram overview of Age Verification flow
+Heres a simple overview of the interaction between your frontend, your backend and Signaturgruppen Broker. This is applicable for all our flow variants and highlights that the resulting ID token should be validated in your backend.
+
+![Age Verify Frontend Backend](https://github.com/user-attachments/assets/bb760d49-5989-4453-bb0f-cee814ad93bd)
+
 ## Backend validation
 When the flow completes successfully, an ID token is received from the JavaScript library provided.
 
