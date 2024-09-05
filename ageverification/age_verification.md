@@ -88,11 +88,11 @@ Signaturgruppen Broker has introduced a streamlined flow for easy and efficient 
 - Supports a pure HTML and JavaScript integration.
 - Streamlined and user-friendly.
 - Does not require a client secret, making it suitable for public clients (embedded in apps).
-- A backend is recommended but not technically required.
+- To support a strong age verification, only the validation of the resulting ID token and nonce requires a backend, the rest can be made entirely from the frontend.
 
 To get started, use the provided example clients for the PP environment. When ready for production, contact Signaturgruppen to set up your integration with your own technical client.
 
-### Age Verification with OpenID Connect
+## Age Verification with OpenID Connect
 
 To integrate with OpenID Connect, include the following parameters in your request:
 
@@ -110,7 +110,7 @@ To integrate with OpenID Connect, include the following parameters in your reque
 https://pp.netseidbroker.dk/op/connect/authorize?client_id=0b5ac04e-5dbb-4bb8-a697-93152896a2f6&redirect_uri=https://oidcdebugger.com/debug&response_type=code&scope=openid%20age_verify:16&prompt=login
 ```
 
-### Age Verification with HTML and JavaScript
+## Age Verification with HTML and JavaScript
 
 Signaturgruppen Broker offers a JavaScript cross-document messaging API, allowing clients to handle the request and response in vanilla JavaScript without the need to manage OpenID Connect/OAuth redirects. An online demonstration is available [here](https://github.com/Signaturgruppen-A-S/signaturgruppen-age-verification-demo).
 
@@ -118,7 +118,31 @@ This integration is ideal for web applications that do not have OpenID Connect/O
 
 This approach allows almost any web application to integrate age verification without disrupting existing workflows.
 
-## ID Token Result
+### HTML and JavaScript - migrating example to production ready integration
+The example HTML and JavaScript demo showcase the entire flow from start to finish implemented entirely in the frontend and provides a good starting point for the MitID Age Verification integration.
+To enable a strong age verification, some parts of the flow should be moved to your backend. This section outlines the steps and considerations you should take to complete the integration.
+
+**A quick outline of the steps to consider:**
+
+1. Nonce generation and backend validation
+2. ID token backend validation
+
+**The overall flow consists of**
+
+1. Generate nonce
+2. Open popup and start flow using nonce
+3. Receive reponse including ID token and close popup
+4. Validate nonce and ID token in your backend, at any stage of your flow.
+
+## Backend validation
+When the flow completes successfully, an ID token is received from the JavaScript library provided.
+
+In the HTML JavaScript demo example, this is validated directly online from JavaScript to demonstrate the steps needed. In the OpenID Connect Implicit flow, the ID token is received from a browser redirect and collected from your own JavaScript handler. 
+In all variants and scenarios, the flow should end with a validation of the ID token in your backend. This section describes this validation and the considerations you should make when implementing this part for your integration.
+
+> In short: For all variants (OIDC or HTML+JavaScript) the flow should end with a backend validation of the received ID token.
+
+### ID Token Result
 
 The ID token received from either the OpenID Connect flow types or the [JavaScript cross-document messaging example](https://github.com/Signaturgruppen-A-S/signaturgruppen-age-verification-demo) contains the following structure (example from PP):
 
@@ -140,8 +164,16 @@ The ID token received from either the OpenID Connect flow types or the [JavaScri
    "idbrokerdk_age_verified": "16:false"
 }
 ```
-This is a standard JWT ID token issued to the calling client_id (aud). The key claim for the Age Verification flow is **idbrokerdk_age_verified**, which contains the verified age and result in the "[age]:[true/false]" format. The **nonce** claim mirrors the nonce from the request and should be validated by the receiving service, providing replay protection and transaction linking. The **sub** claim is a request-specific random UUID, preventing user tracking across multiple requests.
 
-This ID token can be validated as a standard OpenID Connect/OAuth ID token using the discovery endpoint of the Signaturgruppen Broker or by using the [Token Validation API endpoint](https://pp.netseidbroker.dk/op/swagger/index.html).
+This is a standard JWT ID token issued to the calling client_id (aud). The key claim for the Age Verification flow is **idbrokerdk_age_verified**, which contains the verified age and result in the "[age]:[true/false]" format. 
 
-> While it's technically possible to handle the integration entirely in-browser, it is strongly recommended that nonce generation and ID token validation occur on a backend to secure the integration against tampering.
+The **nonce** claim mirrors the nonce from the request and should be validated by the receiving service, providing replay protection and transaction linking. It is possible to generate the nonce in your frontend, as in the example demo, or it is possible to generate the nonce in your backend before the flow is initiated. It provides a mechanism to bind a flow to a specific ID token and should be utilized to ensure that the received ID token has never been seen before and optionally that the nonce matches the expected, if generated in the backend. A cache of seen nonces could be implemented, that ensures that within the timespan of accepted ID tokens (see **iat** claim: "issued at"), the same nonce is never accepted twice.
+
+The **sub** claim is a request-specific random UUID, preventing user tracking across multiple requests.
+
+The ID token is validated as a standard JWT (ID) token using the [JWKS endpoint of the Signaturgruppen Broker](https://pp.netseidbroker.dk/op/.well-known/openid-configuration/jwks) or by using the [Token Validation API endpoint](https://pp.netseidbroker.dk/op/swagger/index.html). It is recommended to validate the ID token using the public verification key (see JWKS endpoint) cached or pinned, which prevents a binding to a HTTP call at this backend verification step. 
+
+The [Token Validation API endpoint](https://pp.netseidbroker.dk/op/swagger/index.html) allows verification of any valid ID token previously issued by Signaturgruppen Broker, regardless of the **exp** (expiration) claim in the ID token (normally 5 minutes from issuance). This allows this API to be utilized to verify the ID token at any point after it has been received. It is recommended that the integration service considers to utilize the **iat** (issued at) claim to setup their own expiration for how old they can be before validation.
+
+#### Browser tampering
+The backend steps are required to ensure that the user is unable to alter the age verification check in-browser. The resulting ID token is signed and thus any modification to this JWT token, will cause the validation to fail when done in the backend.
