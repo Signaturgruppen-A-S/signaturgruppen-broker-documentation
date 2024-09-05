@@ -137,6 +137,28 @@ To enable a strong age verification, some parts of the flow should be moved to y
 3. Receive reponse including ID token and close popup
 4. Validate nonce and ID token in your backend, at any stage of your flow.
 
+**JSON result**
+When the HTML+JS flow completes, you will receive a JavaScript JSON object in the following format
+
+Success:
+```
+{
+   id_token: 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjA0ODA1OEJCNTlGNEQzMD…xLtjq44zzFZQb_uzK6SQ58RohDEmikYx8uCS09J4tZrP9aIiw',
+   age_verified: true
+}
+```
+The **age_verified** is used by your frontend to "online" validate the flow result. 
+The **id_token** is used by your backend to finalise the validation, at any stage in your workflows.
+
+Error:
+```
+{
+   age_verified: false,
+   id_token: ".." (set for success MitID flows, when age did not verify)
+   error_description: "some error code" (optional, when errors occurs, like user cancelling MitID flow)
+}
+```
+
 ### Sequence diagram overview of Age Verification flow
 Heres a simple overview of the interaction between your frontend, your backend and Signaturgruppen Broker. This is applicable for all our flow variants and highlights that the resulting ID token should be validated in your backend.
 
