@@ -114,7 +114,10 @@ https://pp.netseidbroker.dk/op/connect/authorize?client_id=0b5ac04e-5dbb-4bb8-a6
 
 Signaturgruppen Broker offers a JavaScript cross-document messaging API, allowing clients to handle the request and response in vanilla JavaScript without the need to manage OpenID Connect/OAuth redirects. An online demonstration is available [here](https://github.com/Signaturgruppen-A-S/signaturgruppen-age-verification-demo).
 
-This integration is ideal for web applications that do not have OpenID Connect/OAuth integrations but can use JavaScript to handle the MitID Age Verification. The provided JavaScript example demonstrates how to set up a pop-up window starting an OIDC implicit flow, using a special Signaturgruppen Broker endpoint as the redirect_uri. This enables the ID token to be received via cross-document messaging and then verified using the [Token Validation API endpoint](https://pp.netseidbroker.dk/op/swagger/index.html), specifically for the age verification scenario.
+This integration is ideal for web applications that do not have OpenID Connect/OAuth integrations but can use JavaScript to handle the MitID Age Verification. The provided JavaScript example demonstrates how to set up a pop-up window starting an OIDC implicit flow. 
+This enables the ID token to be received via cross-document messaging, ensuring easy integration into existing workflows. 
+The example demo then verifies the received ID token "online" directly in the frontend using the Signaturgruppen Broker [Token Validation API endpoint](https://pp.netseidbroker.dk/op/swagger/index.html). 
+> This last verification of the ID token should be moved to your backend, see later sections in this documentation for more information on this.
 
 This approach allows almost any web application to integrate age verification without disrupting existing workflows.
 
