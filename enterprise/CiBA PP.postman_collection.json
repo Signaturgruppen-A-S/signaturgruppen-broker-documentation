@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "aa0e92f4-cf0c-4594-a82c-a36363da65cf",
+		"name": "CiBA PP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12944750"
+	},
+	"item": [
+		{
+			"name": "Start flow",
+			"protocolProfileBehavior": {
+				"followRedirects": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "urn:openid:params:grant-type:ciba",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "62b8cc03-aa73-4d6a-922c-7c8fb0a4a1d9",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "mIpxk84FI1wpc7cP7nodFLfgQQ1ScZHYO44FZ9wPOqrB0ha9S5RUNYPXMkrCWwRjGqEH0hflnIJea8IKmW19aQ==",
+							"type": "text"
+						},
+						{
+							"key": "login_hint_token",
+							"value": "{\"idp\":\"mitid\",\"idp_params\":\"{\"uuid\":\"8a9856e0-f12d-4217-b320-c8a076be9320\", \"referenceTextBody\":\"Testing MitID Flex app 😉\", \"ip\":\"1.1.1.1\"}\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/connect/ciba",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"connect",
+						"ciba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Poll flow",
+			"protocolProfileBehavior": {
+				"followRedirects": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "urn:openid:params:grant-type:ciba",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "62b8cc03-aa73-4d6a-922c-7c8fb0a4a1d9",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "mIpxk84FI1wpc7cP7nodFLfgQQ1ScZHYO44FZ9wPOqrB0ha9S5RUNYPXMkrCWwRjGqEH0hflnIJea8IKmW19aQ==",
+							"type": "text"
+						},
+						{
+							"key": "auth_req_id",
+							"value": "[requestId from start]",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/connect/token",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel flow",
+			"protocolProfileBehavior": {
+				"followRedirects": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/ciba/[request id from started flow]",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ciba",
+						"[request id from started flow]"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://pp.netseidbroker.dk/op"
+		}
+	]
+}
