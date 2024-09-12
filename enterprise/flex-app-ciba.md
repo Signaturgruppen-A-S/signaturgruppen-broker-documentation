@@ -96,5 +96,5 @@ curl --location --request DELETE 'https://pp.netseidbroker.dk/op/api/v1/ciba/0A2
 
 ## Postman example
 
-The test example is also available as a <a href="files/CiBA PP.postman_collection.json">Postman collection here</a>.
+The test example is also available as a [Postman collection here](https://raw.githubusercontent.com/Signaturgruppen-A-S/signaturgruppen-broker-documentation/main/enterprise/files/ciba_pp.postman_collection.json)
 
