@@ -6,12 +6,12 @@ grand_parent: Enterprise features
 nav_order: 2
 ---
 
-# Ciba integration
+## Ciba integration
 Signaturgruppen Broker has implemented the MitID Flexibility app (addon) using the Client Initiated Backchannel Authentication specification [CIBA](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/references.html#ciba). 
 
 This section describes the technical details needed in order to integrate to the setup.
 
-# Getting started
+## Getting started
 To familiarize yourself with the setup, it is recommended to start out using our open and free demo setup for the PP environment, which includes
 
 * **A preconfigured demo service provider**: Approved for Flex app and approved for no channel binding.
@@ -23,9 +23,9 @@ client_id: "62b8cc03-aa73-4d6a-922c-7c8fb0a4a1d9"
 client_secret: "mIpxk84FI1wpc7cP7nodFLfgQQ1ScZHYO44FZ9wPOqrB0ha9S5RUNYPXMkrCWwRjGqEH0hflnIJea8IKmW19aQ=="
 ```
 
-# Steps of the flow (API)
+## Steps of the flow (API)
 
-## Initiating
+### Initiating
 
 ```
 curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
@@ -52,7 +52,7 @@ This would result in a response on the following form
 }
 ```
 
-## Poll
+### Poll
 Using the **auth_req_id** received in the initiation response, you can then poll for status. 
 
 > Note that the **interval** in the init response specifies the required interval between polls in seconds.
@@ -87,10 +87,14 @@ When the flow has completed successfully (example):
 }
 ```
 
-## Cancel
+### Cancel
 To cancel a flow, invoke the cancel API endpoint using the received **auth_req_id** received when initiating the flow.
 
 ```
 curl --location --request DELETE 'https://pp.netseidbroker.dk/op/api/v1/ciba/0A2179A15B686CB..3AC29A5A6A-1' \
 ```
+
+## Postman example
+
+The test example is also available as a <a href="enterprise/files/CiBA PP.postman_collection.json">Postman collection here</a>.
 
