@@ -30,13 +30,18 @@ client_secret: "mIpxk84FI1wpc7cP7nodFLfgQQ1ScZHYO44FZ9wPOqrB0ha9S5RUNYPXMkrCWwRj
 ```
 curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
---header 'Cookie: X-Correlation-Id=75fc0535-ea72-44bd-9690-9cd55070b274' \
 --data-urlencode 'grant_type=urn:openid:params:grant-type:ciba' \
 --data-urlencode 'scope=openid' \
 --data-urlencode 'client_id=62b8cc03-aa73-4d6a-922c-7c8fb0a4a1d9' \
 --data-urlencode 'client_secret=mIpxk84FI1wpc7cP7nodFLfgQQ1ScZHYO44FZ9wPOqrB0ha9S5RUNYPXMkrCWwRjGqEH0hflnIJea8IKmW19aQ==' \
---data-urlencode 'login_hint_token={"idp":"mitid","idp_params":"eyJjcHIiOiIwODA0MzYwNDY4IiwgIlJlZmVyZW5jZVRleHRCb2R5Ijoib3N0ZW1hd2QgOj0pIiwgImlwIjoiMS4xLjEuMSJ9"}'
+--data-urlencode 'login_hint_token={"idp":"mitid","idp_params":"{"uuid":"8a9856e0-f12d-4217-b320-c8a076be9320", "referenceTextBody":"Testing MitID Flex app 😉", "ip":"1.1.1.1"}"}'
 ```
+
+The login_hint_token can also be Base64 encoded:
+```
+--data-urlencode 'login_hint_token=eyJpZHAiOiJtaXRpZCIsImlkcF9wYXJhbXMiOiJ7InV1aWQiOiI4YTk4NTZlMC1mMTJkLTQyMTctYjMyMC1jOGEwNzZiZTkzMjAiLCAicmVmZXJlbmNlVGV4dEJvZHkiOiJUZXN0aW5nIE1pdElEIEZsZXggYXBwIPCfmIkiLCAiaXAiOiIxLjEuMS4xIn0ifQ=='
+```
+
 This would result in a response on the following form
 
 ```
@@ -55,7 +60,6 @@ Using the **auth_req_id** received in the initiation response, you can then poll
 ```
 curl --location 'https://pp.netseidbroker.dk/op/connect/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
---header 'Cookie: X-Correlation-Id=75fc0535-ea72-44bd-9690-9cd55070b274' \
 --data-urlencode 'grant_type=urn:openid:params:grant-type:ciba' \
 --data-urlencode 'scope=openid' \
 --data-urlencode 'client_id=62b8cc03-aa73-4d6a-922c-7c8fb0a4a1d9' \
