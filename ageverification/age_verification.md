@@ -218,3 +218,16 @@ You will need a production **client_id** and optionally a **client_secret** for 
 You will need to change the appropriate configuration to our production endpoints (e.g. https://netseidbroker.dk/op instead of https://pp.netseidbroker.dk/op).
 
 > We are looking into automation for this step. Until we have finalised the requirements and features, just write to us and we will help you as fast as we can.
+
+## Example production configuration for HTML+JS integration
+Here is an example of a production configuration for the HTML+JS integration 'sg-age-verify-config.js':
+
+```
+var sg_broker_origin = 'https://netseidbroker.dk';
+var sg_broker_redirect_uri = `${sg_broker_origin}/op/WebMessagingCallback/ImplicitCallback`;
+var sg_broker_authorize_endpoint = `${sg_broker_origin}/op/connect/authorize`;
+var sg_broker_clientId = "<Your production client ID>";
+var sg_broker_demo_age_to_verify = 16;
+```
+
+> Remember to inform our support the correct website origin from where you are communicating with our backend via JavaScript post-messaging, in order to enable the setup correctly.
