@@ -34,7 +34,7 @@ curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
 --data-urlencode 'scope=openid' \
 --data-urlencode 'client_id=62b8cc03-aa73-4d6a-922c-7c8fb0a4a1d9' \
 --data-urlencode 'client_secret=mIpxk84FI1wpc7cP7nodFLfgQQ1ScZHYO44FZ9wPOqrB0ha9S5RUNYPXMkrCWwRjGqEH0hflnIJea8IKmW19aQ==' \
---data-urlencode 'login_hint_token={"idp":"mitid","idp_params":"{"uuid":"8a9856e0-f12d-4217-b320-c8a076be9320", "referenceTextBody":"Testing MitID Flex app 😉", "ip":"1.1.1.1"}"}'
+--data-urlencode 'login_hint_token={"idp":"mitid", "uuid":"8a9856e0-f12d-4217-b320-c8a076be9320", "referenceTextBody":"Testing MitID Flex app 😉", "ip":"1.1.1.1"}'
 ```
 
 The login_hint_token can also be Base64 encoded:
