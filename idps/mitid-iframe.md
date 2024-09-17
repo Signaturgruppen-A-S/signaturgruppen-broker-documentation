@@ -56,6 +56,15 @@ The following sequence diagram illustrates the overall flow.
 - ID token is constructed as for other NEB MitID flows, signed by the same HSM keys. The signing key is found in documentation and on the discovery endpoint.
 - It is optional but recommended to sign the initialization request, as is done for signing Token endpoint requests, see [OIDC INTRO](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/openid-intro.html)
 
+## Client setup
+In order to integrate to the MitID iframe setup, you first need a valid client. Start with the example PP client included in the examples on this page and then reach out to Signaturgruppen when you are ready to move on to your own integration. 
+
+### Client settings
+A client needs a **client secret** and a valid **redirect_uri**. If you are setting up the client yourself in our Admin UI, then ensure that the client has
+* Require client secret and atleast one client secret
+* One or more valid redirect_uri
+* Setup for the **code** (Authorization Code flow)
+
 ## Short overview of flow steps
 
 ### 1) Initialize authentication flow
@@ -78,30 +87,36 @@ It is required to allow the end-user to app-switch to the MitID app from the ifr
 
 To enable the “minimized” mode, which better adapts the MitID client inside the iframe to small screen sizes, set the MitID specific parameter “iframe_mode” to "minimized".
 
-Example:
+#### Example for PP using open test client:
+Use the appropriate MitID UUID or CPR for a valid MitID PP testuser in the following example. 
 
 ```
 curl --location 'https://pp.netseidbroker.dk/op/api/v1/iframe/initialize' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'client_secret=[CLIENT SECRET]' \
---data-urlencode 'client_id=[CLIENT ID]' \
+--data-urlencode 'client_secret=3PzE2SeZ5INHx7TCVyY7KQr1WSozw7ADytm1suAZ/UK1MCh9ZYQGdzN1BEv6hdzRsVn3xnA0/F/6ET9j0mTWWw==' \
+--data-urlencode 'client_id=c0cb708e-f742-46a4-b664-9e31e32b145d' \
 --data-urlencode 'response_type=code' \
 --data-urlencode 'scope=openid mitid' \
 --data-urlencode 'idp_values=mitid' \
---data-urlencode 'redirect_uri=[REDIRECT URI (Valid for client, use same for token endpoint later)]' \
+--data-urlencode 'redirect_uri=https://oidcdebugger.com/debug' \
 --data-urlencode 'idp_params={"mitid": {"cpr_hint": "[CPR]", "iframe_mode": "minimized", "authenticators": "app code_token"}}'
 ```
 
-And response:
+**Example success response:**
 
 ```
 {
-  "auth_token": "string",
-  "auth_token_expiration ": int,
-  "iframe_url": "string"
+    "auth_token": "a1d...a0",
+    "auth_token_expiration": 1726564561,
+    "iframe_url": "https://netseidbroker.pp.mitid.dk/iframe"
 }
 ```
 
+**Error response is one of:**
+* Not authorized
+* Missing parameter
+* Invalid redirect uri
+  
 
 ### 2) Iframe flow
 
