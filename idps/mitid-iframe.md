@@ -31,8 +31,6 @@ Overall, the flow will be handled by server-to-server API calls for initializing
 
 The following sequence diagram illustrates the overall flow.
 
-![](images/mitid-iframe.png)
-
 - Service invokes form post API endpoint with requested flow parameters
 - Service retrieves auth_token
 - Iframe and cross-document messaging is setup using auth_token, flow initiates in iframe
@@ -124,7 +122,7 @@ Iframe cross-document protocol steps
 
 ### 3) Token endpoint and tokens
 
-When the iframe flow has finished an auth_token will be communicated back via the cross-document messaging which can be used in the standard way to exchange for tokens via the Token endpoint.
+When the iframe flow has finished an auth_token will be communicated back via the cross-document messaging which can be used in the standard way to exchange for tokens via the Signaturgruppen Broker token endpoint.
 
 
 ## Example flow for PP
