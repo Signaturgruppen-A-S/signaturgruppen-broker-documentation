@@ -13,7 +13,7 @@ nav_order: 12
 
 ## UX assessment
 
-You can integrate with the Signaturgruppen Broker using either a pop-up window or a full-screen browser redirect. Both methods provide equally secure user authentication. The choice between them depends on your preferred user experience.
+You can integrate with the Signaturgruppen Broker using either a pop-up window or a full-screen browser redirect. Both methods provide equally secure user authentication. The choice between them depends on your preferred user experience
 
 > See the [GitHub .net core demo](https://github.com/Signaturgruppen-A-S/signaturgruppen-broker-demo) for example code
 
