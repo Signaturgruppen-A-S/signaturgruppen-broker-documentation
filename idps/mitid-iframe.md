@@ -81,23 +81,15 @@ To enable the “minimized” mode, which better adapts the MitID client inside 
 Example:
 
 ```
-{
-  "method": "POST",
-  "header": \[\],
-  "body":
-  {
-    "mode": "urlencoded",
-    "urlencoded": [
-    {"client_id": "879ddd62-31c6-415a-af32-cdec47917ddd"},
-    {"client_secret": "…/RuQjsTHlKoXmSuaQ=="},
-    {"redirect_uri": "https://redirect.uri"},
-    {"response_type": "code"},
-    {"scope": "openid mitid ssn"},
-    {"idp_params": "{\\"mitid\\":{\\"cpr_hint\\": \\"CPR-NUMBER\\", \\"authenticators\\": \\"app code_token\\", "iframe_mode\\": \\"minimized\\"}}" },
-    {"idp_values: "mitid"}
-    ]
-  }
-}
+curl --location 'https://pp.netseidbroker.dk/op/api/v1/iframe/initialize' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'client_secret=[CLIENT SECRET]' \
+--data-urlencode 'client_id=[CLIENT ID]' \
+--data-urlencode 'response_type=code' \
+--data-urlencode 'scope=openid mitid' \
+--data-urlencode 'idp_values=mitid' \
+--data-urlencode 'redirect_uri=[REDIRECT URI (Valid for client, use same for token endpoint later)]' \
+--data-urlencode 'idp_params={"mitid": {"cpr_hint": "[CPR]", "iframe_mode": "minimized", "authenticators": "app code_token"}}'
 ```
 
 And response:
