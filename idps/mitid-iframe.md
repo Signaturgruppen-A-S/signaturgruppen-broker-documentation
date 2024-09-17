@@ -116,8 +116,9 @@ window.addEventListener('message', handler);
 
 ### 3) Token endpoint and tokens
 
-## Supported parameters
+## Initialization parameters
 
+### Flow parameters
 <table>
    <tbody>
       <tr>
@@ -235,11 +236,78 @@ window.addEventListener('message', handler);
             <p>Optional</p>
          </td>
       </tr>
+       <tr>
+         <td>
+            <p>iframe_mode</p>
+             <p><strong>Requires special permission from MitID, contact Signaturgruppen if required</strong></p>
+         </td>
+         <td>
+            <p><strong>minimized</strong></p>
+             <p>Enables MitID minimized UI mode.</p>
+         </td>
+         <td>
+            <p>Optional</p>
+         </td>
+      </tr>
    </tbody>
 </table>
 
 When the iframe flow has finished an auth_token will be communicated back via the cross-document messaging which can be used in the standard way to exchange for tokens via the Signaturgruppen Broker token endpoint.
 
+### MitID IdP parameters (idp_params)
+<table>
+   <tbody>
+      <tr>
+         <th>
+            <p><strong>IdP parameter</strong></p>
+         </th>
+         <th>
+            <p><strong>Description</strong></p>
+         </th>
+         <th>
+            <p><strong>Required/Optional</strong></p>
+         </th>
+      </tr>
+      <tr>
+         <td>
+            <p>cpr_hint</p>
+         </td>
+         <td>
+            <p>Danish CPR of user</p>
+         </td>
+         <td>
+            <p>One of cpr_hint or uuid_hint is required</p>
+         </td>
+      </tr>
+     <tr>
+         <td>
+            <p>uuid_hint</p>
+         </td>
+         <td>
+            <p>MitID UUID of user</p>
+         </td>
+         <td>
+            <p>One of cpr_hint or uuid_hint is required</p>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <p>authenticators</p>
+             <p><strong>Two authenticators are available: MitID App and MitID Code Token</strong></p>
+         </td>
+         <td>
+            <p>One of</p>
+             <p>Single string containing one or both of</p>
+             <p><strong>app</strong>, <strong>code_token</strong></p>
+             <p>Example: "app code_token"</p>
+         </td>
+         <td>
+            <p>Required</p>
+         </td>
+      </tr>
+    
+   </tbody>
+</table>
 
 ## Example flow for PP
 
