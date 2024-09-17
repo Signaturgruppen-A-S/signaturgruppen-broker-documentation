@@ -25,9 +25,9 @@ But in return has some advantages as well
 
 The iframe variant is generally available to service providers, but can only be used when the service provider has an active authentication of the end-user, i.e. already knows who the user is before starting the flow. This means, that the flow must not be started solely on the MitID UUID or CPR from the end-user without any form of authentication and validation of this. As an example, you could have some authentication with a local user from which you have a preregistered MitID UUID in your database, which then can be used to initiate the MitID reauthentication flow.
 
-## Nets eID Broker MitID iframe protocol
+## Signaturgruppen Broker MitID iframe protocol
 
-Overall, the flow will be handled by server-to-server API calls for initializing the flow and retrieving the signed ID token as well as setting up an iframe and communicating with Nets eID Broker through the iframe using cross-document messaging.
+Overall, the flow will be handled by server-to-server API calls for initializing the flow and retrieving the signed ID token as well as setting up an iframe and communicating with Signaturgruppen Broker through the iframe using cross-document messaging.
 
 The following sequence diagram illustrates the overall flow.
 
@@ -66,7 +66,7 @@ This endpoint returns an authentication token used to initialize an authenticati
 
 The endpoint is invoked in the same manner as the Token endpoint using client secret, supporting the same formats for client info and client secret as the standard Token endpoint (OIDC and OAuth).
 
-Additionally, information about the requested information is required, which is in the same format as a normal OpenID Connect request for the specified identity provider as for the standard OIDC flows through Nets eID Broker. See **\[NEB-INTRO\]** , **\[NEB-TECHREF\]**  and **\[NEB-IDP\]** for reference.
+Additionally, information about the requested information is required, which is in the same format as a normal OpenID Connect request for the specified identity provider as for the standard OIDC flows through Signaturgruppen Broker. See **\[NEB-INTRO\]** , **\[NEB-TECHREF\]**  and **\[NEB-IDP\]** for reference.
 
 To control the available MitID authenticators, set the MitID specific parameter “authenticators”, to “app” for app-only and to “app code_token” to support both app and code token display.
 
@@ -80,7 +80,7 @@ The iframe flow is started by setting up an iframe using the iframe_url from the
 
 _The current url for pp for MitID flows is:_ [_https://netseidbroker.pp.mitid.dk/iframe_](https://netseidbroker.pp.mitid.dk/iframe) _(subject to change, follow the “iframe_url” parameter)._
 
-Messages sent from Nets eID Broker to the surrounding parent will be communicated in a JSON structure always including a command property used as an event type.
+Messages sent from Signaturgruppen Broker to the surrounding parent will be communicated in a JSON structure always including a command property used as an event type.
 
 Iframe cross-document protocol steps
 

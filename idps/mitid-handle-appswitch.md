@@ -35,9 +35,9 @@ For reference, see [Android Custom Tabs](https://developer.chrome.com/docs/andro
 
 # OpenID Connect and app backend
 
-The following is an example of how to implement the integration and is based on the approach recommended by Nets eID Broker – other options exist but be aware that Nets eID Broker does not provide a general support of app-integration variants.
+The following is an example of how to implement the integration and is based on the approach recommended by Signaturgruppen Broker – other options exist but be aware that Signaturgruppen Broker does not provide a general support of app-integration variants.
 
-It is highly recommended, and in many cases required, that an app-integration for MitID has a backend that can handle most of the OpenID Connect, security and API integration to the Nets eID Broker required for the full flow.
+It is highly recommended, and in many cases required, that an app-integration for MitID has a backend that can handle most of the OpenID Connect, security and API integration to the Signaturgruppen Broker required for the full flow.
 
 In broad terms, the flow can be described in the following way:
 

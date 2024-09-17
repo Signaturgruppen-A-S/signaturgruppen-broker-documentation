@@ -83,7 +83,7 @@ Transaction token MitID specific claims
 
 ### MitiD Transaction signing
 
-Nets eID Broker supports a transaction signing flow which enables the end-user to approve a transaction text based on text or HTML, as part of the MitID authentication. Transaction signing flow is limited to only signed requests.
+Signaturgruppen Broker supports a transaction signing flow which enables the end-user to approve a transaction text based on text or HTML, as part of the MitID authentication. Transaction signing flow is limited to only signed requests.
 
 This is done by setting the **transaction_text** and **transaction_text_type** MitID identity provider parameters.
 
@@ -204,7 +204,7 @@ This is done by specifying the scope nemid.pid which will trigger the relevant e
 
 <table><tbody><tr><th><p><strong>NemID PID scope</strong></p></th><th><p><strong>Claims</strong></p></th></tr><tr><td><p>nemid.pid</p></td><td><ul><li>nemid.pid</li><li>nemid.pid_status</li></ul><p>If set, the nemid.pid claim contains the NemID PID.</p><p>nemid.pid_status can have one of the following values</p><ul><li>success</li><li>unable_to_lookup</li></ul></td></tr></tbody></table>
 
-To retrieve the PID from a MitID login Nets eID Broker will have to lookup PID from a NemLog-In3 supplied supporting service using the end-user Danish CPR number. The end-user will be guided through the needed steps automatically when the nemid.pid scope is specified.
+To retrieve the PID from a MitID login Signaturgruppen Broker will have to lookup PID from a NemLog-In3 supplied supporting service using the end-user Danish CPR number. The end-user will be guided through the needed steps automatically when the nemid.pid scope is specified.
 
 It is recommended, that the nemid.pid scope is only specified when the returned MitID identity is unknown to the service in question, as the end-user will have to enter his Danish CPR number when this scope is specified.
 
@@ -234,7 +234,7 @@ It is possible to request detailed information about the person based of the Dan
 
 Please note that the transaction token will contain a transaction_action-claim with the value “ssn.details_lookup”, when one or both of the ssn.details-scopes are requested as outlined in the section “Transaction token MitID specific claims”.
 
-To retrieve the detailed information for the person from a MitID login Nets eID Broker will have to look up the information from the Danish national social security system using the Danish CPR number. The end-user will be guided through the needed steps automatically when one of or both the ssn.details-scopes are specified.
+To retrieve the detailed information for the person from a MitID login Signaturgruppen Broker will have to look up the information from the Danish national social security system using the Danish CPR number. The end-user will be guided through the needed steps automatically when one of or both the ssn.details-scopes are specified.
 
 It is recommended, that the ssn.details-scopes only are specified, when the returned MitID identity is unknown to the service in question, as the end-user will have to enter his Danish CPR number when these scopes are specified.
 

@@ -11,11 +11,11 @@ has_children: true
 
 | **Swagger endpoint URL** | **Description** |
 | --- | --- |
-| **\[Authority URL\]/ transactionsigning/swagger/index.html** | The swagger description of the available Nets eID Broker Transaction Signing API |
+| **\[Authority URL\]/ transactionsigning/swagger/index.html** | The swagger description of the available Signaturgruppen Broker Transaction Signing API |
 
 ## Authorization towards Signtext API
 
-To get started using the Signtext API, your organization must first setup an API client to be able to authorize towards the Nets eID Broker Signtext API.
+To get started using the Signtext API, your organization must first setup an API client to be able to authorize towards the Signaturgruppen Broker Signtext API.
 
 First you need to create and setup an API client for your integration. This is done through the admin interface by setting up a new client under the correct service and service provider and by selecting “API Client” when creating the client. Setup a client secret to be used. If you do not have access to the admin interface, contact your administrator or contact Signaturgruppen to help you create and setup the client.
 An existing API client can be used.
@@ -49,9 +49,9 @@ Setup the service token (**access_token** in the response) as a standard authori
 
 # Transaction Signing using the Signtext API
 
-To initiate a transaction signing flow through the Nets eID Broker platform, the Signtext API must be utilized.
+To initiate a transaction signing flow through the Signaturgruppen Broker platform, the Signtext API must be utilized.
 
-Before starting an OpenID Connect authentication flow through the Nets eID Broker platform, the signtext is uploaded to the Signtext API to generate a signtext reference, which is specified in the appropriate parameter for the OIDC flow.
+Before starting an OpenID Connect authentication flow through the Signaturgruppen Broker platform, the signtext is uploaded to the Signtext API to generate a signtext reference, which is specified in the appropriate parameter for the OIDC flow.
 
 First prepare the document to be signed and convert the raw bytes to BASE64. Prepare a JSON payload in the form:
 
@@ -73,7 +73,7 @@ The response is on the form
 }
 ```
 
-## Start OpenID Connect flow with Nets eID Broker
+## Start OpenID Connect flow with Signaturgruppen Broker
 
 Now you are ready to start the signing process with the user by setting the received signtext ID in the OIDC **sigtext_id** parameter, like in the following example:
 
@@ -101,7 +101,7 @@ https://pp.netseidbroker.dk/op/connect/authorize
 
 ### Usage of Prompt=login
 
-Per default, Nets eID Broker will keep a session with the end-user which will be reused for authentication requests if able based on the authentication request parameters.
+Per default, Signaturgruppen Broker will keep a session with the end-user which will be reused for authentication requests if able based on the authentication request parameters.
 
 The transaction text flow is a sub-flow available to select authentications and is considered an optional parameter for these flows which is activated for these flows only when the user is doing an interaction authentication with a supported identity provider like MitID.
 

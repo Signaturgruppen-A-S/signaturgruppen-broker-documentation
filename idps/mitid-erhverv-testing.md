@@ -10,7 +10,7 @@ nav_order: 1
 
 ## Introduction
 
-This document describes the various options for MitID Erhverv. Note that the document is only intended to introduce the MitID Erhverv setup as well as how it works in combination with the Nets eID Broker.
+This document describes the various options for MitID Erhverv. Note that the document is only intended to introduce the MitID Erhverv setup as well as how it works in combination with the Signaturgruppen Broker.
 
 The intended audiences are IT developers, architects, and integration testers.
 
@@ -50,9 +50,9 @@ Employees are administered in the EIA-system by company administrators. This pro
 
 <https://erhvervsadministration.test-devtest4-nemlog-in.dk/>
 
-## MitID Erhverv integration in Nets eID Broker
+## MitID Erhverv integration in Signaturgruppen Broker
 
-For a service provider to be able to use MitID Erhverv identities through the Nets eID Broker a special scope (nemlogin) should be used to get the relevant employee information and further the login process is initiated using a special identity provider through the configuration of idp_value (mitid_erhverv). The login process will then support the above-mentioned ways of logging in, however currently the local IdP option is not available in any of the Nemlog-in systems. Note that MitID Erhverv will need to be set up for a given service provider by the Nets eID Broker administration before it can be used.
+For a service provider to be able to use MitID Erhverv identities through the Signaturgruppen Broker a special scope (nemlogin) should be used to get the relevant employee information and further the login process is initiated using a special identity provider through the configuration of idp_value (mitid_erhverv). The login process will then support the above-mentioned ways of logging in, however currently the local IdP option is not available in any of the Nemlog-in systems. Note that MitID Erhverv will need to be set up for a given service provider by the Signaturgruppen Broker administration before it can be used.
 
 When the user is logging in, he will be prompted to select between identities assigned to the used authenticator if more than one is available. Note that if a MitID Private authenticator is used the integration can be setup to allow the user to not complete the anticipated MitID Erhverv login but instead complete the login as the associated private identity.
 
@@ -76,11 +76,11 @@ special claims are returned from the user info endpoint:
 | nemlogin.se_number | Company SE number (may be empty) |
 | nemlogin.p_number | Company P number (may be empty) |
 
-To be able to recognize the user on sub_sequent logins it is recommended to persist the persistent_professional_id which is the global identifier. However, as with other logins through the Nets eID Broker the sub-claim from the id_token can also be used to recognize the user. Note also that it is also recommended to verify that the expected identity type is returned as a result of the login process.
+To be able to recognize the user on sub_sequent logins it is recommended to persist the persistent_professional_id which is the global identifier. However, as with other logins through the Signaturgruppen Broker the sub-claim from the id_token can also be used to recognize the user. Note also that it is also recommended to verify that the expected identity type is returned as a result of the login process.
 
 ## MitID Erhverv test-users
 
-The Nets eID Broker test/pp-system is wired up to use the so-called NemLog-In test-devtest4 environment. This relies on a couple of sub-systems. However, to test basic functionality it is not important to know anything else than how to use the ordinary MitID PP test-tool. For testing, some test identities have been set up and details are provided in the tables below. To be able to test migration of existing users NemID Erhverv users a few of the users are equipped with corresponding NemID Erhverv key-files which can be located on the provided links.
+The Signaturgruppen Broker test/pp-system is wired up to use the so-called NemLog-In test-devtest4 environment. This relies on a couple of sub-systems. However, to test basic functionality it is not important to know anything else than how to use the ordinary MitID PP test-tool. For testing, some test identities have been set up and details are provided in the tables below. To be able to test migration of existing users NemID Erhverv users a few of the users are equipped with corresponding NemID Erhverv key-files which can be located on the provided links.
 
 **User with both MitID Private and dedicated authenticator**
 
