@@ -82,42 +82,36 @@ _The current url for pp for MitID flows is:_ [_https://netseidbroker.pp.mitid.dk
 
 Messages sent from Signaturgruppen Broker to the surrounding parent will be communicated in a JSON structure always including a command property used as an event type.
 
-Iframe cross-document protocol steps
+#### Iframe cross-document protocol steps
+When an event is received, the **event.data** will contain the **command** and **message** parameters.
 
-**When the iframe has loaded, the “ready” command will be sent from the Signaturgruppen Broker iframe to parent**
-
-```
-{
- "command": "ready"
-}
-```
-
-
-**The parent then sends the auth_token with the following message**
+See the example JS handler here, which illustrates the steps to take in order to start the flow and receive the response using JavaScript cross-origin post messaging.
+In order to initiate an iframe flow, you will need to provide a valid **auth_token** as response to the **ready** command. When the flow completes, a **authorization_code** or **error** response will be sent back.
 
 ```
-{
- "command": "auth_token",
- "auth_token": "\[auth_token\]"
-}
-```
+<script>
+    var handler = function(event) {
+        if (event.data.command === 'ready') {
+            var result = [];
+            result["command"] = "auth_token";
+            result["message"] = "<AUTH TOKEN>"; // setup your HTML to include the unique auth_code received from the initialize call
+            event.source.postMessage(result, "*");
+            return;
+        };
 
+        if (event.data.command === 'authorization_code') {
+            var auth_code = event.data.message;
+            handleSuccess(auth_code); //implement this
+        }
 
-**The response from the started authentication is either “error” or “auth_code”**
+        if (event.data.command === 'error') {
+            var error = event.data.message;
+            handleError(error); //implement this
+        }
+    };
 
-```
-{
- "command": "error",
- "error": "error code",
- "error_description": "error description"
-}
-```
-
-```
-{
- "command": "auth_code",
- "auth_code": "\[auth_code\]"
-}
+window.addEventListener('message', handler); 
+</script>
 ```
 
 ### 3) Token endpoint and tokens
