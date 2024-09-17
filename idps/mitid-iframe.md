@@ -122,6 +122,128 @@ Iframe cross-document protocol steps
 
 ### 3) Token endpoint and tokens
 
+## Supported parameters
+
+<table>
+   <tbody>
+      <tr>
+         <th>
+            <p><strong>Flow parameters</strong></p>
+         </th>
+         <th>
+            <p><strong>Description</strong></p>
+         </th>
+         <th>
+            <p><strong>Required/Optional</strong></p>
+         </th>
+      </tr>
+      <tr>
+         <td>
+            <p>client_id</p>
+         </td>
+         <td>
+            <p>Client ID</p>
+         </td>
+         <td>
+            <p>Required</p>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <p>client_secret</p>
+         </td>
+         <td>
+            <p>Client secret</p>
+         </td>
+         <td>
+            <p>Required</p>
+         </td>
+      </tr>
+    <tr>
+         <td>
+            <p>response_type</p>
+         </td>
+         <td>
+            <p>Response type. Always use: <strong>code</strong></p>
+         </td>
+         <td>
+            <p>Required</p>
+         </td>
+      </tr>
+    <tr>
+         <td>
+            <p>scope</p>
+         </td>
+         <td>
+            <p>Scopes requested. Must include <strong>openid</strong></p>
+         </td>
+         <td>
+            <p>Required</p>
+         </td>
+      </tr>
+    <tr>
+         <td>
+            <p>idp_values</p>
+         </td>
+         <td>
+            <p>Always set to <strong>mitid</strong></p>
+         </td>
+         <td>
+            <p>Required</p>
+         </td>
+      </tr>
+    <tr>
+         <td>
+            <p>redirect_uri</p>
+         </td>
+         <td>
+            <p>One of the valid redirect uris registered for the client</p>
+            <p>The same redirect uri must be used when exchanging the received code for tokens</p>
+         </td>
+         <td>
+            <p>Required</p>
+         </td>
+      </tr>
+    <tr>
+         <td>
+            <p>idp_params</p>
+         </td>
+         <td>
+            <p>MitID IdP parameters</p>
+            <p>See next section for specification</p>
+         </td>
+         <td>
+            <p>Required</p>
+         </td>
+      </tr>
+    <tr>
+         <td>
+            <p>nonce</p>
+         </td>
+         <td>
+            <p>Nonce (number once)</p>
+            <p>Use a unique and hard to guess identifier for each flow. Echoed in the resulting ID token.</p>
+         </td>
+         <td>
+            <p>Optional, but highly recommended</p>
+         </td>
+      </tr>
+    <tr>
+         <td>
+            <p>language</p>
+         </td>
+         <td>
+            <p>One of</p>
+            <p>Danish: <strong>da</strong>, english: <strong>en</strong> or greenlandic: <strong>gl</strong></p>
+            <p>Deafults to <strong>da</strong></p>
+         </td>
+         <td>
+            <p>Optional</p>
+         </td>
+      </tr>
+   </tbody>
+</table>
+
 When the iframe flow has finished an auth_token will be communicated back via the cross-document messaging which can be used in the standard way to exchange for tokens via the Signaturgruppen Broker token endpoint.
 
 
