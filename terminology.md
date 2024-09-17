@@ -8,8 +8,8 @@ nav_order: 6
 
 | Term | Description |
 | --- | --- |
-| Nets eID Broker (NEB) | Nets eID Broker. Certified MitID Broker and general broker and identity provider for enterprise services. |
-| Nets eID Broker Administration web-interface (ADM-UI) | Nets eID Broker Administration web-interface. Interface allowing configuration and administration of the integration |
+| Signaturgruppen Broker (NEB) | Signaturgruppen Broker. Certified MitID Broker and general broker and identity provider for enterprise services. |
+| Signaturgruppen Broker Administration web-interface (ADM-UI) | Signaturgruppen Broker Administration web-interface. Interface allowing configuration and administration of the integration |
 | OpenID Connect (OIDC) | OpenID Connect 1.0 is an identity layer on top of the OAuth 2.0 protocol |
 | OAuth | OAuth 2.0 is the industry-standard protocol for authorization. OAuth 2.0 focuses on client developer simplicity while providing specific authorization flows for web applications, desktop applications, mobile phones, and living room devices. This specification and its extensions are being developed within the IETF OAuth Working Group. |
 | JWT (JSON Web Token) | JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties. |

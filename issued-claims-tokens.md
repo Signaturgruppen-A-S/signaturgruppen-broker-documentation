@@ -17,7 +17,7 @@ ID-, access-, service and transaction tokens comply with the [JWT] specification
 Access- and service tokens are not meaningful outside the audience of the token. Access tokens can be configured to include access and authorization for both internal and external REST APIs. Often the access token is used for accessing the UserInfo endpoint at NEB.
 Refresh tokens are opaque and thus not meaningful outside the scope of NEB. See the OpenID Connect specification for reference on how to use the refresh tokens.
 The userinfo token contains most of the ID token claims and all the claims issued by the Userinfo endpoint. This provides a signed format for all user-claims.
-The transaction token will be available as a sealed (signed by a Nets eID Broker OCES3 organization certificate) record of the end-user completed transaction.
+The transaction token will be available as a sealed (signed by a Signaturgruppen Broker OCES3 organization certificate) record of the end-user completed transaction.
 The transaction token response is a self-contained and cryptographically sealed record suitable for long-term storage and as a proof-of-transaction.
 The transaction token includes the relevant authentication information, a unique transaction identifier as well as relevant transaction specific information like end-user approved text linked to the transaction.
 The transaction token should only be requested if required for internal revision or similar requirements.

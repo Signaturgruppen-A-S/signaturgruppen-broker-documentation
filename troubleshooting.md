@@ -6,7 +6,7 @@ nav_order: 60
 
 # Introduction
 
-This document aims at giving service providers an overview of the most general and basic error cases experienced when integrating to the Nets eID Broker system.
+This document aims at giving service providers an overview of the most general and basic error cases experienced when integrating to the Signaturgruppen Broker system.
 
 The intended audience is IT developers.
 

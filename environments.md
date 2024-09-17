@@ -15,14 +15,14 @@ Security related information like TLS and VOCES3 signing certificate DN and CA r
 | --- | --- |
 | Authority URL | https://pp.netseidbroker.dk/op |
 | Discovery endpoint | https://pp.netseidbroker.dk/op/.well-known/openid-configuration |
-| Nets eID Broker MitID Broker ID | f81b4f9a-2ca2-49ec-ba52-654de7edfcdc |
+| Signaturgruppen Broker MitID Broker ID | f81b4f9a-2ca2-49ec-ba52-654de7edfcdc |
 
 #### Token signing certificate 
 
-| Subject | CN = Nets eID Broker Token Signing 1 PP Env C = DK |
+| Subject | CN = Signaturgruppen Broker Token Signing 1 PP Env C = DK |
 | --- | --- |
 | Subject Thumbprint (KID) | 048058BB59F4D3007045896FD488CE81F4EB4923 |
-| CA Subject | CN = Nets eID Broker Token Signing Root PP Env C = DK |
+| CA Subject | CN = Signaturgruppen Broker Token Signing Root PP Env C = DK |
 | CA Thumbprint | 1beb2d3df149237427ae40abe524882a7ebb2ddb |
 
 #### SSL certificate
@@ -46,14 +46,14 @@ Security related information like TLS and VOCES3 signing certificate DN and CA r
 | --- | --- |
 | Authority URL | https://netseidbroker.dk/op |
 | Discovery endpoint | https://netseidbroker.dk/op/.well-known/openid-configuration |
-| Nets eID Broker MitID Broker ID | a9df260d-42c6-4e4c-85a5-681423673a78 |
+| Signaturgruppen Broker MitID Broker ID | a9df260d-42c6-4e4c-85a5-681423673a78 |
 
 #### Token signing certificate 
 
-| Subject | CN = Nets eID Broker Token Signing 1 Prod Env C = DK |
+| Subject | CN = Signaturgruppen Broker Token Signing 1 Prod Env C = DK |
 | --- | --- |
 | Subject Thumbprint (KID) | 353E2FE9191CDEC22C8B52D2B7A82A2DAA50642E |
-| CA Subject | CN = Nets eID Broker Token Signing Root Prod Env C = DK |
+| CA Subject | CN = Signaturgruppen Broker Token Signing Root Prod Env C = DK |
 | CA Thumbprint | fa516c6bb2d07103a54fe4cd6ded4aed30b360f7 |
 
 #### SSL certificate

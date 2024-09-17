@@ -58,7 +58,7 @@ The ID token may be expired and information like that of OIDC session management
 
 # Logout
 
-See "Nets eID Broker Technical Reference" for reference to API swagger information.
+See "Signaturgruppen Broker Technical Reference" for reference to API swagger information.
 
 ## End session endpoint
 

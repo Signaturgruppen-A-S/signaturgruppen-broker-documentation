@@ -28,10 +28,10 @@ Supported authorization request parameters are listed below. See [OIDC] for refe
 | max_age | Maximum Authentication Age. Specifies the allowable elapsed time in seconds since the last time the end-user was actively authenticated by NEB. If the elapsed time is greater than this value, NEB will attempt to actively re-authenticate the end-user. |
 | prompt | Space delimited, case sensitive list of ASCII string values that specifies whether the Authorization Server prompts the end-user for reauthentication. Supported values are none (no ui for authentication) login (force authentication request) select_account (enable idp selection) If login is used, the end-user will be forced to complete the requested authentication flow. This can be used anytime it is required that the end-user completes the requested authentication flow, i.e. when requesting a signature from the end-user. If none is used, a request for automatic login based on the end-user session is requested. If the automatic login could not be honored, an error will be returned to the service. If select_account is used, the end-user will be allowed to select among the available identity providers for the given flow, even though the end-user has an active session with NEB. It does not trigger a forced reauthentication, so if the end-user selects the same identity provider for which he has an active session, he will be automatically reauthenticated. |
 
-Supported identity provider parameters. See the “Nets eID Broker Identity Providers” [NEB-IDP] for available options.
+Supported identity provider parameters. See the “Signaturgruppen Broker Identity Providers” [NEB-IDP] for available options.
 | Parameter | Description |
 | --- | --- |
-| idp_params | Identity provider parameters. Custom parameter supported by NEB to enable customization of the specific identity provider flows. See the “Nets eID Broker Identity Providers” [NEB-IDP] for reference. The idp_params parameter value is represented in an OAuth 2.0 request as UTF-8 encoded JSON (which ends up being form-url-encoded when passed as an OAuth parameter). When used in a Request Object value, the JSON is used as the value of the idp_params member. |
+| idp_params | Identity provider parameters. Custom parameter supported by NEB to enable customization of the specific identity provider flows. See the “Signaturgruppen Broker Identity Providers” [NEB-IDP] for reference. The idp_params parameter value is represented in an OAuth 2.0 request as UTF-8 encoded JSON (which ends up being form-url-encoded when passed as an OAuth parameter). When used in a Request Object value, the JSON is used as the value of the idp_params member. |
 | idp_values | Identity provider list. Space-separated string that specifies the idp values that the NEB is being requested to use for processing this authentication request, with the values appearing in order of preference. If not set, all possible identity providers configured for the client will be made available to the end-user. |
 
 ### Reauthentication / Step-up / Consent flows
@@ -46,7 +46,7 @@ Authentication Error Response
 If the end-user denies the request or the end-user authentication fails, NEB informs the service provider (client) by using the error response parameters listed in this document or in the Identity Provider documentation [NEB-IDP].
 Note, that the end-user will only be redirect back to the service provider (client) if the authorization request is valid. If the authorization request is invalid, the end-user will be presented a generic error response at NEB and will not be redirected back to the service provider.
 The end-user is redirected (GET) or posted (POST) back to the redirect URL requested for the authentication request honoring the response_mode parameter.
-NEB will utilize one of the error codes defined in the specification most appropriate to the error in question and will set the error_description to a NEB- or identity provider specific error code defined here or in the “Nets eID Broker Identity Providers” [NEB-IDP],
+NEB will utilize one of the error codes defined in the specification most appropriate to the error in question and will set the error_description to a NEB- or identity provider specific error code defined here or in the “Signaturgruppen Broker Identity Providers” [NEB-IDP],
 
 ##### Example response:
 
@@ -72,7 +72,7 @@ Some scopes trigger user-interaction or user-consents as they might map to claim
 If a client is requesting a scope which is not allowed for this client, the entire flow will fail.
 
 ### Implicit flow and CORS
-Nets eID Broker supports the implicit flow (id_token) but does not support setting up any CORS origin rules for integrating clients and has no allowed CORS rules specified as default.
+Signaturgruppen Broker supports the implicit flow (id_token) but does not support setting up any CORS origin rules for integrating clients and has no allowed CORS rules specified as default.
 NEB does not encourage pure frontend-based integrations due to security concerns and has a very limited and restricted functionality available for frontend clients.
 Frontend-based clients can request and complete the implicit flow but will have to pin the signing key certificate for verifying the ID token and will not be allowed accessing access tokens nor the Userinfo endpoint from the browser.
 See the “Backend for Frontend Pattern” for reference for a recommended approach to securing your frontend and integration to NEB.
