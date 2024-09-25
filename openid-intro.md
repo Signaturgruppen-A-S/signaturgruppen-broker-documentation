@@ -112,12 +112,17 @@ https://pp.netseidbroker.dk/op/connect/authorize?client_id=0a775a87-878c-4b83-ab
 ## Signing Authentication Requests
 
 ### Signing Request Parameters
+Signing requests are supported in two variants:
 
-OpenID Connect's Request Object can encapsulate most parameters in a signed (and optionally encrypted) JWT. This approach is optional but recommended for transactional services like MitID.
+* Pushed Authorization Requests (PAR) improve security by sending authorization requests directly to the authorization server via a back-channel POST, eliminating the risks of exposing sensitive data in front-channel redirects required by signed Request Objects. PAR simplifies client implementation by removing the need to generate and sign JWTs, avoids URL length limitations, and ensures confidential data isn't exposed in browser histories or network logs.
 
-NEB supports both Request Object by value and by reference (using `request_uri`). Both `client_id` and `redirect_uri` must be included as query parameters when using signed requests.
+* OpenID Connect's Request Object can encapsulate most parameters in a signed (and optionally encrypted) JWT.
+
+Signaturgruppen Broker recommends the utilization of the newer PAR protocol.
 
 **Note:** Signing requires a configured client secret.
+
+See [Duende docs on PAR](https://docs.duendesoftware.com/identityserver/v7/tokens/par/#client-usage)
 
 See [Duende docs on signed requests](https://docs.duendesoftware.com/identityserver/v7/tokens/jar/)
 
