@@ -113,9 +113,7 @@ https://pp.netseidbroker.dk/op/connect/authorize?client_id=0a775a87-878c-4b83-ab
 
 ### Signing Request Parameters
 
-OpenID Connect's Request Object can encapsulate most parameters in a signed (and optionally encrypted) JWT. This approach is optional but recommended for transactional services like MitID.
-
-NEB supports both Request Object by value and by reference (using `request_uri`). Both `client_id` and `redirect_uri` must be included as query parameters when using signed requests.
+OpenID Connect's Request Object can encapsulate most parameters in a signed (and optionally encrypted) JWT. This approach is optional but recommended for transactional services like MitID as it gives the service provider a stronger control. As an alternative to signing request parameters the option for using the plain backchannel Pushed Authorization Requests (PAR) can be used. PAR gives a similar control and security as using signed requests and may be easier to implement.
 
 **Note:** Signing requires a configured client secret.
 
