@@ -34,11 +34,11 @@ Security related information like TLS and VOCES3 signing certificate DN and CA r
 
 #### Transaction token signing certificate
 
-| Subject | CN = SIGNATURGRUPPEN A/S - NEB Transact PP SERIALNUMBER = CVR:29915938-UID:59911227 O = SIGNATURGRUPPEN A/S // CVR:29915938 C = DK |
-| --- | --- |
-| Subject Thumbprint (KID) | 20595A4BE9F566771792BC3DBC7DF78FF9C36575 |
-| CA Subject | CN = TRUST2408 Systemtest XXXIV CA O = TRUST2408 C = DK |
-| CA Thumbprint | eeaf09230cd54e31a22872bd83cd189095921ad7 |
+| Subject | CN = NEB Transact PP, SERIALNUMBER = UI:DK-O:G:d09df20d-26f0-4ba0-bdd1-2cb4f9524683, O = SIGNATURGRUPPEN A/S, 2.5.4.97 = NTRDK-29915938, C = DK |
+| --- |-------------------------------------------------------------------------------------------------------------------------------------------------|
+| Subject Thumbprint (KID) | D8A5D9D7EDE992F1A0F8E499E992E9DA805A05D8                                                                                                        |
+| CA Subject | CN = Den Danske Stat OCES udstedende-CA 1, OU = Test - cti, O = Den Danske Stat, C = DK                                                         |
+| CA Thumbprint | 72347BAE1745688942D49DFF5F2C80538B5B023B                                                                                                        |
 
 ### Production environment – https://netseidbroker.dk/op
 
@@ -65,8 +65,8 @@ Security related information like TLS and VOCES3 signing certificate DN and CA r
 
 #### Transaction token signing certificate
 
-| Subject | CN = SIGNATURGRUPPEN A/S - eID Broker Signing SERIALNUMBER = CVR:29915938-UID:14521394 O = SIGNATURGRUPPEN A/S // CVR:29915938 C = DK |
-| --- | --- |
-| Subject Thumbprint (KID) | 8CB7F2CBABA3A57979DF96BC81DC0EAF44F30F9B |
-| CA Subject | CN = TRUST2408 OCES CA IV O = TRUST2408 C = DK |
-| CA Thumbprint | 5084ef33f0d4a39776281ccfdf0a9b06eea7fb9a |
+| Subject | CN = eID Broker Signing, SERIALNUMBER = UI:DK-O:G:eca57a69-98a6-4b9a-9293-bc4be1c3aa06, O = SIGNATURGRUPPEN A/S, 2.5.4.97 = NTRDK-29915938, C = DK |
+| --- |------------------------------------------------------------------------------------------------------------------------------------------------|
+| Subject Thumbprint (KID) | B820F52255649CE8E039F4E1B9F96F7C1E108C08                                                                                                       |
+| CA Subject | CN = Den Danske Stat OCES udstedende-CA 1, O = Den Danske Stat, C = DK                                                         |
+| CA Thumbprint | 0B7F84237B7423B800495761BBC8D34F1AB83B50                                                                                                       |
