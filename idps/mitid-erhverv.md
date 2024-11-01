@@ -46,7 +46,42 @@ idp_params=%7B%E2%80%9Cmitid_erhverv%E2%80%9D%3A%7B%E2%80%9Callow_private%E2%80%
 
 ### Supported scope values
 
-<table><tbody><tr><th><p><strong>Scope</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>nemlogin</p></td><td><p>List of claims:</p><ul><li>nemlogin.date_of_birth</li><li>nemlogin.email</li><li>nemlogin.name</li><li>nemlogin.family_name</li><li>nemlogin.given_name</li><li>nemlogin.nemid.rid</li><li>nemlogin.org_name</li><li>nemlogin.persistent_professional_id</li><li>nemlogin.cvr</li><li>nemlogin.se_number</li><li>nemlogin.p_number</li><li>nemlogin.cpr_uuid (for private service providers)</li><li>nemlogin.cpr (for public service providers)</li></ul></td></tr></tbody></table>
+<table>
+   <tbody>
+      <tr>
+         <th>
+            <p><strong>Scope</strong></p>
+         </th>
+         <th>
+            <p><strong>Description</strong></p>
+         </th>
+      </tr>
+      <tr>
+         <td>
+            <p>nemlogin</p>
+         </td>
+         <td>
+            <p>List of claims:</p>
+            <ul>
+               <li>nemlogin.date_of_birth</li>
+               <li>nemlogin.email</li>
+               <li>nemlogin.name</li>
+               <li>nemlogin.family_name</li>
+               <li>nemlogin.given_name</li>
+               <li>nemlogin.nemid.rid</li>
+               <li>nemlogin.org_name</li>
+               <li>nemlogin.persistent_professional_id</li>
+               <li>nemlogin.cvr</li>
+               <li>nemlogin.se_number</li>
+               <li>nemlogin.p_number</li>
+               <li>nemlogin.cpr_uuid (for private service providers)</li>
+               <li>nemlogin.cpr (for public service providers)</li>
+              <li>nemlogin.auth_to_repr (Authorized to represent CVR number)</li>
+            </ul>
+         </td>
+      </tr>
+   </tbody>
+</table>
 
 ### ID Token identity claims
 
