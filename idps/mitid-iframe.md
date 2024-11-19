@@ -66,7 +66,7 @@ This endpoint returns an authentication token used to initialize an authenticati
 
 The endpoint is invoked in the same manner as the Token endpoint using client secret, supporting the same formats for client info and client secret as the standard Token endpoint (OIDC and OAuth).
 
-Additionally, information about the requested information is required, which is in the same format as a normal OpenID Connect request for the specified identity provider as for the standard OIDC flows through Signaturgruppen Broker. See **\[NEB-INTRO\]** , **\[NEB-TECHREF\]**  and **\[NEB-IDP\]** for reference.
+Additionally, information about the requested information is required, which is in the same format as a normal OpenID Connect request for the specified identity provider as for the standard OIDC flows through Signaturgruppen Broker.
 
 To control the available MitID authenticators, set the MitID specific parameter “authenticators”, to “app” for app-only and to “app code_token” to support both app and code token display.
 
@@ -113,6 +113,7 @@ In order to initiate an iframe flow, you will need to provide a valid **auth_tok
 window.addEventListener('message', handler); 
 </script>
 ```
+> Note that in production code, you should restrict the origin of the event received to the appropriate origin of Signaturgruppen Broker for this environment.
 
 ### 3) Token endpoint and tokens
 
