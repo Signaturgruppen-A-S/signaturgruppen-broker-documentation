@@ -126,6 +126,35 @@ See [Duende docs on PAR](https://docs.duendesoftware.com/identityserver/v7/token
 
 See [Duende docs on signed requests](https://docs.duendesoftware.com/identityserver/v7/tokens/jar/)
 
+### Example: Pushed Authorization Request (PAR)
+
+Par request:
+```
+curl --location 'https://pp.netseidbroker.dk/op/connect/par' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'redirect_uri=https://oidcdebugger.com/debug' \
+--data-urlencode 'client_id=12345678' \
+--data-urlencode 'client_secret=xxx..WWw==' \
+--data-urlencode 'response_type=code' \
+--data-urlencode 'scope=openid mitid'
+```
+
+Example response:
+```
+{
+    "request_uri": "urn:ietf:params:oauth:request_uri:DCF10077737C5062B6830071138DEA277D0DC611407E5394F46DC5B84EAB6E64",
+    "expires_in": 600
+}
+```
+
+Use this to contruct request as follows:
+```
+https://pp.netseidbroker.dk/op/connect/authorize?client_id=12345678&request_uri=urn:ietf:params:oauth:request_uri:DCF10077737C5062B6830071138DEA277D0DC611407E5394F46DC5B84EAB6E64
+```
+This way, the only parameters for the OIDC request sent through the end-user browser is the request_uri parameter with the returned request_uri URN parameter and the client_id.
+
+> Note, that the PAR endpoint supports the same formats for client secrects usage as the Token endpoint. This means that you can supply the secret as post parameter, basic auth header, client assertions and other supported variants.
+
 ### Example: Request Object by Reference
 
 Example of a signed authentication request:
