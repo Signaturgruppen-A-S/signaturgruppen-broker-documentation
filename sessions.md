@@ -35,6 +35,7 @@ If **prompt=none** is used, a request for automatic login based on the end-user 
 ### Max age and authentication time
 
 The **max\_age** authentication parameter can be used to control how old an existing session can be before triggering a new authentication entirely.
+> Note that the **max_age** parameter is specified in **seconds**. Too small values will result in unexpected behavior.
 
 The **auth\_time** claim in the ID token will always contain the authentication time of the session which the token is issued from. In this way the **auth\_time** can be verified to ensure that the authentication was processed within the expected and/or allowed timeframe.
 
@@ -42,25 +43,7 @@ The **auth\_time** claim in the ID token will always contain the authentication 
 
 ADM-UI supports setting a default max\_age for a specific client, enabling control of the default maximum time from authentication before a new authentication must be processed for the end-user.
 
-# Session management
-
-Session management is supported by the methods described in this section.
-
-## OpenID Connect Prompt none
-
-An authentication request with the **prompt=none** will return with a specific error code if the end-user session is no longer valid for the requested authentication or return with updated tokens if the session is still active.
-
-## Session state from API endpoint
-
-Under development
-
-An API is under development, which will enable retrieval of session state based on the supplied ID token.
-
-The ID token may be expired and information like that of OIDC session management (iframe) can be expected (unchanged/changed).
-
 # Logout
-
-See "Signaturgruppen Broker Technical Reference" for reference to API swagger information.
 
 ## End session endpoint
 
@@ -74,7 +57,7 @@ See [[OIDC-BACK-CHANNEL] section 2.6](https://openid.net/specs/openid-connect-ba
 
 When done, the optional post\_logout\_redirect\_uri parameter is used to redirect the end-user back to the post logout URI if specified. If a valid post\_logout\_redirect\_uri is omitted, the end-user will not be redirected back to the service provider.
 
-Signaturgruppen Broker will ensure to call required logout endpoints at the external identity provider if required.
+Signaturgruppen Broker will ensure to call required backchannel logout endpoints at the external identity provider if required. This endpoint must be registered in the ADM-UI.
 
 ## Logout API endpoint
 
@@ -86,10 +69,11 @@ See [[OIDC-BACK-CHANNEL] section 2.6](https://openid.net/specs/openid-connect-ba
 
 After calling the Logout API endpoint the ID token should be discarded.
 
-Signaturgruppen Broker will ensure to call required logout endpoints at the external identity provider if required.
+Signaturgruppen Broker will ensure to call the backchannel logout endpoint at the external identity provider if configured in ADM-UI.
 
-# Single-Sign-On and Single-Log-Out (SSO and SLO)
+# Service Provider SSO and SLO
+By default a OIDC clients, identified by their client_id GUID, has their own local SSO which is not shared with any other integrations. 
 
-Signaturgruppen Broker supports various setups utilizing SSO either directly through Signaturgruppen Broker or identity providers like MitID.
+Signaturgruppen Broker supports setting clients to join a SSO defined by the Service Provider under which they belong in the ADM-UI. In doing so, these clients will automatically join and share the sessions being setup by the joined clients from the same service provider, enabling full SSO and SLO between these integrations. 
 
-This section will be updated at a later stage. Contact Signaturgruppen if you plan on utilizing SSO either directly through Signaturgruppen Broker or via MitID.
+It is recommended to support the backchannel logout endpoint and configure this for each participating client that joins a service provider SSO setup, in order to support a strong and flexible SLO mechanism.
