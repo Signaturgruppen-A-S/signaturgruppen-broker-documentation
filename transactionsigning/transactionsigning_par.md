@@ -6,6 +6,7 @@ nav_order: 5
 ---
 
 # Transasction signing with Pushed Authorization Request (PAR)
+For PAR reference, see [general section about PAR](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/par.html)
 
 ## Signtext API integration and PAR
 As an alternative to the Signtext API integration utilized to generate **signtext_id** parameters for the OIDC flows, the PAR endpoint available at Signaturgruppen Broker supports setting up the signtext payload directly through a single PAR integration. 
