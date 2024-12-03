@@ -30,11 +30,12 @@ The returned ID token contains the following claims relevant for session handlin
 
 If **prompt=login** is used, the end-user will be forced to complete the requested authentication flow. This can be used anytime it is required that the end-user completes the requested authentication flow, i.e. when requesting a signature from the end-user.
 
-If **prompt=none** is used, a request for automatic login based on the end-user session is requested. If the automatic login could not be honored, an error will be returned to the service. |
+If **prompt=none** is used, a request for automatic login based on the end-user session is requested. If the automatic login could not be honored, an error will be returned to the service.
 
 ### Max age and authentication time
 
 The **max\_age** authentication parameter can be used to control how old an existing session can be before triggering a new authentication entirely.
+
 > Note that the **max_age** parameter is specified in **seconds**. Too small values will result in unexpected behavior.
 
 The **auth\_time** claim in the ID token will always contain the authentication time of the session which the token is issued from. In this way the **auth\_time** can be verified to ensure that the authentication was processed within the expected and/or allowed timeframe.
