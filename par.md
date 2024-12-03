@@ -2,6 +2,7 @@
 title: Pushed Authorization Request (PAR)
 layout: home
 nav_order: 11
+parent: OpenID Connect integration
 ---
 
 # Pushed Authorization Request (PAR)
