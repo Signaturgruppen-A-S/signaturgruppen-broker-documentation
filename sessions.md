@@ -1,5 +1,5 @@
 ---
-title: Sessions
+title: Sessions and SSO
 layout: home
 nav_order: 18
 ---
