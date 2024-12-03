@@ -71,13 +71,6 @@ The **Pushed Authorization Request (PAR)** is a specification in the OAuth 2.0 a
 
 ---
 
-## Use Cases
-- Financial-grade API (FAPI) compliance, where high security is essential.
-- Applications requiring encrypted or signed request objects.
-- Complex authorization requests that exceed URL length limits.
-
----
-
 ## References
 - [OAuth 2.0 Pushed Authorization Requests (RFC 9126)](https://www.rfc-editor.org/rfc/rfc9126)
 - [OpenID Connect Core Specification](https://openid.net/specs/openid-connect-core-1_0.html)
