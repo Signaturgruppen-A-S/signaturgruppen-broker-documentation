@@ -10,6 +10,13 @@ Signaturgruppen Broker automatically issues or updates an end-user session upon 
 Sessions generally lives for hours (see session_expiry), but various mechanism available to integrating setups allow a fine-grained control and usage of the Signaturgruppen Broker end-user session.
 As default, each integrating client (OIDC client_id), has their own end-user session with the end-user which is not shared across other clients or services. Setting up a SSO allows for sharing sessions between services. 
 
+### Keep sessions alive or logout?
+In general, we do not require of integrating services that they logout end-user sessions. Often, it can be beneficial to allow reuse of existing sessions from the Signaturgruppen Broker allowing to reuse or step-up previously authentications. There is various mechanisms available to control the login behavior for reuse or explicitly not reusing sessions, see prompt and max age options below.
+
+If you have requirements for logout of the Signaturgruppen Broker sessions, we have various methods to terminate the end-user session created by the authentication. 
+
+> We often see that integrations logout / terminate the end-user session immediately after authentication. This should in general be avoided. If this is a strict requirement, please contact Signaturgruppen to discuss this approach and possible better alternatives.
+
 ## ID token session information
 
 The returned ID token contains the following claims relevant for session handling
