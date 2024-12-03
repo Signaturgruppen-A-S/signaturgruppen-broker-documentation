@@ -2,6 +2,7 @@
 title: OpenID Connect integration
 layout: home
 nav_order: 10
+has_children: true
 ---
 
 ## OpenID Connect integration
