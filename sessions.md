@@ -28,7 +28,9 @@ The returned ID token contains the following claims relevant for session handlin
 | max\_age | Specifies the allowable elapsed time in seconds since the last time the end-user was actively authenticated by Signaturgruppen Broker. If the elapsed time is greater than this value, Signaturgruppen Broker will ensure to actively re-authenticate the end-user. **Note:** If special scopes for handling of special claims (CPR and "Private to Business"-mappings) are used max\_age should allow for these flows to complete within the session. |
 | prompt | Space delimited, case sensitive list of ASCII string values that specifies whether the Authorization Server prompts the end-user for reauthentication.Supported values are <ul><li>**none** (no ui for authentication)</li><li>**login** (force authentication request)</li></ul> |
 
-If **login** is used, the end-user will be forced to complete the requested authentication flow. This can be used anytime it is required that the end-user completes the requested authentication flow, i.e. when requesting a signature from the end-user.If **none** is used, a request for automatic login based on the end-user session is requested. If the automatic login could not be honored, an error will be returned to the service.If **select\_account** is used, the end-user will be allowed to select among the available identity providers for the given flow, even though the end-user has an active session with Signaturgruppen Broker. It does not trigger a forced reauthentication, so if the end-user selects the same identity provider for which he has an active session, he will be automatically reauthenticated. |
+If **prompt=login** is used, the end-user will be forced to complete the requested authentication flow. This can be used anytime it is required that the end-user completes the requested authentication flow, i.e. when requesting a signature from the end-user.
+
+If **prompt=none** is used, a request for automatic login based on the end-user session is requested. If the automatic login could not be honored, an error will be returned to the service. |
 
 ### Max age and authentication time
 
