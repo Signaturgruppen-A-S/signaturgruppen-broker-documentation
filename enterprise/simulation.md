@@ -8,7 +8,7 @@ nav_order: 7
 
 # Simulation and Enterprise End-to-End Testing
 
-> If interested, contact sales for more information on pricing.
+> If interested and for more information on pricing, contact sales: <salg@signaturgruppen.dk>.
 
 The **Simulation and Enterprise End-to-End Testing** feature in the Signaturgruppen Broker provides a robust way to integrate with the broker's OIDC interface while simulating external dependencies. This feature enables seamless testing and operation in scenarios where external integrations to Signaturgruppen Broker may not be online or fully functional.
 
