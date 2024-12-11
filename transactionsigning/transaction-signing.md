@@ -6,6 +6,7 @@ has_children: true
 ---
 
 # Transaction signing
+> If interested, contact sales for more information on pricing.
 
 ## Signtext API swagger reference
 
