@@ -164,10 +164,12 @@ func canOpenMitIDApp() -> Bool {
 }
 ```
 ### MitID static appswitch URL
+In order to appswitch (without channel-binding) to the MitID app, (appswitch-) redirect to the following OS specific URL.
+
 #### Android
-https://appswitchmitid.page.link/?apn=dk.mitid.app.android&afl=https://appswitch.mitid.dk&link=https://appswitch.mitid.dk
+[https://appswitchmitid.page.link/?apn=dk.mitid.app.android&afl=https://appswitch.mitid.dk&link=https://appswitch.mitid.dk](https://appswitchmitid.page.link/?apn=dk.mitid.app.android&afl=https://appswitch.mitid.dk&link=https://appswitch.mitid.dk)
 #### IOS
-https://appswitch.mitid.dk
+[https://appswitch.mitid.dk](https://appswitch.mitid.dk)
 
 ## Postman example
 
