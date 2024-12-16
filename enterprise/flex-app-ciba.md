@@ -107,6 +107,7 @@ In order to activate MitID appswitching without channel-binding, the following s
 ### Appswitch parameters for the flow
 
 The following two parameters must be specified when setting up MitID appswitching:
+
 | Parameter  | Values  |
 |---|---|
 | appOS  | 'IOS' or 'Android'  |
