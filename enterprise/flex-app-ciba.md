@@ -23,6 +23,10 @@ client_id: "62b8cc03-aa73-4d6a-922c-7c8fb0a4a1d9"
 client_secret: "mIpxk84FI1wpc7cP7nodFLfgQQ1ScZHYO44FZ9wPOqrB0ha9S5RUNYPXMkrCWwRjGqEH0hflnIJea8IKmW19aQ=="
 ```
 
+### Postman example
+
+The test example is also available as a [Postman collection here](https://raw.githubusercontent.com/Signaturgruppen-A-S/signaturgruppen-broker-documentation/main/enterprise/files/ciba_pp.postman_collection.json)
+
 ## Steps of the flow (API)
 
 ### Initiating
@@ -170,8 +174,4 @@ In order to appswitch (without channel-binding) to the MitID app, (appswitch-) r
 [https://appswitchmitid.page.link/?apn=dk.mitid.app.android&afl=https://appswitch.mitid.dk&link=https://appswitch.mitid.dk](https://appswitchmitid.page.link/?apn=dk.mitid.app.android&afl=https://appswitch.mitid.dk&link=https://appswitch.mitid.dk)
 #### IOS
 [https://appswitch.mitid.dk](https://appswitch.mitid.dk)
-
-## Postman example
-
-The test example is also available as a [Postman collection here](https://raw.githubusercontent.com/Signaturgruppen-A-S/signaturgruppen-broker-documentation/main/enterprise/files/ciba_pp.postman_collection.json)
 
