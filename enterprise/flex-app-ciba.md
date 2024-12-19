@@ -103,31 +103,10 @@ Appswitching to the MitID app can be done with or without channel-binding enable
 
 In order to activate MitID appswitching without channel-binding, the following steps must be taken.
 * The integrating service must be exempted from the channel-binding requirement
-* The integrating app must set a valid appswitch return URL, which will be used by the MitID app to redirect the end-user back to the integrating app, when the MitID flow is completed.
 * The MitID flow must be successfully started for the user.
 * The integrating app should verify that the MitID app is installed on the running system. If not able to do so, there should be a strong indication of some means that the user would want to appswitch.
-* Appswitch to the OS specific static MitID appswitch URL
-
-### Appswitch parameters for the flow
-
-The following two parameters must be specified when setting up MitID appswitching:
-
-| Parameter  | Values  |
-|---|---|
-| appOS  | 'IOS' or 'Android'  |
-| appSwitchReturnUrl  | URL  |
-
-An example of a valid appswitch return URL is set in the following request example: 
-
-```
-curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'grant_type=urn:openid:params:grant-type:ciba' \
---data-urlencode 'scope=openid' \
---data-urlencode 'client_id=62b8cc03-aa73-4d6a-922c-7c8fb0a4a1d9' \
---data-urlencode 'client_secret=mIpxk84FI1wpc7cP7nodFLfgQQ1ScZHYO44FZ9wPOqrB0ha9S5RUNYPXMkrCWwRjGqEH0hflnIJea8IKmW19aQ==' \
---data-urlencode 'login_hint_token={"idp":"mitid", "uuid":"8a9856e0-f12d-4217-b320-c8a076be9320", "referenceTextBody":"Testing MitID Flex app 😉", "ip":"1.1.1.1", "appSwitchReturnUrl": "https://your-app.dk/backfrommitid", "appOS": "IOS"}'
-```
+* Appswitch to the OS specific static MitID appswitch URL.
+* Optionally setup a "returnUrl" query parameter in the MitID appswitch URL. This is used by MitID to redirect the end-user back to the integrating app.
 
 ### Testing for the MitID app
 
@@ -171,7 +150,31 @@ func canOpenMitIDApp() -> Bool {
 In order to appswitch (without channel-binding) to the MitID app, (appswitch-) redirect to the following OS specific URL.
 
 #### Android
-[https://appswitchmitid.page.link/?apn=dk.mitid.app.android&afl=https://appswitch.mitid.dk&link=https://appswitch.mitid.dk](https://appswitchmitid.page.link/?apn=dk.mitid.app.android&afl=https://appswitch.mitid.dk&link=https://appswitch.mitid.dk)
+> Important for the Android URL to URL encode it as shown in the examples.
+
+All environments (Install the MitID app for target environment last on device, this will handle the appswitch):
+```
+https://appswitchmitid.page.link/?apn=dk.mitid.app.android&afl=https%3A%2F%2Fappswitch.mitid.dk&link=https%3A%2F%2Fappswitch.mitid.dk
+```
+
+With **returnUrl** parameter (add: **%3FreturnUrl%3D[Encoded URL]**):
+```
+https://appswitchmitid.page.link/?apn=dk.mitid.app.android&afl=https%3A%2F%2Fappswitch.mitid.dk&link=https%3A%2F%2Fappswitch.mitid.dk%3FreturnUrl%3Dhttps%3A%2F%2Fappswitch.to.app.url%2Fandroid
+```
+
 #### IOS
-[https://appswitch.mitid.dk](https://appswitch.mitid.dk)
+PP environment:
+```
+https://appswitch-test.mitid.nets.eu
+```
+
+Production environment:
+```
+https://appswitch.mitid.dk
+```
+
+With **returnUrl** parameter (requires trailing **"/"** on MitID URL):
+```
+https://appswitch.mitid.dk/?returnUrl=https://appswitch.to.app/ios
+```
 
