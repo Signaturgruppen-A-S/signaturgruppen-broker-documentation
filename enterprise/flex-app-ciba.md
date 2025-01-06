@@ -192,4 +192,4 @@ In the following the different error codes will be mapped.
 |--------|--------|
 |  authorization_pending      | Flow still pending accept/reject from end-user       |
 |  invalid_grant      | Invalid request id or flow no longer valid. Note that tokens can only be returned once, then flow is invalidated.      |
-|  rejected      | Invalid request id or flow no longer valid. Note that tokens can only be returned once, then flow is invalidated.      |
+|  rejected      | End-user has rejected the authentication request.      |
