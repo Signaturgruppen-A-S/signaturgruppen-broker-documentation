@@ -177,4 +177,19 @@ With **returnUrl** parameter (requires trailing **"/"** on MitID URL):
 ```
 https://appswitch.mitid.dk/?returnUrl=https://appswitch.to.app/ios
 ```
+## Status codes from Poll
+When invoking the poll CIBA endpoint, non completed/successful results will be returned in the following JSON format, here with the "pending" example:
 
+```
+{
+    "error": "authorization_pending"
+}
+```
+
+In the following the different error codes will be mapped.
+
+| Error | Description |
+|--------|--------|
+|  authorization_pending      | Flow still pending accept/reject from end-user       |
+|  invalid_grant      | Invalid request id or flow no longer valid. Note that tokens can only be returned once, then flow is invalidated.      |
+|  rejected      | Invalid request id or flow no longer valid. Note that tokens can only be returned once, then flow is invalidated.      |
