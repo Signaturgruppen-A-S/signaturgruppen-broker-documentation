@@ -12,7 +12,7 @@ has_children: true
 
 | **Swagger endpoint URL** | **Description** |
 | --- | --- |
-| **\[Authority URL\]/ transactionsigning/swagger/index.html** | The swagger description of the available Signaturgruppen Broker Transaction Signing API |
+| **\[Authority URL\]/ transactionsigning/api/swagger/index.html** | The swagger description of the available Signaturgruppen Broker Transaction Signing API |
 
 ## Authorization towards Signtext API
 
