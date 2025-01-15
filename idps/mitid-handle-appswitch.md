@@ -155,6 +155,18 @@ It is possible to setup a button or other mechanisms that all require user inter
 
 So, the backend must notify the app that the flow is completed, or the user must click on something, in order to escape the TAB and get back to the app.
 
+# FAQ - Still not working
+You have read the above documentation and implemented your app switch integration, but you still have some issues not resolved yet. We will try to address that common scenarios here. 
+
+We will expand this section (and the documentation) based on feedback.
+
+## App backend (still) not directly involved in the OIDC flow
+Due to the requirement of Universal Link / App Link and use of Custom Tabs or SFSafariViewController the integrating app is unable to automatically detect when the MitID browser flow is completed and combined with the requirement for Universal Links and App Links to only trigger on direct user interaction (i.e. clicking something typically), then the last step in the OIDC protocol where Signaturgruppen Broker redirects the user to the "redirect_uri" will not trigger app switch back to the app. 
+
+The easy fix is to introduce an extra button like "Finish and return to app" rendered on this last URL that then trigger an app switch back to the app with the appropriate information, like the "?code=xx&state=yy" query parameters from the OIDC flow. But this will then always require this extra user-click.
+
+To optimize the UX for the flow and to avoid the last "Finish and return to app" button click, it is required to involve the app backend directly and have the last "redirect_uri" redirect be a app backend URL that handles the incoming OIDC response (?code&state), optimally completing the flow and setting up state for the app and then try to notify the app that the flow is completed using available mechanisms, like data push messages if available for the app. If this backend to app notification is unableable or does not work for the flow, then a (delayed) "Finish and return to app" button is rendered which is able to trigger app switch back into the app.
+
 # MitID app-switch implementation and channel-binding
 
 Starting with MitID release 11, in production from 06.06.23, the MitID app-switch functionality changes behavior, as the MitID setup introduces required channel-binding for all MitID flows.
