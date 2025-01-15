@@ -27,7 +27,7 @@ On Android it is possible to detect if Chrome or the Samsung browser is availabl
 
 It is a security requirement that the end-user is presented with the address bar from the browser to allow the end-user to verify the **mitid.dk** domain during the MitID flow. It is not allowed to hide the address bar for the Custom Tabs or SFSafariViewController instances.
 
-**Embedded browsers, i.e.WebViews, are not supported and not allowed – thus integrations must adhere strictly using to the Android Custom Tabs (Chrome or Samsung browser) or iOS SFSafariViewController (**TAB**) for all MitID integration flows.**
+**Embedded browsers, i.e.WebViews, are not supported and not allowed – thus integrations must adhere strictly using to the Android Custom Tabs (Chrome or Samsung browser) or iOS SFSafariViewController (**TAB**) for all MitID integration flows. It is a specific requirement from MitID that Custom Tabs or SFSafariViewController is used - other options are technically available, but not allowed by MitID.**
 
 **MitID requires that the address bar is visible, such that the end-user can see the https and MitID domain when authenticating with MitID.**
 
