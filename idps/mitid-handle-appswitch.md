@@ -17,7 +17,7 @@ nav_order: 2
 
 This document is a technical guide for MitID app integration.
 
-> DISCLAIMER: This document is the Signaturgruppen Broker recommendation for Android and iOS integrations for MitID, other options might be available. Signaturgruppen Broker does not provide general support for native app integrations. Use this document as a guide only.
+> DISCLAIMER: This document is the Signaturgruppen Broker recommendation for Android and iOS integrations for MitID, other options might be available. Use this document as a guide only.
 
 ## Supported browsers
 
