@@ -165,7 +165,7 @@ Due to the requirement of Universal Link / App Link and use of Custom Tabs or SF
 
 The easy fix is to introduce an extra button like "Finish and return to app" rendered on this last URL that then trigger an app switch back to the app with the appropriate information, like the "?code=xx&state=yy" query parameters from the OIDC flow. But this will then always require this extra user-click.
 
-To optimize the UX for the flow and to avoid the last "Finish and return to app" button click, it is required to involve the app backend directly and have the last "redirect_uri" redirect be a app backend URL that handles the incoming OIDC response (?code&state), optimally completing the flow and setting up state for the app and then try to notify the app that the flow is completed using available mechanisms, like data push messages if available for the app. If this backend to app notification is unableable or does not work for the flow, then a (delayed) "Finish and return to app" button is rendered which is able to trigger app switch back into the app.
+To optimize the UX for the flow and to avoid the last "Finish and return to app" button click, it is required to involve the app backend directly and have the last "redirect_uri" redirect be a app backend URL that handles the incoming OIDC response (?code&state), optimally completing the flow and setting up state for the app and then try to notify the app that the flow is completed using available mechanisms, like data push messages if available for the app. If this backend to app notification is unavailable or does not work for the flow, then a (delayed) "Finish and return to app" button is rendered which is able to trigger app switch back into the app.
 
 # MitID app-switch implementation and channel-binding
 
