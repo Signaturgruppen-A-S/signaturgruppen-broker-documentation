@@ -186,10 +186,13 @@ When invoking the poll CIBA endpoint, non completed/successful results will be r
 }
 ```
 
-In the following the different error codes will be mapped.
+In the following the different error codes will be mapped. These errors are returned with HTTP status code 400 Bad Request. 
 
 | Error | Description |
 |--------|--------|
 |  authorization_pending      | Flow still pending accept/reject from end-user       |
 |  invalid_grant      | Invalid request id or flow no longer valid. Note that tokens can only be returned once, then flow is invalidated.      |
-|  rejected      | End-user has rejected the authentication request.      |
+|  access_denied      | End-user has rejected the authentication request.      |
+|  slow_down      | Request is still pending, but polling is too frequent.     |
+|  expired_token      | The request_id has expired     |
+| mitid_flex_app.mitid_error_{mitid_status_code} | Error from MitID with the corresponding MitID status code |
