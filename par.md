@@ -30,33 +30,32 @@ The **Pushed Authorization Request (PAR)** is a specification in the OAuth 2.0 a
 ### Example PAR Flow
 
 1. **Client Pushes Authorization Request**:
-   ```http
-   POST /as/par HTTP/1.1
-   Host: authorization-server.example.com
+   ```https
+   POST /op/connect/par HTTP/1.1
+   Host: pp.netseidbroker.dk
    Content-Type: application/x-www-form-urlencoded
    Authorization: Basic <Base64(client_id:client_secret)>
-   
-   client_id=client123
+
+   client_id=0a775a87-878c-4b83-abe3-ee29c720c3e7
    &response_type=code
-   &redirect_uri=https%3A%2F%2Fclient.example.com%2Fcallback
-   &scope=openid%20profile
+   &redirect_uri=https%3A%2F%2Fopenidconnect.net%2Fcallback
+   &scope=openid%20mitid
    ```
 
 2. **Authorization Server Responds**:
    ```http
    HTTP/1.1 201 Created
    Content-Type: application/json
-   
    {
-     "request_uri": "urn:example:request:abc123",
-     "expires_in": 300
+    "request_uri": "urn:ietf:params:oauth:request_uri:49FBAF9C1A282A0721038DAAA2452449DF269F0B816F8EAF0FAF2A8B242AA5BC",
+    "expires_in": 600
    }
    ```
 
 3. **Client Redirects User to Authorization Endpoint**:
    ```http
-   GET /authorize?client_id=client123&request_uri=urn:example:request:abc123 HTTP/1.1
-   Host: authorization-server.example.com
+   GET /op/connect/authorize?client_id=0a775a87-878c-4b83-abe3-ee29c720c3e7&request_uri=urn:ietf:params:oauth:request_uri:49FBAF9C1A282A0721038DAAA2452449DF269F0B816F8EAF0FAF2A8B242AA5BC HTTP/1.1
+   Host: pp.netseidbroker.dk
    ```
 
 4. **User Authorizes and Completes Flow**:  
