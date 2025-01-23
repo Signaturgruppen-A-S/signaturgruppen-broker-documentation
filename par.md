@@ -30,7 +30,7 @@ The **Pushed Authorization Request (PAR)** is a specification in the OAuth 2.0 a
 ### Example PAR Flow
 
 1. **Client Pushes Authorization Request**:
-   ```https
+   ```http
    POST /op/connect/par HTTP/1.1
    Host: pp.netseidbroker.dk
    Content-Type: application/x-www-form-urlencoded
