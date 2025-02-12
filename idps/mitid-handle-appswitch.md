@@ -24,7 +24,7 @@ This document is a technical guide for MitID app integration.
 
 It is required that the reader has a basic understanding of the technical details for Android Custom Tabs and App Linking and for iOS SFSafariViewController, ASWebAuthenticationSession and Universal Links.
 
-## Supported browsers
+# Supported browsers
 
 MitID only tests and support the browsers that have at least 2% market share on each platform. MitID does not test and support embedded browsers for MitID flows.
 
@@ -34,10 +34,10 @@ It is a security requirement that the end-user is presented with the address bar
 
 **MitID requires that the address bar is visible, such that the end-user can see the https and MitID domain when authenticating with MitID.**
 
-### Android browsers
+## Android browsers
 On Android the sole recommendation is to use Custom Tabs targeting the Chrome browser. 
 
-### iOS browser
+## iOS browser
 On iOS two recommended options are available. 
 
 1. SFSafariViewController - Officially supported by MitID.
@@ -93,13 +93,37 @@ When setting up the Custom Tab instance, the app can register a [postMessage cha
 
 This registration is done in similar ways as for App Link registration, by setting up appropriate settings in the assetlinks.json file in the root of the target domain.
 
+## App links
+
+To enable the MitID app to return to your SP app via App Links, you need to add an intent filter to your main activity in your Manifest.xml, as shown below:
+
+```
+<intent-filter android:autoVerify="true">
+<action android:name="android.intent.action.VIEW" >
+<category android:name="android.intent.category.DEFAULT" >
+<category android:name="android.intent.category.BROWSABLE" >
+
+<data
+android:scheme="https"
+android:host="App Links URL" />
+</intent-filter>
+```
+
+Furthermore, you need to host an assetlinks.json file on your domain, and the domain should match the host in the manifest file.
+
+See, <https://developer.android.com/training/app-links>.
+
 # iOS
 
-On iOS the SFSafariViewController is part of the app instance and thus when navigating from the TAB to the MitID app and back to the app using app-switch, the TAB will be in focus.
+On iOS the SFSafariViewController is part of the app instance and thus when navigating to the MitID app and back to the app using app switch, the TAB will be in focus.
 
 The SFSafariViewController do not offer the same control for the app as a standard WebView and does not offer any useful way for the app to get notified on redirects and URL changes in the browser, which introduces some of the changes required in order to properly implement app switch for MitID and other high-security scenarios.
 
-## App switch for non-app browser flows
+## Universal links
+
+To enable the MitID app to return to the app, the app needs to implement a Universal link by hosting an apple-app-site-association file in the root of the relavant domain and register a matching associated domain in the app, see <https://developer.apple.com/ios/universal-links/>.
+
+# App switch for non-app browser flows
 
 MitID has introduced app switching for all mobile browsers and thus enabled that the user is able to app switch to the MitID app directly from a normal browser on a mobile device.
 
@@ -130,30 +154,3 @@ idp_params=%7B%22mitid%22%3A%7B%22enable_app_switch%22%3A%20true%2C%20%22app_swi
 ```
 
 <table><tbody><tr><th><p><strong>Identity Provider parameters (mitid)</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>enable_app_switch</p></td><td><p>Type: bool. Default: false.</p><p>If true, enables MitID app switch for the flow.</p></td></tr><tr><td><p>app_switch_os</p></td><td><p>Type: string</p><p>One of the following values:</p><ul><li>ios</li><li>android</li></ul></td></tr><tr><td><p>app_switch_url</p></td><td><p>Type: String</p><p>Specify the Universal Link / App Links URL that your app can handle.</p><p>For non-signed OIDC requests, the URL must be whitelistet for your OIDC client.</p></td></tr></tbody></table>
-
-# Enable returning from MitID app to the service provider App
-
-## Android
-
-To enable the MitID app to return to your SP app via App Links, you need to add an intent filter to your main activity in your Manifest.xml, as shown below:
-
-```
-<intent-filter android:autoVerify="true">
-<action android:name="android.intent.action.VIEW" >
-<category android:name="android.intent.category.DEFAULT" >
-<category android:name="android.intent.category.BROWSABLE" >
-
-<data
-android:scheme="https"
-android:host="App Links URL" />
-</intent-filter>
-```
-
-
-Furthermore, you need to host an assetlinks.json file on your domain, and the domain should match the host in the manifest file.
-
-See, <https://developer.android.com/training/app-links>.
-
-## iOS
-
-To enable the MitID app to return to an SP app, the SP needs to implement a Universal link. Which is done by hosting an apple-app-site-association file on a broker/service provider web site and register a matching associated domain in the app, see <https://developer.apple.com/ios/universal-links/>.
