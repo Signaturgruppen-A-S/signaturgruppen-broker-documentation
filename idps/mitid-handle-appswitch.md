@@ -20,6 +20,8 @@ This document is a technical guide for MitID app integration.
 
 > DISCLAIMER: This document is the Signaturgruppen Broker recommendation for Android and iOS integrations for MitID, other options might be available. Use this document as a guide only.
 
+It is required that the reader has a basic understanding of the technical details for Android Custom Tabs and App Linking and for iOS SFSafariViewController, ASWebAuthenticationSession and Universal Links.
+
 ## Supported browsers
 
 MitID only tests and support the browsers that have at least 2% market share on each platform. MitID does not test and support embedded browsers for MitID flows.
@@ -51,42 +53,32 @@ For reference, see
 * [iOS SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller).
 * [iOS ASWebAuthenticationSesssion](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession)
 
-# OpenID Connect and app backend
-
-The following is an example of how to implement the integration and is based on the approach recommended by Signaturgruppen Broker.
-
-It is highly recommended, and in many cases required, that an app-integration for MitID has a backend that can handle most of the OpenID Connect, security and API integration to the Signaturgruppen Broker required for the full flow.
-
-> Note, in many non-MitID app switch integrations utilizing OAuth or OpenID Connect integrations, it has been normal to handle the app switch and OIDC protocol like the "code" received directly through the app, such that the app to browser and browser to app communication did not involve the backend directly. This approach is somewhat hindered in the MitID app switch scenario, as the combined technical requirements for the flow makes it recommended to involve the app backend directly in the flow. For some setups this has rather large consequences, so it is important to **read and understand** this documentation.
+# MitID app switch flow overview
 
 In broad terms, the recommended flow can be described in the following way:
 
-- All OpenID Connect (OIDC) handling is done by the app backend.
-- The backend generates the initial authentication URL
-- The app opens the authentication URL in TAB
+- The app backend generates the initial authentication URL
+- The app opens the authentication URL in the browser
 - The end-user completes the MitID flow by app-switching to the MitID app by clicking the blue button in the MitID flow.
-- When the flow is completed in the MitID app, the end-user is redirected back to the specified app-switch url, AppLinks / Universal Link handled, and is app-switched back to the app.
-- The app then ensures that the Custom Tab / SFSafariViewController gets into focus again in order to allow the MitID client to finish the MitID flow.
-- The MitID flow will complete in the TAB and the end user will be redirected to the "redirect_uri" of the OIDC protocol.
+- When the flow is completed in the MitID app, the end-user is redirected back to the specified AppLinks / Universal Link app-switch url, and is app-switched back to the app.
+- **The app then ensures that the Custom Tab / SFSafariViewController / ASWebAuthenticationSession gets into focus again in order to allow the MitID client to finish the MitID flow.**
+- The MitID flow will complete in the browser and the end user will be redirected to the "redirect_uri" of the OIDC protocol.
 - **The last redirect will not trigger app switch (Universal Link / App Link) as this will not be considered a redirect following user-interaction.**
-- The "redirect_uri" should point to a app backend URL which handles the completion of the OIDC flow and follows the guides from this documentation to terminate the app switch flow and get the end user back to the app again. See the documentation for options here (as app switching does not trigger automatically for this last redirect).
-- The MitID flows are completed in the TAB and the app can complete the flow based on information received from the app backend or from the TAB.
+- The app is notified by the relevant mechanism, that the flow is completed. This step is platform and browser dependent. It is recommended to have a fallback option by rendering a button that the end-user can click which will app switch back into the app, should other automatic mechanisms have failed at this stage. 
 
-## App backend handles all OIDC flows using a secure OIDC client
+## App- / URL- / Custom Schemes vs App Links and Universal Links
+The standard way for many app integrations to detect, complete and close the browser-flow in a app switch scenario has been to utilize app schemes, such as app-scheme://oidc-redirect-url, to enable the browser flow to automatically generate an event in the app.
+This still works on iOS, but Chrome has begun to require user-interaction for this to work, which for most intends and purposes breaks this on Android. From a security perspective, the app scheme protocol should not be used.
 
-Only allowing the app backend to request the signed tokens and access the APIs on the Signaturgruppen Broker platform using a secure client strengthens the security of the setup. It is highly recommended, that both web- and app applications utilizes this approach to have no OIDC client configured client-side, but have the app-backend setup and handle all the specific integrations (except opening the browser with the generated OIDC URL).
+# Android 
 
-## Custom Tabs and SFSafariViewController differences
+# iOS
 
-The two implementations are in many ways identical, but with respect to the MitID app-switch integration, there are some key differences that affect how the general handling can and should be implemented.
+The SFSafariViewController do not offer the same control for the app as a standard WebView and does not offer any useful way for the app to get notified on redirects and URL changes in the browser, which introduces some of the changes required in order to properly implement app switch for MitID and other high-security scenarios.
 
-## Custom Schemes vs App Links and Universal Links
-The standard way for many integrations to detect, complete and close the browser-flow in a **TAB** has been to utilize custom schemes, such as custom-scheme://oidc-redirect-url, to enable the browser flow to automatically generate an event in the app. 
-This still works on iOS, but Chrome has begun to require user-interaction for this to work, which for most intends and purposes breaks this on Android. From a security perspective, the custom scheme protocol should not be used.
-
-The **TAB** implementations do not offer the same control for the app as a standard WebView and does not offer any useful way for the app to get notified on redirects and URL changes in the browser, which introduces some of the changes required in order to properly implement app switch for MitID and other high-security scenarios.
-
-It is **highly recommended**, and the only option we will endorse, to utilize the Android App Links and iOS Universal Links protocols for app switching back to your initiating app.
+## App- / URL- / Custom Schemes vs App Links and Universal Links
+The standard way for many app integrations to detect, complete and close the browser-flow in a app switch scenario has been to utilize app schemes, such as app-scheme://oidc-redirect-url, to enable the browser flow to automatically generate an event in the app.
+This still works on iOS, but Chrome has begun to require user-interaction for this to work, which for most intends and purposes breaks this on Android. From a security perspective, the app scheme protocol should not be used.
 
 ## Part of app instance or not?
 
