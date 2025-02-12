@@ -22,17 +22,34 @@ This document is a technical guide for MitID app integration.
 
 ## Supported browsers
 
-MitID only tests and support the browsers that have at least 2% market share and thus it is a requirement, that app switch integrations on Android use Custom Tab targeting Chrome or the Samsung browser.
+MitID only tests and support the browsers that have at least 2% market share on each platform. MitID does not test and support embedded browsers for MitID flows.
 
-On Android it is possible to detect if Chrome or the Samsung browser is available before starting the Custom Tabs intent.
+On Android it is possible to detect if Chrome or the Samsung browser is available before starting the Custom Tabs intent, it is recommended to target Chrome, as we have seen some issues on some devices with the Samsung browser.
 
 It is a security requirement that the end-user is presented with the address bar from the browser to allow the end-user to verify the **mitid.dk** domain during the MitID flow. It is not allowed to hide the address bar for the Custom Tabs or SFSafariViewController instances.
 
-**Embedded browsers, i.e.WebViews, are not supported and not allowed – thus integrations must adhere strictly using to the Android Custom Tabs (Chrome or Samsung browser) or iOS SFSafariViewController (**TAB**) for all MitID integration flows. It is a specific requirement from MitID that Custom Tabs or SFSafariViewController is used - other options are technically available, but not allowed by MitID.**
-
 **MitID requires that the address bar is visible, such that the end-user can see the https and MitID domain when authenticating with MitID.**
 
-For reference, see [Android Custom Tabs](https://developer.chrome.com/docs/android/custom-tabs) and [iOS SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller).
+### Android browsers
+On Android the sole recommendation is to use Custom Tabs targeting the Chrome browser. 
+
+For reference, see [Android Custom Tabs](https://developer.chrome.com/docs/android/custom-tabs).
+
+### iOS browser
+On iOS two recommended options are available. 
+
+1. SFSafariViewController - Officially supported by MitID.
+2. ASWebAuthenticationSession - Not officially supported by MitID. Recommended by Signaturgruppen.
+
+The SFSafariViewController supports running the Safari browser as part of an iOS app, whereas the ASWebAuthenticationSession is a secure embedded browser. 
+
+Signaturgruppen recommend the ASWebAuthenticationSession, as this provides a proper termination hook that allows for a better handling of the UX in the app switch flow. Signaturgruppen consider the risk of a future MitID update to cause errors with the ASWebAuthenticationSession functionality to be small.
+
+> MitID does not test and support anything but the SFSafariViewController, but does allow the usage of ASWebAuthenticationSession, there is no official support from MitID, should ASWebAuthenticationSession stop working with MitID on iOS.
+
+For reference, see 
+* [iOS SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller).
+* [iOS ASWebAuthenticationSesssion](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession)
 
 # OpenID Connect and app backend
 
