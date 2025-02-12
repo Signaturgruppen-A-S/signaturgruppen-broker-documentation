@@ -70,17 +70,28 @@ App Links (Android) and Universal Links (iOS) is the recommended mechanism for a
 
 # Android 
 
-On Android the TAB can be started as “single-instance” or “single-task”, which affects the behavior. When choosing single-instance, the TAB is started as a separate instance, whereas with single-task, the TAB will be part of the app process. In both scenarios, the TAB will by default stay in the background when returning to the app via App Links app-switching and thus some handling is required here to get the TAB in the foreground again, which is required in order to ensure that the MitID browser flow is able to complete.
+On Android the Custom Tab can be started as “single-instance” or “single-task”, which affects the behavior. When choosing single-instance, the Custom Tab is started as a separate instance, whereas with single-task, the Custom Tab will be part of the app process. In both scenarios, the Custom Tab will by default stay in the background when returning to the app via App Links app-switching and thus some handling is required here to get the Custom Tab in the foreground again, which is required in order to ensure that the MitID browser flow is able to complete.
 
 In both cases, the browser is still able to complete any flow in the background, if able and when the device is not running in power-saving mode.
 
-The flow can in most cases be completed with the TAB in the background, but there are situations where it is required to have it in the foreground. It is also expected that the MitID client “finish” screen is shown in the browser to the user – so it is a general recommendation to show the TAB until the flows has completed.
+The flow can in most cases be completed with the Custom Tab in the background, but there are situations where it is required to have it in the foreground. It is also expected that the MitID client “finish” screen is shown in the browser to the user – so it is a general recommendation to show the Custom Tab until the flows has completed.
 
-## Android Custom Tabs getting back to the foreground
+## Getting Custom Tabs back to the foreground
+Direct app switch back to the app will not automatically get the Android Custom Tab browser to the foreground, but instead puts the app activity that handles the app-switch in the foreground.
 
-Direct app-switch back to the SP app will not automatically get the Android Custom Tab browser to the foreground, but instead puts the SP app activity that handles the app-switch in the foreground.
+If the intention is to have the Custom Tab to the foreground after the app-switch to the app, then it is possible to register an empty activity to handle the app-switch event from the app switch URL given to the MitID app flow and then let this activity close itself upon getting to the foreground based on this event. This will pop this activity and then get the Custom Tab to the foreground. Here it is required to register the Custom Tab as running in “single-task” mode.
 
-If the intention is to have the TAB to the foreground after the app-switch to the SP app, then it is possible to register an empty activity to handle the app-switch event from the return URL given to the MitID app flow and then let this activity close itself upon getting to the foreground based on this event. This will pop this activity and then get the TAB to the foreground. Here it is required to register the TAB as running in “single-task” mode.
+## Detection of termination of Custom Tab flow
+When the MitID flow completes after the app switch back from the MitID app to the integrating app, there is no inherent way to detect that the flow is completed and to automatically terminate the Custom Tab and return the flow into the app.
+
+App schemes should be avoided and have pitfalls here, App Links will not automatically trigger at this last step, due to the last redirect in the flow not being based on user-interaction. The integrating service should in all scenarios implement the last redirect of the flow to render a button for the end-user which will then trigger an app switch back into the app.
+Then, to avoid this last end-user button click, it is possible to setup a  postMessage channel between the app and the Custom Tab instance, allowing the rendered page at the last step to notify the app of completion and pass along any required parameters as well, which will enable automatic termination of the flow.
+
+### Custom Tab postMessage channel
+
+When setting up the Custom Tab instance, the app can register a [postMessage channel](https://developer.android.com/reference/androidx/browser/customtabs/CustomTabsSession#requestPostMessageChannel(android.net.Uri)), which allows for JavaScript running at allowed domains to communicate with the app via JS Post Messaging. 
+
+This registration is done in similar ways as for App Link registration, by setting up appropriate settings in the assetlinks.json file in the root of the target domain.
 
 # iOS
 
