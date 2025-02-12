@@ -11,6 +11,7 @@ nav_order: 2
 | **Term** | **Description** |
 | --- | --- |
 | Android Custom Tabs (**TAB**)<br><br>iOS SFSafariViewController (**TAB**) | The Android Custom Tabs and the iOS SFSafariViewController are a platform specific sandbox of the system default browser, which enables are more seamless and secure browser integration from native apps. |
+| ASWebAuthenticationSession  | iOS specific authentication session, the browser is a secure, embedded web view. |
 | Android App Links <br><br>iOS Universal Links | [Android App Links](https://developer.android.com/training/app-links) and [iOS Universal Links](https://developer.apple.com/ios/universal-links/) is the required way to implement appswitching for MitID.<br/> |
 
 # Introduction
