@@ -10,9 +10,11 @@ nav_order: 2
 
 | **Term** | **Description** |
 | --- | --- |
-| Android Custom Tabs (**TAB**)<br><br>iOS SFSafariViewController (**TAB**) | The Android Custom Tabs and the iOS SFSafariViewController are a platform specific sandbox of the system default browser, which enables are more seamless and secure browser integration from native apps. |
-| ASWebAuthenticationSession  | iOS specific authentication session, the browser is a secure, embedded web view. |
-| Android App Links <br><br>iOS Universal Links | [Android App Links](https://developer.android.com/training/app-links) and [iOS Universal Links](https://developer.apple.com/ios/universal-links/) is the required way to implement appswitching for MitID.<br/> |
+| Android Custom Tabs | Platform specific sandbox of the system default browser, which enables are more seamless and secure browser integration from native apps. <br/><br/> [Android Custom Tabs](https://developer.chrome.com/docs/android/custom-tabs) |
+| SFSafariViewController  | Platform specific sandbox of the system default browser, which enables are more seamless and secure browser integration from native apps. <br/><br/> [iOS SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) |
+| ASWebAuthenticationSession  | iOS specific authentication session, the browser is a secure, embedded web view. <br/><br/> [iOS ASWebAuthenticationSesssion](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) |
+| Android App Links | [Android App Links](https://developer.android.com/training/app-links). |
+| iOS Universal Links | [iOS Universal Links](https://developer.apple.com/ios/universal-links/). |
 
 # Introduction
 
@@ -35,8 +37,6 @@ It is a security requirement that the end-user is presented with the address bar
 ### Android browsers
 On Android the sole recommendation is to use Custom Tabs targeting the Chrome browser. 
 
-For reference, see [Android Custom Tabs](https://developer.chrome.com/docs/android/custom-tabs).
-
 ### iOS browser
 On iOS two recommended options are available. 
 
@@ -48,10 +48,6 @@ The SFSafariViewController supports running the Safari browser as part of an iOS
 Signaturgruppen recommend the ASWebAuthenticationSession, as this provides a proper termination hook that allows for a better handling of the UX in the app switch flow. Signaturgruppen consider the risk of a future MitID update to cause errors with the ASWebAuthenticationSession functionality to be small.
 
 > MitID does not test and support anything but the SFSafariViewController, but does allow the usage of ASWebAuthenticationSession, there is no official support from MitID, should ASWebAuthenticationSession stop working with MitID on iOS.
-
-For reference, see 
-* [iOS SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller).
-* [iOS ASWebAuthenticationSesssion](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession)
 
 # MitID app switch flow overview
 
