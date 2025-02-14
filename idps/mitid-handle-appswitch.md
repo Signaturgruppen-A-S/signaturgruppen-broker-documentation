@@ -56,11 +56,15 @@ In broad terms, the recommended flow can be described in the following way:
 - The app backend generates the initial authentication URL
 - The app opens the authentication URL in the browser
 - The end-user completes the MitID flow by app-switching to the MitID app by clicking the blue button in the MitID flow.
-- When the flow is completed in the MitID app, the end-user is redirected back to the specified AppLinks / Universal Link app-switch url, and is app-switched back to the app.
+- When the flow is completed in the MitID app, the end-user is redirected back to the specified App Links / Universal Links app-switch url, and is app-switched back to the app.
 - **The app then ensures that the Custom Tab / SFSafariViewController / ASWebAuthenticationSession gets into focus again in order to allow the MitID client to finish the MitID flow.**
 - The MitID flow will complete in the browser and the end user will be redirected to the "redirect_uri" of the OIDC protocol.
 - **The last redirect will not trigger app switch (Universal Link / App Link) as this will not be considered a redirect following user-interaction.**
-- The app is notified by the relevant mechanism, that the flow is completed. This step is platform and browser dependent. It is recommended to have a fallback option by rendering a button that the end-user can click which will app switch back into the app, should other automatic mechanisms have failed at this stage. 
+- The app is notified by the relevant mechanism, that the flow is completed. This step is platform and browser dependent. It is recommended to have a fallback option by rendering a button that the end-user can click which will app switch back into the app, should other automatic mechanisms have failed at this stage. Signaturgruppeen recommends the Custom Tabs postMessage hook on Android, and to use the ASWebAuthenticationSession with a proper termination hook on iOS, in order to be able to handle this last step with success.
+
+### Termination of the browser, returning to the app
+The last step in the above app switch protocol overview, is often the most problematic for app switch integrations. It is important to understand that App Links and Universal Links app switch will not trigger at this step, due to the last redirect not being triggered directly from user-interaction such as clicking on a button. It is recommended to render a button at this last step, which then enables proper App Links / Universal Links app switching back into the app, should the user end up here. To avoid this last click on a button for the user, the Custom Tabs postMessage hook and the use of ASWebAuthenticationSession configured with a proper termination hook allows for the control and termination of the last redirect step in the OIDC browser flow. 
+If using the SFSafariViewController, then an app scheme (like your-app://xx) redirect_uri still works, but the security and long term viability of this variant should be assessed.
 
 ## App- / URL- / Custom Schemes vs App Links and Universal Links
 The standard way for many app integrations to detect, complete and close the browser-flow in a app switch scenario has been to utilize app schemes, such as app-scheme://oidc-redirect-url, to enable the browser flow to automatically generate an event in the app.
@@ -85,7 +89,7 @@ If the intention is to have the Custom Tab to the foreground after the app-switc
 When the MitID flow completes after the app switch back from the MitID app to the integrating app, there is no inherent way to detect that the flow is completed and to automatically terminate the Custom Tab and return the flow into the app.
 
 App schemes should be avoided and have pitfalls here, App Links will not automatically trigger at this last step, due to the last redirect in the flow not being based on user-interaction. The integrating service should in all scenarios implement the last redirect of the flow to render a button for the end-user which will then trigger an app switch back into the app.
-Then, to avoid this last end-user button click, it is possible to setup a  postMessage channel between the app and the Custom Tab instance, allowing the rendered page at the last step to notify the app of completion and pass along any required parameters as well, which will enable automatic termination of the flow.
+Then, to avoid this last end-user button click, it is possible to setup a postMessage channel between the app and the Custom Tab instance, allowing the rendered page at the last step to notify the app of completion and pass along any required parameters as well, which will enable automatic termination of the flow.
 
 ### Custom Tab postMessage channel
 
@@ -115,9 +119,14 @@ See, <https://developer.android.com/training/app-links>.
 
 # iOS
 
-On iOS the SFSafariViewController is part of the app instance and thus when navigating to the MitID app and back to the app using app switch, the TAB will be in focus.
+Two options is available for iOS: SFSafariViewController and ASWebAuthenticationSession.
 
-The SFSafariViewController do not offer the same control for the app as a standard WebView and does not offer any useful way for the app to get notified on redirects and URL changes in the browser, which introduces some of the changes required in order to properly implement app switch for MitID and other high-security scenarios.
+On iOS the SFSafariViewController is part of the app instance and thus when navigating to the MitID app and back to the app using app switch, the SFSafariViewController will be in focus.
+The SFSafariViewController do not offer the same control for the app as ASWebAuthenticationSession, but is officially supported by MitID.
+
+ASWebAuthenticationSession is a secure embedded browser, which is setup with a proper termination hook that triggers on the last redirect of the browser flow and returns control to the app.
+
+Signaturgruppen recommends ASWebAuthenticationSession, as this allows for better control and we believe it to be stable across upcoming MitID updates.
 
 ## Universal links
 
