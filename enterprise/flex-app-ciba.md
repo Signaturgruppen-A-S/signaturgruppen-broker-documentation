@@ -251,7 +251,7 @@ Finally we can add it to the request and send it
             var response = await new HttpClient().PostAsync(new Uri(authority + "/connect/ciba"), formContent);
 ```
 
-In the above example we also used a client assertion instead of sending the secret. Below is described how to do this
+In the above example we also used a client assertion instead of sending the secret. Below is described how to construct the client assertion
 
 ## Client assertions
 Instead of sending the client secret, we can send a client assertion. We can generate it using the following method:
@@ -268,9 +268,8 @@ Instead of sending the client secret, we can send a client assertion. We can gen
             Expires = now.AddMinutes(20),
             Claims = new Dictionary<string, object>
             {
-                { JwtClaimTypes.JwtId, Guid.NewGuid() },
-                { JwtClaimTypes.Subject, clientId },
-                { JwtClaimTypes.IssuedAt, DateTime.UtcNow.ToEpochTime() }
+                { "jti", Guid.NewGuid() },
+                { "sub", clientId },
             },
             SigningCredentials = GetSigningCredentials(clientSecret)
         };
@@ -284,4 +283,4 @@ Instead of sending the client secret, we can send a client assertion. We can gen
         return new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
     }
 ```
-
+The client assertion is then added to the request at the parameter: **client_assertion**. Further the **client_assertion_type** parameter must be set to **urn:ietf:params:oauth:client-assertion-type:jwt-bearer**
