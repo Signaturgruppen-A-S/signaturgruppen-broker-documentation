@@ -227,7 +227,7 @@ The following code is a simple example of how to construct a signed JWT in dotne
 ```
 
 
-We can construct the parameters to the request object in the follwing way:
+We can construct the parameters to the request object in the following way:
 ```
             var parameters = new Dictionary<string, object>
             {
@@ -254,7 +254,7 @@ Finally we can add it to the request and send it
 In the above example we also used a client assertion instead of sending the secret. Below is described how to do this
 
 ## Client assertions
-Similarily, instead of sending the client secret, we can send a client assertion. We can generate it using the following method:
+Instead of sending the client secret, we can send a client assertion. We can generate it using the following method:
 ```
     public string CreateClientAssertion(string issuer, string clientId, string clientSecret)
     {
