@@ -198,7 +198,7 @@ In the following the different error codes will be mapped. These errors are retu
 | mitid_flex_app.mitid_error_{mitid_status_code} | Error from MitID with the corresponding MitID status code |
 
 ## Signed request object
-We support sending requests as a signed request object. This object is sent as a signed JWT. The claims are then the
+We support sending requests as a signed request object. This object is sent as a signed JWT.
 
 The following code is a simple example of how to construct a signed JWT in dotnet. The secret in this example is a shared secret but an assymetric key can be used as well. 
 ```
@@ -225,7 +225,7 @@ The following code is a simple example of how to construct a signed JWT in dotne
         return new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
     }
 ```
-The **opIssuer** value in this context is the issuer value from our discovery endpoint
+The **opIssuer** value in this context is the issuer value from our discovery endpoint.
 
 We can construct the parameters to the request object in the following way:
 ```
