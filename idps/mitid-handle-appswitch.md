@@ -64,7 +64,9 @@ In broad terms, the recommended flow can be described in the following way:
 
 ### Termination of the browser, returning to the app
 The last step in the above app switch protocol overview, is often the most problematic for app switch integrations. It is important to understand that App Links and Universal Links app switch will not trigger at this step, due to the last redirect not being triggered directly from user-interaction such as clicking on a button. It is recommended to render a button at this last step, which then enables proper App Links / Universal Links app switching back into the app, should the user end up here. To avoid this last click on a button for the user, the Custom Tabs postMessage hook and the use of ASWebAuthenticationSession configured with a proper termination hook allows for the control and termination of the last redirect step in the OIDC browser flow. 
-If using the SFSafariViewController, then an app scheme (like your-app://xx) redirect_uri still works, but the security and long term viability of this variant should be assessed.
+
+If not using ASWebAuthenticationSession, then utilizing app scheme / custom scheme (e.g. your-app://) to terminate the browser flow is not recommended due to security issues with this approach. Further, Chrome on Android has started to require user-interaction in form of an approve dialogue for app scheme app handling, which can prevent the hook from even working properly. 
+It is only recommended to utilize app scheme termination of the browser flow when using the ASWebAuthenticationSession iOS component.
 
 ## App- / URL- / Custom Schemes vs App Links and Universal Links
 The standard way for many app integrations to detect, complete and close the browser-flow in a app switch scenario has been to utilize app schemes, such as app-scheme://oidc-redirect-url, to enable the browser flow to automatically generate an event in the app.
