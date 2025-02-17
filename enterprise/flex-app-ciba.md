@@ -202,13 +202,13 @@ We support sending requests as a signed request object. This object is sent as a
 
 The following code is a simple example of how to construct a signed JWT in dotnet. The secret in this example is a shared secret but an assymetric key can be used as well. 
 ```
-    public string CreateRequestObject(string issuer, string clientId, string clientSecret, IDictionary<string, object> parameters)
+    public string CreateRequestObject(string opIssuer, string clientId, string clientSecret, IDictionary<string, object> parameters)
     {
         var now = DateTime.UtcNow;
         var securityTokenDesciptor = new SecurityTokenDescriptor
         {
             Issuer = clientId,
-            Audience = issuer,
+            Audience = opIssuer,
             IssuedAt = now,
             NotBefore = now,
             Expires = now.AddMinutes(20),
@@ -225,7 +225,7 @@ The following code is a simple example of how to construct a signed JWT in dotne
         return new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
     }
 ```
-
+The **opIssuer** value in this context is the issuer value from our discovery endpoint
 
 We can construct the parameters to the request object in the following way:
 ```
@@ -256,13 +256,13 @@ In the above example we also used a client assertion instead of sending the secr
 ## Client assertions
 Instead of sending the client secret, we can send a client assertion. We can generate it using the following method:
 ```
-    public string CreateClientAssertion(string issuer, string clientId, string clientSecret)
+    public string CreateClientAssertion(string opIssuer, string clientId, string clientSecret)
     {
         var now = DateTime.UtcNow;
         var securityTokenDesciptor = new SecurityTokenDescriptor
         {
             Issuer = clientId,
-            Audience = issuer,
+            Audience = opIssuer,
             IssuedAt = now,
             NotBefore = now,
             Expires = now.AddMinutes(20),
