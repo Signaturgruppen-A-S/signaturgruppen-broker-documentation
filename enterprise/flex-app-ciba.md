@@ -196,3 +196,92 @@ In the following the different error codes will be mapped. These errors are retu
 |  slow_down      | Request is still pending, but polling is too frequent.     |
 |  expired_token      | The request_id has expired     |
 | mitid_flex_app.mitid_error_{mitid_status_code} | Error from MitID with the corresponding MitID status code |
+
+## Signed request object
+We support sending requests as a signed request object. This object is sent as a signed JWT. The claims are then the
+
+The following code is a simple example of how to construct a signed JWT in dotnet. The secret in this example is a shared secret but an assymetric key can be used as well. 
+```
+    public string CreateRequestObject(string issuer, string clientId, string clientSecret, IDictionary<string, object> parameters)
+    {
+        var now = DateTime.UtcNow;
+        var securityTokenDesciptor = new SecurityTokenDescriptor
+        {
+            Issuer = clientId,
+            Audience = issuer,
+            IssuedAt = now,
+            NotBefore = now,
+            Expires = now.AddMinutes(20),
+            Claims = parameters,
+            SigningCredentials = GetSigningCredentials(clientSecret)
+        }; 
+        var jwtHandler = new JsonWebTokenHandler();
+        return jwtHandler.CreateToken(securityTokenDesciptor);
+    }
+
+    private static SigningCredentials GetSigningCredentials(string clientSecret)
+    {
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(clientSecret));
+        return new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+    }
+```
+
+
+We can construct the parameters to the request object in the follwing way:
+```
+            var parameters = new Dictionary<string, object>
+            {
+                { "client_id", clientId },
+                { "login_hint_token", loginHint },
+                { "scope", "openid mitid" },
+                { "jti", Guid.NewGuid() }
+            };
+```
+
+Finally we can add it to the request and send it
+
+```
+            var formContent = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("client_id", clientId),
+                new KeyValuePair<string, string>("client_assertion", clientAssertion),
+                new KeyValuePair<string, string>("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer"),
+                new KeyValuePair<string, string>("request", requestObject),
+            });
+            var response = await new HttpClient().PostAsync(new Uri(authority + "/connect/ciba"), formContent);
+```
+
+In the above example we also used a client assertion instead of sending the secret. Below is described how to do this
+
+## Client assertions
+Similarily, instead of sending the client secret, we can send a client assertion. We can generate it using the following method:
+```
+    public string CreateClientAssertion(string issuer, string clientId, string clientSecret)
+    {
+        var now = DateTime.UtcNow;
+        var securityTokenDesciptor = new SecurityTokenDescriptor
+        {
+            Issuer = clientId,
+            Audience = issuer,
+            IssuedAt = now,
+            NotBefore = now,
+            Expires = now.AddMinutes(20),
+            Claims = new Dictionary<string, object>
+            {
+                { JwtClaimTypes.JwtId, Guid.NewGuid() },
+                { JwtClaimTypes.Subject, clientId },
+                { JwtClaimTypes.IssuedAt, DateTime.UtcNow.ToEpochTime() }
+            },
+            SigningCredentials = GetSigningCredentials(clientSecret)
+        };
+        var jwtHandler = new JsonWebTokenHandler();
+        return jwtHandler.CreateToken(securityTokenDesciptor);
+    }
+
+    private static SigningCredentials GetSigningCredentials(string clientSecret)
+    {
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(clientSecret));
+        return new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+    }
+```
+
