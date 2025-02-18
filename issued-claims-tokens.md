@@ -7,19 +7,26 @@ nav_order: 15
 
 ## User flow authentication result
 A user flow results in one or more of the following tokens
-ID token: Describing the authenticated end-user.
-Access token: Providing access to configured endpoints on behalf of the end-user.
-Refresh token (optional): Providing ability to maintain a long-lived session by re-acquiring access tokens using the refresh token.
-Userinfo token (optional): Provides all user claims requested in a single JWT.
-Transaction token (optional): Provides a self-contained sealed record of the transaction completed by the end-user.
-Service token (Client Credentials Grant): Token issued directly to a service.
+* ID token: Describing the authenticated end-user.
+* Access token: Providing access to configured endpoints on behalf of the end-user.
+* Refresh token (optional): Providing ability to maintain a long-lived session by re-acquiring access tokens using the refresh token.
+* Userinfo token (optional): Provides all user claims requested in a single JWT.
+* Transaction token (optional): Provides a self-contained sealed record of the transaction completed by the end-user.
+* Service token (Client Credentials Grant): Token issued directly to a service.
+
 ID-, access-, service and transaction tokens comply with the [JWT] specification.
 Access- and service tokens are not meaningful outside the audience of the token. Access tokens can be configured to include access and authorization for both internal and external REST APIs. Often the access token is used for accessing the UserInfo endpoint at NEB.
+
 Refresh tokens are opaque and thus not meaningful outside the scope of NEB. See the OpenID Connect specification for reference on how to use the refresh tokens.
+
 The userinfo token contains most of the ID token claims and all the claims issued by the Userinfo endpoint. This provides a signed format for all user-claims.
+
 The transaction token will be available as a sealed (signed by a Signaturgruppen Broker OCES3 organization certificate) record of the end-user completed transaction.
+
 The transaction token response is a self-contained and cryptographically sealed record suitable for long-term storage and as a proof-of-transaction.
+
 The transaction token includes the relevant authentication information, a unique transaction identifier as well as relevant transaction specific information like end-user approved text linked to the transaction.
+
 The transaction token should only be requested if required for internal revision or similar requirements.
 
 ### ID token
@@ -71,9 +78,10 @@ The ID token is used when log-out is called for the end-user or when (re-)authen
 ### Access token
 The resulting access tokens authorizes the bearer on the behalf of the user. Unless otherwise configured for the client, the resulting access token provides authorization for the NEB UserInfo endpoint resulting in the full list of claims issued to the user for the authentication in question.
 Depending on configuration, capabilities, roles, permissions and granted access for the client, the access token can authorize the client on behalf of the user to
-Access specified APIs from NEB, like the Userinfo endpoint or the Privilege API.
-Access internal APIs (i.e. internal to the Organization/Service in question)
-Access external APIs
+* Access specified APIs from NEB, like the Userinfo endpoint or the Privilege API.
+* Access internal APIs (i.e. internal to the Organization/Service in question)
+* Access external APIs
+  
 Expiry for access tokens is 3 hours.
 
 ### Service token (Client Credentials Grant)
