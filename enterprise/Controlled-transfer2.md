@@ -41,8 +41,7 @@ MitID Controlled Transfer Token (CTT) allows an authenticated session from one s
 - SP B receives an authentication response, completing the transfer.
 
 ### Flow Diagram
-![Controlled Transfer Flow](file-GDRRyNvD1wN8Goe6nDQRA4)
-
+![](images/mitid-CTT-flow.png)
 ---
 
 ## Signaturgruppen Controlled Transfer
@@ -82,7 +81,8 @@ Signaturgruppen Controlled Transfer provides a flexible session transfer mechani
 - SP B receives authentication session details in a signed JWT token.
 
 ### Flow Diagram
-![Session Transfer Flow](file-35NDjs28dkH1X3fLzH8iUu)
+![](images/SG-CTT-Flow.png)
+---
 
 ### Consent Requirement
 In Signaturgruppens Controlled Transfer, it is the sender's responsibility to ensure that the required consent has been obtained before transferring any data. Signaturgruppens Broker does not enforce or verify consent handling.
