@@ -2,7 +2,7 @@
 title: Controlled Transfer
 layout: home
 parent: Enterprise features
-nav_order: 9
+nav_order: 8
 ---
 
 # MitID Controlled Transfer
