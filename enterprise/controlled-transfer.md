@@ -31,7 +31,7 @@ MitID Controlled Transfer Token (CTT) allows an authenticated session from one s
   ```json
   {
     "targetBroker": "{UUID of target broker}",
-    "targetCVR": "{CVR of target service provider}",
+    "targetServiceProvider": "{UUID of target Service Provider (SP B)}",
     "transferTokenText": "some text"
   }
   ```
