@@ -9,6 +9,8 @@ nav_order: 1
 
 This API provides address information based on Danish CPR (Central Person Registry) numbers.
 
+> Swagger definition (for PP environment) found at https://pp.netseidbroker.dk/op/swagger/index.html
+
 **Note**: Access requires service tokens (client credentials).
 
 ## Limitations
@@ -26,7 +28,7 @@ Use your service token to access the protected resource.
 #### Example Request
 
 ```http
-GET /api/v1/ssn-details HTTP/1.1
+POST /api/v1/ssn-details HTTP/1.1
 Host: https://pp.netseidbroker.dk/op/
 Authorization: Bearer {Your_Service_Token}
 
@@ -59,7 +61,7 @@ _Note: Actual values have been replaced with placeholders._
 #### Example Request
 
 ```http
-GET /api/v1/ssn-details HTTP/1.1
+POST /api/v1/ssn-details HTTP/1.1
 Host: https://pp.netseidbroker.dk/op/
 Authorization: Bearer {Your_Service_Token}
 
@@ -84,7 +86,7 @@ Content-Type: application/json
 #### Example Request
 
 ```http
-GET /api/v1/ssn-details HTTP/1.1
+POST /api/v1/ssn-details HTTP/1.1
 Host: https://pp.netseidbroker.dk/op/
 Authorization: Bearer {Your_Service_Token}
 
