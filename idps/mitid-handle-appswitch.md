@@ -32,18 +32,6 @@ It is a security requirement that the end-user is presented with the address bar
 
 If your app is a hybrid web-app serving most content via an inline embedded browser inside the app, then it is still required that the MitID integration is done outside of this component, to ensure proper suppoer and UX for the MitID flow.
 
-## iOS browser
-On iOS two recommended options are available. 
-
-1. SFSafariViewController - Officially supported by MitID.
-2. ASWebAuthenticationSession - Not officially supported by MitID. Recommended by Signaturgruppen.
-
-The SFSafariViewController supports running the Safari browser as part of an iOS app, whereas the ASWebAuthenticationSession is a secure webview browser. 
-
-Signaturgruppen recommend the ASWebAuthenticationSession, as this provides a proper termination hook that allows for a better handling of the UX in the app switch flow. Signaturgruppen consider the risk of a future MitID update to cause errors with the ASWebAuthenticationSession functionality to be small.
-
-> MitID does not test and support anything but the SFSafariViewController, but does allow the usage of ASWebAuthenticationSession, there is no official support from MitID, should ASWebAuthenticationSession stop working with MitID on iOS.
-
 # MitID app switch flow overview
 
 In broad terms, the recommended flow can be described in the following way:
