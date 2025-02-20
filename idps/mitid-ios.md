@@ -10,14 +10,22 @@ nav_order: 2
 ## IOS MitID integration
 On iOS two recommended options are available. 
 
-1. SFSafariViewController - Officially supported by MitID.
-2. ASWebAuthenticationSession - Not officially supported by MitID. Recommended by Signaturgruppen.
+1. **SFSafariViewController** - Officially supported by MitID.
+2. **ASWebAuthenticationSession** - Not officially supported by MitID. Recommended by Signaturgruppen.
 
 The SFSafariViewController supports running the Safari browser as part of an iOS app, whereas the ASWebAuthenticationSession is a secure webview browser. 
 
 Signaturgruppen recommend the ASWebAuthenticationSession, as this provides a proper termination hook that allows for a better handling of the UX in the app switch flow. Signaturgruppen consider the risk of a future MitID update to cause errors with the ASWebAuthenticationSession functionality to be small.
 
 > MitID does not test and support anything but the SFSafariViewController, but does allow the usage of ASWebAuthenticationSession, there is no official support from MitID, should ASWebAuthenticationSession stop working with MitID on iOS.
+
+## SFSafariViewController
+This component is the officially supported browser for MitID flows on iOS and runs Safari as part of the app instance. 
+
+The main problem with this approach is to terminate the last step of the MitID app switch flow securely. The recommended approach is to render a button on the last redirect step (thus, must set the OIDC redirect_uri to a  https:// url), which will then trigger a Universal Links app switch back into the app.
+Using app schemes like your-app:// works, but is not recommended due to security concerns for this approach, as other apps is potentially able to register the same app scheme on the device.
+
+A solution can be to have the app backend handle and complete the OIDC flow at the last browser redirect step (redirect_uri) and then have some protocol for notifying the app that the flow has completed from the app backend.
 
 ## ASWebAuthenticationSession
 
@@ -98,3 +106,32 @@ extension AuthenticationManager: ASWebAuthenticationPresentationContextProviding
 ## Universal links
 
 To enable the MitID app to return to the app, the app needs to implement a Universal link by hosting an apple-app-site-association file in the root of the relavant domain and register a matching associated domain in the app, see <https://developer.apple.com/ios/universal-links/>.
+
+### Example apple-app-site-association file
+```
+{
+  "applinks": {
+    "apps": [
+      
+    ],
+    "details": [
+      {
+        "appID": "G..X.dk.your.app.production",
+        "paths": [
+          "/appswitch",
+          "/mitidappswitch",
+          "/qr"
+        ]
+      },
+      {
+        "appID": "G..X.dk.your.app.pp",
+        "paths": [
+          "/appswitch",
+          "/mitidappswitch",
+          "/qr"
+        ]
+      }
+    ]
+  }
+}
+```
