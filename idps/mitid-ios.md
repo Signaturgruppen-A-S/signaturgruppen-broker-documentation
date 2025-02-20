@@ -7,16 +7,17 @@ grand_grand_parent: Identity providers
 nav_order: 2
 ---
 
-# IOS
+## IOS MitID integration
+On iOS two recommended options are available. 
 
-Two options is available for iOS: SFSafariViewController and ASWebAuthenticationSession.
+1. SFSafariViewController - Officially supported by MitID.
+2. ASWebAuthenticationSession - Not officially supported by MitID. Recommended by Signaturgruppen.
 
-On iOS the SFSafariViewController is part of the app instance and thus when navigating to the MitID app and back to the app using app switch, the SFSafariViewController will be in focus.
-The SFSafariViewController do not offer the same control for the app as ASWebAuthenticationSession, but is officially supported by MitID.
+The SFSafariViewController supports running the Safari browser as part of an iOS app, whereas the ASWebAuthenticationSession is a secure webview browser. 
 
-ASWebAuthenticationSession is a secure embedded browser, which is setup with a proper termination hook that triggers on the last redirect of the browser flow and returns control to the app.
+Signaturgruppen recommend the ASWebAuthenticationSession, as this provides a proper termination hook that allows for a better handling of the UX in the app switch flow. Signaturgruppen consider the risk of a future MitID update to cause errors with the ASWebAuthenticationSession functionality to be small.
 
-Signaturgruppen recommends ASWebAuthenticationSession, as this allows for better control and we believe it to be stable across upcoming MitID updates.
+> MitID does not test and support anything but the SFSafariViewController, but does allow the usage of ASWebAuthenticationSession, there is no official support from MitID, should ASWebAuthenticationSession stop working with MitID on iOS.
 
 ## Universal links
 
