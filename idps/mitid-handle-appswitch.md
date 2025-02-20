@@ -32,9 +32,6 @@ It is a security requirement that the end-user is presented with the address bar
 
 If your app is a hybrid web-app serving most content via an inline embedded browser inside the app, then it is still required that the MitID integration is done outside of this component, to ensure proper suppoer and UX for the MitID flow.
 
-## Android browsers
-On Android the sole recommendation is to use Custom Tabs targeting the Chrome browser. 
-
 ## iOS browser
 On iOS two recommended options are available. 
 
