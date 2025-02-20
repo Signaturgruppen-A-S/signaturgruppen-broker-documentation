@@ -87,22 +87,6 @@ idp_params=%7B%22mitid%22%3A%7B%22enable_app_switch%22%3A%20true%2C%20%22app_swi
 
 <table><tbody><tr><th><p><strong>Identity Provider parameters (mitid)</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>enable_app_switch</p></td><td><p>Type: bool. Default: false.</p><p>If true, enables MitID app switch for the flow.</p></td></tr><tr><td><p>app_switch_os</p></td><td><p>Type: string</p><p>One of the following values:</p><ul><li>ios</li><li>android</li></ul></td></tr><tr><td><p>app_switch_url</p></td><td><p>Type: String</p><p>Specify the Universal Link / App Links URL that your app can handle.</p><p>For non-signed OIDC requests, the URL must be whitelistet for your OIDC client.</p></td></tr></tbody></table>
 
-
-# iOS
-
-Two options is available for iOS: SFSafariViewController and ASWebAuthenticationSession.
-
-On iOS the SFSafariViewController is part of the app instance and thus when navigating to the MitID app and back to the app using app switch, the SFSafariViewController will be in focus.
-The SFSafariViewController do not offer the same control for the app as ASWebAuthenticationSession, but is officially supported by MitID.
-
-ASWebAuthenticationSession is a secure embedded browser, which is setup with a proper termination hook that triggers on the last redirect of the browser flow and returns control to the app.
-
-Signaturgruppen recommends ASWebAuthenticationSession, as this allows for better control and we believe it to be stable across upcoming MitID updates.
-
-## Universal links
-
-To enable the MitID app to return to the app, the app needs to implement a Universal link by hosting an apple-app-site-association file in the root of the relavant domain and register a matching associated domain in the app, see <https://developer.apple.com/ios/universal-links/>.
-
 # App switch for non-app browser flows
 
 MitID has introduced app switching for all mobile browsers and thus enabled that the user is able to app switch to the MitID app directly from a normal browser on a mobile device.
