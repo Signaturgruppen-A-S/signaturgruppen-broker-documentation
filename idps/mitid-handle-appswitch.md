@@ -1,5 +1,5 @@
 ---
-title: MitID appswitch
+title: App MitID integration
 layout: home
 parent: MitID
 grand_parent: Identity providers
@@ -18,11 +18,9 @@ nav_order: 2
 
 # Introduction
 
-This document is a technical guide for MitID app integration.
+This document is a technical guide for Android and iOS app integration to MitID.
 
-> DISCLAIMER: This document is the Signaturgruppen Broker recommendation for Android and iOS integrations for MitID, other options might be available. Use this document as a guide only.
-
-It is required that the reader has a basic understanding of the technical details for Android Custom Tabs and App Linking and for iOS SFSafariViewController, ASWebAuthenticationSession and Universal Links.
+It is required that the reader has a basic understanding of the technical details for Android Custom Tabs and App Links and for iOS SFSafariViewController, ASWebAuthenticationSession and Universal Links.
 
 # Supported browsers
 
@@ -30,9 +28,9 @@ MitID only tests and support the browsers that have at least 2% market share on 
 
 On Android it is possible to detect if Chrome or the Samsung browser is available before starting the Custom Tabs intent, it is recommended to target Chrome, as we have seen some issues on some devices with the Samsung browser.
 
-It is a security requirement that the end-user is presented with the address bar from the browser to allow the end-user to verify the **mitid.dk** domain during the MitID flow. It is not allowed to hide the address bar for the Custom Tabs or SFSafariViewController instances.
+It is a security requirement that the end-user is presented with the address bar from the browser to allow the end-user to verify the **mitid.dk** domain during the MitID flow. It is not allowed to hide the address bar for the Custom Tabs or SFSafariViewController instances. It is required that standard and familiar components are used to achieve this goal with the goal of presenting a familiar and safe MitID experience that allows the end-user to validate that the authentication is taking place on the mitid.dk domain.
 
-**MitID requires that the address bar is visible, such that the end-user can see the https and MitID domain when authenticating with MitID.**
+If your app is a hybrid web-app serving most content via an inline embedded browser inside the app, then it is still required that the MitID integration is done outside of this component, to ensure proper suppoer and UX for the MitID flow.
 
 ## Android browsers
 On Android the sole recommendation is to use Custom Tabs targeting the Chrome browser. 
@@ -43,7 +41,7 @@ On iOS two recommended options are available.
 1. SFSafariViewController - Officially supported by MitID.
 2. ASWebAuthenticationSession - Not officially supported by MitID. Recommended by Signaturgruppen.
 
-The SFSafariViewController supports running the Safari browser as part of an iOS app, whereas the ASWebAuthenticationSession is a secure embedded browser. 
+The SFSafariViewController supports running the Safari browser as part of an iOS app, whereas the ASWebAuthenticationSession is a secure webview browser. 
 
 Signaturgruppen recommend the ASWebAuthenticationSession, as this provides a proper termination hook that allows for a better handling of the UX in the app switch flow. Signaturgruppen consider the risk of a future MitID update to cause errors with the ASWebAuthenticationSession functionality to be small.
 
