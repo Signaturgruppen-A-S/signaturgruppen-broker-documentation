@@ -179,3 +179,24 @@ android:host="App Links URL" />
 Furthermore, you need to host an assetlinks.json file on your domain, and the domain should match the host in the manifest file.
 
 See, <https://developer.android.com/training/app-links>.
+
+## Example assetlinks.json
+Combining both App Links configuration and PostMessage handling, the resulting assetlinks.json will look something like
+
+```JSON
+{
+  "relation": [
+    "delegate_permission/common.handle_all_urls",
+    "delegate_permission/common.use_as_origin"
+  ],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "dk.your.app.production",
+    "sha256_cert_fingerprints": [
+      "46:61:19:30....2E:2E",
+      "E6:0C:44.....4:53:D4"
+    ]
+  }
+}
+```
+
