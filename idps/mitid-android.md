@@ -8,6 +8,7 @@ nav_order: 1
 ---
 
 # Android MitID integration
+On Android the sole recommendation is to use Custom Tabs targeting the Chrome browser. 
 
 On Android the Custom Tab can be started as “single-instance” or “single-task”, which affects the behavior. When choosing single-instance, the Custom Tab is started as a separate instance, whereas with single-task, the Custom Tab will be part of the app process. In both scenarios, the Custom Tab will by default stay in the background when returning to the app via App Links app-switching and thus some handling is required here to get the Custom Tab in the foreground again, which is required in order to ensure that the MitID browser flow is able to complete.
 
