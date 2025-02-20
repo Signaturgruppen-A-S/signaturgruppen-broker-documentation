@@ -3,6 +3,7 @@ title: App MitID Integration
 layout: home
 parent: MitID
 grand_parent: Identity Providers
+has_children: true
 nav_order: 2
 ---
 
