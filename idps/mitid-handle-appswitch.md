@@ -67,6 +67,26 @@ The last step in the above app switch protocol overview, is often the most probl
 If not using ASWebAuthenticationSession, then utilizing app scheme / custom scheme (e.g. your-app://) to terminate the browser flow is not recommended due to security issues with this approach. Further, Chrome on Android has started to require user-interaction in form of an approve dialogue for app scheme app handling, which can prevent the hook from even working properly. 
 It is only recommended to utilize app scheme termination of the browser flow when using the ASWebAuthenticationSession iOS component.
 
+# Setting up app switch for OIDC flow with Signaturgruppen Broker
+Signaturgruppen Broker supports two ways of activating app switch for MitID flows. 
+
+1. Specify parameters for each specific OIDC flow, specifying app OS and a whitelisted app switch URL.
+2. Configure the used OIDC client to have a default app switch URL, which will then automatically work for all flows used by this client, without the need of specific 
+To enable app-switch, specify the platform specific return url/bundle ID and the running mobile platform (ios og android).
+
+## Client default app switch URL
+In Signaturgruppen Broker Admin UI, configure a single default app switch URL, which will then be used for all app switch flows. 
+Setting OIDC parameters from the next section will override this setting.
+
+## OIDC parameters
+Example:
+
+```
+idp_params=%7B%22mitid%22%3A%7B%22enable_app_switch%22%3A%20true%2C%20%22app_switch_os%22%3A%22ios%22%2C%20%22app_switch_url%22%3A%22https%3A%2F%2Fyour.appswitch.url%2F%22%7D%7D
+```
+
+<table><tbody><tr><th><p><strong>Identity Provider parameters (mitid)</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>enable_app_switch</p></td><td><p>Type: bool. Default: false.</p><p>If true, enables MitID app switch for the flow.</p></td></tr><tr><td><p>app_switch_os</p></td><td><p>Type: string</p><p>One of the following values:</p><ul><li>ios</li><li>android</li></ul></td></tr><tr><td><p>app_switch_url</p></td><td><p>Type: String</p><p>Specify the Universal Link / App Links URL that your app can handle.</p><p>For non-signed OIDC requests, the URL must be whitelistet for your OIDC client.</p></td></tr></tbody></table>
+
 # Android 
 
 On Android the Custom Tab can be started as “single-instance” or “single-task”, which affects the behavior. When choosing single-instance, the Custom Tab is started as a separate instance, whereas with single-task, the Custom Tab will be part of the app process. In both scenarios, the Custom Tab will by default stay in the background when returning to the app via App Links app-switching and thus some handling is required here to get the Custom Tab in the foreground again, which is required in order to ensure that the MitID browser flow is able to complete.
@@ -275,14 +295,3 @@ If the app-switch chain between apps is longer than the one jump from the servic
 
 As examples of “popping”: on Android some apps close themselves on success, as the NemID app on Android. On iOS you always have a “back arrow” in the upper left corner which gets you back to the caller. In the example above, clicking this back button in app2 after the MitID app-switch will result in getting back to the MitID app again.
 
-# Setting up app switch
-
-To enable app-switch, specify the platform specific return url/bundle ID and the running mobile platform (ios og android).
-
-Example:
-
-```
-idp_params=%7B%22mitid%22%3A%7B%22enable_app_switch%22%3A%20true%2C%20%22app_switch_os%22%3A%22ios%22%2C%20%22app_switch_url%22%3A%22https%3A%2F%2Fyour.appswitch.url%2F%22%7D%7D
-```
-
-<table><tbody><tr><th><p><strong>Identity Provider parameters (mitid)</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>enable_app_switch</p></td><td><p>Type: bool. Default: false.</p><p>If true, enables MitID app switch for the flow.</p></td></tr><tr><td><p>app_switch_os</p></td><td><p>Type: string</p><p>One of the following values:</p><ul><li>ios</li><li>android</li></ul></td></tr><tr><td><p>app_switch_url</p></td><td><p>Type: String</p><p>Specify the Universal Link / App Links URL that your app can handle.</p><p>For non-signed OIDC requests, the URL must be whitelistet for your OIDC client.</p></td></tr></tbody></table>
