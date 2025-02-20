@@ -92,6 +92,11 @@ When setting up the Custom Tab instance, the app can register a [postMessage cha
 
 This registration is done in similar ways as for App Link registration, by setting up appropriate settings in the assetlinks.json file in the root of the target domain.
 
+Custom Tab postMessage events will have the following origin when received by JavaScript running at the target webpage.
+```
+android-app://<your.app.domain>/<your.app.package>
+```
+
 > Examples are coming shortly..
 
 ## App links
