@@ -1,9 +1,9 @@
 ---
-title: App MitID Integration  
-layout: home  
-parent: MitID  
-grand_parent: Identity Providers  
-nav_order: 2  
+title: App MitID Integration
+layout: home
+parent: MitID
+grand_parent: Identity Providers
+nav_order: 2
 ---
 
 # Key Terminology
