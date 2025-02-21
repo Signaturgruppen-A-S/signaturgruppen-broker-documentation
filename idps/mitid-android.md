@@ -144,7 +144,7 @@ The challenge-response mechanism is optional. If used, your app sends a challeng
 To allow your app to be associated with your webpage, host an assetlinks.json file on your domain under the path /.well-known/assetlinks.json.
 
 Example assetlinks.json
-```JSON
+```json
 [
   {
     "relation": ["delegate_permission/common.use_as_origin"],
@@ -167,7 +167,7 @@ Example assetlinks.json
 ### Webpage JavaScript Integration
 On your webpage hosted at your-domain.com, include JavaScript to listen for and validate messages coming from your Android app. The expected origin should follow the format: android-app://<your.app.domain>/<your.app.package>.
 
-```JavaScript
+```javascript
 // Listen for messages from the Android Custom Tab
 window.addEventListener('message', function(event) {
   // Validate the origin: it should match the custom scheme for your Android app
@@ -223,7 +223,7 @@ See, <https://developer.android.com/training/app-links>.
 ## Example assetlinks.json
 Combining both App Links configuration and PostMessage handling, the resulting assetlinks.json will look something like
 
-```JSON
+```json
 {
   "relation": [
     "delegate_permission/common.handle_all_urls",
