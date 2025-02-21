@@ -60,53 +60,76 @@ This documentation explains how to integrate postMessage communication between y
 
 In your Android app, create a Custom Tab session with a callback listener that handles events related to the PostMessage channel. For example:
 
-```java
-// Import necessary packages
-import android.os.Bundle;
-import androidx.browser.customtabs.CustomTabsCallback;
-import androidx.browser.customtabs.CustomTabsSession;
-import androidx.browser.customtabs.CustomTabsIntent;
-import android.net.Uri;
-
-public class CustomTabHelper {
-
-    private CustomTabsSession customTabsSession;
-
-    // Initialize the session with a callback listener
-    public void setupCustomTabSession() {
-        CustomTabsCallback callback = new CustomTabsCallback() {
-            @Override
-            public void onMessageChannelReady(Bundle extras) {
-                // PostMessage channel is ready. You can optionally send a challenge to the webpage.
-                // Example: Send your challenge to the webpage for verification.
-                String challenge = "your_generated_challenge"; // Optional: use this challenge for extra security.
-                if (customTabsSession != null) {
-                    customTabsSession.requestPostMessageChannel(Uri.parse("https://your-domain.com"));
-                    customTabsSession.postMessage(challenge, null);
-                }
+```Java
+private val customTabsCallback =
+    object : CustomTabsCallback() {
+        override fun onNavigationEvent(navigationEvent: Int, extras: Bundle?) {
+            super.onNavigationEvent(navigationEvent, extras)
+            if (navigationEvent != NAVIGATION_FINISHED) {
+                return
             }
-
-            @Override
-            public void onPostMessage(String message, Bundle extras) {
-                // Handle incoming messages from the webpage.
-                // For example, you can log the message or trigger app logic.
-                System.out.println("Received message: " + message);
+            if (validated) {
+                session?.requestPostMessageChannel(
+                    uri, uri, bundleOf()
+                )
             }
-        };
-
-        // Obtain a CustomTabsSession from your CustomTabsClient (binding code not shown)
-        customTabsSession = /* Your code to create a session with callback */ null;
-    }
-
-    // Launch the Custom Tab with your domain URL
-    public void launchCustomTab() {
-        if (customTabsSession != null) {
-            CustomTabsIntent intent = new CustomTabsIntent.Builder(customTabsSession).build();
-            intent.launchUrl(/* context */, Uri.parse("https://your-domain.com"));
         }
+
+        override fun onPostMessage(message: String, extras: Bundle?) {
+            super.onPostMessage(message, extras)
+            context?.startActivity(Intent(context, MainActivity::class.java))
+        }
+
+        override fun onMessageChannelReady(extras: Bundle?) {
+            super.onMessageChannelReady(extras)
+            session?.postMessage("soloid app listening", null)
+        }
+
+        override fun onRelationshipValidationResult(
+            relation: Int,
+            requestedOrigin: Uri,
+            result: Boolean,
+            extras: Bundle?
+        ) {
+            super.onRelationshipValidationResult(relation, requestedOrigin, result, extras)
+            validated = result
+        }
+
     }
+```
+
+```Java
+private fun bindCustomTabsService(url: String) {
+    val packageName = CustomTabsClient.getPackageName(requireContext(), null)
+
+    CustomTabsClient.bindCustomTabsService(
+        requireContext(),
+        packageName,
+        object : CustomTabsServiceConnection() {
+            override fun onCustomTabsServiceConnected(
+                name: ComponentName,
+                client: CustomTabsClient
+            ) {
+                this@FlowFragment.client = client
+                client.warmup(0L)
+                session = this@FlowFragment.client?.newSession(customTabsCallback)
+                launch(url)
+                session?.validateRelationship(RELATION_HANDLE_ALL_URLS, uri, null)
+            }
+
+            override fun onServiceDisconnected(componentName: ComponentName) {
+                client = null
+            }
+        })
+}
+
+private fun launch(url: String) {
+    val customTabsIntent = CustomTabsIntent.Builder(session!!)
+        .build()
+    customTabsIntent.launchUrl(requireContext(), url.toUri())
 }
 ```
+
 **Key Points:**
 - onMessageChannelReady: Called when the PostMessage channel is ready. Optionally, your app sends a challenge string (which you should generate uniquely) to the webpage.
 - onPostMessage: Receives messages from the webpage.
