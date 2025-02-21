@@ -11,12 +11,7 @@ nav_order: 1
 
 On Android, the recommended approach is to use Custom Tabs targeting the Chrome browser. This method leverages the security and performance benefits of Chrome while allowing deep integration with your app.
 
-Custom Tabs can be launched in one of two modes:
-
-- **Single-instance mode:** The Custom Tab runs as a separate instance.
-- **Single-task mode:** The Custom Tab becomes part of your app’s task.
-
-In both cases, when returning to your app via App Links, the Custom Tab typically remains in the background. Although the browser can often complete the MitID flow in the background (provided the device isn’t in power-saving mode), there are situations where the Custom Tab must be brought to the foreground to ensure the flow completes successfully. It is also expected that the MitID client’s “finish” screen is visible to the user in the browser; therefore, it is generally advisable to keep the Custom Tab active until the flow is fully complete.
+When returning to your app via App Links, the Custom Tab typically remains in the background. Although the browser can often complete the MitID flow in the background (provided the device isn’t in power-saving mode), there are situations where the Custom Tab must be brought to the foreground to ensure the flow completes successfully. It is also expected that the MitID client’s “finish” screen is visible to the user in the browser; therefore, it is generally advisable to keep the Custom Tab active until the flow is fully complete.
 
 ---
 
