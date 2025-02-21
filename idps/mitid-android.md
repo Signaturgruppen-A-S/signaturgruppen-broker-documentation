@@ -60,7 +60,7 @@ This documentation explains how to integrate postMessage communication between y
 
 In your Android app, create a Custom Tab session with a callback listener that handles events related to the PostMessage channel. For example:
 
-```Java
+```java
 private val customTabsCallback =
     object : CustomTabsCallback() {
         override fun onNavigationEvent(navigationEvent: Int, extras: Bundle?) {
@@ -98,7 +98,7 @@ private val customTabsCallback =
     }
 ```
 
-```Java
+```java
 private fun bindCustomTabsService(url: String) {
     val packageName = CustomTabsClient.getPackageName(requireContext(), null)
 
