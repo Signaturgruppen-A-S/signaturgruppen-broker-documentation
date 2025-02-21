@@ -100,7 +100,10 @@ class AuthenticationManager: NSObject {
         
         // Provide the presentation context so that the authentication session is displayed correctly.
         authSession?.presentationContextProvider = self
-        
+
+        // Makes the session incognito, which ensures that no cookies from Safari is included in the session.
+        authSession?.prefersEphemeralWebBrowserSession = true
+
         // Start the authentication session.
         authSession?.start()
     }
