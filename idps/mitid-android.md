@@ -77,12 +77,15 @@ private val customTabsCallback =
 
         override fun onPostMessage(message: String, extras: Bundle?) {
             super.onPostMessage(message, extras)
+            //Handle postMessage, validate challenge optional challenge mechanism ehre.
+            //Here a new activity is startet, which will terminate the CustomTab and get focus back to the app.
             context?.startActivity(Intent(context, MainActivity::class.java))
         }
-
+        
         override fun onMessageChannelReady(extras: Bundle?) {
+            String challenge = "your_generated_challenge"; // Optional: use this challenge for extra security.
             super.onMessageChannelReady(extras)
-            session?.postMessage("soloid app listening", null)
+            session?.postMessage(challenge, null)
         }
 
         override fun onRelationshipValidationResult(
@@ -94,7 +97,6 @@ private val customTabsCallback =
             super.onRelationshipValidationResult(relation, requestedOrigin, result, extras)
             validated = result
         }
-
     }
 ```
 
