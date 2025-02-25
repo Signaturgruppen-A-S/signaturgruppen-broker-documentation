@@ -116,7 +116,7 @@ private fun bindCustomTabsService(url: String) {
                 client.warmup(0L)
                 session = this@FlowFragment.client?.newSession(customTabsCallback)
                 launch(url)
-                session?.validateRelationship(RELATION_HANDLE_ALL_URLS, uri, null)
+                session?.validateRelationship(RELATION_USE_AS_ORIGIN, uri, null)
             }
 
             override fun onServiceDisconnected(componentName: ComponentName) {
