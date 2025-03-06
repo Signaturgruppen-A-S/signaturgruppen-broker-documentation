@@ -1,6 +1,7 @@
 ---
 title: Age Verification
 layout: home
+has_children: true
 nav_order: 85
 ---
 
