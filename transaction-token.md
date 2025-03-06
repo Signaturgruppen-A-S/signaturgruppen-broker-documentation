@@ -25,7 +25,7 @@ Many of the issued claims, are the same as found in the accompanied ID token.
 
 In this section all the claims that are always present in transaction tokens are specified. In addition, each identity provider will have its own set of claims that can be included depending the context.
 
-Transaction tokens will be set in the Token endpoint response, if configured for the client and if requested using the **trans_token** scope.
+Transaction tokens will be set in the Token endpoint response, if configured for the client and if requested using the **transaction_token** scope.
 
 An accompanying OCSP revocation check response for the signing certificate, will be set in the Token endpoint response, formatted as a UTF-8+Base64 encoded string. The **signing_cert_ocsp_nonce** claim set in the transaction token is the nonce used for the OCSP response.
 
