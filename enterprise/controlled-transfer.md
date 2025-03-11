@@ -50,9 +50,11 @@ Signaturgruppen Controlled Transfer provides a flexible session transfer mechani
 In Signaturgruppens Controlled Transfer, it is the sender's responsibility to ensure that the required consent has been obtained before transferring any data. Signaturgruppens Broker does not enforce or verify consent handling.
 
 ### Security Considerations
-- Session data is based on the authentication at SP A.
-- SP B should verify session details and consider additional user verification for sensitive operations.
+When setting up Controlled Transfer some details on security should be considered. 
+- Session data is based on the authentication at SP A. If regulatation mandates that a standardized security level is required a step-up-authentication like MitID can be performed.
+- SP B could consider additional user authentication for sensitive operations based on a risk analysis.
 - The transfer token has a short lifespan and can only be used once.
+- SP B should verify session details and the JWT token signature.
 
 ---
 
