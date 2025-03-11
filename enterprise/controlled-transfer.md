@@ -8,7 +8,11 @@ nav_order: 8
 # Signaturgruppen Controlled Transfer
 
 ### Overview
-Signaturgruppen Controlled Transfer provides a flexible session transfer mechanism between service providers. Unlike MitID Controlled Transfer, which has strict data transfer limitations, Signaturgruppens Controlled Transfer allows the sender to include any relevant data, provided they have obtained the necessary consent. Unlike MitID CTT, this method allows additional customization, including transferring user attributes beyond authentication details.
+Signaturgruppen Controlled Transfer provides a flexible session transfer mechanism between service providers. Unlike MitID Controlled Transfer, which has strict data transfer limitations, Signaturgruppens Controlled Transfer allows the sender to include any relevant data, provided they have obtained the necessary consent.
+
+### Flow Diagram
+![](../images/SG-CTT-Flow.png)
+---
 
 ### Process
 
@@ -41,9 +45,6 @@ Signaturgruppen Controlled Transfer provides a flexible session transfer mechani
   ```
 - SP B receives authentication session details in a signed JWT token.
 
-### Flow Diagram
-![](../images/SG-CTT-Flow.png)
----
 
 ### Consent Requirement
 In Signaturgruppens Controlled Transfer, it is the sender's responsibility to ensure that the required consent has been obtained before transferring any data. Signaturgruppens Broker does not enforce or verify consent handling.
