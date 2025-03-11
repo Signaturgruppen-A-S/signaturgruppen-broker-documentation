@@ -2,12 +2,10 @@
 title: MitID Controlled Transfer
 layout: home
 parent: Enterprise features
-nav_order: 8
+nav_order: 9
 ---
 
-# Controlled Transfer
-
-## MitID Controlled Transfer Token (CTT)
+# MitID Controlled Transfer
 
 ### Overview
 MitID Controlled Transfer Token (CTT) allows an authenticated session from one service provider (SP A) to be securely transferred to another service provider (SP B). This mechanism ensures authentication integrity is maintained and supports seamless session sharing.
