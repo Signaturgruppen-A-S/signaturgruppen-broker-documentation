@@ -53,15 +53,15 @@ A result from the User Info endpoint after a successful MitID authentication flo
 
 ```
 {
-“sub”		: "bab646bb-8608-4ac7-ac42-cee4ad490600",
-“mitid_uuid”		: “af0196a3-6c61-464d-ab04-6394191a753d”,
-“mitid.age” 		: “35”,
-“mitid.date_of_birth”	: “1985-03-29”,
-“mitid.ial_identity_assurance_level”	: “SUBSTANTIAL”,
-“da.cpr”		: “290385-xxxx”,
-“mitid.identity_name” 	: “Hans Hansen”,
-“session_status” 		: “active”,
-“session_identifier” 		: “19712D37-0C76-4AAA-B049-BACD585F484F”
+  "sub" : "bab646bb-8608-4ac7-ac42-cee4ad490600",
+  "mitid_uuid" : "af0196a3-6c61-464d-ab04-6394191a753d",
+  "mitid.age" : "35",
+  "mitid.date_of_birth"	: "1985-03-29",
+  "mitid.ial_identity_assurance_level" : "SUBSTANTIAL”,
+  "da.cpr" : "290385-xxxx",
+  "mitid.identity_name" : "Hans Hansen",
+  "session_status" : "active",
+  "session_identifier" : "19712D37-0C76-4AAA-B049-BACD585F484F"
 }
 ```
 
