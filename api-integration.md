@@ -60,7 +60,7 @@ The OAuth2 Client Credentials Flow is a method for an application to authenticat
 * Example:
 
 ```
-POST /oauth2/token HTTP/1.1
+POST /connect/token HTTP/1.1
 Host: authorization-server.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -111,7 +111,7 @@ Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 Token Request:
 
 ```
-POST /oauth2/token HTTP/1.1
+POST /connect/token HTTP/1.1
 Host: authorization-server.com
 Content-Type: application/x-www-form-urlencoded
 
