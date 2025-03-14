@@ -25,7 +25,7 @@ Whenever an API is updated, a new version of the specification and the documenta
 In the documentation APIs are versioned as a semantic versioning scheme (“major.minor.revision”). Breaking changes are signaled by increasing the major version number. This is expected to be a rare occurrence after the development phase is over. If only the minor or the revision number is updated, existing clients targeting the major version number will be compatible with the new version of the API. The URLs exposed by the API contain, as their first sub-resource, a version number which reflects the major version. This is initially “v1”, reflecting the first version of the API. If no breaking changes are introduced, this number will stay at “v1.
 
 #### OAuth 2.0 Authorization Framework
-All APIs are protected using the OAuth 2.0 authorization framework [OAuth].
+All APIs are protected using the OAuth 2.0 authorization framework.
 The Token endpoint is the entry point for getting access- or service tokens issued, which is then used as authorization bearer tokens.
 Access tokens are retrieved from end-user authentication flows or via the “Client Credentials Grant” type flows at the Token endpoint. Service tokens are always retrieved from the Token endpoint using the “Client Credentials Grant” type flow.
 
@@ -34,16 +34,17 @@ In this section the available OpenID Connect endpoints will be listed.
 All listed endpoints in this section will conform to the OpenID Connect specification and will be listed in the Discovery endpoint.
 
 #### Discovery endpoint
-The “OpenID Connect Discovery” endpoint. See [OIDC-DISC] for reference.
-NEB uses OpenID Connect Discovery which allows for automatic retrieval and dynamic changes of endpoints, cryptographic primitives, supported scopes and other features.
+The “OpenID Connect Discovery” endpoint. See [Environments](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/environments.html) for reference.
+Signaturgruppen Broker uses OpenID Connect Discovery which allows for automatic retrieval and dynamic changes of endpoints, cryptographic primitives, supported scopes and other features.
 All Broker API endpoints have their endpoints published via the Discovery endpoint.
 The Discovery endpoint will dynamically list available endpoints, available scopes and various other relevant OIDC specific information.
 
 #### Token endpoint
-All tokens issued by the NEB platform is issued from the Token endpoint. The endpoint follows the OpenID Connect specification.
+All tokens issued by the Signaturgruppen Broker platform is issued from the Token endpoint. The endpoint follows the OpenID Connect specification.
+
 ### UserInfo endpoint
 For most user authentication flows, the resulting access token provides access to the UserInfo endpoint by using the access token as an authentication bearer token.
-The endpoint returns the full list of issued user-claims for the end-user, if the end-user session is active at NEB.
+The endpoint returns the full list of issued user-claims for the end-user, if the end-user session is active at Signaturgruppen Broker.
 The result from the Userinfo endpoint may contain the following information
 User-claims from the associated end-user session.
 Session info from the associated end-user session.
