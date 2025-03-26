@@ -128,7 +128,7 @@ This also allows services to verify that an already known CPR matches the MitID 
 
 **Note** that MitID only allows MitID Match for 15 minutes after the MitID session was issued.
 
-If “cprNumberMatch” returns false, it means that it is not possible to match the “cpr” input parameter with the CPR-number of the user. MitID restricts CPR-matching to a maximum of three tries per session, in which case the endpoint will return the following response:
+If “cprNumberMatch” returns false, it means that it is not possible to match the “cpr” input parameter with the CPR-number of the user. MitID restricts CPR-matching to a maximum of three tries per session, in which case the endpoint will return the following response: Cpr Match exceeded. Only 3 tries is allowed within a session.
 
 To reset the CPR matching exceeded limitation, the client must prompt the user for reauthentication using MitID.
 
