@@ -15,7 +15,7 @@ This model has several restrictions that includes
 
 - Only the MitID app and code-display authenticators are available.
 - Must be initialized with end-user MitID UUID or Danish CPR.
-- Still requires MitID accepted browsers, the same list as for normal MitID, i.e. **embedded browsers are not allowed**.
+- Still requires MitID accepted browsers, the same list as for normal MitID, i.e. **embedded browsers are not advised**.
 
 But in return has some advantages as well
 
