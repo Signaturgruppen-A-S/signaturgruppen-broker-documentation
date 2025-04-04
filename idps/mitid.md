@@ -259,6 +259,8 @@ It is recommended, that the ssn.details-scopes only are specified, when the retu
 
 Note, that the scopes “ssn.details_name”, “ssn.details_address” and “ssn” can be used together or separately. If ssn is specified that dk.cpr claim will be issued to the service provider, but all scopes will trigger CPR matching for the end-user. It is thus possible to minimize the data handed back to the service provider by controlling it this way.
 
+Further note that a normal minimal address consist of name in combination with street_name, zip_code and zip_name.
+
 ### MitID service provider parameters
 
 | **Identity Provider parameters (mitid)** | **Description** |
