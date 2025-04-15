@@ -78,13 +78,15 @@ Signaturgruppen Broker offers two methods for enabling app switch during MitID f
 
 2. **Client Default URL:**  
    Set a default app switch URL in the Broker Admin UI for all flows associated with the OIDC client.  
-   *Note: Specific OIDC parameters provided later will override this default setting.*
+   *Note: Providing the `idp_params` parameter as specified below will override this default setting.*
 
 ## Client Default App Switch URL
 
-Configure a single default app switch URL in the Signaturgruppen Broker Admin UI. This URL will be used automatically for every app switch flow unless overridden by specific OIDC parameters.
+Configure a single default app switch URL in the Signaturgruppen Broker Admin UI. This URL will be used automatically for every flow for that client unless the OIDC parameter `idp_params` is provided.
 
-## OIDC Parameters
+## OIDC Parameter
+
+An OIDC parameter named `idp_params` can be provided which consists of a url encoded JSON object with three required fields, providing this object prevents the usage of a Default App Switch URL provided in the portal.
 
 For example:
 
@@ -94,9 +96,10 @@ idp_params=%7B%22mitid%22%3A%7B%22enable_app_switch%22%3A%20true%2C%20%22app_swi
 
 | **Parameter**          | **Description**                                                                                                                                                            |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **enable_app_switch**  | *Type:* Boolean (Default: false). When set to true, app switching is activated for the MitID flow.                                                                          |
+| **enable_app_switch**  | *Type:* Boolean. Whether app switching is activated for the MitID flow. Setting to false                                                                           |
 | **app_switch_os**      | *Type:* String. Acceptable values: `ios` or `android`.                                                                                                                    |
 | **app_switch_url**     | *Type:* String. The Universal Link or App Links URL that the app is set to handle. For non-signed OIDC requests, this URL must be whitelisted for your OIDC client.  |
+
 
 # App Switch in Non-App Browser Flows
 
