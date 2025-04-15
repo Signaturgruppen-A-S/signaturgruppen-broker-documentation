@@ -96,7 +96,7 @@ idp_params=%7B%22mitid%22%3A%7B%22enable_app_switch%22%3A%20true%2C%20%22app_swi
 
 | **Parameter**          | **Description**                                                                                                                                                            |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **enable_app_switch**  | *Type:* Boolean. Whether app switching is activated for the MitID flow. Setting to false                                                                           |
+| **enable_app_switch**  | *Type:* Boolean. Whether app switching is activated for the MitID flow.                                                                           |
 | **app_switch_os**      | *Type:* String. Acceptable values: `ios` or `android`.                                                                                                                    |
 | **app_switch_url**     | *Type:* String. The Universal Link or App Links URL that the app is set to handle. For non-signed OIDC requests, this URL must be whitelisted for your OIDC client.  |
 
