@@ -168,6 +168,15 @@ Example assetlinks.json
 On your webpage hosted at your-domain.com, include JavaScript to listen for and validate messages coming from your Android app. The expected origin should follow the format: android-app://<your.app.domain>/<your.app.package>.
 
 ```javascript
+
+function exampleGenerateResponseMessage(_) {
+    var msg = document.getElementById('postMessageResult');
+    if (msg) {
+        return msg.textContent;
+    }
+    return null;
+}
+
 // Listen for messages from the Android Custom Tab
 window.addEventListener('message', function(event) {
   // Validate the origin: it should match the custom scheme for your Android app
@@ -187,6 +196,26 @@ window.addEventListener('message', function(event) {
 
   // Process the message if validation succeeds
   console.log("PostMessage received from Android app:", event.data);
+
+  var port = event.ports[0];
+  if (typeof port === 'undefined') {
+    console.log("Port is undefined, ignoring..");
+    return;
+  }
+
+  try
+  {
+    var msg = exampleGenerateResponseMessage(event);
+    if (msg) {
+        console.log("Sending postMessage result back..");
+        port.postMessage(msg);
+    } else {
+        console.log("No postMessage result to send back..");
+        port.postMessage("N/A");
+    }
+  } catch (e) {
+    console.log("Error: " + e);
+  }
 });
 ```
 **Key Points:**
