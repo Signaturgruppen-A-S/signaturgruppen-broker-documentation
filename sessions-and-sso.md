@@ -23,10 +23,16 @@ The returned ID token contains the following claims relevant for session handlin
 
 | Claim | Description |
 | --- | --- |
-| session\_expiry | Contains the absolute expiry time of the issued Signaturgruppen Broker end-user session in Epoch Unix Timestamp format.This time also indicates the period of which other session may be created based on the ID token. If the authentication from Signaturgruppen Broker is used to create an internal setup with e.g., a SSO setup, then the session expiry indicates when it is no longer allowed to create new logins and session based on the ID token issued by Signaturgruppen Broker. |
 | neb\_sid | Reference to the active Signaturgruppen Broker session. |
 | auth\_time | Time when the end-user authentication occurred in Epoch Unix Timestamp format. |
 
+## Userinfo endpoint session info
+The Userinfo endpoint claim response includes the following claim, which has information about the session associated with the access token used as authorization towards the Userinfo endpoint:
+
+ Claim | Description |
+| --- | --- |
+| session\_expiry | Contains the absolute expiry time of the issued Signaturgruppen Broker end-user session in Epoch Unix Timestamp format.This time also indicates the period of which other session may be created based on the ID token. If the authentication from Signaturgruppen Broker is used to create an internal setup with e.g., a SSO setup, then the session expiry indicates when it is no longer allowed to create new logins and session based on the ID token issued by Signaturgruppen Broker. Only set if session is active. |
+| session\_is\_active | Always returned can be either "true" or "false". This can be used to determine the active state of the Signaturgruppen Broker session associated with the session id referenced in both the issued ID- and access token. |
 
 ## Authentication request control of session usage
 
