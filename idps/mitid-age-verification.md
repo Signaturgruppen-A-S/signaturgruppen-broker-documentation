@@ -39,7 +39,7 @@ idbrokerdk_age_verify_18: "true"
 ## Default Idp parameters
 When the flow is started with *exactly* the three scopes: 
 ```
-scope:openid minimal age_verify:age
+openid minimal age_verify:age
 ```
 Then a set of specific age verification default parameters will be used for the flow. 
 
