@@ -36,6 +36,18 @@ This will result in a claim response from the Userinfo endpoint without any glob
 idbrokerdk_age_verify_18: "true"
 ```
 
+## Default Idp parameters
+When the flow is started with the three scopes: 
+```
+scope:openid minimal age_verify:age
+```
+Then a set of specific age verification default parameters will be used for the flow. 
+
+The default settings are
+* A default MitID reference text appropriate for the age verification
+* AAL level requested is set to NSIS level LOW. This is to allow for simplest MitID login for the end user.
+* MitID "action text" is set to "CONFIRM", which informs the MitID client to word the flows as a "confirm" flow instead of "login".
+
 ## Minimal scope
 The **minimal** scope value ensures that no global/persistent values are returned in terms of userdata through the flow **by default**. Only specifically requested claim values by specific scope values can then add persistent claim outputs. 
 
