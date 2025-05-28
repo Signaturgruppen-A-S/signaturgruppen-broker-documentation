@@ -41,8 +41,9 @@ curl --location 'https://pp.netseidbroker.dk/op/connect/token' \
 --data-urlencode 'scope=neb_api'
 ```
 
-### Open Test client
+### Open Test client (DK29915938)
 You can test with our open free to use Controlled Transfer Test API Client specified here. This is setup under Signaturgruppen CVR in PP. In order to test with your own CVR, create one in the PP Admin UI interface (API Client) or reach out to our support.
+Note that this API client is setup under Signaturgruppen CVR **DK29915938**.
 
 Here is a test example of a client credentials request, using this open client
 ```
