@@ -15,6 +15,26 @@ When returning to your app via App Links, the Custom Tab typically remains in th
 
 ---
 
+## Recommended Integration Strategy for Android
+
+To ensure the most robust and user-friendly integration with MitID on Android, the following strategy is recommended:
+
+### 1. Prefer Chrome for Custom Tabs
+Use a **Custom Tab** for launching the MitID Broker flow, and **"pin" the Custom Tab to Chrome** if it is installed and available on the user's device. Chrome offers the most consistent and reliable support for the required features, including the `postMessage` communication protocol. If Chrome is not available, gracefully **fall back to the system default browser** to maintain compatibility.
+
+### 2. Use `postMessage` Protocol When Available
+Leverage the `postMessage` protocol for communication between the browser and your app when it is supported by the environment. This enables a **seamless and secure** return flow from the browser back to your app without requiring explicit user interaction.
+
+- When supported, the `postMessage` mechanism should be the **default method** for handling the return to your app.
+- Ensure your app listens for the relevant messages securely and within the appropriate browser context.
+
+### 3. Fallback to App Switch Redirect with optional push
+If the `postMessage` flow is not supported (e.g., due to browser limitations or device settings), implement a fallback using an **HTML "app switch redirect button"** presented to the user. This button should clearly instruct the user to return to your app by triggering the app switch manually.
+
+- Optionally, if your system supports it and the user has enabled the feature, you may also use a **backend-initiated push message** to the app. This push can trigger the switch from the browser back to the app, offering a smoother fallback experience.
+
+This dual fallback mechanism ensures that users can complete the MitID authentication reliably, even when automatic redirection is not possible.
+
 ## Bringing the Custom Tab to the Foreground
 
 A direct app switch back to your app does not automatically foreground the Custom Tab. Instead, the activity handling the app switch is displayed. To bring the Custom Tab to the front after the app switch, you can:
@@ -77,13 +97,14 @@ private val customTabsCallback =
 
         override fun onPostMessage(message: String, extras: Bundle?) {
             super.onPostMessage(message, extras)
-            //Handle postMessage, validate challenge optional challenge mechanism ehre.
+            //Validate the message, i.e. if you use this protocol to hand OIDC code to the app.
+            //If challenge mechanism used, expect replay of challenge here
             //Here a new activity is startet, which will terminate the CustomTab and get focus back to the app.
             context?.startActivity(Intent(context, MainActivity::class.java))
         }
         
         override fun onMessageChannelReady(extras: Bundle?) {
-            String challenge = "your_generated_challenge"; // Optional: use this challenge for extra security.
+            String challenge = "your_generated_challenge"; // Optional
             super.onMessageChannelReady(extras)
             session?.postMessage(challenge, null)
         }
@@ -133,12 +154,14 @@ private fun launch(url: String) {
 ```
 
 **Key Points:**
-- onMessageChannelReady: Called when the PostMessage channel is ready. Optionally, your app sends a challenge string (which you should generate uniquely) to the webpage.
+- onMessageChannelReady: Called when the PostMessage channel is ready.
 - onPostMessage: Receives messages from the webpage.
 - The channel is registered for the domain https://your-domain.com.
 
 #### Optional Secure Challenge
-The challenge-response mechanism is optional. If used, your app sends a challenge (e.g., "your_generated_challenge") when the channel is ready. The webpage can then verify this challenge before processing further messages. If you choose not to implement this extra security measure, simply omit the challenge verification in both the app and the webpage code.
+The challenge-response mechanism is optional. If used, your app sends a challenge (e.g., "your_generated_challenge") when the channel is ready and when the app receives an event from the webpage the same challenge can be verified. If you choose not to implement this extra security measure, simply omit the challenge verification in both the app and the webpage code.
+
+This mechanism ensures that received PostMessage events in the app comes from the initial CustomTab session PostMessage channel.
 
 ### Domain Association with Digital Asset Links
 To allow your app to be associated with your webpage, host an assetlinks.json file on your domain under the path /.well-known/assetlinks.json.
