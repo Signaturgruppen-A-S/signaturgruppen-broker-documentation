@@ -185,31 +185,6 @@ idp_params=%7B%20%22mitid%22%3A%7B%22loa_value%22%3A%22substantial%22%2C%22refer
 
 <table><tbody><tr><th><p><strong>Claim value</strong></p></th><th><p><strong>Possible values</strong></p></th></tr><tr><td><p>mitid.uuid</p></td><td><p>Same value as for ID token.</p></td></tr><tr><td><p>mitid.reference_text</p></td><td><p>Passthrough of the MitID <strong>reference_text</strong> identity provider parameter.</p></td></tr><tr><td><p>mitid.transaction_text_sha256</p></td><td><p>Base64 encoded SHA256 digest of the MitID <strong>transactiontext</strong> identity provider parameter.</p></td></tr><tr><td><p>mitid.transaction_text_type</p></td><td><p>Passthrough of the MitID <strong>transactiontexttype</strong> identity provider parameter</p></td></tr><tr><td><p>mitid.psd2</p></td><td><p>The mitid.psd2 claim is always issued as a transaction token MitID specific claim.</p></td></tr><tr><td><p>transaction_actions</p></td><td><p>Type: string (single value) or JSON list</p><p>Only set, if one or more of the following transaction actions where performed:</p><ul><li>mitid.login (Login completed)</li><li>mitid.reuse_jwt (Automatic reuse of existing session)</li><li>mitid.sso_login (SSO login completed)</li><li>mitid.controlled_transfer (Controlled Transfer completed)</li><li>mitid.transaction_signing (Transaction signing)</li><li>mitid.cpr_match (CPR match completed)</li><li>mitid.cpr_lookup (Automatic CPR lookup completed)</li></ul></td></tr></tbody></table>
 
-### MitiD Transaction signing
-
-Signaturgruppen Broker supports a transaction signing flow which enables the end-user to approve a transaction text based on text or HTML, as part of the MitID authentication. Transaction signing flow is limited to only signed requests.
-
-This is done by setting the **transaction_text** and **transaction_text_type** MitID identity provider parameters.
-
-The end-user will be shown the text/HTML and will have to approve the text to complete the transaction.
-
-MitID natively supports the **reference_text** (130 characters) parameter which enables a limited size and format to present the end-user with detailed information about the transaction.
-
-If the transaction token is requested, a NEB sealed record of the transaction is returned including all the relevant parameters used to complete the transaction.
-
-If **transaction_text_type** is set to _html_, the HTML content of the **transaction_text** is restricted to a set of qualified tags and parsed to protect against possible malicious content and flow breakage.
-
-Allowed HTML tags:
-
-1. _html, body, head, style, title, div, p, ul, li, h1, h2, h3, h4, h5, h6, table, font, tr, th, td, i, u, b, center, a, q, small_
-
-Disallowed expressions and attributes:
-
-1. CSS expressions and embedded script links for _style_ tag.
-2. CSS expression attributes.
-3. Any on- attributes, such as _onload, onclick etc._
-4. Script link attributes, such as _src, dynsrc, lowsrc, javascript:_ etc.
-
 ### MitID CPR flow
 
 CPR is available from MitID flows if you are a public service provider. In this scenario, NEB will set **dk.cpr** in the result, if requested via the **ssn** scope.
