@@ -152,14 +152,15 @@ In order to appswitch (without channel-binding) to the MitID app, (appswitch-) r
 #### Android
 > Important for the Android URL to URL encode it as shown in the examples.
 
+> NOTE, changes with version 15 of MitID for Android. Following documentation is for version 15, which is live in PP and will become live in production 19.08.2025
+
 All environments (Install the MitID app for target environment last on device, this will handle the appswitch):
 ```
-https://appswitchmitid.page.link/?apn=dk.mitid.app.android&afl=https%3A%2F%2Fappswitch.mitid.dk&link=https%3A%2F%2Fappswitch.mitid.dk
+https://appswitch.mitid.dk
 ```
-
-With **returnUrl** parameter (add: **%3FreturnUrl%3D[Encoded URL]**):
+With **returnUrl** parameter (requires trailing **"/"** on MitID URL):
 ```
-https://appswitchmitid.page.link/?apn=dk.mitid.app.android&afl=https%3A%2F%2Fappswitch.mitid.dk&link=https%3A%2F%2Fappswitch.mitid.dk%3FreturnUrl%3Dhttps%3A%2F%2Fappswitch.to.app.url%2Fandroid
+https://appswitch.mitid.dk/?returnUrl=https://appswitch.to.app/android
 ```
 
 #### IOS
