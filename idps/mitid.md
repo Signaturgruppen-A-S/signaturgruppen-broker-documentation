@@ -82,7 +82,7 @@ Embedded browsers are not supported and not allowed (\* they are allowed in ifra
             <td>
                 <p>cpr_hint</p>
                 <p>
-                    <em>It is required to encrypt requests when sending cpr_hint, see </em><strong><em>[NEB-TECHREF]</em></strong><em> for reference.</em>
+                    <em>It is required to use encryption when sending cpr_hint either through server-server TLS or request payload-encryption</em>
                 </p>
             </td>
             <td>
