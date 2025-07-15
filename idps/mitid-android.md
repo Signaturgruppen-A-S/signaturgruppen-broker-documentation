@@ -68,7 +68,7 @@ Your Android app can register a [postMessage channel](https://developer.android.
 
 The registration process is similar to App Link configuration, relying on proper settings in the `assetlinks.json` file hosted at the root of your target domain.
 
-This documentation explains how to integrate postMessage communication between your Android app and your webpage hosted on **your-domain.com**. The guide covers:
+This documentation explains how to integrate postMessage communication between your Android app and your webpage hosted on **your.app.domain**. The guide covers:
 
 - Configuring your Android app with a Custom Tab session callback listener.
 - Registering a postMessage channel with an optional secure challenge.
@@ -156,7 +156,7 @@ private fun launch(url: String) {
 **Key Points:**
 - onMessageChannelReady: Called when the PostMessage channel is ready.
 - onPostMessage: Receives messages from the webpage.
-- The channel is registered for the domain https://your-domain.com.
+- The channel is registered for the domain https://your.app.domain.
 
 #### Optional Secure Challenge
 The challenge-response mechanism is optional. If used, your app sends a challenge (e.g., "your_generated_challenge") when the channel is ready and when the app receives an event from the webpage the same challenge can be verified. If you choose not to implement this extra security measure, simply omit the challenge verification in both the app and the webpage code.
@@ -185,10 +185,10 @@ Example assetlinks.json
 
 - package_name: Replace with your Android app’s package name.
 - sha256_cert_fingerprints: Replace with your app’s certificate fingerprint.
-- Host this file at https://your-domain.com/.well-known/assetlinks.json.
+- Host this file at https://your.app.domain/.well-known/assetlinks.json.
 
 ### Webpage JavaScript Integration
-On your webpage hosted at your-domain.com, include JavaScript to listen for and validate messages coming from your Android app. The expected origin should follow the format: android-app://<your.app.domain>/<your.app.package>.
+On your webpage hosted at your.app.domain, include JavaScript to listen for and validate messages coming from your Android app. The expected origin should follow the format: android-app://<your.app.domain>/<your.app.package>.
 
 ```javascript
 
