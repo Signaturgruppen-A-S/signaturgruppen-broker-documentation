@@ -173,7 +173,7 @@ Example assetlinks.json
     "relation": ["delegate_permission/common.use_as_origin"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.example.yourapp",
+      "package_name": "your.app.package",
       "sha256_cert_fingerprints": [
         "AB:CD:EF:12:34:5..2:34:56:78:90"
       ]
