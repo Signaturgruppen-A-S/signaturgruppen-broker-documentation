@@ -61,12 +61,17 @@ Simulation parameters are set as space-delimited values in the query URL. These 
    Example:  
    `uuid:GUID`
 
-2. **CPR Number (`cpr`)**  
+2. **MitID Username (`username`)**  
+   MitID username for the MitID being simulated.  
+   Example:  
+   `username:my-mitid-username`
+   
+3. **CPR Number (`cpr`)**  
    Simulate a specific CPR number for the user.  
    Example:  
    `cpr:1234567890`
 
-3. **MitID Erhverv UUID (`mitid_erhverv_uuid`)**  
+4. **MitID Erhverv UUID (`mitid_erhverv_uuid`)**  
    Use a unique identifier for a MitID Erhverv user.  
    Example:  
    `mitid_erhverv_uuid:GUID`
