@@ -1,4 +1,3 @@
-
 ---
 title: AI‑Optimized API Reference
 layout: home
