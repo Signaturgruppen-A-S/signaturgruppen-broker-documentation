@@ -4,6 +4,8 @@ layout: home
 nav_order: 5000
 ---
 
+
+
 # For AI Assistants: Structured API Overview for Programmatic Reading
 
 This section is designed to be parsed by AI models like ChatGPT, GitHub Copilot, and others. It presents Signaturgruppen Broker API endpoints in a clean, consistent, and minimal format that supports:
@@ -14,6 +16,25 @@ This section is designed to be parsed by AI models like ChatGPT, GitHub Copilot,
 - ✅ Parameter documentation
 
 ---
+
+## 📌 Tips & Support
+
+### Get started for free
+
+Customers can set up their first MitID login flows in **PreProduction (PP)** completely free of charge — no need for dedicated credentials initially.
+
+Signaturgruppen provides shared `client_id` and `client_secret` values that can be used directly for testing purposes in PP.  
+This allows you to quickly begin integration and try out the login flow without needing a prior agreement or custom configuration.
+
+### When you're ready for dedicated credentials
+
+Once you're ready to use your own credentials — whether in **PreProduction (PP)** or **Production (PROD)** — you can contact Signaturgruppen to have them issued.
+
+📧 **Contact:** support@signaturgruppen.dk  
+Please include your CVR number and a brief description of your setup or test environment.
+
+Signaturgruppen's support team will assist you in obtaining your own `client_id` and `client_secret`, enabling you to move toward production or more realistic test scenarios.
+
 
 ## 🌐 Environments & Discovery Endpoints
 
