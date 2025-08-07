@@ -88,74 +88,74 @@ The Signaturgruppen Broker test/pp-system is wired up to use the so-called NemLo
     MitID Privat ID: Abenaa133  
     MitID Erhverv ID: Abenaa133erhverv  
     MitID Erhverv EIA UUID: 7b10ffa7-d26f-40a2-b7a9-ae3f3231cdcc (CVR: 43950932)  
-    NemID Erhverv RID: 93068542 (CVR: 43950932) (<https://www.signaturgruppen.dk/download/mitiderhverv/Abenaa_Petersen_43950932.zip>" (PW: Test1234))
+    NemID Erhverv RID: 93068542 (CVR: 43950932) 
 2. CPR: 0907549089  
     MitID Privat ID: Conrad79491  
     MitID Erhverv ID: Conrad79491erhverv  
     MitID Erhverv EIA UUID: acd3e77b-ec38-4715-8804-6c11429faabe (CVR: 43950932)  
-    NemID Erhverv RID: 19766788 (CVR: 43950932) (<https://www.signaturgruppen.dk/download/mitiderhverv/Conrad_Petersen_43950932.zip>" (PW: Test1234))
+    NemID Erhverv RID: 19766788 (CVR: 43950932) 
 3. CPR: 1705969945  
     MitID Privat ID: Kaj668  
     MitID Erhverv ID: Kaj668erhverv  
     MitID Erhverv EIA UUID: 0fa1da81-c623-47d9-a274-e20c71f851de (CVR: 43950932)  
-    NemID Erhverv RID: 79095121 (CVR: 43950932) (<https://www.signaturgruppen.dk/download/mitiderhverv/Kaj_Andersen_43950932.zip> (PW: Test1234))
+    NemID Erhverv RID: 79095121 (CVR: 43950932) 
 
 **User with only MitID Private authenticator**
 
 1. CPR: 2707343888  
     MitID Privat ID: Freja5669  
     MitID Erhverv EIA UUID: 337e05cb-e2e5-4dea-bd6c-57b788bcd841 (CVR: 43950932)  
-    NemID Erhverv RID: 82864416 (CVR: 43950932) (<https://www.signaturgruppen.dk/download/mitiderhverv/Freja_Henriksen_43950932.zip> (PW: Test1234))
+    NemID Erhverv RID: 82864416 (CVR: 43950932) 
 2. CPR: 2707283583  
     MitID Privat ID: Stig9431  
     MitID Erhverv EIA UUID: b557c19c-ca0a-4128-ae3f-c81b76c1290f (CVR: 43950932)  
-    NemID Erhverv RID: 21309740 (CVR: 43950932) (<https://www.signaturgruppen.dk/download/mitiderhverv/Stig_Henriksen_43950932.zip> (PW: Test1234))
+    NemID Erhverv RID: 21309740 (CVR: 43950932) 
 3. CPR: 1007899315  
     MitID Privat ID: Earl112066  
     MitID Erhverv EIA UUID: f1004927-e6dc-41a3-af6a-8b31d27ae99f (CVR: 43950932)  
-    NemID Erhverv RID: 30663772 (CVR: 43950932) (<https://www.signaturgruppen.dk/download/mitiderhverv/Earl_Nielsen_43950932.zip> (PW: Test1234))
+    NemID Erhverv RID: 30663772 (CVR: 43950932) 
 4. CPR: 2103602680  
     MitID Privat ID: Buggi2831  
     MitID Erhverv EIA UUID: 338730b4-fcca-499f-ae7f-c67187edc3ce (CVR: 43950932)  
-    NemID Erhverv RID: 69271471 (CVR: 43950932) ([https://www.signaturgruppen.dk/download/mitiderhverv/ Buggi_Poulsen_43950932.zip](https://www.signaturgruppen.dk/download/mitiderhverv/%20Buggi_Poulsen_43950932.zip) (PW: Test1234))
+    NemID Erhverv RID: 69271471 (CVR: 43950932) 
 5. CPR: 0801105610  
     MitID Privat ID: Carinalouissa6583  
     MitID Erhverv EIA UUID: 96436aa2-6d6f-410b-8856-26a209eaed1f (CVR: 43950932)  
-    NemID Erhverv RID: 71459852 (CVR: 43950932) (<https://www.signaturgruppen.dk/download/mitiderhverv/Carinalouissa_Christensen_43950932.zip> (PW: Test1234))
+    NemID Erhverv RID: 71459852 (CVR: 43950932) 
 6. CPR: 2008933068  
     MitID Privat ID: Sofia7798  
     MitID Erhverv EIA UUID: 2336f5e6-bf21-45ad-ac7d-887168cd321e (CVR: 43950932)  
-    NemID Erhverv RID: 12693636 (CVR: 43950932) (<https://www.signaturgruppen.dk/download/mitiderhverv/Sofia_Poulsen_43950932.zip> (PW: Test1234))
+    NemID Erhverv RID: 12693636 (CVR: 43950932) 
 7. CPR: 2708453261  
     MitID Privat ID: Sofus47825  
     MitID Erhverv EIA UUID: 3fb1cd3c-45ce-40d2-ba5b-665a8dcb08f2 (CVR: 43950932)  
-    NemID Erhverv RID: 46121612 (CVR: 43950932) (<https://www.signaturgruppen.dk/download/mitiderhverv/Sofus_Hansen_43950932.zip> (PW: Test1234))
+    NemID Erhverv RID: 46121612 (CVR: 43950932) 
 8. CPR: 1004240916  
     MitID Privat ID: Clara9572  
     MitID Erhverv EIA UUID: 0e5ffdf0-64ab-45a1-adc0-88b09687703e (CVR: 43950932)  
-    NemID Erhverv RID: 83088158 (CVR: 43950932) (<https://www.signaturgruppen.dk/download/mitiderhverv/Clara_Joergensen_43950932.zip> (PW: Test1234))
+    NemID Erhverv RID: 83088158 (CVR: 43950932) 
 9. CPR: 2212923373  
     MitID Privat ID: Anders4329  
     MitID Erhverv EIA UUID: bd0f36f2-1ab7-43ee-afd5-ac2fd79f84f8 (CVR: 43950932)  
-    NemID Erhverv RID: 54591620 (CVR: 43950932) (<https://www.signaturgruppen.dk/download/mitiderhverv/Anders_Henriksen_43950932.zip> (PW: Test1234))
+    NemID Erhverv RID: 54591620 (CVR: 43950932) 
 
 **User with only dedicated MitID employee authenticator**
 
 1. CPR: 1806924233  
     MitID Erhverv ID: Benny9430erhverv  
     MitID Erhverv EIA UUID: 58a162b4-8a0e-4254-9d32-4ecf6adb8562 (CVR: 43950932)  
-    NemID Erhverv RID: 99610558 (CVR: 43950932) (<https://www.signaturgruppen.dk/download/mitiderhverv/Benny_Poulsen_43950932.zip> (PW: Test1234))
+    NemID Erhverv RID: 99610558 (CVR: 43950932) 
 2. CPR: 2911310158  
     MitID Erhverv ID: Olivia282erhverv  
     MitID Erhverv EIA UUID: 1341af14-041c-414f-8bf0-b617f270f1fb (CVR: 43950932)  
-    NemID Erhverv RID: 77310023 (CVR: 43950932) (<https://www.signaturgruppen.dk/download/mitiderhverv/Olivia_Andersen_43950932.zip> (PW: Test1234))
+    NemID Erhverv RID: 77310023 (CVR: 43950932) 
 
 **Users with multiple company identities**
 
 1. CPR: 1902078084  
     MitID Privat ID: Laura40305  
     MitID Erhverv EIA UUID: 8d3110d7-a2ad-423d-8590-67f22939178e (CVR: 43950932)  
-    NemID Erhverv RID: 40854143 (CVR: 43950932) (<https://www.signaturgruppen.dk/download/mitiderhverv/Laura_Nielsen_43950932.zip> (PW: Test1234))
+    NemID Erhverv RID: 40854143 (CVR: 43950932) 
 
 MitID Erhverv EIA UUID: 2a4896a6-f69c-445e-858c-33eefee9c947 (CVR: 16662879)
 
@@ -164,7 +164,7 @@ NemID Erhverv RID: 99612445 (CVR: 16662879)
 1. CPR: 1405509683  
     MitID Privat ID: Bjørn2712  
     MitID Erhverv EIA UUID: 0c23111c-928b-4adb-a413-e07006c48c16 (CVR: 43950932)  
-    NemID Erhverv RID: 10438898 (CVR: 43950932) (<https://www.signaturgruppen.dk/download/mitiderhverv/Bjoern_Jensen_43950932.zip> (PW: Test1234))
+    NemID Erhverv RID: 10438898 (CVR: 43950932) 
 
 MitID Erhverv EIA UUID: 20ad8d25-dbe7-4244-ba72-f1d2f6aa886f (CVR: 16662879)
 
