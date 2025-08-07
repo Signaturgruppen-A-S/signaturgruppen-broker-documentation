@@ -1,9 +1,3 @@
----
-title: AI‑Optimized API Reference
-layout: home
-nav_order: 5000
----
-
 # Signaturgruppen Broker – AI Optimized Integration Reference
 
 (Work in progress - testing)
