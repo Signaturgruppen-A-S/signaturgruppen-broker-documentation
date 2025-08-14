@@ -195,7 +195,7 @@ In the following the different error codes will be mapped. These errors are retu
 |  invalid_grant      | Invalid request id or flow no longer valid. Note that tokens can only be returned once, then flow is invalidated.      |
 |  access_denied      | End-user has rejected the authentication request.      |
 |  slow_down      | Request is still pending, but polling is too frequent.     |
-|  expired_token      | The request_id has expired     |
+|  expired_token      | The client assertion token used for client authentication has expired. |
 | mitid_flex_app.mitid_error_{mitid_status_code} | Error from MitID with the corresponding MitID status code |
 
 ## Signed request object
