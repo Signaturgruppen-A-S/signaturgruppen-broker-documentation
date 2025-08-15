@@ -1,3 +1,9 @@
+---
+title: CIBA PAR OIDC integration
+layout: home
+nav_order: 22
+---
+
 
 # CIBA + PAR integration
 Signaturgruppen Broker supports a special [CIBA](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html) integration, that allows a service provider to initate any flow normally available via Signaturgruppen Brokers OpenID Connect interface via CIBA.
