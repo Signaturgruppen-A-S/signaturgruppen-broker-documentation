@@ -102,7 +102,7 @@ Success:
     "access_token": "ey..cI5fHRKnQ",
     "expires_in": 10800,
     "token_type": "Bearer",
-    "scope": "openid minimal age"
+    "scope": "openid mitid"
 }
 ```
 
