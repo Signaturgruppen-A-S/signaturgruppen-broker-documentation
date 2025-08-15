@@ -75,6 +75,7 @@ Giving a response on the form:
     "authentication_uri": "https://pp.netseidbroker.dk/op/connect/authorize?client_id=b....7&request_uri=urn:ietf:params:oauth:request_uri:4BEE3FBF81FBD52F997575BDBBC9459881E924E6535433D0427A7E46E8D7DB52"
 }
 ```
+
 ### Initiate flow in browser
 To start the flow for the end-user, the returned **authentication_uri** must be opened in the end-users browser. This can be on the same device or on a different device and it is up to the integrating service to transfer this URL and to open the browser for the end-user.
 As an example, the service could render a QR code of the **authentication_uri** which would allow any user to scan it with their mobile camera app and automatically start the flow in their default browser.
@@ -104,3 +105,19 @@ Success:
     "scope": "openid minimal age"
 }
 ```
+
+## Controlling last redirect for the end-user
+The default behavior for the last redirect in the end-user browser flow is a landing page controlled by Signaturgrupen Broker, that informs the end-user of the flow result and informs that the page can be closed.
+
+It is possible to control the last redirect of the end-user, by specifing a **redirectUri** parameter in the CIBA PAR intitialization call:
+```
+{
+    "requestId" : "9384B4AA93780A1AB83684ACE8B07DFCB6C038E9A6847565DC4F0F2547A499D6-1",
+    "redirectUri" : "https://yourdomain.dk/cibaparflowcompleted",
+    "state": "your-flowspecific-identifier"
+}
+```
+
+This redirect will receive the optional **state** parameter for the CIBA PAR initialization call as query parameter, allowing for more tailored handling of the last step of the protocol.
+Error flows will also be sent to the set **redirectUri** applying an additional **error** and **error_description** query parameter.
+
