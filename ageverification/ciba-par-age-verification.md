@@ -30,7 +30,7 @@ In the resulting ID token, either the **idbrokerdk_age=[age]** (using scope age)
 ## User experience
 The flow is initiated from the integrating service backend, and then continously polled until the resulting ID token with the verification response is fetched. 
 
-At https://brokerdemo-pp.signaturgruppen.dk/ageverifyqr we have setup an interactive QR code demo of an Age Verification Flow, which utilizes this API under the hood. Here: 
+At [https://brokerdemo-pp.signaturgruppen.dk/ageverifyqr](https://brokerdemo-pp.signaturgruppen.dk/ageverifyqr) we have setup an interactive QR code demo of an Age Verification Flow, which utilizes this API under the hood. Here: 
 
 1. CIBA + PAR is initiated
 2. QR is created from resulting **authentication_uri** and show to the end-user
