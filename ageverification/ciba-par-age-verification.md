@@ -26,3 +26,14 @@ curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
 > Note that you can use client assertion signed JWTs instead of posting client secret directly.
 
 In the resulting ID token, either the **idbrokerdk_age=[age]** (using scope age) claim or the **idbrokerdk_age_verified=[age:bool(verified)]"** (using scope age_verify:[age]) is returned.
+
+## User experience
+The flow is initiated from the integrating service backend, and then continously polled until the resulting ID token with the verification response is fetched. 
+
+At https://brokerdemo-pp.signaturgruppen.dk/ageverifyqr we have setup an interactive QR code demo of an Age Verification Flow, which utilizes this API under the hood. Here: 
+
+1. CIBA + PAR is initiated
+2. QR is created from resulting **authentication_uri** and show to the end-user
+3. User is able to scan the QR to initiate a MitID (PP: https://pp.mitid.dk/test-tool/frontend/#/create-identity) age verication flow (or manually click the new tab link below the QR for demo purposes)
+4. The QR page will poll in the background for status update (using a backend) - the new tab/QR opened browser on another device will start the OIDC PAR age verification flow.
+5. When the flow is completed the end-user will see a success page and the QR page will update with the result of the flow.
