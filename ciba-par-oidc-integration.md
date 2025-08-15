@@ -23,6 +23,7 @@ Any other top-level parameters normally set for Signaturgruppen Broker OIDC inte
 
 ### **login_hint_token** structure
 Following a non-exhaustive table of options:
+
 | Parameter | Values | Required | Description |
 |----------|----------|----------|----------|
 | flow_type    | broker_oidc   | Required   | Must be set to the value **broker_oidc**   |
