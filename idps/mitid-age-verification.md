@@ -12,7 +12,7 @@ Minimal userdata and GDPR age verification using your Service Provider MitID agr
 ## Usage and parameters
 Signaturgruppen Broker supports a userdata minimal, GDPR optimized age verification flow that utilizes MitID using the service providers active MitID agreement (logo, service provider name etc) with optimized idp paramaters such as MitID reference text and login flow AAL level defaults.
 
-In order to active the flow, you setup an OIDC request as normal for MitID flows, with the following changes:
+In order to activate the flow, you setup an OIDC request as normal for MitID flows, with the following changes:
 
 * **scope**: openid minimal age_verify:age
 * **idp_values**: mitid (optinal, if MitID is the only active IdP for the client)
@@ -34,6 +34,18 @@ This will result in a claim response from the Userinfo endpoint without any glob
 
 ```
 idbrokerdk_age_verify_18: "true"
+```
+
+## Requesting exact age
+It is also possible to request the exact age from the flow by specifying the scope value *age* instead of *age_verify:[age]*. 
+So the scope request will look like 
+```
+openid minimal age
+```
+This will affect the message displayed to the end-user as part of the flow to be explicit that the users age will be returned to the requesting service and the resulting age claim will be:
+
+```
+idbrokerdk_age: "[age]"
 ```
 
 ## Default Idp parameters
