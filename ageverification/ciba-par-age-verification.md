@@ -37,3 +37,14 @@ At https://brokerdemo-pp.signaturgruppen.dk/ageverifyqr we have setup an interac
 3. User is able to scan the QR to initiate a MitID (PP: https://pp.mitid.dk/test-tool/frontend/#/create-identity) age verication flow (or manually click the new tab link below the QR for demo purposes)
 4. The QR page will poll in the background for status update (using a backend) - the new tab/QR opened browser on another device will start the OIDC PAR age verification flow.
 5. When the flow is completed the end-user will see a success page and the QR page will update with the result of the flow.
+
+**MitID age verification text:**  
+![MitID age verification text](https://github.com/user-attachments/assets/8250ae01-b623-4342-a35a-8a7773119d9a)
+
+**User browser completed:**  
+![User browser completed](https://github.com/user-attachments/assets/9358bbfd-22f1-40cc-96aa-9c744006561d)
+
+**QR page updated with status:**  
+![QR page updated with status](https://github.com/user-attachments/assets/ee79314b-e719-492b-8244-9e0f68a4397f)
+
+
