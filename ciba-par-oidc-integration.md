@@ -33,10 +33,11 @@ The following examples demonstrate how to setup a MitID login flow using the CIB
 
 - Initiate CIBA flow, retrieve **request_id**
 - Initiate OIDC PAR flow using **request_id**
-- Poll result examples (pending, error, success)
+- Initiate flow in browser: Open browser with url, app switch from mobile app, generate QR code for users to scan, ...
+- Poll result (pending, error, success)
 
 ### Initiate CIBA flow, retrieve **request_id**:
-
+First a CIBA initialization request is made:
 ```
 curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
@@ -47,4 +48,59 @@ curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
 --data-urlencode 'login_hint_token={"flow_type": "broker_oidc" }' \
 --data-urlencode 'prompt=login' \
 --data-urlencode 'idp_values=mitid'
+```
+Then a CIBA request ID is received:
+Response:
+```
+{
+    "auth_req_id": "9384B4AA93780A1AB83684ACE8B07DFCB6C038E9A6847565DC4F0F2547A499D6-1",
+    "expires_in": 300,
+    "interval": 3
+}
+```
+
+### Initiate OIDC PAR flow using **request_id**
+To initiate a PAR OIDC flow based on the initiated CIBA **request_id**, the CIBA PAR init auth endpoint is invoked:
+```
+{
+    "requestId" : "9384B4AA93780A1AB83684ACE8B07DFCB6C038E9A6847565DC4F0F2547A499D6-1"
+}
+```
+
+Giving a response on the form: 
+```
+{
+    "request_uri": "urn:ietf:params:oauth:request_uri:4BEE3FBF81FBD52F997575BDBBC9459881E924E6535433D0427A7E46E8D7DB52",
+    "expires_in": 600,
+    "authentication_uri": "https://pp.netseidbroker.dk/op/connect/authorize?client_id=b....7&request_uri=urn:ietf:params:oauth:request_uri:4BEE3FBF81FBD52F997575BDBBC9459881E924E6535433D0427A7E46E8D7DB52"
+}
+```
+### Initiate flow in browser
+To start the flow for the end-user, the returned **authentication_uri** must be opened in the end-users browser. This can be on the same device or on a different device and it is up to the integrating service to transfer this URL and to open the browser for the end-user.
+As an example, the service could render a QR code of the **authentication_uri** which would allow any user to scan it with their mobile camera app and automatically start the flow in their default browser.
+
+### Poll result
+Then the backend uses the CIBA poll mechanism, via the OIDC Token endpoint, to continously poll for status update for the initiated flow. The special CIBA pending result indicates that the flow is still ongoing, all other responses indicate either some error or success and will only be returned once, then the **invalid_grant** will be returned.
+
+Pending:
+```
+{
+    "error": "authorization_pending"
+}
+```
+Error:
+```
+{
+    "error": "[some_error]"
+}
+```
+Success:
+```
+{
+    "id_token": "eyJh..NLjg",
+    "access_token": "ey..cI5fHRKnQ",
+    "expires_in": 10800,
+    "token_type": "Bearer",
+    "scope": "openid minimal age"
+}
 ```
