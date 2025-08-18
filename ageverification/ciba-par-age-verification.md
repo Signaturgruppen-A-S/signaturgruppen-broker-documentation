@@ -20,7 +20,7 @@ curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
 --data-urlencode 'scope=openid minimal age' \
 --data-urlencode 'client_id=[your_client_id]' \
 --data-urlencode 'client_secret=[your_secret]' \
---data-urlencode 'login_hint_token={"flow_type": "broker_oidc" }'
+--data-urlencode 'login_hint_token={"flow_type": "broker_oidc", "idp_values":"mitid" }'
 ```
 
 > Note that you can use client assertion signed JWTs instead of posting client secret directly.
