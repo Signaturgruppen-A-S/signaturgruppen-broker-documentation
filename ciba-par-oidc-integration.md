@@ -52,9 +52,7 @@ curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
 --data-urlencode 'scope=openid mitid' \
 --data-urlencode 'client_id=b....7' \
 --data-urlencode 'client_secret=a....SuaQ==' \
---data-urlencode 'login_hint_token={"flow_type": "broker_oidc" }' \
---data-urlencode 'prompt=login' \
---data-urlencode 'idp_values=mitid'
+--data-urlencode 'login_hint_token={"flow_type": "broker_oidc", "idp_values":"mitid" }'
 ```
 Then a CIBA request ID is received:
 Response:
