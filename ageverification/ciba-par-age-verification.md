@@ -34,7 +34,7 @@ At [https://brokerdemo-pp.signaturgruppen.dk/ageverifyqr](https://brokerdemo-pp.
 
 1. CIBA + PAR is initiated
 2. QR is created from resulting **authentication_uri** and show to the end-user
-3. User is able to scan the QR to initiate a MitID (PP: https://pp.mitid.dk/test-tool/frontend/#/create-identity) age verication flow (or manually click the new tab link below the QR for demo purposes).
+3. User is able to scan the QR to initiate a MitID (Use MitID PP Test-tool for simulation) age verication flow.
 4. The QR page will poll in the background for status update (using a backend) - the new tab/QR opened browser on another device will start the OIDC PAR age verification flow.
 5. When the flow is completed the end-user will see a success page and the QR page will update with the result of the flow.
 
