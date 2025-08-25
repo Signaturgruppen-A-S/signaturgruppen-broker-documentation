@@ -81,6 +81,7 @@ This documentation explains how to integrate postMessage communication between y
 In your Android app, create a Custom Tab session with a callback listener that handles events related to the PostMessage channel. For example:
 
 ```java
+var uri = "https://your-origin".toUri();
 private val customTabsCallback =
     object : CustomTabsCallback() {
         override fun onNavigationEvent(navigationEvent: Int, extras: Bundle?) {
