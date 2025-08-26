@@ -9,7 +9,7 @@ nav_order: 1
 
 # Android MitID integration
 
-On Android, the recommended approach is to use Custom Tabs targeting the Chrome browser. This method leverages the security and performance benefits of Chrome while allowing deep integration with your app.
+On Android, the recommended approach is to use Custom Tabs targeting the Chrome browser. This method leverages the security and performance benefits of Chrome while allowing deep integration with your app. 
 
 When returning to your app via App Links, the Custom Tab typically remains in the background. Although the browser can often complete the MitID flow in the background (provided the device isn’t in power-saving mode), there are situations where the Custom Tab must be brought to the foreground to ensure the flow completes successfully. It is also expected that the MitID client’s “finish” screen is visible to the user in the browser; therefore, it is generally advisable to keep the Custom Tab active until the flow is fully complete.
 
@@ -31,9 +31,9 @@ Leverage the `postMessage` protocol for communication between the browser and yo
 ### 3. Fallback to App Switch Redirect with optional push
 If the `postMessage` flow is not supported (e.g., due to browser limitations or device settings), implement a fallback using an **HTML "app switch redirect button"** presented to the user. This button should clearly instruct the user to return to your app by triggering the app switch manually.
 
-- Optionally, if your system supports it and the user has enabled the feature, you may also use a **backend-initiated push message** to the app. This push can trigger the switch from the browser back to the app, offering a smoother fallback experience.
+- Optionally, if your system supports it and the user has enabled the feature, you may also use a **backend-initiated  data push message** to the app. This push can trigger the switch from the browser back to the app, offering a smoother fallback experience.
 
-This dual fallback mechanism ensures that users can complete the MitID authentication reliably, even when automatic redirection is not possible.
+This dual fallback mechanism helps to ensure that users can complete the MitID authentication reliably, even when automatic redirection is not possible.
 
 ## Bringing the Custom Tab to the Foreground
 
@@ -58,7 +58,7 @@ When the MitID flow completes and the MitID app switches back to your app, there
   The integrating service should implement the final redirect to render a button on the webpage. This button, when tapped by the end user, triggers the app switch back into your app.
   
 - **Automating the Process:**  
-  To avoid requiring the user to click a button, you can establish a postMessage channel between your app and the Custom Tab. This channel enables the webpage at the final step to automatically notify your app of the flow’s completion and pass any necessary parameters, thereby allowing for the automatic termination of the flow.
+  To avoid requiring the user to click a button, you can establish a postMessage channel between your app and the Custom Tab, and optionally use data push messages when available. This channel enables the webpage at the final step to automatically notify your app of the flow’s completion and pass any necessary parameters, thereby allowing for the automatic termination of the flow.
 
 ---
 
@@ -81,25 +81,28 @@ This documentation explains how to integrate postMessage communication between y
 In your Android app, create a Custom Tab session with a callback listener that handles events related to the PostMessage channel. For example:
 
 ```java
+...
 var uri = "https://your-origin".toUri();
 private val customTabsCallback =
     object : CustomTabsCallback() {
         override fun onNavigationEvent(navigationEvent: Int, extras: Bundle?) {
             super.onNavigationEvent(navigationEvent, extras)
-            if (navigationEvent != NAVIGATION_FINISHED) {
-                return
-            }
-            if (validated) {
-                session?.requestPostMessageChannel(
-                    uri, uri, bundleOf()
-                )
+            if (validated && navigationEvent == NAVIGATION_FINISHED) {
+            //After navigation, postMessageChannel needs to be recreated
+                  session?.requestPostMessageChannel(
+                      uri, uri, bundleOf()
+                  )
             }
         }
 
         override fun onPostMessage(message: String, extras: Bundle?) {
             super.onPostMessage(message, extras)
             //Validate the message, i.e. if you use this protocol to hand OIDC code to the app.
+            //Ignore messages that does not conform to expectations - in principle you can receive unexpected messages here
+            //As an example, you might have sent a challenge in onMessageChannelReady or via your backend to the web application and expect this challenge returned here
             //If challenge mechanism used, expect replay of challenge here
+
+
             //Here a new activity is startet, which will terminate the CustomTab and get focus back to the app.
             context?.startActivity(Intent(context, MainActivity::class.java))
         }
@@ -118,6 +121,16 @@ private val customTabsCallback =
         ) {
             super.onRelationshipValidationResult(relation, requestedOrigin, result, extras)
             validated = result
+            //initiates the postMessageChannel with the intial page in-browser, optional if you have to wait for navigation events
+            if (validated) {
+                session?.requestPostMessageChannel(
+                    uri, uri, bundleOf()
+                )
+            }
+            if(!validated){
+              //consider to handle the event that the validation is not successful - log to your app-backend, catch when debugging etc.
+              //See the section below: "Domain Association with Digital Asset Links"
+            }
         }
     }
 ```
@@ -138,6 +151,8 @@ private fun bindCustomTabsService(url: String) {
                 client.warmup(0L)
                 session = this@FlowFragment.client?.newSession(customTabsCallback)
                 launch(url)
+
+                //Initial validation of RELATION_USE_AS_ORIGIN, which ensures that the uri (source origin) has properly setup for postMessages for the ORIGIN (uri) 
                 session?.validateRelationship(RELATION_USE_AS_ORIGIN, uri, null)
             }
 
@@ -155,6 +170,8 @@ private fun launch(url: String) {
 ```
 
 **Key Points:**
+- session?.validateRelationship: Validates the the origin is properly setup.
+- onNavigationEvent: After each navigation, setup the channel again.
 - onMessageChannelReady: Called when the PostMessage channel is ready.
 - onPostMessage: Receives messages from the webpage.
 - The channel is registered for the domain https://your.app.domain.
