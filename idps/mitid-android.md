@@ -211,6 +211,8 @@ On your webpage hosted at your.app.domain, include JavaScript to listen for and 
 ```javascript
 
 function exampleGenerateResponseMessage(_) {
+    //This is just an example, feel free to create the postMessage response as needed for your application
+    //Optional: A challenge response from this page to the app might be included in the response, which allows the app to filter unexpected messages
     var msg = document.getElementById('postMessageResult');
     if (msg) {
         return msg.textContent;
@@ -262,8 +264,9 @@ window.addEventListener('message', function(event) {
 **Key Points:**
 
 - The listener checks that event.origin matches the expected Android app scheme.
-- It verifies that the received message (challenge) matches what your app sent if you choose to use the challenge.
+- (Optional) It verifies that the received message (challenge) matches what your app sent if you choose to use the challenge.
 - Once verified, the page safely processes the message.
+- A response is sent via the port.postMessage(msg) invocation, optionally containing a challenge response that allow the app to filter the message
 
 ## Security Considerations
 - Optional Challenge-Response: If implemented, generate unique challenge values per session and consider using a cryptographic random generator.
