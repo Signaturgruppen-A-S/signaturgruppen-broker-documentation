@@ -82,7 +82,7 @@ In your Android app, create a Custom Tab session with a callback listener that h
 
 ```java
 ...
-var uri = "https://your-origin".toUri();
+var uri = "your-origin".toUri(); //ex https://your-domain
 private val customTabsCallback =
     object : CustomTabsCallback() {
         override fun onNavigationEvent(navigationEvent: Int, extras: Bundle?) {
