@@ -32,13 +32,7 @@ The test example is also available as a [Postman collection here](https://raw.gi
 ### Initiating
 
 ```
-curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'grant_type=urn:openid:params:grant-type:ciba' \
---data-urlencode 'scope=openid mitid' \
---data-urlencode 'client_id=62b8cc03-aa73-4d6a-922c-7c8fb0a4a1d9' \
---data-urlencode 'client_secret=mIpxk84FI1wpc7cP7nodFLfgQQ1ScZHYO44FZ9wPOqrB0ha9S5RUNYPXMkrCWwRjGqEH0hflnIJea8IKmW19aQ==' \
---data-urlencode 'login_hint_token={"idp":"mitid", "uuid":"8a9856e0-f12d-4217-b320-c8a076be9320", "referenceTextBody":"Testing MitID Flex app 😉", "ip":"1.1.1.1"}'
+curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=urn:openid:params:grant-type:ciba' --data-urlencode 'scope=openid mitid' --data-urlencode 'client_id=62b8cc03-aa73-4d6a-922c-7c8fb0a4a1d9' --data-urlencode 'client_secret=mIpxk84FI1wpc7cP7nodFLfgQQ1ScZHYO44FZ9wPOqrB0ha9S5RUNYPXMkrCWwRjGqEH0hflnIJea8IKmW19aQ==' --data-urlencode 'login_hint_token={"idp":"mitid", "uuid":"8a9856e0-f12d-4217-b320-c8a076be9320", "referenceTextBody":"Testing MitID Flex app 😉", "ip":"1.1.1.1"}'
 ```
 
 The login_hint_token can also be Base64 encoded:
@@ -46,15 +40,39 @@ The login_hint_token can also be Base64 encoded:
 --data-urlencode 'login_hint_token=eyJpZHAiOiJtaXRpZCIsImlkcF9wYXJhbXMiOiJ7InV1aWQiOiI4YTk4NTZlMC1mMTJkLTQyMTctYjMyMC1jOGEwNzZiZTkzMjAiLCAicmVmZXJlbmNlVGV4dEJvZHkiOiJUZXN0aW5nIE1pdElEIEZsZXggYXBwIPCfmIkiLCAiaXAiOiIxLjEuMS4xIn0ifQ=='
 ```
 
-This would result in a response on the following form
+#### `login_hint_token` parameters
 
-```
+The `login_hint_token` instructs the OP how to reach the end-user’s MitID Flex app session.
+
+**Requirements**
+
+- `idp` **must** be `"mitid"`.
+- Exactly one of `uuid` **or** `cpr` **must** be provided.
+- `referenceTextBody` **is required**.
+- `ip` **is required**.
+- `reference_id` is **optional**.
+
+**Example**
+```json
 {
-    "auth_req_id": "0A2179A15B686CB..3AC29A5A6A-1",
-    "expires_in": 300,
-    "interval": 5
+  "idp": "mitid",
+  "uuid": "8a9..",
+  "referenceTextBody": "Testing MitID Flex app 😉",
+  "ip": "1.1.1.1",
+  "reference_id": "your-reference-id-123" // optional
 }
 ```
+
+**Field reference**
+
+| Field               | Type    | Required | Values / Format | Notes |
+|---------------------|---------|----------|------------------|-------|
+| `idp`               | string  | yes      | `"mitid"`        | Must always be exactly `"mitid"`. |
+| `uuid`              | string  | yes*     | UUID             | Required **if** `cpr` is not provided. Identifies the MitID Flex user. |
+| `cpr`               | string  | yes*     | string           | Required **if** `uuid` is not provided. Danish CPR identifier. Ensure you have legal basis to use CPR. |
+| `referenceTextBody` | string  | yes      | free text        | Message shown to the end-user in the MitID app (e.g., purpose/transaction text). |
+| `ip`                | string  | yes      | IPv4/IPv6        | End-user’s IP address for risk data. |
+| `reference_id`      | string  | no       | opaque string    | Optional reference value |
 
 ### Poll
 Using the **auth_req_id** received in the initiation response, you can then poll for status. 
@@ -62,13 +80,7 @@ Using the **auth_req_id** received in the initiation response, you can then poll
 > Note that the **interval** in the init response specifies the required interval between polls in seconds.
 
 ```
-curl --location 'https://pp.netseidbroker.dk/op/connect/token' \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'grant_type=urn:openid:params:grant-type:ciba' \
---data-urlencode 'scope=openid' \
---data-urlencode 'client_id=62b8cc03-aa73-4d6a-922c-7c8fb0a4a1d9' \
---data-urlencode 'client_secret=mIpxk84FI1wpc7cP7nodFLfgQQ1ScZHYO44FZ9wPOqrB0ha9S5RUNYPXMkrCWwRjGqEH0hflnIJea8IKmW19aQ==' \
---data-urlencode 'auth_req_id=0A2179A15B686CB..3AC29A5A6A-1'
+curl --location 'https://pp.netseidbroker.dk/op/connect/token' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=urn:openid:params:grant-type:ciba' --data-urlencode 'scope=openid' --data-urlencode 'client_id=62b8cc03-aa73-4d6a-922c-7c8fb0a4a1d9' --data-urlencode 'client_secret=mIpxk84FI1wpc7cP7nodFLfgQQ1ScZHYO44FZ9wPOqrB0ha9S5RUNYPXMkrCWwRjGqEH0hflnIJea8IKmW19aQ==' --data-urlencode 'auth_req_id=0A2179A15B686CB..3AC29A5A6A-1'
 ```
 
 If the flow is still pending you will receive the following response:
@@ -95,8 +107,7 @@ When the flow has completed successfully (example):
 To cancel a flow, invoke the cancel API endpoint using the received **auth_req_id** received when initiating the flow.
 
 ```
-curl --location --request DELETE 'https://pp.netseidbroker.dk/op/api/v1/ciba/0A2179A15B686CB..3AC29A5A6A-1' \
-```
+curl --location --request DELETE 'https://pp.netseidbroker.dk/op/api/v1/ciba/0A2179A15B686CB..3AC29A5A6A-1' ```
 
 ## MitID Appswitch without channel-binding
 Appswitching to the MitID app can be done with or without channel-binding enabled. Currently we have only listed support for the variant without built-in channel-binding, but will add the channel-binding variant on-demand.
