@@ -62,7 +62,8 @@ The `login_hint_token` instructs the OP how to reach the end-user’s MitID Flex
   "referenceTextBody": "Testing MitID Flex app 😉",
   "ip": "1.1.1.1",
   "referenceId": "your-reference-id-123" // optional
-  "action": "APPROVE" // optional
+  "action": "APPROVE" // optional,
+  "ciba_nonce": "c-nonce-123" // optional
 }
 ```
 
