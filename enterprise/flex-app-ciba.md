@@ -50,7 +50,7 @@ The `login_hint_token` instructs the OP how to reach the end-user’s MitID Flex
 - Exactly one of `uuid` **or** `cpr` **must** be provided.
 - `referenceTextBody` **is required**.
 - `ip` **is required**.
-- `reference_id` is **optional**.
+- One of `referenceId` or `reference_id` is **optional**.
 
 **Example**
 ```json
@@ -59,7 +59,7 @@ The `login_hint_token` instructs the OP how to reach the end-user’s MitID Flex
   "uuid": "8a9..",
   "referenceTextBody": "Testing MitID Flex app 😉",
   "ip": "1.1.1.1",
-  "reference_id": "your-reference-id-123" // optional
+  "referenceId": "your-reference-id-123" // optional
 }
 ```
 
@@ -72,7 +72,7 @@ The `login_hint_token` instructs the OP how to reach the end-user’s MitID Flex
 | `cpr`               | string  | yes*     | string           | Required **if** `uuid` is not provided. Danish CPR identifier. Ensure you have legal basis to use CPR. |
 | `referenceTextBody` | string  | yes      | free text        | Message shown to the end-user in the MitID app (e.g., purpose/transaction text). |
 | `ip`                | string  | yes      | IPv4/IPv6        | End-user’s IP address for risk data. |
-| `reference_id`      | string  | no       | opaque string    | Optional reference value |
+| `referenceId`      | string  | no       | opaque string    | Optional reference value |
 
 ### Poll
 Using the **auth_req_id** received in the initiation response, you can then poll for status. 
@@ -107,7 +107,8 @@ When the flow has completed successfully (example):
 To cancel a flow, invoke the cancel API endpoint using the received **auth_req_id** received when initiating the flow.
 
 ```
-curl --location --request DELETE 'https://pp.netseidbroker.dk/op/api/v1/ciba/0A2179A15B686CB..3AC29A5A6A-1' ```
+curl --location --request DELETE 'https://pp.netseidbroker.dk/op/api/v1/ciba/0A2179A15B686CB..3AC29A5A6A-1'
+```
 
 ## MitID Appswitch without channel-binding
 Appswitching to the MitID app can be done with or without channel-binding enabled. Currently we have only listed support for the variant without built-in channel-binding, but will add the channel-binding variant on-demand.
