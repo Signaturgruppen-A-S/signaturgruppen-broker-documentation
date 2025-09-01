@@ -50,7 +50,9 @@ The `login_hint_token` instructs the OP how to reach the end-user’s MitID Flex
 - Exactly one of `uuid` **or** `cpr` **must** be provided.
 - `referenceTextBody` **is required**.
 - `ip` **is required**.
+- `action` is **optional**
 - One of `referenceId` or `reference_id` is **optional**.
+- `ciba_nonce` is **optional**
 
 **Example**
 ```json
@@ -60,6 +62,7 @@ The `login_hint_token` instructs the OP how to reach the end-user’s MitID Flex
   "referenceTextBody": "Testing MitID Flex app 😉",
   "ip": "1.1.1.1",
   "referenceId": "your-reference-id-123" // optional
+  "action": "APPROVE" // optional
 }
 ```
 
@@ -72,7 +75,9 @@ The `login_hint_token` instructs the OP how to reach the end-user’s MitID Flex
 | `cpr`               | string  | yes*     | string           | Required **if** `uuid` is not provided. Danish CPR identifier. Ensure you have legal basis to use CPR. |
 | `referenceTextBody` | string  | yes      | free text        | Message shown to the end-user in the MitID app (e.g., purpose/transaction text). |
 | `ip`                | string  | yes      | IPv4/IPv6        | End-user’s IP address for risk data. |
+| `action`            | string  | no      | One of "APPROVE", "LOGIN", "SIGN"        | Action text for MitID app |
 | `referenceId`      | string  | no       | opaque string    | Optional reference value |
+| `ciba_nonce`      | string  | no       | opaque string    | Optional nonce value, received in token response |
 
 ### Poll
 Using the **auth_req_id** received in the initiation response, you can then poll for status. 
