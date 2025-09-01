@@ -76,7 +76,7 @@ The `login_hint_token` instructs the OP how to reach the end-user’s MitID Flex
 | `cpr`               | string  | yes*     | string           | Required **if** `uuid` is not provided. Danish CPR identifier. Ensure you have legal basis to use CPR. |
 | `referenceTextBody` | string  | yes      | free text        | Message shown to the end-user in the MitID app (e.g., purpose/transaction text). |
 | `ip`                | string  | yes      | IPv4/IPv6        | End-user’s IP address for risk data. |
-| `action`            | string  | no      | One of "APPROVE", "LOGIN", "SIGN"        | Action text for MitID app |
+| `action`            | string  | no      | Must be one of the following: "LOG_ON", "APPROVE", "CONFIRM", "ACCEPT", "SIGN"  | Action text for MitID app |
 | `referenceId`      | string  | no       | opaque string    | Optional reference value |
 | `ciba_nonce`      | string  | no       | opaque string    | Optional nonce value, received in token response |
 
