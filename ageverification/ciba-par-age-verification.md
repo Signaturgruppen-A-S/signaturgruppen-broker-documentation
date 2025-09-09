@@ -11,7 +11,7 @@ Here an example of a standard "minimal age verification flow" is shown, which ut
 
 ## Age verification with minimal scope
 
-In the following request, either **age** or **age_verify:[age]** can be used (not both):
+In the following request, either **age** or **age_verify:[age]** scope can be used (not both):
 
 ```
 curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
@@ -36,7 +36,7 @@ At [https://brokerdemo-pp.signaturgruppen.dk/ageverifyqr](https://brokerdemo-pp.
 2. QR is created from resulting **authentication_uri** and show to the end-user
 3. User is able to scan the QR to initiate a MitID (Use MitID PP Test-tool for simulation) age verication flow.
 4. The QR page will poll in the background for status update (using a backend) - the new tab/QR opened browser on another device will start the OIDC PAR age verification flow.
-5. When the flow is completed the end-user will see a success page and the QR page will update with the result of the flow.
+5. When the flow is completed the end-user will see a confirmation page and the QR page will update with the result of the flow.
 
 **MitID age verification text:**  
 ![MitID age verification text](https://github.com/user-attachments/assets/8250ae01-b623-4342-a35a-8a7773119d9a)
@@ -48,3 +48,17 @@ At [https://brokerdemo-pp.signaturgruppen.dk/ageverifyqr](https://brokerdemo-pp.
 ![QR page updated with status](https://github.com/user-attachments/assets/ee79314b-e719-492b-8244-9e0f68a4397f)
 
 
+## Sessions
+If the user already has an active session with the client, accessing the **authentication_uri** will automatically redirect them to the confirmation page to complete the flow.
+
+To prevent this behavior and require users to log in each time, set the **prompt** parameter in the **login_hint_token** to **login**:
+
+```
+curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=urn:openid:params:grant-type:ciba' \
+--data-urlencode 'scope=openid minimal age' \
+--data-urlencode 'client_id=[your_client_id]' \
+--data-urlencode 'client_secret=[your_secret]' \
+--data-urlencode 'login_hint_token={"flow_type": "broker_oidc", "idp_values": "mitid", "prompt": "login" }'
+```
