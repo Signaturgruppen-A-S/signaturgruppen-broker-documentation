@@ -126,3 +126,11 @@ It is possible to control the last redirect of the end-user, by specifying a **r
 This redirect will receive the optional **state** parameter for the CIBA PAR initialization call as query parameter, allowing for more tailored handling of the last step of the protocol.
 Error flows will also be sent to the set **redirectUri** applying an additional **error** and **error_description** query parameter.
 
+## Sessions
+If the user already has an active session with the client, accessing the **authentication_uri** will automatically redirect them to the confirmation page to complete the flow.
+
+To prevent this behavior and require users to log in each time, set the **prompt** parameter in the **login_hint_token** to **login**:
+
+```
+login_hint_token={ "flow_type": "broker_oidc", "prompt": "login" }
+```
