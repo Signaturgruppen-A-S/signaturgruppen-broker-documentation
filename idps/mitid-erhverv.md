@@ -77,6 +77,7 @@ idp_params=%7B%E2%80%9Cmitid_erhverv%E2%80%9D%3A%7B%E2%80%9Callow_private%E2%80%
                <li>nemlogin.cpr_uuid (for private service providers)</li>
                <li>nemlogin.cpr (for public service providers)</li>
               <li>nemlogin.auth_to_repr (Authorized to represent CVR number)</li>
+              <li>nemlogin.alias (constains "Pseudonym" if the eID is name protected)</li>
             </ul>
          </td>
       </tr>
@@ -87,18 +88,20 @@ idp_params=%7B%E2%80%9Cmitid_erhverv%E2%80%9D%3A%7B%E2%80%9Callow_private%E2%80%
 
 <table><tbody><tr><th><p><strong>Claim value</strong></p></th><th><p><strong>Possible values</strong></p></th></tr><tr><td><p>identity_type</p></td><td><p>professional</p></td></tr><tr><td><p>idp</p></td><td><p><strong>mitid_erhverv</strong></p></td></tr><tr><td><p>loa</p></td><td><p>Level of Assurance</p><p>One of</p><ul><li>https://data.gov.dk/concept/core/nsis/Low</li><li><a href="https://data.gov.dk/concept/core/nsis/Substantial">https://data.gov.dk/concept/core/nsis/Substantial</a></li></ul><p>The Signaturgruppen Broker is a registered NSIS Substantial broker and thus cannot issue higher than Substantial.</p></td></tr><tr><td><p>ial</p></td><td><p>Identity Assurance Level</p><p>One of</p><ul><li>https://data.gov.dk/concept/core/nsis/Low</li><li>https://data.gov.dk/concept/core/nsis/Substantial</li><li>https://data.gov.dk/concept/core/nsis/High</li></ul></td></tr><tr><td><p>aal</p></td><td><p>Authenticator Assurance Level</p><p>One of</p><ul><li>https://data.gov.dk/concept/core/nsis/Low</li><li>https://data.gov.dk/concept/core/nsis/Substantial</li><li>https://data.gov.dk/concept/core/nsis/High</li></ul></td></tr><tr><td><p>amr</p></td><td><p>The list of authenticators used to achieve the resulting AAL/LoA.</p><p>Possible values are:</p><ul><li>mitid:password</li><li>mitid:code_token</li><li>mitid:code_reader</li><li>mitid:code_app</li><li>mitid:code_app_enchanced</li><li>mitid:u2f_token</li></ul></td></tr></tbody></table>
 
-###
-
-Transaction token MitID specific claims
+### Transaction token MitID specific claims
 
 <table><tbody><tr><th><p><strong>Claim value</strong></p></th><th><p><strong>Possible values</strong></p></th></tr><tr><td><p>mitid.reference_text</p></td><td><p>Passthrough of the MitID <strong>reference_text</strong> identity provider parameter.</p></td></tr><tr><td><p>mitid.psd2</p></td><td><p>The mitid.psd2 claim is always issued as a transaction token MitID specific claim.</p></td></tr><tr><td><p>transaction_actions</p></td><td><p>Type: string (single value) or JSON list</p><p>Only set, if one or more of the following transaction actions where performed:</p><ul><li>mitid.login (Login completed)</li><li>mitid_erhverv.identity_selected</li></ul></td></tr></tbody></table>
 
-## Lokal IdP
-MitID Erhverv natively supports the "Lokal IdP" setup as a built-in choice for end-users as part of the authentication experience for MitID Erhverv.
+### Name protection of MitID Erhverv
+For MitID Erhverv identities can be name protected. If the "nemlogin.alias" claim is set and contains the value "Pseudonym", then all the name claims will be missing from the response.
+This setting is specific for each MitID Erhverv identity and does not follow from being name and address protected as a private person, i.e. it is a separate process that is controlled by the issuing professional organisation for each eID and an option each user can opt-in to in the MitID Erhverv administration.
 
-As illustrated by the pictures here, the MitID Erhverv flow has an extra tab that allows the user to search for the specific Lokal IdP of choice and Signaturgruppen Broker will handle the integration as part of the MitID Erhverv flow. 
+## Lokalt login
+MitID Erhverv natively supports the "Lokalt login" setup as a built-in choice for end-users as part of the authentication experience for MitID Erhverv.
+
+As illustrated by the pictures here, the MitID Erhverv flow has an extra tab that allows the user to search for the specific Lokalt login of choice and Signaturgruppen Broker will handle the integration as part of the MitID Erhverv flow. 
 The output of the flow is still an official MitID Erhverv identity.
 
-MitID Erhverv default             |  MitID Erhverv Lokal Idp
+MitID Erhverv default             |  MitID Erhverv Lokalt login
 :-------------------------:|:-------------------------:
 ![MitID Erhverv default](mitid_erhverv_1.PNG)  |  ![MitID Erhverv default](mitid_erhverv_2.PNG)
