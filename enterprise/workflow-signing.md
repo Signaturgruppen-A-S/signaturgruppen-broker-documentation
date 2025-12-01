@@ -145,7 +145,7 @@ Here is an example of such a **transaction_token**:
   "idp": "mitid",
   "acr": "https://data.gov.dk/concept/core/nsis/Substantial",
   "auth_time": "1764593359",
-  "sub": "9.5",
+  "sub": "9..5",
   "transaction_id": "98150b00-1729-4f40-9c14-6940cead4bc9",
   "redirect_uri": "https://brokerdemo-pp.signaturgruppen.dk/signin-oidc",
   "transaction_actions": [
