@@ -34,8 +34,22 @@ You can utilize any MitID PP test user, or use the premade users listed here:
 | workflow_signing_demo_2       |
 | workflow_signing_demo_3       |
 
-### Swagger
-The swagger reference for Workflow API (PP env) is found at: https://pp.netseidbroker.dk/transactionsigning/api/swagger/index.html?urls.primaryName=Workflow+API
+### Swagger and Client Credentials (API client)
+The swagger reference for Workflow API (PP env) is found at: [https://pp.netseidbroker.dk/transactionsigning/api/swagger/index.html?urls.primaryName=Workflow+API](https://pp.netseidbroker.dk/transactionsigning/api/swagger/index.html?urls.primaryName=Workflow+API)
+
+In order to interact with the API, you must first get an [API client and retrieve a service token](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/api-integration.html). When retriving the service token from the Token endpoint, specify the **signtext_api** scope.
+
+Contact Signaturgruppen Support (support.signaturgruppen@ingroupe.com) if you need to get up and running for our PP environment.
+
+#### Example Client Credentials request:
+```
+curl --location 'https://pp.netseidbroker.dk/op/connect/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=client_credentials' \
+--data-urlencode 'scope=signtext_api' \
+--data-urlencode 'client_id=[client ID]' \
+--data-urlencode 'client_secret=[client secret]'
+```
 
 ## Technical overview
 Workflow Signing consist of an API and setting one additional parameter for the Signaturgruppen Broker OpenID Connect interface; this together allow for the creation of workflows that supports PDF document signing for one or more signers, decoupled over time with various requirements and restrictions.
