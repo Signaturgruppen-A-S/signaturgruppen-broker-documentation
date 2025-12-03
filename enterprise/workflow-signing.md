@@ -1,4 +1,8 @@
 # Workflow Signing
+**Workflow signing is in the final stage of development and has not yet been released for production. 
+Several additional features are under development. 
+Documentation (this), is not completed, but we invite integration and testing in our PP environment and welcome feedback. 
+We plan to release Workflow Signing to production at latest January 2026.**
 
 ## Introduction
 Signaturgruppen Broker Workflow signing is an API and OpenID Connect workflow that supports advanced and highly-flexible scenarios of PDF document signing with one or more documents and one or more signers.
@@ -27,13 +31,13 @@ You can utilize any MitID PP test user, or use the premade users listed here:
 The swagger reference for Workflow API (PP env) is found at: https://pp.netseidbroker.dk/transactionsigning/api/swagger/index.html?urls.primaryName=Workflow+API
 
 ## Technical overview
-Workflow Signing consist of an API and an OpenID Connect interface, that together allow for the creation of workflows that supports PDF document signing for one or more signers, decoupled over time with various requirements and restrictions.
+Workflow Signing consist of an API and setting one additional parameter for the Signaturgruppen Broker OpenID Connect interface; this together allow for the creation of workflows that supports PDF document signing for one or more signers, decoupled over time with various requirements and restrictions.
 
-It starts with the creation of a workflow by uploading one or more PDF documents for signing and specified relevant parameters for the specific flow, like workflow title, controlling UI experience etc.
+It starts with the creation of a workflow by uploading one or more PDF documents for signing together with relevant parameters for the specific flow like workflow title, controlling UI experience etc.
 
 Anytime a new signer is ready to sign, a signtext ID is retrieved from the API, which is used in the OpenID Connect integration towards Signaturgruppen Broker. 
 
-Upon successful signature, the integrating system has full control over what happened and by whom and is able to retrieve the result in both PAdES and a signed JWT for long-term storage formats.
+Upon successful signature, the integrating system has full insight into what happened and by whom and is able to retrieve the results in both PAdES and a signed JWT for long-term storage formats.
 
 The integrating service has full control over signers, can add more dynamically and is able to retrieve the resulting documents and tokens at any time.
 
@@ -161,5 +165,50 @@ Here is an example of such a **transaction_token**:
   "iat": 1764593469,
   "iss": "https://pp.netseidbroker.dk/op",
   "aud": "14148e23-1d32-4d5b-a7ef-8935fdf65836"
+}
+```
+The service provider is able to retrieve the status of a workflow at any time:
+
+```
+GET /api/workflows/{workflowId}
+```
+Which will result in a response like:
+```
+{
+    "id": "36....01",
+    "created": "2025-12-03T08:19:05.4942269+00:00",
+    "title": "[Title]",
+    "organizationTin": "DK...",
+    "expiresAt": "2025-12-04T09:18:00+00:00",
+    "signatures": [
+        {
+            "id": "d24....b9",
+            "created": "2025-12-03T08:19:22.4973269+00:00",
+            "serviceProvidedSignerName": null,
+            "signatureTransactionId": "5e7...40",
+            "userClaims": {
+                "mitid.identity_name": "Anker Andersen",
+                "loa": "https://data.gov.dk/concept/core/nsis/Substantial",
+                "ial": "https://data.gov.dk/concept/core/nsis/Substantial",
+                "idp_identity_id": "e799.......52",
+                "idp": "mitid",
+                "auth_time": "1764749954"
+            },
+            "ipAddressOfUser": "...9"
+        }
+    ]
+}
+```
+This gives a status of the workflow and a list of the signatures that have been added to the document.
+
+As soon as there is at least one signature on a workflow, the resulting PAdES can be generated:
+> NOTE: this endpoint will likely change or a new added, which allow for option parameters
+```
+GET /api/workflows/{workflowId}/pades
+```
+Getting the PAdES back:
+```
+{
+  "padesB64": "[pades bytes as Base64 string]"
 }
 ```
