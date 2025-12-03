@@ -1,3 +1,10 @@
+---
+title: Workflow Signing
+layout: home
+parent: Enterprise features
+nav_order: 10
+---
+
 # Workflow Signing
 **Workflow signing is in the final stage of development and has not yet been released for production. 
 Several additional features are under development. 
