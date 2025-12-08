@@ -62,11 +62,11 @@ You can use the following API client to test the integration. The client has bee
 
 >Note, that using this will share the workflows created with other integrations testing with this.
 
-ClientID:
+**ClientID:**
 ```
 be3d42d0-1cc9-44df-b59c-3baeda398612
 ```
-Client Secret:
+**Client Secret:**
 ```
 xjqMzDt1721xhEsw8yufqBbwdLm6iJtq5Iafehy10bJ3zA4h1VqP8/OwNHfHMxoWy91aZZI1jAzeHv0NTn4gQA==
 ```
@@ -91,6 +91,67 @@ This allows flexibility and control for the integrating service, who can control
 <img width="1905" height="967" alt="image" src="https://github.com/user-attachments/assets/a7a1cd9e-f295-418a-adcf-cda71785cb9a" />
 <img width="1897" height="961" alt="image" src="https://github.com/user-attachments/assets/b4ddfb01-e908-4416-a965-ddd5825fbddb" />
 <img width="1422" height="876" alt="image" src="https://github.com/user-attachments/assets/d6fca83c-02d5-486e-a47e-ca7377fffec3" />
+
+## Workflow API steps and options
+This section walks through the integration steps and options available. See the [provided example](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/enterprise/workflow-signing-example.html) for a more hands-on technical example.
+This section is kept intentionally minimal, we refer to the Swagger documentation for more detailed API information.
+
+### Steps
+
+1. Create Workflow
+2. When signing, get SigntextID, use as parameter for OIDC flow (signtext_id=[SigntextID]).
+3. Determine if flow is completed. See resulting flow info (transaction_token) and/or use Workflow API GET API.
+4. Retrieve the resulting PAdES and/or Workflow token.
+
+### Create workflow
+Create workflow:
+```
+POST /api/workflows
+```
+
+| Parameter |Description|
+|--------| --------|
+| **title**       | Workflow title |
+| **pdfList:title**      | Title of PDF |
+| **pdfList:pdfBase64**       | Base64 encoded bytes of PDF |
+| **expiresAt**       | Expiration of workflow |
+| **showStartOverviewPage**       | Controls whether the overview page is shown as a first step for end-users in the flow |
+
+### Get workflow
+Get all workflows: 
+```
+GET /api/workflows
+```
+
+Get single workflow:
+```
+GET /api/workflows/{workflowId}
+```
+### Sign
+When starting a new signing flow / adding a signature, first retrieve a SigntextID from the Workflow API:
+```
+POST /api/workflows/signtextid
+```
+| Parameter |Description|
+|--------| --------|
+| **workflowId**       | Workflow ID. |
+| **signerName**      | Optional name for signer. Only used if eID scheme is not providing name. |
+| **signerTitle**       | Optional title for signer. Will be shown in resulting PAdES. |
+| **requiredClaims**       | Optional list of required claims as <string, string> key-value pairs. Example ("idp", "mitid"). |
+
+### Get PAdES result
+When one or more signers have been added to a workflow, a PAdES can be built that seals the workflow and signers. 
+Signaturgruppen uses an enterprise HSM-based signing service that seals the PAdES using an EU-trustlist certificate. The resulting PAdES is enabled for Long-term storage.
+As the PAdES document can be used for both system storage and for hand-out to end-users, the API supports options for controlling the level of claims included in the PAdES taking data-privacy into account. 
+
+```
+POST /api/workflows/{workflowId}/pades
+```
+| Parameter |Description|
+|--------| --------|
+| **workflowId**       | Workflow ID. |
+| **workflowTokenClaimParameters**      | Generalized parameter structure for the PAdES build API |
+| **workflowTokenClaimParameters:claimOutputFilter**       | [ All, IncludeAgeClaims, Restricted (default) ]. Controls whether all, minimal or a minimal+age related claims-list of user-claims is included in the resulting PAdES. |
 
 ## Example PAdES
 An example of a resulting PAdES can be [found here](https://github.com/Signaturgruppen-A-S/signaturgruppen-broker-documentation/blob/31003f0ba85f002192aac0fb2c08cbd6b76f614d/enterprise/files/2f5641e6-ea50-8558-894c-019afd1abb07.pdf).
