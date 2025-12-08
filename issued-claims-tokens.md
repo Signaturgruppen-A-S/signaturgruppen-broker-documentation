@@ -56,7 +56,6 @@ Example of an ID token payload (decoded) from a MitID Identity Provider:
 {
 "sub"		: "bab646bb-8608-4ac7-ac42-cee4ad490600",
 "mitid.uuid"		: "7027a386-aa7c-4dd6-93de-ebffd670f8b5",
-"mitid.ial_identity_assurance_level"	: "MEDIUM",
 "iss"		: "https://netsbroker.mitid.dk",
 "jti"		: "5964f27b-7a7c-4f3d-99fe-aee934f03397",
 "aud"		: "9ad129c2-0341-40e4-a184-b834272217dd",

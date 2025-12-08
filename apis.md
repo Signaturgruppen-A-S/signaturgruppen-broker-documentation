@@ -57,7 +57,7 @@ A result from the User Info endpoint after a successful MitID authentication flo
   "mitid_uuid" : "af0196a3-6c61-464d-ab04-6394191a753d",
   "mitid.age" : "35",
   "mitid.date_of_birth"	: "1985-03-29",
-  "mitid.ial_identity_assurance_level" : "SUBSTANTIAL”,
+  "mitid.has_cpr" : "true”,
   "da.cpr" : "290385-xxxx",
   "mitid.identity_name" : "Hans Hansen",
   "session_status" : "active",
