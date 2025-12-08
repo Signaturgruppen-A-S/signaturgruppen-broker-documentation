@@ -1,4 +1,3 @@
----
 title: Workflow Signing
 layout: home
 parent: Enterprise features
@@ -15,6 +14,8 @@ We plan to release Workflow Signing to production at latest January 2026.**
 Signaturgruppen Broker Workflow signing is an API and OpenID Connect workflow that supports advanced and highly-flexible scenarios of PDF document signing with one or more documents and one or more signers.
 It has been designed to support any supported identity provider and eID scheme supported by Signaturgruppen Broker and allows for customization of the flow, number of documents and signers. 
 The workflow is dynamic and supports adding additional signers and various ways to get the final result of the flow, depending on requirements and needs.
+
+**The Workflow API is designed with the intent to be a minimal but full fledged API that can serve as the foundation for both full-scale signature portals to simple signature flows - Giving the integrating service full control and flexibility to create their own signing flows.**
 
 When a workflow has been completed, the result can be delivered in both a sealed PAdES signed with a EU trustlist signing service and a more compact JWT format, both supporting various storage and data requirements.
 
