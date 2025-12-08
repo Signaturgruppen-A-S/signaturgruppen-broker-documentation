@@ -153,6 +153,19 @@ POST /api/workflows/{workflowId}/pades
 | **workflowTokenClaimParameters**      | Generalized parameter structure for the PAdES build API |
 | **workflowTokenClaimParameters:claimOutputFilter**       | [ All, IncludeAgeClaims, Restricted (default) ]. Controls whether all, minimal or a minimal+age related claims-list of user-claims is included in the resulting PAdES. |
 
+### Get Workflow token result
+When one or more signers have been added to a workflow, a Workflow token can be built that seals the workflow and signers.
+The Workflow token is signed by a dedicated HSM signing certificate. An OCSP reponse validating the validity of the signing certificate is also returned.
+All available user-claims is included in the Workflow token.
+```
+GET /api/workflows/{workflowId}/workflowtoken
+```
+
+## PAdES and Workflow token
+The two options for the final result both encapsulates the workflow and signatures added. In both variants the cryptographic digest of the original PDF documents is signed along with required claims.
+
+## What to store for long-term verification
+
 ## Example PAdES
 An example of a resulting PAdES can be [found here](https://github.com/Signaturgruppen-A-S/signaturgruppen-broker-documentation/blob/31003f0ba85f002192aac0fb2c08cbd6b76f614d/enterprise/files/2f5641e6-ea50-8558-894c-019afd1abb07.pdf).
 Click the download button, to download and inspect the real PDF file. The signature of the PDF is not accepted by Adobe in this test-version, but you can inspect the attachments and see the inline content of the PAdES.
