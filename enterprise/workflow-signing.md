@@ -282,5 +282,6 @@ The resulting workflow token:
   }
 }
 ```
-
-
+## Example PAdES
+An example of a resulting PAdES can be [found here](https://github.com/Signaturgruppen-A-S/signaturgruppen-broker-documentation/blob/31003f0ba85f002192aac0fb2c08cbd6b76f614d/enterprise/files/2f5641e6-ea50-8558-894c-019afd1abb07.pdf).
+Click the download button, to download and inspect the real PDF file. The signature of the PDF is not accepted by Adobe in this test-version, but you can inspect the attachments and see the inline content of the PAdES.
