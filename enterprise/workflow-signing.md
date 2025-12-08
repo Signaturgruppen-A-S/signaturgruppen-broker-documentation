@@ -132,6 +132,7 @@ When starting a new signing flow / adding a signature, first retrieve a Signtext
 ```
 POST /api/workflows/signtextid
 ```
+
 | Parameter |Description|
 |--------| --------|
 | **workflowId**       | Workflow ID. |
