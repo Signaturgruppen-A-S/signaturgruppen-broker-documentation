@@ -23,9 +23,12 @@ When a workflow has been completed, the result can be delivered in both a sealed
 
 ### Online demo
 We have setup a working online demonstration at [https://brokerdemo-pp.signaturgruppen.dk/workflows](https://brokerdemo-pp.signaturgruppen.dk/workflows), which provides a simple visual representation of the core features of Workflow Signing.
+The demo provides a mixed-usecase toolbox, that allows for the creation of workflows using pre-configured PDFs or uploading your own and allows for adding signatures, see the result and fetch the resulting PAdES. 
 
 ### MitID test identities
-We have setup the demo to utilized MitID PP test identities and setup the demo to use [Signaturgruppen Broker Simulation](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/enterprise/simulation.html) for easier and faster testing. 
+We have setup the demo to utilize MitID PP test identities paired with [Signaturgruppen Broker Simulation](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/enterprise/simulation.html) for easier and faster testing. 
+
+> Signaturgruppen Simulation is an enterprise feature that enables faster and more streamlined testing with simulated identities, like MitID and MitID Erhverv. Works even when MitID or MitID Erhverv is down and is highly recommended for end-2-end testing purposes.
 
 You can utilize any MitID PP test user, or use the premade users listed here:
 
@@ -50,6 +53,20 @@ curl --location 'https://pp.netseidbroker.dk/op/connect/token' \
 --data-urlencode 'scope=signtext_api' \
 --data-urlencode 'client_id=[client ID]' \
 --data-urlencode 'client_secret=[client secret]'
+```
+
+#### Public test client
+You can use the following API client to test the integration. The client has been created under the fictive CVR: DK00000002. 
+
+>Note, that using this will share the workflows created with other integrations testing with this.
+
+ClientID:
+```
+be3d42d0-1cc9-44df-b59c-3baeda398612
+```
+Client Secret:
+```
+xjqMzDt1721xhEsw8yufqBbwdLm6iJtq5Iafehy10bJ3zA4h1VqP8/OwNHfHMxoWy91aZZI1jAzeHv0NTn4gQA==
 ```
 
 ## Technical overview
