@@ -73,7 +73,7 @@ xjqMzDt1721xhEsw8yufqBbwdLm6iJtq5Iafehy10bJ3zA4h1VqP8/OwNHfHMxoWy91aZZI1jAzeHv0N
 ## Technical overview
 Workflow Signing consist of an API and setting one additional parameter for the Signaturgruppen Broker OpenID Connect interface; this together allow for the creation of workflows that supports PDF document signing for one or more signers, decoupled over time with various requirements and restrictions.
 
-It starts with the creation of a workflow by uploading one or more PDF documents for signing together with relevant parameters for the specific flow like workflow title, controlling UI experience etc.
+It starts with the creation of a workflow by uploading one or more PDF documents for signing together with relevant parameters for the specific flow like workflow title and UI experience parameters.
 
 Anytime a new signer is ready to sign, a signtext ID is retrieved from the API, which is used in the OpenID Connect integration towards Signaturgruppen Broker. 
 
@@ -84,7 +84,7 @@ The integrating service has full control over signers, can add more dynamically 
 ### Authentication, approval and OpenID Connect
 The Workflow Signing flows works as part of the Signaturgruppen Broker platform and has been integrated to support any identity provider and eID already supported by the broker and ensures a coherent and streamlined UX no matter what authentication options are used. 
 More technically, then the Workflow Signing flow is invoked on top of a successful authentication, then using this authentication to sign the documents.
-This allows flexibility and control for the integrating service, who can control reuse and age of the used authentication session, with options randing from strict authentication pr approval to relaxed session reuse.
+This allows flexibility and control for the integrating service, who can control reuse and age of the used authentication session, with options ranging from strict authentication pr approval to relaxed session reuse.
 
 ### Visual walkthrough
 <img width="1905" height="967" alt="image" src="https://github.com/user-attachments/assets/a7a1cd9e-f295-418a-adcf-cda71785cb9a" />
@@ -242,13 +242,45 @@ Which will result in a response like:
 This gives a status of the workflow and a list of the signatures that have been added to the document.
 
 As soon as there is at least one signature on a workflow, the resulting PAdES can be generated:
-> NOTE: this endpoint will likely change or a new added, which allow for option parameters
 ```
-GET /api/workflows/{workflowId}/pades
-```
-Getting the PAdES back:
-```
+POST /api/workflows/{workflowId}/pades
 {
-  "padesB64": "[pades bytes as Base64 string]"
+  "workflowId": "[Workflow ID]",
+  "workflowTokenClaimParameters": {
+    "claimOutputFilter": "All"
+  }
 }
 ```
+The resulting PAdES:
+```
+{
+  "padesDocument": {
+    "padesB64": "[pades bytes as Base64 string]"
+  },
+  "workflowResultInfo": {
+    "ocspReponseIncluded": true,
+    "documentCount": 2,
+    "signatureCount": 2
+  }
+}
+Retrieving the workflow token:
+```
+GET /api/workflows/{workflowId}/workflowtoken:
+```
+/api/workflows/{workflowId}/workflowtoken
+```
+The resulting workflow token:
+```
+{
+  "workflowToken": "[Workflow JWT token]",
+  "ocspResponse": "[OCSP response for worklfow token signing cert]",
+  "publicSigningCertPem": "[Signing cert for workflow token]",
+  "workflowResultInfo": {
+    "ocspReponseIncluded": true,
+    "documentCount": 2,
+    "signatureCount": 2
+  }
+}
+```
+
+
