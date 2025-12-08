@@ -164,7 +164,67 @@ GET /api/workflows/{workflowId}/workflowtoken
 ## PAdES and Workflow token
 The two options for the final result both encapsulates the workflow and signatures added. In both variants the cryptographic digest of the original PDF documents is signed along with required claims.
 
-## What to store for long-term verification
+#### Workflow token
+The workflow token is a signed JWT which encapsulates the entire workflow and attached signatures.
+It is a more lightweight format, which contains enough for system storage of the workflow, containing relevant identifiers, document and signature digests, user claims, timestamps etc.
+
+### PAdES
+Signaturgruppen uses an enterprise HSM-based signing service that seals the PAdES using an EU-trustlist certificate. The resulting PAdES is enabled for Long-term storage.
+The PAdES is built from the original PDF documents with an additional signer page added, that illustrates the signatures added to the PAdES document.
+
+As attachments to the sealed PAdES, the following attachments is added: 
+* The resulting Workflow token (same format as you can extract directly
+* Workflow token signing certificate PEM
+* Workflow token Signing cert OCSP response
+
+**The PAdES can be used for hand-out to the signing parties or other relevant parties. Consider the implications of the data included in the PAdES. If you have specified that all claims to be included, data such as the IP address, age information and in some cases the CPR-number will be included in the PAdES wrapped Workflowtoken.**
+
+## Long-term storage
+
+When storing the received PAdES or Workflow token result from a completed workflow, you want to ensure that you store:
+* The original PDF files
+* The response from the relevant PAdES or Workflow token endpoint, which contains the relevant PAdES or Workflow token along with additional metadata, signing certs, OCSP responses etc.
+
+Ie. for PAdES: 
+```
+{
+  "padesDocument": {
+    "padesB64": "[PAdES result]"
+  },
+  "workflowResultInfo": {
+    "ocspReponseIncluded": true,
+    "documentCount": 2,
+    "signatureCount": 2
+  }
+}
+```
+And for Workflow token: 
+```
+{
+  "workflowToken": "[Workflow token result]",
+  "ocspResponse": "[OCSP response]",
+  "publicSigningCertPem": "[Signing certificate]",
+  "workflowResultInfo": {
+    "ocspReponseIncluded": true,
+    "documentCount": 2,
+    "signatureCount": 2
+  }
+}
+```
+## PAdES Production details
+
+```
+2.5.4.97=NTRNO-933127990
+cn=Signaturgruppen
+o=IN GROUPE TRUST SERVICES APS NUF
+c=NO
+
+SHA1: D3 25 0E 7A DB 60 77 1B 3E 0F 35 D7 99 71 FD 62 C3 14 A0 6D
+```
+
+**Adobe Reader displays the sealing information like this:**
+<img width="1044" height="50" alt="image" src="https://github.com/user-attachments/assets/df1ece1d-f72c-47ef-aef2-c6b438aa90a2" />
+<img width="582" height="393" alt="image" src="https://github.com/user-attachments/assets/a7f114ab-4862-4d51-848f-a77e03775dc8" />
 
 ## Example PAdES
 An example of a resulting PAdES can be [found here](https://github.com/Signaturgruppen-A-S/signaturgruppen-broker-documentation/blob/31003f0ba85f002192aac0fb2c08cbd6b76f614d/enterprise/files/2f5641e6-ea50-8558-894c-019afd1abb07.pdf).
