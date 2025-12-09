@@ -133,7 +133,7 @@ When starting a new signing flow / adding a signature, first retrieve a Signtext
 POST /api/workflows/signtextid
 ```
 
-| Parameter |Description|
+| Parameter | Description |
 |--------| --------|
 | **workflowId**       | Workflow ID. |
 | **signerName**      | Optional name for signer. Only used if eID scheme is not providing name. |
@@ -148,6 +148,7 @@ As the PAdES document can be used for both system storage and for hand-out to en
 ```
 POST /api/workflows/{workflowId}/pades
 ```
+
 | Parameter |Description|
 |--------| --------|
 | **workflowId**       | Workflow ID. |
