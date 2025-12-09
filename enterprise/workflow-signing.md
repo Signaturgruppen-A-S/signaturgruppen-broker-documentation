@@ -24,7 +24,7 @@ When a workflow has been completed, the result can be delivered in both a sealed
 ## Resources
 
 ### Online demo
-We have setup a working online demonstration at [https://brokerdemo-pp.signaturgruppen.dk/workflows](https://brokerdemo-pp.signaturgruppen.dk/workflows), which provides a simple visual representation of the core features of Workflow Signing.
+We have setup a working online demonstration at [https://brokerdemo-pp.signaturgruppen.dk/workflows](https://brokerdemo-pp.signaturgruppen.dk/workflows){:target="_blank"}, which provides a simple visual representation of the core features of Workflow Signing.
 The demo provides a mixed-usecase toolbox, that allows for the creation of workflows using pre-configured PDFs or uploading your own and allows for adding signatures, see the result and fetch the resulting PAdES. 
 
 ### MitID test identities
@@ -41,11 +41,11 @@ You can utilize any MitID PP test user, or use the premade users listed here:
 | workflow_signing_demo_3       |
 
 ### Swagger and Client Credentials (API client)
-The swagger reference for Workflow API (PP env) is found at: [https://pp.netseidbroker.dk/transactionsigning/api/swagger/index.html?urls.primaryName=Workflow+API](https://pp.netseidbroker.dk/transactionsigning/api/swagger/index.html?urls.primaryName=Workflow+API)
+The swagger reference for Workflow API (PP env) is found at: [https://pp.netseidbroker.dk/transactionsigning/api/swagger/index.html?urls.primaryName=Workflow+API](https://pp.netseidbroker.dk/transactionsigning/api/swagger/index.html?urls.primaryName=Workflow+API){:target="_blank"}
 
 In order to interact with the API, you must first get an [API client and retrieve a service token](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/api-integration.html). When retriving the service token from the Token endpoint, specify the **signtext_api** scope.
 
-Contact Signaturgruppen Support (support.signaturgruppen@ingroupe.com) if you need to get up and running for our PP environment.
+Contact Signaturgruppen Support [support.signaturgruppen@ingroupe.com](mailto:support.signaturgruppen@ingroupe.com) if you need to get up and running for our PP environment.
 
 #### Example Client Credentials request:
 ```
