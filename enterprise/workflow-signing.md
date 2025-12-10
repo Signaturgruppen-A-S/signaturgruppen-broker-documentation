@@ -92,6 +92,13 @@ This allows flexibility and control for the integrating service, who can control
 <img width="1897" height="961" alt="image" src="https://github.com/user-attachments/assets/b4ddfb01-e908-4416-a965-ddd5825fbddb" />
 <img width="1422" height="876" alt="image" src="https://github.com/user-attachments/assets/d6fca83c-02d5-486e-a47e-ca7377fffec3" />
 
+## Clients: OIDC and API
+
+* You need an API client to interact with the Workflow API (server to server).
+* You need an OIDC client in order to integrate to the Signaturgruppen Broker OpenID Connect protocol. 
+
+Existing API and OIDC clients can be utilized respectively.
+
 ## Workflow API steps and options
 This section walks through the integration steps and options available. See the [provided example](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/enterprise/workflow-signing-example.html) for a more hands-on technical example.
 This section is kept intentionally minimal, we refer to the Swagger documentation for more detailed API information.
