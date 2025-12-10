@@ -57,20 +57,6 @@ curl --location 'https://pp.netseidbroker.dk/op/connect/token' \
 --data-urlencode 'client_secret=[client secret]'
 ```
 
-#### Public test client
-You can use the following API client to test the integration. The client has been created under the fictive CVR: DK00000002. 
-
->Note, that using this will share the workflows created with other integrations testing with this.
-
-**ClientID:**
-```
-be3d42d0-1cc9-44df-b59c-3baeda398612
-```
-**Client Secret:**
-```
-xjqMzDt1721xhEsw8yufqBbwdLm6iJtq5Iafehy10bJ3zA4h1VqP8/OwNHfHMxoWy91aZZI1jAzeHv0NTn4gQA==
-```
-
 ## Technical overview
 Workflow Signing consist of an API and setting one additional parameter for the Signaturgruppen Broker OpenID Connect interface; this together allow for the creation of workflows that supports PDF document signing for one or more signers, decoupled over time with various requirements and restrictions.
 
