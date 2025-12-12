@@ -7,10 +7,6 @@ nav_order: 10
 ---
 
 # Workflow Signing
-**Workflow signing is in the final stage of development and has not yet been released for production. 
-Several additional features are under development. 
-Documentation (this), is not completed, but we invite integration and testing in our PP environment and welcome feedback. 
-We plan to release Workflow Signing to production at latest January 2026.**
 
 ## Introduction
 Signaturgruppen Broker Workflow signing is an API and OpenID Connect workflow that supports advanced and highly-flexible scenarios of PDF document signing with one or more documents and one or more signers.
