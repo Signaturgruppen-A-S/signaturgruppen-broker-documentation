@@ -11,7 +11,7 @@ nav_order: 1
 ## Create workflow
 A workflow is creating by uploading 
 ```
-POST /api/workflows
+POST /api/workflows/{cvr}
 {
   "title": "Workflow test title",
   "pdfList": [
@@ -40,7 +40,7 @@ For this, the backend must retrieve a **signtext ID**, which is then used as OID
 
 Retrieve **signtext ID**: 
 ```
-POST /api/workflows/signtextid
+POST /api/workflows/{cvr}/signtextid
 {
   "workflowId": "workflowid1234"
 }
@@ -124,7 +124,7 @@ Here is an example of such a **transaction_token**:
 The service provider is able to retrieve the status of a workflow at any time:
 
 ```
-GET /api/workflows/{workflowId}
+GET /api/workflows/{cvr}/{workflowId}
 ```
 Which will result in a response like:
 ```
@@ -157,7 +157,7 @@ This gives a status of the workflow and a list of the signatures that have been 
 
 As soon as there is at least one signature on a workflow, the resulting PAdES can be generated:
 ```
-POST /api/workflows/{workflowId}/pades
+POST /api/workflows/{cvr}/{workflowId}/pades
 {
   "workflowId": "[Workflow ID]",
   "workflowTokenClaimParameters": {
@@ -179,10 +179,9 @@ The resulting PAdES:
 }
 Retrieving the workflow token:
 ```
-GET /api/workflows/{workflowId}/workflowtoken:
+GET /api/workflows/{cvr}/{workflowId}/workflowtoken:
 ```
-/api/workflows/{workflowId}/workflowtoken
-```
+
 The resulting workflow token:
 ```
 {
