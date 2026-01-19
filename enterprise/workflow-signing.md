@@ -136,7 +136,7 @@ This section is kept intentionally minimal, we refer to the Swagger documentatio
 ### Create workflow
 Create workflow:
 ```
-POST /api/workflows
+POST /api/workflows/{cvr}
 ```
 
 | Parameter |Description|
@@ -150,17 +150,17 @@ POST /api/workflows
 ### Get workflow
 Get all workflows: 
 ```
-GET /api/workflows
+GET /api/workflows/{cvr}
 ```
 
 Get single workflow:
 ```
-GET /api/workflows/{workflowId}
+GET /api/workflows/{cvr}/{workflowId}
 ```
 ### Sign
 When starting a new signing flow / adding a signature, first retrieve a SigntextID from the Workflow API:
 ```
-POST /api/workflows/signtextid
+POST /api/workflows/{cvr}/signtextid
 ```
 
 | Parameter | Description |
@@ -176,7 +176,7 @@ Signaturgruppen uses an enterprise HSM-based signing service that seals the PAdE
 As the PAdES document can be used for both system storage and for hand-out to end-users, the API supports options for controlling the level of claims included in the PAdES taking data-privacy into account. 
 
 ```
-POST /api/workflows/{workflowId}/pades
+POST /api/workflows/{cvr}/{workflowId}/pades
 ```
 
 | Parameter |Description|
@@ -190,7 +190,7 @@ When one or more signers have been added to a workflow, a Workflow token can be 
 The Workflow token is signed by a dedicated HSM signing certificate. An OCSP reponse validating the validity of the signing certificate is also returned.
 All available user-claims is included in the Workflow token.
 ```
-GET /api/workflows/{workflowId}/workflowtoken
+GET /api/workflows/{cvr}/{workflowId}/workflowtoken
 ```
 
 ## PAdES and Workflow token
