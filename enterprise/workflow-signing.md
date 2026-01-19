@@ -99,6 +99,8 @@ It starts with the creation of a workflow by uploading one or more PDF documents
 
 Anytime a new signer is ready to sign, a signtext ID is retrieved from the API, which is used in the OpenID Connect integration towards Signaturgruppen Broker. 
 
+For system signatures or other more specialized variants, the flow remains large the same, but might utilize more specialized signature protocols than OIDC, for instance backend-to-backend with system signatures and iframe or pop-up setups for NemLog-In Qualified Signatures.
+
 Upon successful signature, the integrating system has full insight into what happened and by whom and is able to retrieve the results in both PAdES and a signed JWT for long-term storage formats.
 
 The integrating service has full control over signers, can add more dynamically and is able to retrieve the resulting documents and tokens at any time.
