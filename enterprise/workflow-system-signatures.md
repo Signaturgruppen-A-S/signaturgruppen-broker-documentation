@@ -45,12 +45,14 @@ In other words: the same Workflow API foundation, now supporting **headless appr
 The technical integration is an extension to the Workflow API, utilizing the "Workflow API System Signature" endpoints found in the [API documentation](https://pp.netseidbroker.dk/transactionsigning/api/swagger/index.html?urls.primaryName=Workflow+API).
 
 The relevant privileges required to setup and create workflows (for your API client) are:
+
 | Privilege |Description|
 |--------| --------|
 | **Workflow: API, read**       | Allowed for read endpoints in the Workflow API |
 | **Workflow: API, write**      | Allowed for write endpoints in the Workflow API |
 
 The relevant privileges required for a system signature signing system integration (the party that receives a signtext_id and needs to sign):
+
 | Privilege |Description|
 |--------| --------|
 | **Workflow: API client organization signature, read**       | Allowed for read endpoints in the Workflow API for system signatures |
