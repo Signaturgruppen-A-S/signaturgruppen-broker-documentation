@@ -8,6 +8,35 @@ nav_order: 10
 
 # Workflow Signing
 
+## Upcoming changes
+
+### NemLog-In Qualified Signatures
+Support for NemLog-In Qualified signatures are under development. More info will be released on this page, when it is ready.
+
+## Recent changes
+
+### Workflow API privileges (19-01-2026)
+
+>Note, this is a breaking change. API paths have changed, clients need privileges.
+
+The Workflow API now requires privileges for the API client interacting with the API.
+  For Workflow API:
+  ```
+    "Workflow: API, read"
+    "Workflow: API, write"
+  ```
+  For system signatures (new feature):
+  ```
+    "Workflow: API client organization signature, sign"
+    "Workflow: API client organization signature, read"
+  ```
+See [Signaturgruppen Privilege Management docs](https://signaturgruppen-a-s.github.io/privilege-management-docs/) and landingpage for [Signaturgruppen Privilege Management](https://netseidbroker.dk/privileges/#/home)
+
+### System signatures (19-01-2026)
+Functionality to create and utilize system signatures has been added. This allows for API clients to create system signatures as part of workflows.
+
+Documentation for this is under development.
+
 ## Introduction
 Signaturgruppen Broker Workflow signing is an API and OpenID Connect workflow that supports advanced and highly-flexible scenarios of PDF document signing with one or more documents and one or more signers.
 It has been designed to support any supported identity provider and eID scheme supported by Signaturgruppen Broker and allows for customization of the flow, number of documents and signers. 
