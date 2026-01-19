@@ -73,6 +73,7 @@ In order to interact with the API, you must first get an [API client and retriev
 The API client also needs appropriate privileges in order to be allowed to interact with the Workflow API. See [Privilege Management](https://signaturgruppen-a-s.github.io/privilege-management-docs/).
 
 The list of privileges is found in the following table:
+
 | Privilege |Description|
 |--------| --------|
 | **Workflow: API, read**       | Allowed for read endpoints in the Workflow API |
