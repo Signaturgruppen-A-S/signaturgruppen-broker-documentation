@@ -70,6 +70,16 @@ The swagger reference for Workflow API (PP env) is found at: [https://pp.netseid
 
 In order to interact with the API, you must first get an [API client and retrieve a service token](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/api-integration.html). When retriving the service token from the Token endpoint, specify the **signtext_api** scope.
 
+The API client also needs appropriate privileges in order to be allowed to interact with the Workflow API. See [Privilege Management](https://signaturgruppen-a-s.github.io/privilege-management-docs/).
+
+The list of privileges is found in the following table:
+| Privilege |Description|
+|--------| --------|
+| **Workflow: API, read**       | Allowed for read endpoints in the Workflow API |
+| **Workflow: API, write**      | Allowed for write endpoints in the Workflow API |
+| **Workflow: API client organization signature, read**       | Allowed for read endpoints in the Workflow API for system signatures |
+| **Workflow: API client organization signature, sign**       | Allowed to create system signature via the Workflow API for system signatures |
+
 Contact Signaturgruppen Support [support.signaturgruppen@ingroupe.com](mailto:support.signaturgruppen@ingroupe.com) if you need to get up and running for our PP environment.
 
 #### Example Client Credentials request:
