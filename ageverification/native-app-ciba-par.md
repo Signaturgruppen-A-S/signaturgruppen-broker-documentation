@@ -2,7 +2,7 @@
 title: Native Android and iOS integration
 layout: home
 parent: Age Verification
-nav_order: 5
+nav_order: 8
 ---
 
 # Native app integration from Android and iOS
