@@ -74,7 +74,7 @@ This pattern avoids common mobile pitfalls around embedded web views and app-swi
 1. App backend starts the CIBA + PAR age-verification (AV) flow and receives an authorization URL.
 2. The mobile app opens the URL in the system browser context (e.g., Custom Tabs / SFSafariViewController).
 3. The user completes the AV flow in the system browser with full compatibility and security requirements.
-4. (Optional) Status updates are pushed to a registered CIBA callback endpoint.
+4. (Optional) Status updates are pushed to a registered CIBA callback endpoint
 5. (Optional) The user is automatically returned to the app (app switch).
 6. (Optional) The user manually returns to the app.
 7. The app (typically via its backend) polls the CIBA endpoint for the final state. Once complete, the app closes the browser surface and proceeds.
@@ -95,6 +95,3 @@ Define a clear timeout window for the flow, surface a user-friendly “Try again
 
 Close the browser surface deterministically.
 Once the CIBA flow reaches a terminal state (success/failure/cancelled/expired), close the browser UI and continue in-app. This prevents users from accidentally resubmitting or getting stuck on a completed page.
-
-Log correlation identifiers end-to-end.
-Persist a stable transaction reference across backend initiation, in-app browser launch, callback handling, and polling. This makes support and debugging dramatically easier—especially for intermittent app-switch issues.
