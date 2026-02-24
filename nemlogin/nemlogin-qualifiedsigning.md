@@ -13,7 +13,7 @@ Refer to the linked documentation for instructions on how to authenticate and wo
 
 It is assumed that the user has a general understanding of how the Workflow API functions.
 
-A dew differences exists between using Workflow API using Signaturgruppen Broker and Workflow API using Nemlog-in3 qualified signatures.
+A few differences exists between using Workflow API using Signaturgruppen Broker and Workflow API using Nemlog-in3 qualified signatures.
 
  - a few minor changes to API calls
  - a major change to how signtext_id is handled.
@@ -64,6 +64,12 @@ POST /api/workflows/{cvr}/nemlogin/signtextid
 
 The response of this request will contain an "iframeUrl". This should be embedded in an iframe. Note that the iframe will need the full page size to display correctly.
 
+Apart from these two endpoints that replaces the standard create workflow and create signtextid endpoints:
+ - POST /api/workflows/{cvr}
+ - POST /api/workflows/{cvr}/signtextid
+
+ All other endpoints are valid to be called with a Nemlog-in3 workflow.
+
 ### Nl3 Ades
 To retrive the list of AdES documents associated with a Nemlog-in3 workflow. The following should be called:
 ```
@@ -71,3 +77,8 @@ GET /api/workflows/{organizationTin}/nemlogin/{workflowId}/nl3signatures
 ```
 
 This responds with a JSON structure containing the signatures and AdES documents associated in base64.
+
+## Visual walkthrough
+<img width="1905" height="967" alt="image" src="https://github.com/user-attachments/assets/a7a1cd9e-f295-418a-adcf-cda71785cb9a" />
+<img width="1897" height="961" alt="image" src="https://github.com/user-attachments/assets/b4ddfb01-e908-4416-a965-ddd5825fbddb" />
+<img width="1422" height="876" alt="image" src="https://github.com/user-attachments/assets/d6fca83c-02d5-486e-a47e-ca7377fffec3" />
