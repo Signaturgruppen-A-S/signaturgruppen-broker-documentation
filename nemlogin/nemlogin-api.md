@@ -1,11 +1,11 @@
 ---
-title: NemLog-in3 integrations
+title: NemLog-in3 API integrations
 layout: home
-parent: Transaction signing
-nav_order: 25
+parent: Nemlog-in3 integrations
+nav_order: 30
 ---
 
-# NemLog-in3 integrations
+# NemLog-in3 API integrations
 
 The signtext api integrates and exposes some functionality supplied by NemLog-in3.
 
