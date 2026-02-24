@@ -79,6 +79,6 @@ GET /api/workflows/{organizationTin}/nemlogin/{workflowId}/nl3signatures
 This responds with a JSON structure containing the signatures and AdES documents associated in base64.
 
 ## Visual walkthrough
-<img width="1905" height="967" alt="image" src="https://github.com/user-attachments/assets/a7a1cd9e-f295-418a-adcf-cda71785cb9a" />
-<img width="1897" height="961" alt="image" src="https://github.com/user-attachments/assets/b4ddfb01-e908-4416-a965-ddd5825fbddb" />
-<img width="1422" height="876" alt="image" src="https://github.com/user-attachments/assets/d6fca83c-02d5-486e-a47e-ca7377fffec3" />
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
