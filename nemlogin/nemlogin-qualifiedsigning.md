@@ -70,6 +70,19 @@ Apart from these two endpoints that replaces the standard create workflow and cr
 
  All other endpoints are valid to be called with a Nemlog-in3 workflow.
 
+### Signatures
+After a user finishes the signing process, the response is returned to Signtext API, and can be accessed by calling GetWorkflow on the workflow in question. The information is extracted from the response containing the AdES returned by Nemlog-in3.
+
+The extracted attributes are:
+| Parameter | Description |
+|--------| --------|
+| **idp**       | Is always nemlogin_qualified_signature |
+| **idpId**    | Contains the respective id in the idp. Here it is Nl3UUID | 
+| **nl3Uuid**      | UUID of the user. Can either be the global or a session-based UUID |
+| **nl3Name**       | Name found on the user in the response |
+| **signatureType**      | Can be either: QualifiedSignature or OcesSignature |
+| **authTime**   | Time of signing |
+
 ### Nl3 Ades
 To retrive the list of AdES documents associated with a Nemlog-in3 workflow. The following should be called:
 ```

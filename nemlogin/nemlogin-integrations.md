@@ -1,7 +1,7 @@
 ---
 title: Nemlog-in3 integrations
 layout: home
-nav_order: 23
+nav_order: 30
 has_children: true
 ---
 
