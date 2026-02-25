@@ -73,9 +73,9 @@ Apart from these two endpoints that replaces the standard create workflow and cr
 ### Signatures
 After a user finishes the signing process, the response is returned to Signtext API, and can be accessed by calling GetWorkflow on the workflow in question. The information is extracted from the response containing the AdES returned by Nemlog-in3.
 
-The extracted attributes are:
+The extracted claims are:
 
-| Parameter | Description |
+| Name | Value |
 |--------| --------|
 | **idp**       | Is always nemlogin_qualified_signature |
 | **idpId**    | Contains the respective id in the idp. Here it is Nl3UUID | 
