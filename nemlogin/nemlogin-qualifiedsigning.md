@@ -99,7 +99,7 @@ async function nemloginHandler(event) {
     }
     if (event.data.command === "error") {
         // Error. Note that error message is technical and is not meant for end user
-        logInSystem(event.data.message);
+        systemLog(event.data.message);
     }
     if (event.data.command === "cancelSign") {
         // Cancelled
