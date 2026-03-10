@@ -70,6 +70,47 @@ Apart from these two endpoints that replaces the standard create workflow and cr
 
  All other endpoints are valid to be called with a Nemlog-in3 workflow.
 
+### Result
+The result is automatically saved by Signtext Api. 
+
+When the signing flow terminates, a webmessaging object is returned to the parent of the iframe. The object will look like the following:
+  
+  ```
+     [
+       command: 'complete' | 'error' | 'cancelSign',
+       message: 'some text...'
+     ]
+  ```
+
+The commands available are:
+ | Name | Description | Message |
+ | ---- | ----------- | ------- |
+ | **complete** | Returned if successful | <Empty> |
+ | **error** | Returned if unsuccesful | Contains error message if available |
+ | **cancelSign** | Returned if user clicks on cancel | <Empty> |
+
+An eventlistener should be created on the page where the nemlogin iframe is created. An example could be:
+
+```
+async function nemloginHandler(event) {
+    console.log("nemloginHandler received event: " + event.data.command + ", from origin: " + event.origin);
+    if (event.data.command === "complete") {
+        // Success
+    }
+    if (event.data.command === "error") {
+        // Error. Note that error message is technical and is not meant for end user
+    }
+    if (event.data.command === "cancelSign") {
+        // Cancelled
+    }
+
+    window.removeEventListener("message", nemloginHandler);
+}
+
+window.addEventListener("message", nemloginHandler);
+```
+
+
 ### Signatures
 After a user finishes the signing process, the response is returned to Signtext API, and can be accessed by calling GetWorkflow on the workflow in question. The information is extracted from the response containing the AdES returned by Nemlog-in3.
 
