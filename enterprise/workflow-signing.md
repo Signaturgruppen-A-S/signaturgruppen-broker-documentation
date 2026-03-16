@@ -8,12 +8,10 @@ nav_order: 10
 
 # Workflow Signing
 
-## Upcoming changes
-
-### NemLog-In Qualified Signatures
-Support for NemLog-In Qualified signatures are under development. More info will be released on this page, when it is ready.
-
 ## Recent changes
+
+### NemLog-In Qualified Signatures (03-2026)
+Nemlog-in signatures have been added. Details can be found [here]([https://signaturgruppen-a-s.github.io/privilege-management-docs](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/nemlogin/nemlogin-integrations.html/)
 
 ### Workflow API privileges (19-01-2026)
 
