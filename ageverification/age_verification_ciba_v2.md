@@ -61,7 +61,7 @@ It is possible to control the last redirect of the end-user, by specifying a **r
     "redirectUri": "[your-https://yourdomain.site/return-after-av-flow]",
     "state": "[your-flowspecific-identifier]"
 }
-
+```
 
 ## Example ID token
 A successful flow will result in an ID token, which contains the relevant claims issued for the flow.
