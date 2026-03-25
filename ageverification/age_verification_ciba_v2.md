@@ -15,6 +15,8 @@ Other AV providers such as the danish MitID and e-Boks (non-exhaustive list) is 
 
 ## CIBA
 
+Official docs: [https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html).
+
 ### Example CIBA request
 The following example demonstrates a standard initialization of an AV flow using our CIBA interface.
 
@@ -37,9 +39,15 @@ Response:
   "expires_in": 300,
   "interval": 3,
   "av_uri": "https://pp.idbroker.eu/op/connect/authorize?client_id=b.7&request_uri=urn:ietf:params:oauth:request_uri:4BEE..2",
-  "av_qr_png": "[PNG]",
-  "av_qr_svg": "[SVG]"
-  "av_iframe_src": "https://pp.idbroker.eu/op/av/iframe?client_id=b.7&request_uri=urn:ietf:params:oauth:request_uri:4BEE..2"
+  "av_iframe_src": "https://pp.idbroker.eu/op/av/iframe?client_id=b.7&request_uri=urn:ietf:params:oauth:request_uri:4BEE..2",
+  "av_qr_png_b64": "iVBORw..."
 }
 ```
 
+### CIBA Poll, Ping, and Push Modes
+For reference, see the [official documentation for response modes here](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5).
+
+The client is default configured for poll mode, but can be set for ping or push mode in the admin UI. 
+
+## Example ID token
+A successful flow will result in an ID token, which contains the relevant claims issued for the flow.
