@@ -27,7 +27,7 @@ curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
 --data-urlencode 'scope=openid av:18' \
 --data-urlencode 'client_id=[your_client_id]' \
 --data-urlencode 'client_secret=[your_secret]' \
---data-urlencode 'login_hint_token={"nonce":"[unique-number-once]", "prompt": "login" }'
+--data-urlencode 'nonce=[your-nonce]'
 ```
 
 > Note that you can use client assertion signed JWTs instead of posting client secret directly - any OIDC/CIBA supported mechanics for client secret is supported.
@@ -49,5 +49,34 @@ For reference, see the [official documentation for response modes here](https://
 
 The client is default configured for poll mode, but can be set for ping or push mode in the admin UI. 
 
+
+
+### Controlling last redirect for the end-user
+The default behavior for the last redirect in the end-user browser flow is a landing page controlled by Signaturgruppen Broker, that informs the end-user of the flow result and informs that the page can be closed.
+
+It is possible to control the last redirect of the end-user, by specifying a **redirectUri** parameter in the CIBA PAR initialization call:
+```
+{
+    "requestId": "9384B4AA93780A1AB83684ACE8B07DFCB6C038E9A6847565DC4F0F2547A499D6-1",
+    "redirectUri": "[your-https://yourdomain.site/return-after-av-flow]",
+    "state": "[your-flowspecific-identifier]"
+}
+```
+
 ## Example ID token
 A successful flow will result in an ID token, which contains the relevant claims issued for the flow.
+
+{
+   "iss": "https://pp.idbroker.eu/op",
+   "nbf": 1725009225,
+   "iat": 1725009225,
+   "exp": 1725009525,
+   "aud": "[your client id]",
+   "nonce": "[your-nonce]",
+   "sub": "[random sub]",
+   "auth_time": 1725009225,
+   "idp": "eu_av",
+   "transaction_id": "90..32",
+   "idtoken_type": "av",
+   "av:18": "true"
+}
