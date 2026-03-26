@@ -14,7 +14,7 @@ The primary AV mechanism supported is the European Wallet supported AV flow, whi
 Other AV providers such as the danish MitID and e-Boks (non-exhaustive list) is supported and can be configured and enabled for the integration via the administrative UI.
 
 ## Supported AV integration variants
-Signaturgruppen Broker supports two primary integration protocols for AV integration, namely CIBA and a browser-based iframe variant. 
+Signaturgruppen Broker supports two primary integration protocols for AV integration, namely CIBA and a browser initiated iframe variant. 
 These two variants cater to different integration requirements and needs and provides support for most integration scenarios. 
 
 The CIBA protocol support a backend initiated well documented workflow with flexible options and ways to receive the result directly to your backend.
@@ -88,8 +88,8 @@ Multiple age verification credentials can be requested simultaneously, such as s
 | redirect_uri       | Specifies a redirect for the end-user when the flow has completed. Not all AV flows support this, as some wallets might not support redirecting the end-user when done. |
 | redirect_state       | When a redirect_uri parameter is specified and the end-user is redirected, the redirect_state will be appended as query/post parameter       |
 | redirect_type       | Specifies redirect type. Values: **get** (default) or **post**.   |
-| qr_code_response       | Specifies if a pregenerated QR code is returned in the init response, default disabled. Values: **png** (qr_png_b64) or **svg** (qr_svg_b64)    |
-| auth_uri_responses       | Specifies the returned authentication uri values generated in the init response. Values: **par** (default), **iframe** and **all**   |
+| qr_code_response       | Specifies if a pregenerated QR code is returned in the init response, default disabled. Values: **png** or **svg**. Sets the **qr_b64** response value, encoding the QR in specified format as Base64.    |
+| flow_type       | Specifies the flow type, default redirect type authentication uri. Values: **authentication_uri** (default) and **iframe**. The iframe option enables the CIBA flow to run inside an iframe, which offers an easy integration for browser-based flows.    |
 
 Example with optional parameters:
 
@@ -106,25 +106,30 @@ curl --location 'https://pp.idbroker.eu/op/connect/ciba' \
 --data-urlencode 'redirect_type=post' \
 --data-urlencode 'qr_code_response=png' \
 --data-urlencode 'iframe_src_response=true' \
---data-urlencode 'reference_id=[your-reference-id]'
+--data-urlencode 'reference_id=[your-reference-id]'\
 --data-urlencode 'auth_uri_responses=all'
 ```
 
-Example init response with optional parameters:
+#### Example init response with optional parameters:
 ```
 {
   "auth_req_id": "9384B..-1",
   "expires_in": 300,
   "interval": 3,
   "authentication_uri": "https://pp.idbroker.eu/op/connect/authorize?client_id=b.7&request_uri=urn:ietf:params:oauth:request_uri:4BEE..2",
-  "iframe_uri":  "https://pp.idbroker.eu/op/iframe/av/?client_id=b.7&request_uri=urn:ietf:params:oauth:request_uri:4BEE..2",
-  "qr_png_b64": "iVBORw0KGg...",
+  "qr_b64": "iVBORw0KGg...",
 }
 ```
 
-### Optional init response values (Admin UI)
-  "av_iframe_src": "https://pp.idbroker.eu/op/av/iframe?client_id=b.7&request_uri=urn:ietf:params:oauth:request_uri:4BEE..2",
-  "av_qr_png_b64": "iVBORw..."
+#### Example init response with iframe flow type:
+```
+{
+  "auth_req_id": "9384B..-1",
+  "expires_in": 300,
+  "interval": 3,
+  "iframe_src":  "https://pp.idbroker.eu/op/iframe/av/?client_id=b.7&request_uri=urn:ietf:params:oauth:request_uri:4BEE..2",
+}
+```
 
 ### CIBA Poll, Ping, and Push Modes
 For reference, see the [official documentation for response modes here](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5).
