@@ -1,5 +1,4 @@
-# Age Verification (V2)
-**DISCLAIMER: This document is under construction and review and has not been finalized nor implemented yet.**
+# Age Verification
 
 ## Introduction to Age Verification (AV)
 To support Age Verification (AV), Signaturgruppen Broker has implemented a streamlined and robust interface that allows for an easy, compliant and flexible integration from any system and adaptable to any workflow. 
@@ -71,9 +70,6 @@ It is possible to have the init response values include a pre-generated QR code 
 If the flow is initiated inside a browser on a user-controlled device, the iframe variant offers an easy and adaptable integration, which automatically adapts to same-device and cross-device flows and which is more dynamic in nature, as the content of the iframe is rendered by Signaturgruppen Broker.
 The iframe will inform the parent website when done via Web Messaging, but the result is still returned via the CIBA interface.
 
-#### URL based redirect
-To initiate the flow via a redirect, the following url 
-
 ### Age scope(s) (av:age)
 The requested age, age or older, is requested via the scope parameter **age:[age]**. Requesting credential proving that the user is 18 or older is done with the **age:18** scope value.
 
@@ -139,3 +135,9 @@ A successful flow will result in an ID token, which contains the relevant claims
 
 ## Iframe integration
 Documentation under development.
+
+The iframe initiated variant provides a way to initialize the AV flow by setting up an iframe in a browser context and also receive the result from the flow via Web Messaging (postMessage).
+This variant enables some web-based integrations that have difficulty with the CIBA backend integration and moves the initialization and receiving of the result from the backend (CIBA) to the browser via Web Messaging.
+
+Details coming..
+
