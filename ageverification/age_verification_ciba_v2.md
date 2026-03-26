@@ -89,28 +89,9 @@ Multiple age verification credentials can be requested simultaneously, such as s
 | redirect_state       | When a redirect_uri parameter is specified and the end-user is redirected, the redirect_state will be appended as query/post parameter       |
 | redirect_type       | Specifies redirect type. Values: **get** (default) or **post**.   |
 | qr_code_response       | Specifies if a pregenerated QR code is returned in the init response, default disabled. Values: **png** or **svg**. Sets the **qr_b64** response value, encoding the QR in specified format as Base64.    |
-| flow_type       | Specifies the flow type, default redirect type authentication uri. Values: **authentication_uri** (default) and **iframe**. The iframe option enables the CIBA flow to run inside an iframe, which offers an easy integration for browser-based flows.    |
+| flow_type       | Specifies the flow type, default redirect type authentication uri. Values: **authentication_uri** (default) and **iframe**. The iframe option enables the CIBA flow to run inside an iframe, which offers an easy integration for browser-based flows. Redirect+QR type flows is not compatible with iframe based flows.    |
 
-Example with optional parameters:
-
-```
-curl --location 'https://pp.idbroker.eu/op/connect/ciba' \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'grant_type=urn:openid:params:grant-type:ciba' \
---data-urlencode 'scope=openid av:16 av:18' \
---data-urlencode 'client_id=[your-client-id]' \
---data-urlencode 'client_secret=[your-secret]' \
---data-urlencode 'client_notification_token=eudhhfiis....weeui' \
---data-urlencode 'redirect_uri=https://yourdomain.site/send-user-here-when–done' \
---data-urlencode 'redirect_state=wudey....xxji' \
---data-urlencode 'redirect_type=post' \
---data-urlencode 'qr_code_response=png' \
---data-urlencode 'iframe_src_response=true' \
---data-urlencode 'reference_id=[your-reference-id]'\
---data-urlencode 'auth_uri_responses=all'
-```
-
-#### Example init response with optional parameters:
+#### Example init response with qr_code_response=png:
 ```
 {
   "auth_req_id": "9384B..-1",
@@ -121,7 +102,7 @@ curl --location 'https://pp.idbroker.eu/op/connect/ciba' \
 }
 ```
 
-#### Example init response with iframe flow type:
+#### Example init response with flow_type=iframe:
 ```
 {
   "auth_req_id": "9384B..-1",
