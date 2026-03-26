@@ -48,7 +48,7 @@ Example response (poll mode):
 ```
 
 ### Initiating the user experience (UX)
-After CIBA initialization the received request_uri parameter can be used to setup the desired AV integration.
+After CIBA initialization the received authentication_uri parameter can be used to setup the desired AV integration.
 There is a number of options: 
 
 * URL based redirect (browser and appswitch)
