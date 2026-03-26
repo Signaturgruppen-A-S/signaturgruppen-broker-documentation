@@ -46,7 +46,7 @@ Example response (poll mode):
   "auth_req_id": "9384B..-1",
   "expires_in": 300,
   "interval": 3,
-  "av_uri": "https://pp.idbroker.eu/op/connect/authorize?client_id=b.7&request_uri=urn:ietf:params:oauth:request_uri:4BEE..2"
+  "uri": "https://pp.idbroker.eu/op/connect/authorize?client_id=b.7&request_uri=urn:ietf:params:oauth:request_uri:4BEE..2"
 }
 ```
 ### Age scope(s) (av:age)
