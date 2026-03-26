@@ -21,10 +21,12 @@ Official docs: [https://openid.net/specs/openid-client-initiated-backchannel-aut
 The following example demonstrates a standard initialization of an AV flow using our CIBA interface.
 
 ```
-curl --location 'https://pp.netseidbroker.dk/op/connect/ciba' \
+curl --location 'https://pp.idbroker.eu/op/connect/ciba' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'grant_type=urn:openid:params:grant-type:ciba' \
 --data-urlencode 'scope=openid av:18' \
+--data-urlencode 'appswitch_redirect_uri=[redirect uri when done]' \
+--data-urlencode 'appswitch_redirect_uri_state=[your-internal-state]' \
 --data-urlencode 'client_id=[your_client_id]' \
 --data-urlencode 'client_secret=[your_secret]' \
 --data-urlencode 'nonce=[your-nonce]'
@@ -48,20 +50,6 @@ Response:
 For reference, see the [official documentation for response modes here](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5).
 
 The client is default configured for poll mode, but can be set for ping or push mode in the admin UI. 
-
-
-
-### Controlling last redirect for the end-user
-The default behavior for the last redirect in the end-user browser flow is a landing page controlled by Signaturgruppen Broker, that informs the end-user of the flow result and informs that the page can be closed.
-
-It is possible to control the last redirect of the end-user, by specifying a **redirectUri** parameter in the CIBA PAR initialization call:
-```
-{
-    "requestId": "9384B4AA93780A1AB83684ACE8B07DFCB6C038E9A6847565DC4F0F2547A499D6-1",
-    "redirectUri": "[your-https://yourdomain.site/return-after-av-flow]",
-    "state": "[your-flowspecific-identifier]"
-}
-```
 
 ## Example ID token
 A successful flow will result in an ID token, which contains the relevant claims issued for the flow.
