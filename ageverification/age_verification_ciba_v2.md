@@ -37,7 +37,7 @@ curl --location 'https://pp.idbroker.eu/op/connect/ciba' \
 
 > Note that you can use client assertion signed JWTs instead of posting client secret directly - any OIDC/CIBA supported mechanics for client secret is supported.
 
-Example response (poll mode):
+Example init response (poll mode):
 ```
 {
   "auth_req_id": "9384B..-1",
