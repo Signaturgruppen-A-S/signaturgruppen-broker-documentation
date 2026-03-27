@@ -29,13 +29,3 @@ These two variants cater to different integration requirements and needs and pro
 The CIBA protocol support a backend initiated well documented workflow with flexible options and ways to receive the result directly to your backend.
 The iframe protocol supports a browser initiated integration that allow for easy and flexibile integration into existing web-based setups that have a harder time to adjust their workflows using the CIBA protocol.
 
-
-
-## Iframe integration
-Documentation under development.
-
-The iframe initiated variant provides a way to initialize the AV flow by setting up an iframe in a browser context and also receive the result from the flow via Web Messaging (postMessage).
-This variant enables some web-based integrations that have difficulty with the CIBA backend integration and moves the initialization and receiving of the result from the backend (CIBA) to the browser via Web Messaging.
-
-Details coming..
-
