@@ -1,5 +1,5 @@
 ---
-title: Age Verification (EU AV)
+title: Age Verification (v2)
 layout: home
 has_children: true
 nav_order: 100
