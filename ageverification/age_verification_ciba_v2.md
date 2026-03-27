@@ -47,6 +47,9 @@ Example init response (poll mode):
 }
 ```
 
+The **authentication_uri** contain the URL which is used to initiate the end-user flow. This URL can be **https://** or **av://** (direct EU AV integration) depending on configuration on client - handle this the same way, no matter format.
+This URL can be converted into a QR code, which allows for cross device initiation and completion via smartphone camera scanning - helper methods for generating QR code is also available.
+
 ### Initiating the user experience (UX)
 After CIBA initialization the received authentication_uri parameter can be used to setup the desired AV integration.
 There is a number of options: 
