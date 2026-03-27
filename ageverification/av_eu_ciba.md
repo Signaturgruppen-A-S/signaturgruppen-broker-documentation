@@ -1,5 +1,5 @@
 ---
-title: Age Verification CIBA (EU AV)
+title: CIBA
 layout: home
 parent: Age Verification (EU AV)
 nav_order: 1
