@@ -1,7 +1,7 @@
 ---
 title: CIBA PAR Age Verification
 layout: home
-parent: Age Verification
+parent: Age Verification (MitID)
 nav_order: 5
 ---
 
