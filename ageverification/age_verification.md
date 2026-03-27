@@ -2,7 +2,7 @@
 title: Age Verification (MitID)
 layout: home
 has_children: true
-nav_order: 300
+nav_order: 150
 ---
 
 # Age Verification (legacy)
