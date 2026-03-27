@@ -2,7 +2,7 @@
 title: Age Verification (legacy)
 layout: home
 has_children: true
-nav_order: 85
+nav_order: 300
 ---
 
 # Age Verification (legacy)
