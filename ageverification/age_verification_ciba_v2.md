@@ -69,9 +69,33 @@ It is possible to have the initialization response values include a pre-generate
 If the setup only supports cross-device QR code scanning, then the flow is setup and restricted to displaying a QR code of the **authentication_uri** response value. 
 It is possible to have the initialization response values include a pre-generated QR code that can be utilized.
 
+A pre-generated QR code can be requested by setting the **qr_code_response** initialization parameter, here examplified by setting **qr_code_response=png**:
+
+#### Example initialization response with qr_code_response=png:
+```
+{
+  "auth_req_id": "9384B..-1",
+  "expires_in": 300,
+  "interval": 3,
+  "authentication_uri": "https://pp.idbroker.eu/op/connect/authorize?client_id=b.7&request_uri=urn:ietf:params:oauth:request_uri:4BEE..2",
+  "qr_b64": "iVBORw0KGg...",
+}
+```
+
 #### Browserbased iframe integration
 If the flow is initiated inside a browser on a user-controlled device, the iframe variant offers an easy and adaptable integration, which automatically adapts to same-device and cross-device flows and which is more dynamic in nature, as the content of the iframe is rendered by Signaturgruppen Broker.
 The iframe will inform the parent website when done via Web Messaging, but the result is still returned via the CIBA interface.
+
+The iframe flow is initialized by specifying the **flow_type=iframe** parameter, which returns the **iframe_src** parameter in the initialization response:
+
+```
+{
+  "auth_req_id": "9384B..-1",
+  "expires_in": 300,
+  "interval": 3,
+  "iframe_src":  "https://pp.idbroker.eu/op/iframe/av/?client_id=b.7&request_uri=urn:ietf:params:oauth:request_uri:4BEE..2",
+}
+```
 
 ### Age scope(s) (av:age)
 The requested age, age or older, is requested via the scope parameter **age:[age]**. Requesting credential proving that the user is 18 or older is done with the **age:18** scope value.
@@ -89,27 +113,6 @@ Multiple age verification credentials can be requested simultaneously, such as s
 | redirect_type       | Specifies redirect type. Values: **get** (default) or **post**.   |
 | qr_code_response       | Specifies if a pregenerated QR code is returned in the initialization response, default disabled. Values: **png** or **svg**. Sets the **qr_b64** response value, encoding the QR in specified format as Base64.    |
 | flow_type       | Specifies the flow type, default redirect type authentication uri. Values: **authentication_uri** (default) and **iframe**. The iframe option enables the CIBA flow to run inside an iframe, which offers an easy integration for browser-based flows. Redirect+QR type flows is not compatible with iframe based flows.    |
-
-#### Example initialization response with qr_code_response=png:
-```
-{
-  "auth_req_id": "9384B..-1",
-  "expires_in": 300,
-  "interval": 3,
-  "authentication_uri": "https://pp.idbroker.eu/op/connect/authorize?client_id=b.7&request_uri=urn:ietf:params:oauth:request_uri:4BEE..2",
-  "qr_b64": "iVBORw0KGg...",
-}
-```
-
-#### Example initialization response with flow_type=iframe:
-```
-{
-  "auth_req_id": "9384B..-1",
-  "expires_in": 300,
-  "interval": 3,
-  "iframe_src":  "https://pp.idbroker.eu/op/iframe/av/?client_id=b.7&request_uri=urn:ietf:params:oauth:request_uri:4BEE..2",
-}
-```
 
 ### CIBA Poll, Ping, and Push Modes
 For reference, see the [official documentation for response modes here](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5).
