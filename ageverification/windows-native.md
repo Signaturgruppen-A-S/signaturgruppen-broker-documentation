@@ -1,7 +1,7 @@
 ---
 title: Age Verification for Windows applications 
 layout: home
-parent: Age Verification
+parent: Age Verification (MitID)
 nav_order: 1
 ---
 
