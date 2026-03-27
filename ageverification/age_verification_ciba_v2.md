@@ -1,6 +1,7 @@
 # Age Verification
+EU Age Verification (AV) with possibility for additional AV providers and flexible integration.
 
-## Introduction to Age Verification (AV)
+## Introduction to Age Verification
 To support Age Verification (AV), Signaturgruppen Broker has implemented a streamlined and robust interface that allows for an easy, compliant and flexible integration from any system and adaptable to any workflow. 
 
 Data minimization is primary - only the AV result is returned. 
@@ -71,7 +72,7 @@ It is possible to have the initialization response values include a pre-generate
 
 A pre-generated QR code can be requested by setting the **qr_code_response** initialization parameter, here examplified by setting **qr_code_response=png**:
 
-#### Example initialization response with qr_code_response=png:
+Example initialization response with qr_code_response=png:
 ```
 {
   "auth_req_id": "9384B..-1",
@@ -98,8 +99,7 @@ The iframe flow is initialized by specifying the **flow_type=iframe** parameter,
 ```
 
 ### Age scope(s) (av:age)
-The requested age, age or older, is requested via the scope parameter **age:[age]**. Requesting credential proving that the user is 18 or older is done with the **age:18** scope value.
-
+The requested age verification, is requested via the scope parameter **age:[age]**. Requesting a credential proving that the user is 18 or older is done with the **age:18** scope value.
 Multiple age verification credentials can be requested simultaneously, such as setting both **age:16** and **age:18** in the scope value. This will result both credentials in the result.
 
 ### Optional initialization parameters
