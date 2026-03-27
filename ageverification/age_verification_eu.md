@@ -2,7 +2,7 @@
 title: Age Verification (EU AV)
 layout: home
 has_children: true
-nav_order: 30
+nav_order: 60
 ---
 
 # Age Verification
