@@ -1,5 +1,14 @@
+---
+title: Age Verification (EU AV)
+layout: home
+has_children: true
+nav_order: 30
+---
+
 # Age Verification
 EU Age Verification (AV) with possibility for additional AV providers and flexible integration.
+
+> Under development. Contact us for interest.
 
 ## Introduction to Age Verification
 To support Age Verification (AV), Signaturgruppen Broker has implemented a streamlined and robust interface that allows for an easy, compliant and flexible integration from any system and adaptable to any workflow. 
