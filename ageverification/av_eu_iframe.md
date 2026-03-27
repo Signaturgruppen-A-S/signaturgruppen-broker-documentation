@@ -1,7 +1,7 @@
 ---
 title: Iframe (browser based)
 layout: home
-parent: Age Verification (EU AV)
+parent: Age Verification
 nav_order: 2
 ---
 
