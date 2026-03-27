@@ -2,7 +2,7 @@
 title: Age Verification CIBA (EU AV)
 layout: home
 parent: Age Verification (EU AV)
-nav_order: 31
+nav_order: 1
 ---
 
 # Age Verification using CIBA
