@@ -1,11 +1,11 @@
 ---
-title: Age Verification
+title: MitID Age Verification
 layout: home
 has_children: true
 nav_order: 85
 ---
 
-# Age Verification  
+# MitID Age Verification
 
 ## Introduction
 
