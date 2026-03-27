@@ -1,12 +1,12 @@
 ---
-title: Age Verification (legacy)
+title: Age Verification (MitID)
 layout: home
 has_children: true
 nav_order: 300
 ---
 
 # Age Verification (legacy)
-> We are migrating this integration towards our new AV setup, tailored to be more generic and more adaptable to EU AV, while still supporting MitID and other AV providers. See https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/ageverification/age_verification_eu.html.
+> This integration uses MitID as the AV provider. For our generic AV setup, also supporting the upcoming EU AV scheme including AltID, see https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/ageverification/age_verification_eu.html.
 
 ## Introduction
 
