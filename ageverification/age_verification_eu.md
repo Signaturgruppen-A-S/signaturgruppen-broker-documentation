@@ -9,6 +9,7 @@ nav_order: 100
 EU Age Verification (AV) with possibility for additional AV providers and flexible integration.
 
 > For MitID only or legacy integrations, see the docs [here](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/ageverification/age_verification.html).
+
 > Under development. Contact us for interest.
 
 ## Introduction to Age Verification
