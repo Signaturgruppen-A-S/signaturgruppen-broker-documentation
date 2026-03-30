@@ -19,8 +19,8 @@ Data minimization is primary - only the AV result is returned.
 
 The integration interface is minimal and stable, while the administrative UI allows for flexible customization for integrations. This supports stable integrations that is easily adaptable for changes over time, without the need to changes to the integrating service.
 
-### EU AV and alternatives
-The primary AV mechanism supported is the European Wallet supported AV flow, which is specifically tailored to be data minimalistic, secure, anonymous and widely available cross borders across the EU. This includes support for national AV solutions under the EU AV scheme, such as the danish AltID.
+### The European Digital Identity Wallet (EUDI) AV and alternatives
+The primary AV mechanism supported is the The European Digital Identity Wallet (EUDI) supported AV flow, which is specifically tailored to be data minimalistic, secure, anonymous and widely available cross borders across the EU. This includes support for national AV solutions under the EU AV scheme, such as the danish AltID.
 
 Other AV providers is supported and can be configured and enabled for the integration via the administrative UI.
 
@@ -28,8 +28,8 @@ List of supported AV providers
 
 | AV provider | IDP identifier | Description |
 |--------|------|--------|
-| EU Age Verification       | eu_av     | EU Age Verification scheme. Supports the european shared AV scheme, that includes natonal AV wallet solutions, such as the danish **AltID**.        |
-| AltID       | eu_av      | AltID is the danish national wallet based on the european wallet and age verification scheme.         |
+| EU Age Verification       | eu_av     | EUDI AV. Supports any national implementation of the EUDI AV scheme, such as the danish **AltID**.        |
+| AltID       | eu_av      | AltID is the danish national wallet based on EUDI.         |
 | MitID       | mitid      | MitID is the danish national ID.         |
 | e-Boks       | eboks      | EUDI-style wallet age verification: reusable age proofs through e-Boks ID/e-Wallet with selective disclosure for online and physical use cases. |
 
