@@ -1,5 +1,5 @@
 ---
-title: CIBA
+title: OpenID Connect
 layout: home
 parent: Age Verification
 nav_order: 1
