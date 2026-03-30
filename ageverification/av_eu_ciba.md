@@ -2,7 +2,7 @@
 title: CIBA
 layout: home
 parent: Age Verification
-nav_order: 1
+nav_order: 2
 ---
 
 # Age Verification using CIBA
