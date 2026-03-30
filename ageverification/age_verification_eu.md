@@ -22,12 +22,22 @@ The integration interface is minimal and stable, while the administrative UI all
 ### EU AV and alternatives
 The primary AV mechanism supported is the European Wallet supported AV flow, which is specifically tailored to be data minimalistic, secure, anonymous and widely available cross borders across the EU. This includes support for national AV solutions under the EU AV scheme, such as the danish AltID.
 
-Other AV providers such as the danish MitID and e-Boks (non-exhaustive list) is supported and can be configured and enabled for the integration via the administrative UI.
+Other AV providers is supported and can be configured and enabled for the integration via the administrative UI.
+
+List of supported AV providers
+
+| AV provider | IDP identifier | Description |
+|--------|------|--------|
+| EU Age Verification       | eu_av     | EU Age Verification scheme. Supports the european shared AV scheme, that includes natonal AV wallet solutions, such as the danish **AltID**.        |
+| AltID       | eu_av      | AltID is the danish national wallet based on the european wallet and age verification scheme.         |
+| MitID       | mitid      | MitID is the danish national ID.         |
+| e-Boks       | eboks      | e-Boks — EUDI-style wallet age verification: reusable age proofs through e-Boks ID/e-Wallet with selective disclosure for online and physical use cases. |
 
 ## Supported AV integration variants
-Signaturgruppen Broker supports two primary integration protocols for AV integration, namely CIBA and a browser initiated iframe variant. 
-These two variants cater to different integration requirements and needs and provides support for most integration scenarios. 
+Signaturgruppen Broker supports three primary integration protocols for AV integration, namely OpenID Connect (OIDC), OpenID Connect Client-Initiated Backchannel Authentication Flow (CIBA) and a browser initiated iframe variant. 
+These variants cater to different integration requirements and needs and provides support for virtually all possible integration scenarios. 
 
-The CIBA protocol support a backend initiated well documented workflow with flexible options and ways to receive the result directly to your backend.
-The iframe protocol supports a browser initiated integration that allow for easy and flexibile integration into existing web-based setups that have a harder time to adjust their workflows using the CIBA protocol.
+* The OIDC protocol support a standards driven, browser-first integration that allows for a wide range of applications to easily integrate.
+* The CIBA protocol support a backend initiated workflow with flexible options and ways to receive the result directly to your backend.
+* The iframe protocol supports a browser initiated integration that allow for easy and flexibile integration into existing web-based setups that have a harder time to adjust their workflows using the OIDC or CIBA protocol. The iframe variant better support workflows in which you do not want to redirect the end-user away from the current context and do not want to handle OIDC pop-up style handling.
 
