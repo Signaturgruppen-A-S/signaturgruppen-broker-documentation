@@ -41,3 +41,21 @@ These variants cater to different integration requirements and needs and provide
 * The CIBA protocol support a backend initiated workflow with flexible options and ways to receive the result directly to your backend.
 * The iframe protocol supports a browser initiated integration that allow for easy and flexibile integration into existing web-based setups that have a harder time to adjust their workflows using the OIDC or CIBA protocol. The iframe variant better support workflows in which you do not want to redirect the end-user away from the current context and do not want to handle OIDC pop-up style handling.
 
+## AV scopes
+The AV variants all share the same request format for the AV request utilizing the **scope** parameter. Here, you can request one or more AV scopes, which directly maps to the requested age credentials/proofs that you request. 
+
+All available AV providers support a set of standard AV age brackets such as 15, 16, 18 and 21. These are requested via the parameterized **av:[age]** scope value.
+
+The av scope has a generic parameterization in our integration to support the most flexible integration. We will ensure to fail-early or adapt the request to the specific provider utilized in the request.
+
+### Examples
+Example for OIDC and CIBA:
+```
+scope=openid av:16 av:18
+```
+
+Example for iframe integration:
+```
+scope=av:16 av:18
+```
+
