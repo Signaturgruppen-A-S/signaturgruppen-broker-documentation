@@ -31,7 +31,7 @@ List of supported AV providers
 | EU Age Verification       | eu_av     | EU Age Verification scheme. Supports the european shared AV scheme, that includes natonal AV wallet solutions, such as the danish **AltID**.        |
 | AltID       | eu_av      | AltID is the danish national wallet based on the european wallet and age verification scheme.         |
 | MitID       | mitid      | MitID is the danish national ID.         |
-| e-Boks       | eboks      | e-Boks — EUDI-style wallet age verification: reusable age proofs through e-Boks ID/e-Wallet with selective disclosure for online and physical use cases. |
+| e-Boks       | eboks      | EUDI-style wallet age verification: reusable age proofs through e-Boks ID/e-Wallet with selective disclosure for online and physical use cases. |
 
 ## Supported AV integration variants
 Signaturgruppen Broker supports three primary integration protocols for AV integration, namely OpenID Connect (OIDC), OpenID Connect Client-Initiated Backchannel Authentication Flow (CIBA) and a browser initiated iframe variant. 
