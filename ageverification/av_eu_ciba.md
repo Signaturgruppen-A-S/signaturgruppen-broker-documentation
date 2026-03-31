@@ -120,6 +120,6 @@ A successful flow will result in an ID token, which contains the relevant claims
    "idp": "eu_av",
    "transaction_id": "90..32",
    "idtoken_type": "av",
-   "av:18": "true"
+   "av:18": true
 }
 ```
