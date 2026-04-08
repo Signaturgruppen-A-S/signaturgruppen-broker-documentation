@@ -15,7 +15,7 @@ In general, we do not require of integrating services that they logout end-user 
 
 If you have requirements for logout of the Signaturgruppen Broker sessions, we have various methods to terminate the end-user session created by the authentication. 
 
-> We often see that integrations logout / terminate the end-user session immediately after authentication. This should in general be avoided. If this is a strict requirement, please contact Signaturgruppen to discuss this approach and possible better alternatives.
+> We often see that integrations logout / terminate the end-user session immediately after authentication. Consider the use of **prompt=login** or the **max_age** parameter to control session re-use instead of actively logging out. When and if you need to terminate the user session with the broker, we recommend the backend API available at **op/api/v1/session/logout**.
 
 ## ID token session information
 
