@@ -11,6 +11,7 @@ EU Age Verification (AV) with possibility for additional AV providers and flexib
 > For MitID only or legacy integrations, see the docs [here](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/ageverification/age_verification.html).
 
 > Under development. Contact us for interest.
+> The domain idbroker.eu and the AV interface specified has not yet been deployed to PP and production.
 
 ## Introduction to Age Verification
 To support Age Verification (AV), Signaturgruppen Broker has implemented a streamlined and robust interface that allows for an easy, compliant and flexible integration from any system and adaptable to any workflow. 
