@@ -5,7 +5,30 @@ nav_order: 25
 has_children: true
 ---
 
-## Identity Providers
+# Identity Providers
+
+## Supported identity providers
+
+### International identity providers
+
+| Identity provider | Identifier | Description |
+|--------|------|--------|
+| EU Wallet ID       | euid      | A digital ID and personal digital wallet for EU citizens - [https://ec.europa.eu/](https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU+Digital+Identity+Wallet+Home) |
+| EU Wallet Age Verification       | euav      | European wallet age verification (AV) - https://digital-strategy.ec.europa.eu/en/policies/eu-age-verification        |
+| SoloID       | soloid      | A secure and flexible eID provided by Signaturgruppen |
+| PasskeyID       | passkeyid      | PasskeyID is a strong eID based around a passkeys-as-a-service approach - https://passkeyid.eu/ |
+| e-Boks       | eboks      | e-Boks ID is a digital eID provided by e-Boks - https://global.e-boks.com/digital-wallet/e-boks-id/       |
+
+### Danish identity providers
+
+| Identity provider | Identifier | Description |
+|--------|------|--------|
+| MitID       | mitid      | Danish national eID - https://www.mitid.dk/       |
+| MitID Erhverv       | mitid_erhverv      | Danish national professional eID - https://mitid-erhverv.dk/       |
+| AltID       | euid + euav      | Danish national EU wallet implementation - https://digst.dk/it-loesninger/altid/ |
+| MobilePay       | mobilepay     | MobilePay is a danish eID - https://mobilepay.dk/ |
+
+## OIDC parameters
 
 ### Multiple identity providers
 It is possible to specify multiple identity providers for a single user flow through NEB.
