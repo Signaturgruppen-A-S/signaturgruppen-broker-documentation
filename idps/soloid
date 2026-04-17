@@ -2,27 +2,34 @@
 title: SoloID
 layout: home
 parent: Identity providers
-has_children: true
-nav_order: 1
+has_children: false
+nav_order: 4
 ---
 
-## SoloID
+# SoloID
 
 SoloID is an identity provider that offers range of authenticators to ease the authentication process. It is an identity provider capable of providing an NSIS substantial level of authentication comparable to the most common MitID level of authentication.
 
 More information about the details of SoloID as an identity provider can be seen at:
 
-### Integration with SoloID
+## Integration with SoloID
 
-The intetgration with SoloID is straightforward
+The integration with SoloID is straightforward
 
-### Supported OIDC parameters
+## Supported OIDC parameters
 
 | **Request parameter** | **Description** |
 | --- | --- |
-| idp_values | **mitid** |
+| idp_values | **soloid** |
 
 
-### Userinfo endpoint mitid scope claim values
 
-<table><tbody><tr><th><p><strong>Claim</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>mitid.uuid</p></td><td><p>The unique MitID identifier of the subject.</p></td></tr><tr><td><p>mitid.date_of_birth</p></td><td><p>The date of birth of the subject.</p></td></tr><tr><td><p>mitid.age</p></td><td><p>The age of the subject</p></td></tr><tr><td><p>mitid.has_cpr</p></td><td><p>Is there a CPR associated with the MitID</p></td></tr><tr><td><p>mitid.identity_name</p></td><td><p>The registered identity name.</p><p>Exception: if the user has requested name and address protection and the serviceProvider is not public then this claim will contain "NAVNE &amp; ADRESSEBESKYTTET".</p></td></tr><tr><td><p>mitid.transaction_id</p></td><td><p>MitID generated transaction ID.</p></td></tr></tbody></table>
+## ID token claim values
+
+<table><tbody><tr><th><p><strong>Claim</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>soloid.mitid_uuid</p></td><td><p>The unique MitID identifier of the subject.</p></td></tr><tr><td><p>soloid.nsis_loa</p></td><td><p>The NSIS level of authentication</p></td></tr></tbody></table>
+
+
+## Userinfo endpoint claim values
+
+<table><tbody><tr><th><p><strong>Claim</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>soloid.mitid_uuid</p></td><td><p>The unique MitID identifier of the subject.</p></td></tr><tr><td><p>soloid.nsis_loa</p></td><td><p>The NSIS level of authentication</p></td></tr></tbody></table>
+
