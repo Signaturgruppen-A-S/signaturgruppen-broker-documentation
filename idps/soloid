@@ -26,10 +26,10 @@ The integration with SoloID is straightforward
 
 ## ID token claim values
 
-<table><tbody><tr><th><p><strong>Claim</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>soloid.mitid_uuid</p></td><td><p>The unique MitID identifier of the subject.</p></td></tr><tr><td><p>soloid.nsis_loa</p></td><td><p>The NSIS level of authentication</p></td></tr></tbody></table>
+<table><tbody><tr><th><p><strong>Claim</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>soloid.nsis_loa</p></td><td><p>The NSIS level of authentication</p></td></tr></tbody></table>
 
 
 ## Userinfo endpoint claim values
 
-<table><tbody><tr><th><p><strong>Claim</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>soloid.mitid_uuid</p></td><td><p>The unique MitID identifier of the subject.</p></td></tr><tr><td><p>soloid.nsis_loa</p></td><td><p>The NSIS level of authentication</p></td></tr></tbody></table>
+<table><tbody><tr><th><p><strong>Claim</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>soloid.mitid_uuid</p></td><td><p>The unique MitID identifier of the subject.</p></td></tr></tbody></table>
 
