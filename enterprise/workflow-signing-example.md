@@ -183,6 +183,7 @@ GET /api/workflows/{cvr}/{workflowId}/workflowtoken:
 ```
 
 The resulting workflow token:
+
 ```
 {
   "workflowToken": "[Workflow JWT token]",
