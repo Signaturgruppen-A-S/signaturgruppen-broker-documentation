@@ -165,6 +165,7 @@ POST /api/workflows/{cvr}/{workflowId}/pades
   }
 }
 ```
+
 The resulting PAdES:
 ```
 {
@@ -177,12 +178,14 @@ The resulting PAdES:
     "signatureCount": 2
   }
 }
+```
+
 Retrieving the workflow token:
 ```
 GET /api/workflows/{cvr}/{workflowId}/workflowtoken:
 ```
 
-The resulting workflow token:
+The resulting workflow token API result:
 
 ```
 {
