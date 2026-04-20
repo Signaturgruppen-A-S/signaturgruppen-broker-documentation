@@ -11,7 +11,7 @@ nav_order: 1
 The following example demonstrates a standard initialization of an AV flow using our OIDC interface.
 
 ```
-https://pp.idbroker.eu/connect/authorize?client_id=[your client id]&redirect_uri=[your redirect uri]&response_type=code&scope=openid av:18&nonce=[your nonce]
+https://pp.idbroker.eu/connect/authorize?client_id=[your client id]&redirect_uri=[your redirect uri]&response_type=code&scope=openid age_over:18&nonce=[your nonce]
 ```
 
 ## Example ID token (OIDC)
