@@ -15,7 +15,7 @@ The following example demonstrates a standard initialization of an AV flow using
 curl --location 'https://pp.idbroker.eu/op/connect/ciba' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'grant_type=urn:openid:params:grant-type:ciba' \
---data-urlencode 'scope=openid av:18' \
+--data-urlencode 'scope=openid age_over:18' \
 --data-urlencode 'client_id=[your-client-id]' \
 --data-urlencode 'client_secret=[your-secret]' \
 --data-urlencode 'reference_id=[your-reference-id]'
@@ -83,9 +83,9 @@ The iframe flow is initialized by specifying the **flow_type=iframe** parameter,
 }
 ```
 
-## Age scope(s) (av:age)
-The requested age verification, is requested via the scope parameter **age:[age]**. Requesting a credential proving that the user is 18 or older is done with the **age:18** scope value.
-Multiple age verification credentials can be requested simultaneously, such as setting both **age:16** and **age:18** in the scope value. This will result both credentials in the result.
+## Age scope(s) (age_over:age)
+The requested age verification, is requested via the scope parameter **age_over:[age]**. Requesting a credential proving that the user is 18 or older is done with the **age_over:18** scope value.
+Multiple age verification credentials can be requested simultaneously, such as setting both **age_over:16** and **age_over:18** in the scope value. This will result both credentials in the result.
 
 ## Optional initialization parameters
 
@@ -117,9 +117,9 @@ A successful flow will result in an ID token, which contains the relevant claims
    "reference_id": "[your-reference-id]",
    "sub": "[random sub]",
    "auth_time": 1725009225,
-   "idp": "eu_av",
+   "idp": "euav",
    "transaction_id": "90..32",
    "idtoken_type": "av",
-   "av:18": true
+   "age_over:18": true
 }
 ```
