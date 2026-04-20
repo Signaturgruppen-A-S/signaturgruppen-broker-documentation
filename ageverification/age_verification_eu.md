@@ -29,8 +29,8 @@ List of supported AV providers
 
 | AV provider | IDP identifier | Description |
 |--------|------|--------|
-| EU Age Verification       | eu_av     | EUDI AV. Supports any national implementation of the EUDI AV scheme, such as the danish **AltID**.        |
-| AltID       | eu_av      | AltID is the danish national wallet based on EUDI.         |
+| EU Age Verification       | euav     | EUDI AV. Supports any national implementation of the EUDI AV scheme, such as the danish **AltID**.        |
+| AltID       | euav      | AltID is the danish national wallet based on EUDI.         |
 | MitID       | mitid      | MitID is the danish national ID.         |
 | e-Boks       | eboks      | EUDI-style wallet age verification: reusable age proofs through e-Boks ID/e-Wallet with selective disclosure for online and physical use cases. |
 
