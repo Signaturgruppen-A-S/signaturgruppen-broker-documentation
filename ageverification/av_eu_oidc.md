@@ -27,9 +27,9 @@ A successful flow will result in an ID token, which contains the relevant claims
    "nonce": "[your-nonce]",
    "sub": "[random sub]",
    "auth_time": 1725009225,
-   "idp": "eu_av",
+   "idp": "euav",
    "transaction_id": "45..32",
    "idtoken_type": "av",
-   "av:18": true
+   "age_over_18": true
 }
 ```
