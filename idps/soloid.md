@@ -26,7 +26,7 @@ The integration with SoloID is straightforward
 
 ## ID token claim values
 
-<table><tbody><tr><th><p><strong>Claim</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>loa</p></td><td><p>The NSIS level of authentication</p></td></tr></tbody></table>
+<table><tbody><tr><th><p><strong>Claim</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>loa</p></td><td><p>Level of Assurance</p><p>One of</p><ul><li>https://data.gov.dk/concept/core/nsis/Low</li><li>https://data.gov.dk/concept/core/nsis/Substantial</li><li>https://data.gov.dk/concept/core/nsis/High</li></ul></td></tr></tbody></table>
 
 ## Userinfo endpoint claim values
 
