@@ -14,7 +14,7 @@ More information about the details of SoloID as an identity provider can be seen
 
 ## Integration with SoloID
 
-The integration with SoloID is straightforward
+The integration with SoloID is straightforward and standard OIDC
 
 ## Supported OIDC parameters
 
@@ -23,12 +23,16 @@ The integration with SoloID is straightforward
 | idp_values | **soloid** |
 
 
+### Supported scope values
+
+<table><tbody><tr><th><p><strong>Scope</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>soloid</p></td><td><p>List of claims:</p><ul><li>soloid.mitid_uuid</li></ul></td></tr></tbody></table>
+
 
 ## ID token claim values
 
-<table><tbody><tr><th><p><strong>Claim</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>loa</p></td><td><p>Level of Assurance</p><p>One of</p><ul><li>https://data.gov.dk/concept/core/nsis/Low</li><li>https://data.gov.dk/concept/core/nsis/Substantial</li><li>https://data.gov.dk/concept/core/nsis/High</li></ul></td></tr></tbody></table>
+<table><tbody><tr><th><p><strong>Claim</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>loa</p></td><td><p>Level of Assurance</p><p>One of</p><ul><li>https://data.gov.dk/concept/core/nsis/Low</li><li>https://data.gov.dk/concept/core/nsis/Substantial</li><li>https://data.gov.dk/concept/core/nsis/High</li></ul></td></tr><tr><td><p>amr</p></td><td><p>Authentication Method method used by the user</p><p>One of</p><ul><li>passkey</li><li>mitid</li><li>soloidauthenticator</li></ul></td></tr></tbody></table>
 
-## Userinfo endpoint claim values
+## Userinfo endpoint claim values for soloid scope
 
 <table><tbody><tr><th><p><strong>Claim</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>soloid.mitid_uuid</p></td><td><p>The unique MitID identifier of the subject.</p></td></tr></tbody></table>
 
