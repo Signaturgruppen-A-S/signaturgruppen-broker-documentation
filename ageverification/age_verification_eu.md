@@ -45,18 +45,18 @@ These variants cater to different integration requirements and needs and provide
 ## AV scope
 The AV variants all share the same request format for the AV request utilizing the **scope** parameter. Here, you can request one or more AV scopes, which directly maps to the requested age credentials/proofs that you request. 
 
-All available AV providers support a set of standard AV age brackets such as 15, 16, 18 and 21. These are requested via the parameterized **av:[age]** scope value.
+All available AV providers support a set of standard AV age brackets such as 15, 16, 18 and 21. These are requested via the parameterized **age_over:[age]** scope value.
 
 The av scope has a generic parameterization in our integration to support the most flexible integration. We will ensure to fail-early or adapt the request to the specific provider utilized in the request.
 
 ### Examples
 Example for OIDC and CIBA:
 ```
-scope=openid av:16 av:18
+scope=openid age_over:16 age_over:18
 ```
 
 Example for iframe integration:
 ```
-scope=av:16 av:18
+scope=age_over:16 age_over:18
 ```
 
