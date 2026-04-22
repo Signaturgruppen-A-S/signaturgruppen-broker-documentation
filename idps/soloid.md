@@ -7,6 +7,7 @@ nav_order: 4
 ---
 
 # SoloID
+This documentation is still in development and might be subject to change. For questions and assistance feel free to contact support@signaturgruppen.dk
 
 SoloID is an identity provider that offers range of authenticators to ease the authentication process. It is an identity provider capable of providing an NSIS substantial level of authentication comparable to the most common MitID level of authentication.
 
@@ -18,6 +19,7 @@ The flow can be tested [here](https://brokerdemo-pp.signaturgruppen.dk/Home/Logg
 | --- | --- |
 | idp_values | **soloid** |
 
+The idp_values parameter is optional and soloid can alternatively be configured as an identity provider in the broker administration site
 
 ### Supported scope values
 
