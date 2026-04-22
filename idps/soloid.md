@@ -10,11 +10,11 @@ nav_order: 4
 
 SoloID is an identity provider that offers range of authenticators to ease the authentication process. It is an identity provider capable of providing an NSIS substantial level of authentication comparable to the most common MitID level of authentication.
 
-More information about the details of SoloID as an identity provider can be seen at:
+The flow can be tested at [Demo](https://brokerdemo-pp.signaturgruppen.dk/Home/LoggedInSuccess?mitidEnabled=false&mitidErhvervEnabled=false&nemloginEnabled=false&lokalIdpEnabled=false&passkeyidEnabled=false&soloidpEnabled=true&eboksEnabled=false&mobilepayEnabled=false&euidEnabled=false&altidEnabled=false&soloIdpAuthenticationMethods=mitid%2Cpasskey&prompt=login&max_age=999999&simulation=999999&language=da-DK&scope=soloid&mitid_loa_value=https%3A%2F%2Fdata.gov.dk%2Fconcept%2Fcore%2Fnsis%2FSubstantial) 
 
 ## Integration with SoloID
 
-The integration with SoloID is straightforward and standard OIDC
+The integration with SoloID is straightforward
 
 ## Supported OIDC parameters
 
