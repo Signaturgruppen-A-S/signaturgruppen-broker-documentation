@@ -65,7 +65,7 @@ Response:
 ```
 
 ### Initiate OIDC PAR flow using **request_id**
-To initiate a PAR OIDC flow based on the initiated CIBA **request_id**, the CIBA PAR init auth endpoint is invoked:
+To initiate a PAR OIDC flow based on the initiated CIBA **request_id**, the CIBA PAR init auth endpoint (POST [env authority]/api/ciba/broker-oidc/init-auth) is invoked:
 ```
 {
     "requestId": "9384B4AA93780A1AB83684ACE8B07DFCB6C038E9A6847565DC4F0F2547A499D6-1"
