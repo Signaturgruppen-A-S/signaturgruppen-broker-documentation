@@ -8,7 +8,7 @@ nav_order: 4
 
 # SoloID
 
-SoloID is an identity provider that offers range of authenticators to ease the authentication process. It is an identity provider capable of providing an NSIS substantial level of authentication comparable to the most common MitID level of authentication.
+SoloID is an identity provider that offers a range of authenticators to ease the authentication process. It is an identity provider capable of providing an NSIS substantial level of authentication comparable to the most common MitID level of authentication.
 
 It can easily be used as a drop in replacement for MitID for many use cases. Compared to MitID passkeys provide a significantly faster authentication experience with a higher success rate. Further it provides an option to authenticate users even if MitID experiences downtime
 
