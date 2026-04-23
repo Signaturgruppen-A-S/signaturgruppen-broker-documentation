@@ -3,7 +3,7 @@ title: SoloID
 layout: home
 parent: Identity providers
 has_children: false
-nav_order: 4
+nav_order: 0
 ---
 
 # SoloID
