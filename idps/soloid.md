@@ -7,9 +7,10 @@ nav_order: 4
 ---
 
 # SoloID
-This documentation is still in development and might be subject to change. For questions and assistance feel free to contact support@signaturgruppen.dk
 
 SoloID is an identity provider that offers range of authenticators to ease the authentication process. It is an identity provider capable of providing an NSIS substantial level of authentication comparable to the most common MitID level of authentication.
+
+It can easily be used as a drop in replacement for MitID for many use cases. Compared to MitID passkeys provide a significantly faster authentication experience with a higher success rate. Further it provides an option to authenticate users even if MitID experiences downtime
 
 The flow can be tested [here](https://brokerdemo-pp.signaturgruppen.dk/Home/LoggedInSuccess?mitidEnabled=false&mitidErhvervEnabled=false&nemloginEnabled=false&lokalIdpEnabled=false&passkeyidEnabled=false&soloidpEnabled=true&eboksEnabled=false&mobilepayEnabled=false&euidEnabled=false&altidEnabled=false&soloIdpAuthenticationMethods=mitid%2Cpasskey&prompt=login&max_age=999999&simulation=999999&language=da-DK&scope=soloid&mitid_loa_value=https%3A%2F%2Fdata.gov.dk%2Fconcept%2Fcore%2Fnsis%2FSubstantial). The MitID user must be present in the MitID pp environment. Custom theming is available and is used in this test flow. 
 
@@ -20,6 +21,50 @@ The flow can be tested [here](https://brokerdemo-pp.signaturgruppen.dk/Home/Logg
 | idp_values | **soloid** |
 
 The idp_values parameter is optional and soloid can alternatively be configured as an identity provider in the broker administration site
+
+
+### Supported identity provider parameters (idp_params -> mitid)
+
+<table>
+    <tbody>
+        <tr>
+            <th>
+                <p><strong>Identity Provider parameters (soloid)</strong></p>
+            </th>
+            <th>
+                <p><strong>Description</strong></p>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <p>credentials</p>
+            </td>
+            <td>
+                <p>This is a list of credentials that will be shown to the user to use for authentication</p>
+                <p>Type: List of 
+                <ul>
+                    <li>passkey</li>
+                    <li>mitid</li>
+                    <li>soloidauthenticator</li>
+                </ul>
+                Default: ["passkey", "mitid"]
+                </p>
+            </td>
+        </tr>
+    
+    </tbody>
+</table>
+
+
+### Example JSON for identity provider parameters
+
+```json
+{
+  "soloid": {
+    "credentials": ["passkey", "mitid"],
+  }
+}
+```
 
 ### Supported scope values
 
@@ -33,4 +78,9 @@ The idp_values parameter is optional and soloid can alternatively be configured 
 ## Userinfo endpoint claim values for soloid scope
 
 <table><tbody><tr><th><p><strong>Claim</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>soloid.mitid_uuid</p></td><td><p>The unique MitID identifier of the subject.</p></td></tr></tbody></table>
+
+
+### MitID
+
+###
 
