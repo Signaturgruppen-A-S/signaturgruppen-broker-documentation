@@ -23,7 +23,7 @@ The flow can be tested [here](https://brokerdemo-pp.signaturgruppen.dk/Home/Logg
 The idp_values parameter is optional and soloid can alternatively be configured as an identity provider in the broker administration site
 
 
-### Supported identity provider parameters (idp_params -> mitid)
+### Supported identity provider parameters (idp_params -> soloid)
 
 <table>
     <tbody>
@@ -51,7 +51,6 @@ The idp_values parameter is optional and soloid can alternatively be configured 
                 </p>
             </td>
         </tr>
-    
     </tbody>
 </table>
 
@@ -79,8 +78,7 @@ The idp_values parameter is optional and soloid can alternatively be configured 
 
 <table><tbody><tr><th><p><strong>Claim</strong></p></th><th><p><strong>Description</strong></p></th></tr><tr><td><p>soloid.mitid_uuid</p></td><td><p>The unique MitID identifier of the subject.</p></td></tr></tbody></table>
 
+## SoloID Authenticator
+SoloID authenticator is a multi-factor authentication app that can be used in SoloID. It provides an option for authentication for use cases and browsers where passkey and MitID might not be applicable. It is mainly intended for enterprise usage by employees.
 
-### MitID
-
-###
 
