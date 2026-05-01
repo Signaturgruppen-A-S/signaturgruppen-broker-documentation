@@ -12,6 +12,9 @@ nav_order: 10
 MobilePay Login provides service providers with a consent-based login option with a frictionless user experience. 
 Read more at [https://vippsmobilepay.com/da-DK/login](https://vippsmobilepay.com/da-DK/login).
 
+<img width="2600" height="1500" alt="image" src="https://github.com/user-attachments/assets/9741b2ac-61a8-4aef-bd79-0c6e091d7127" />
+
+
 Contact Signaturgruppen for access to MobilePay login.
 
 ## Setting up PP integration
