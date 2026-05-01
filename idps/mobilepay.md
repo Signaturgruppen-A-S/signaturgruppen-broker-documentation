@@ -53,9 +53,9 @@ A test of MobilePay integration login and flow can be tested via: https://broker
 This will also allow for analysing Signaturgruppen Broker returned tokens and claims.
 
 ## OIDC integration
-Signaturgruppen Broker supports the same scopes and claims for the MobilePay Login flow, as defined by MobilePay in: https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/.
+Signaturgruppen Broker supports the same scopes and claims for the MobilePay Login flow, as defined by MobilePay in: [https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/).
 
-Supported MobilePay scopes: https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/user-info/#scopes
+Supported MobilePay scopes: [https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/user-info/#scopes](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/user-info/#scopes)
 
 ### NIN (national identity number)
 MobilePay Login supports handout of user NIN (CPR). This requires user consent, just as any other requested information, and requires the merchant to be at the advanced pricing tier.
