@@ -45,6 +45,63 @@ Then consider your pricing tier model, depending on what data you want to have r
 
 Last, from the "developers", under test, you can go to "show keys". From here either send client_id and client_secret to Signaturgruppen or request access to the Signaturgruppen Broker Admin portal, where you will be able to enter these details and setup your integration.
 
+## MobilePay testing
+In the MobilePay portal [https://vippsmobilepay.com/en-DK/login](https://vippsmobilepay.com/en-DK/login), you can setup your own test merchant and then setup test users and get info on their test app. This can be used in our PP environment.
+
+## Demo
+A test of MobilePay integration login and flow can be tested via: https://brokerdemo-pp.signaturgruppen.dk/ (quick start or advanced variants).
+This will also allow for analysing Signaturgruppen Broker returned tokens and claims.
+
+## OIDC integration
+Signaturgruppen Broker supports the same scopes and claims for the MobilePay Login flow, as defined by MobilePay in: https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/.
+
+Supported MobilePay scopes: https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/user-info/#scopes
+
+### NIN (national identity number)
+MobilePay Login supports handout of user NIN (CPR). This requires user consent, just as any other requested information, and requires the merchant to be at the advanced pricing tier.
+
+### MobilePay Step-up
+Default for MobilePay Login is a frictionless login experience, which allows the user to "remember" the browser used and reuse the authentication in that browser for subsequent logins. If the service provider requires a new MobilePay App authentication, the "step-up" flow can be utilized. 
+To invoke the "step-up" flow, either
+* Configure prompt=login to trigger MobilePay "step-up" in the Signaturgruppen Broker Admin portal
+* Set the acr_values="urn:vipps:acr:app_auth" in the OIDC request.
+
+See MobilePay docs: [https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/step-up-authentication/](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/step-up-authentication/)
+
+This requires the merchant to be at the advanced pricing tier.
+
+### Example transaction_token :
+The optional transaction token demonstrates expected claims.
+
+```
+{
+  "birthdate": "19..3",
+  "address": "{\"street_address\":\"Weldon Trafficway 48w\\ne\",\"formatted\":\"Weldon Trafficway 48w\\ne\\n4267\\nSouth Jazminchester\\nDK\",\"region\":\"South Jazminchester\",\"postal_code\":\"4267\",\"country\":\"DK\",\"address_type\":\"home\"}",
+  "gender": "male",
+  "given_name": "Lacey",
+  "name": "Lacey Walter",
+  "phone_number": "45..19",
+  "family_name": "Walter",
+  "email": "b...m",
+  "idp": "mobilepay",
+  "idp_identity_id": "c2fa...ed",
+  "auth_time": "1777626074",
+  "sub": "c2fa...ed",
+  "transaction_id": "eeab..a",
+  "redirect_uri": "https://brokerdemo-pp.signaturgruppen.dk/signin-oidc",
+  "transaction_actions": "mobilepay_authenticated",
+  "transaction_client_ip": "1....9",
+  "reference_id": "demo_normal_flow_requestid",
+  "nbf": 1777626075,
+  "exp": 1967014875,
+  "iat": 1777626075,
+  "nin": 2......4
+  "iss": "https://pp.netseidbroker.dk/op",
+  "aud": "14...36"
+}
+```
+
+
 ## Setting up Prod integration
 We are working on a partner setup with MobilePay which allows for easy integration to the production environment, without the need of handling technical details such as URLs and secrets.
 
