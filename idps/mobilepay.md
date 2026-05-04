@@ -3,7 +3,7 @@ title: MobilePay
 layout: home
 parent: Identity providers
 has_children: false
-nav_order: 10
+nav_order: 20
 ---
 
 # MobilePay Login
