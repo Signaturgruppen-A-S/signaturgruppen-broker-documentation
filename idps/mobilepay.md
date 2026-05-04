@@ -106,9 +106,12 @@ The optional transaction token demonstrates expected claims.
 
 
 ## Setting up Prod integration
-We are working on a partner setup with MobilePay which allows for easy integration to the production environment, without the need of handling technical details such as URLs and secrets.
+For production, two paths are available: 
 
-Currently the process for production access is the same as for the PP environment.
+* Setup client_id, client_secret and redirect_uri as for PP, setup these in Signaturgruppen Broker Admin UI.
+* Point to Signaturgruppen as your partner in the MobilePay Login portal and provide your Merchant Serial Number (MSN) in the Signaturgruppen Broker Admin UI.
+
+See: [MobilePay Login finding your MSN](https://developer.vippsmobilepay.com/docs/knowledge-base/portal/#how-to-find-the-merchant-serial-number).
 
 ### Redirect URIs
 ```
