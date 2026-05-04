@@ -113,6 +113,10 @@ For production, two paths are available:
 
 See: [MobilePay Login finding your MSN](https://developer.vippsmobilepay.com/docs/knowledge-base/portal/#how-to-find-the-merchant-serial-number).
 
+### Advantages of partner login setup
+Using the partner approach provides a non-technical binding from your MobilePay merchant unit and the Signaturgruppen Broker integration.
+No technical details are required such as client_id and client_secret, only the MSN is needed.
+
 ### Redirect URIs
 ```
 https://netseidbroker.dk/op/signin-oidc-dynamic-mobilepay
