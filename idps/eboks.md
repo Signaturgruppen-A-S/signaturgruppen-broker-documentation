@@ -3,7 +3,7 @@ title: e-Boks ID
 layout: home
 parent: Identity providers
 has_children: false
-nav_order: 9
+nav_order: 19
 ---
 
 # e-Boks ID
