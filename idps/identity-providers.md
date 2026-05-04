@@ -18,6 +18,7 @@ has_children: true
 | SoloID       | soloid      | A secure and flexible eID provided by Signaturgruppen |
 | PasskeyID       | passkeyid      | PasskeyID is a strong eID based around a passkeys-as-a-service approach - https://passkeyid.eu/ |
 | e-Boks       | eboks      | e-Boks ID is a digital eID provided by e-Boks - https://global.e-boks.com/digital-wallet/e-boks-id/       |
+| MobilePay       | mobilepay     | MobilePay Login - [https://mobilepay.dk/] - (https://mobilepay.dk/) [https://vippsmobilepay.com/da-DK/login](https://vippsmobilepay.com/da-DK/login) |
 
 ### Danish identity providers
 
@@ -26,7 +27,7 @@ has_children: true
 | MitID       | mitid      | Danish national eID - https://www.mitid.dk/       |
 | MitID Erhverv       | mitid_erhverv      | Danish national professional eID - https://mitid-erhverv.dk/       |
 | AltID       | euid + euav      | Danish national EU wallet implementation - https://digst.dk/it-loesninger/altid/ |
-| MobilePay       | mobilepay     | MobilePay is a danish eID - https://mobilepay.dk/ |
+
 
 ## OIDC parameters
 
