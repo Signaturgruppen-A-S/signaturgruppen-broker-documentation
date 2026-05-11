@@ -30,6 +30,80 @@ Additional claim mappings will be added as additional information become availab
 These represent a basic level of claims for just the identity with the **eboks** scope. Then a request for additional information on the user via the the **eboks_info** scope.
 The **eboks_national_id** scope requests the eboks national identity (CPR) claim.
  
+### Supported identity provider parameters (idp_params -> eboks)
+
+<table>
+    <tbody>
+        <tr>
+            <th>
+                <p><strong>Identity Provider parameters (eboks)</strong></p>
+            </th>
+            <th>
+                <p><strong>Description</strong></p>
+            </th>
+        </tr>
+     <tr>
+            <td><p>purpose</p></td>
+            <td>
+             <p>Type: String.</p>
+             <p>This text will be displayed as part of the approval screen in the e-Boks app</p>
+             <p>Defaults to "Approve"/"Godkend".</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>qr_message</p>
+            </td>
+            <td>
+             <p>Type: String.</p>
+             <p>This text will be displayed as "action text" at the QR code / app-switch step.</p>
+             <p>Defaults to the same value as <em>purpose</em></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+             <p>reference_text</p>
+            </td>
+            <td>
+                <p>Type: String</p>
+                <p>If present, this message will be shown to the end-user in the e-Boks app as part of approval.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>escalation_level</p>
+            </td>
+            <td>
+                <p>Type: String enum</p>
+                <p>One of: "low", "medium" or "high"</p>
+            </td>
+        </tr>
+        <tr>
+            <td><p>return_uri</p></td>
+            <td>
+                <p>Type: string (URI)</p>
+                <p>if set, the e-Boks app will redirect the end-user to the URI after approval in the e-Boks app.</p>
+            </td>
+        </tr>
+        
+    </tbody>
+</table>
+
+
+### Example JSON for identity providers
+
+```json
+{
+  "eboks": {
+    "reference_text": "Approve handout of data"
+  }
+}
+```
+
+```
+idp_params=%7B%20%22eboks%22%3A%7B%22Approve%20handout%20of%20data%22%3A%22%22%7D%7D
+```
+
 
 ## Test (PP) 
 
