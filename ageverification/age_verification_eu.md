@@ -50,13 +50,8 @@ All available AV providers support a set of standard AV age brackets such as 15,
 The av scope has a generic parameterization in our integration to support the most flexible integration. We will ensure to fail-early or adapt the request to the specific provider utilized in the request.
 
 ### Examples
-Example for OIDC and CIBA:
+Example for OIDC:
 ```
-scope=openid age_over:16 age_over:18
-```
-
-Example for iframe integration:
-```
-scope=age_over:16 age_over:18
+scope=openid age_over:18
 ```
 
