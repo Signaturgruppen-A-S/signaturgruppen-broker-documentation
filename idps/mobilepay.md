@@ -109,7 +109,7 @@ The optional transaction token demonstrates expected claims.
 For production, two paths are available: 
 
 * Setup client_id, client_secret and redirect_uri as for PP, setup these in Signaturgruppen Broker Admin UI.
-* Point to Signaturgruppen as your partner in the MobilePay Login portal and provide your Merchant Serial Number (MSN) in the Signaturgruppen Broker Admin UI.
+* Point to **IN Groupe Signaturgruppen A/S** as your partner in the MobilePay Login portal and provide your Merchant Serial Number (MSN) in the Signaturgruppen Broker Admin UI or to our support.
 
 See: [MobilePay Login finding your MSN](https://developer.vippsmobilepay.com/docs/knowledge-base/portal/#how-to-find-the-merchant-serial-number).
 
