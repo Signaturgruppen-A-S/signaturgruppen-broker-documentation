@@ -35,7 +35,7 @@ https://pp.netseidbroker.dk/op/signin-oidc-dynamic-mobilepay
 ```
 
 ```
-https://idbroker.eu/op/signin-oidc-dynamic-mobilepay
+https://pp.idbroker.eu/op/signin-oidc-dynamic-mobilepay
 ```
 
 Set token endpoint method to **"client_secret_post"**.
