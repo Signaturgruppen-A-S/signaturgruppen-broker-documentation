@@ -124,9 +124,87 @@ To secure the maximal strength of the transaction perform the following verifica
     2. Audience matches service provider
     3. Timestamp is within expected time
     4. transaction_text_sha256 matches sha256 fingerprint of document.
-5. Store original document, transaction token, certificate and OCSP for later verification.
+5. Store original document, transaction token, transaction signing certificate from JWKS and OCSP for later verification.
+5a. The signing cert is rotated with 3 years intervals. This can be stored a single time until a new is used, no need to store it with each signature.
+
 
 If utilizing the PAdES wrapping service extension for transaction signing flows, then all previous verifications will be optional, as the resulting PAdES will contain all relevant files as attachment and will be sealed by the Signaturgruppen PAdES sealing service and certificate. Instead, the received PAdES should be stored and can be transferred to the active signers of the document as well. See the section for the PadES wrapping API for details.
+
+## Advanced verification
+Always verify the content and signature on the received tokens (ID- and transaction token). 
+The received OCSP response can be verified as an additional step to ensure that the Broker signing certificate of the transaction token was not revoked at issuance time. Doing OCSP verification is an optional step, which should be considered based on internal requirements for the integrating system.
+
+The following guide, provides a high-level step-by-step validation path to incorporate OCSP into the validation chain. 
+
+Always store the items described in step 5 above. 
+
+### Verifying the OCSP response for the transaction token signing certificate
+
+The transaction token is signed by the Broker using a certificate published through the Broker JWKS endpoint. The OCSP response must be validated against the certificate that signed the transaction token. Do not validate the OCSP response against an unrelated certificate.
+
+A recommended validation sequence is:
+
+1. **Validate the transaction token**
+
+   * Read the JWT header.
+   * Locate the matching key in the Broker JWKS endpoint by `kid`.
+   * Extract the signing certificate from the matching JWK `x5c` value or match against locally cached certificate.
+   * Verify the JWT signature using the public key from that certificate.
+   * Verify the normal JWT claims, including issuer, audience, timestamps, and the transaction-specific claims.
+
+2. **Validate the signing certificate**
+
+   * Build and validate the certificate chain for the JWKS signing certificate against the trust anchors configured for the environment.
+   * Verify that the certificate is within its validity period.
+   * Re-validate the certificate chain when the JWKS key or certificate changes, and according to the relying party's normal cache and trust policy.
+
+3. **Parse the OCSP response**
+
+   * Decode the OCSP response as DER.
+   * Verify that the overall OCSP response status is `successful`.
+   * Locate the `SingleResponse` that corresponds to the JWKS signing certificate.
+
+4. **Verify that the OCSP response is for the signing certificate**
+
+   * The OCSP `CertID.serialNumber` must equal the serial number of the JWKS signing certificate.
+   * The OCSP `CertID.issuerNameHash` and `CertID.issuerKeyHash` must identify the issuer of the JWKS signing certificate.
+   * When the issuer certificate is available, compute these values according to OCSP rules and compare them to the values in the response.
+   * If multiple certificate statuses are present, only the status matching the JWKS signing certificate is relevant.
+
+5. **Verify the certificate status**
+
+   * The certificate status must be `good`.
+   * Treat `revoked`, `unknown`, malformed, missing, stale, or non-matching OCSP responses as validation failures.
+
+6. **Verify OCSP response freshness**
+
+   * `thisUpdate` must not be in the future, allowing only a small clock-skew tolerance.
+   * If `nextUpdate` is present, it must not be in the past at validation time.
+   * For later evidence verification, keep the original OCSP response together with the transaction token and validate that the response was fresh for the transaction validation time according to the relying party's evidence policy.
+
+7. **Verify the OCSP response signature and responder authorization**
+
+   * Verify the OCSP response signature using the responder certificate identified by the OCSP `ResponderID`.
+   * The responder must be authorized for the issuer of the JWKS signing certificate. This is normally one of:
+
+     * the issuing CA itself,
+     * a locally trusted OCSP responder, or
+     * a CA-designated OCSP responder certificate issued by the same CA and containing the OCSP signing extended key usage.
+   * Validate the responder certificate chain according to the relying party's trust policy.
+   * If the responder certificate contains the OCSP No Check extension, it may be trusted for OCSP signing for the lifetime of that responder certificate according to the relying party's policy. Otherwise, the responder certificate revocation status should also be checked.
+   * Signaturgruppen Broker signs the transaction token using the danish OCES3 PKI.
+
+The important binding is:
+
+```text
+transaction token header kid
+  -> matching JWK in Broker JWKS
+  -> x5c signing certificate
+  -> OCSP response CertID matches that certificate
+  -> OCSP status is good
+  -> OCSP response signature is valid and signed by an authorized responder
+```
+
 
 # Transaction Token Contents Example
 
