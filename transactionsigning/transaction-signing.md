@@ -118,12 +118,12 @@ To secure the maximal strength of the transaction perform the following verifica
 
 1. Verify token signature towards signing key (in JWKS)
 2. Verify certificate in JWKS (at least when it changes)
-3. Check enclosed OCSP response for updated jwt signing certificate status
-4. Verify contents of transaction token
+3. Verify contents of transaction token
     1. Expected signer
     2. Audience matches service provider
     3. Timestamp is within expected time
     4. transaction_text_sha256 matches sha256 fingerprint of document.
+4. (Advanced, optional): Check enclosed OCSP response for updated jwt signing certificate status
 5. Store original document, transaction token, transaction signing certificate from JWKS and OCSP for later verification.
 5a. The signing cert is rotated with 3 years intervals. This can be stored a single time until a new is used, no need to store it with each signature.
 
