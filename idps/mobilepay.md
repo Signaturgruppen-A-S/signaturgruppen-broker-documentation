@@ -14,11 +14,101 @@ Read more at [https://vippsmobilepay.com/da-DK/login](https://vippsmobilepay.com
 
 <img width="2600" height="1500" alt="image" src="https://github.com/user-attachments/assets/9741b2ac-61a8-4aef-bd79-0c6e091d7127" />
 
-
 Contact Signaturgruppen for access to MobilePay login.
 
+## Setting up MobilePay integration
+
+* Setup your sales unit / merchant in the MobilePay portal: https://developer.vippsmobilepay.com/docs/knowledge-base/applying-for-services/.
+* For production setup, ask our sales/support for help enabling IN Groupe Signaturgruppen A/S as your technical Partner for MobilePay Login.
+* For PP setup, see section at the bottom of this documentation.
+
+As soon as IN Groupe Signaturgruppen A/S has been setup as the technical partner within the MobilePay administration for your registered merchant unit, you can enable MobilePay Login for your services in Signaturgruppen Broker Admin UI.
+
+## MobilePay testing
+In the MobilePay portal [https://vippsmobilepay.com/en-DK/login](https://vippsmobilepay.com/en-DK/login), you can setup your own test merchant and then setup test users and get info on their test app. This can be used in our PP environment.
+
+## Demo
+A test of MobilePay integration login and flow can be tested via: https://brokerdemo-pp.signaturgruppen.dk/ (quick start or advanced variants).
+This will also allow for analysing Signaturgruppen Broker returned tokens and claims.
+
+## OIDC integration
+Signaturgruppen Broker supports the same scopes and claims for the MobilePay Login flow, as defined by MobilePay in: [https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/).
+
+Supported MobilePay scopes: [https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/user-info/#scopes](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/user-info/#scopes)
+
+### NIN (national identity number)
+MobilePay Login supports handout of user NIN (CPR). This requires user consent, just as any other requested information, and requires the merchant to be at the advanced pricing tier.
+
+### MobilePay Step-up
+Default for MobilePay Login is a frictionless login experience, which allows the user to "remember" the browser used and reuse the authentication in that browser for subsequent logins. If the service provider requires a new MobilePay App authentication, the "step-up" flow can be utilized. 
+To invoke the "step-up" flow, either
+* Configure prompt=login to trigger MobilePay "step-up" in the Signaturgruppen Broker Admin portal
+* Set the acr_values="urn:vipps:acr:app_auth" in the OIDC request.
+
+See MobilePay docs: [https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/step-up-authentication/](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/step-up-authentication/)
+
+This requires the merchant to be at the advanced pricing tier.
+
+### Example tokens :
+ID token:
+
+```
+{
+  "iss": "https://idbroker.eu/op",
+  "nbf": 1781809378,
+  "iat": 1781809378,
+  "exp": 1781809678,
+  "aud": "e..a",
+  "nonce": "639174061751992403.YzE3NTlmYjgtMWVmMi00YzlhLTk3YzQtODdlYmIxMDBlMjQ1ZGZhNDhhNGYtOThiMS00MWVjLTgyNGQtY2U4ZWUwMzRmNjUx",
+  "at_hash": "6I60BHbq1XQyXzVZBkV07A",
+  "sid": "ef22a6bc-ef47-460b-8912-201572f8761f",
+  "sub": "49..5b54",
+  "auth_time": 1781809383,
+  "idp": "mobilepay",
+  "neb_sid": "ef22a6bc-ef47-460b-8912-201572f8761f",
+  "transaction_id": "124b9076-9a57-4b0a-8557-43e1076c8703",
+  "session_expiry": "1781823778",
+  "mobilepay_msn": "2..1",
+  "mobilepay_client_id": "b..2",
+  "subject_type": "idp_id",
+  "rat": "1781809383"
+}
+```
+
+The optional transaction token demonstrates expected claims. (Standard integrations use ID token + Userinfo endpoint to retrieve relevant claims).
+```
+{
+  "birthdate": "19..3",
+  "address": "{\"street_address\":\"Weldon Trafficway 48w\\ne\",\"formatted\":\"Weldon Trafficway 48w\\ne\\n4267\\nSouth Jazminchester\\nDK\",\"region\":\"South Jazminchester\",\"postal_code\":\"4267\",\"country\":\"DK\",\"address_type\":\"home\"}",
+  "gender": "male",
+  "given_name": "Lacey",
+  "name": "Lacey Walter",
+  "phone_number": "45..19",
+  "family_name": "Walter",
+  "email": "b...m",
+  "mobilepay_msn": "20..1",
+  "mobilepay_client_id": "a..d471"
+  "idp": "mobilepay",
+  "idp_identity_id": "c2fa...ed",
+  "auth_time": "1777626074",
+  "sub": "c2fa...ed",
+  "transaction_id": "eeab..a",
+  "redirect_uri": "https://brokerdemo-pp.signaturgruppen.dk/signin-oidc",
+  "transaction_actions": "mobilepay_authenticated",
+  "transaction_client_ip": "1....9",
+  "reference_id": "demo_normal_flow_requestid",
+  "nbf": 1777626075,
+  "exp": 1967014875,
+  "iat": 1777626075,
+  "nin": 2......4
+  "iss": "https://idbroker.eu/op",
+  "aud": "14...36",
+
+}
+```
+
 ## Setting up PP integration
-To setup integration in PP, ask our sales/support for opening for MobilePay and provide us with the following details:
+To setup integration in PP, ask our sales/support for opening for MobilePay for PP and provide us with the following details:
 
 ### Setup merchant (business) in the MobilePay portal
 First, you will need to setup a merchant in the MobilePay portal [https://vippsmobilepay.com/en-DK/login](https://vippsmobilepay.com/en-DK/login). 
@@ -48,80 +138,3 @@ Then consider your pricing tier model, depending on what data you want to have r
 
 Last, from the "developers", under test, you can go to "show keys". From here either send client_id and client_secret to Signaturgruppen or request access to the Signaturgruppen Broker Admin portal, where you will be able to enter these details and setup your integration.
 
-## MobilePay testing
-In the MobilePay portal [https://vippsmobilepay.com/en-DK/login](https://vippsmobilepay.com/en-DK/login), you can setup your own test merchant and then setup test users and get info on their test app. This can be used in our PP environment.
-
-## Demo
-A test of MobilePay integration login and flow can be tested via: https://brokerdemo-pp.signaturgruppen.dk/ (quick start or advanced variants).
-This will also allow for analysing Signaturgruppen Broker returned tokens and claims.
-
-## OIDC integration
-Signaturgruppen Broker supports the same scopes and claims for the MobilePay Login flow, as defined by MobilePay in: [https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/core-concepts/).
-
-Supported MobilePay scopes: [https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/user-info/#scopes](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/user-info/#scopes)
-
-### NIN (national identity number)
-MobilePay Login supports handout of user NIN (CPR). This requires user consent, just as any other requested information, and requires the merchant to be at the advanced pricing tier.
-
-### MobilePay Step-up
-Default for MobilePay Login is a frictionless login experience, which allows the user to "remember" the browser used and reuse the authentication in that browser for subsequent logins. If the service provider requires a new MobilePay App authentication, the "step-up" flow can be utilized. 
-To invoke the "step-up" flow, either
-* Configure prompt=login to trigger MobilePay "step-up" in the Signaturgruppen Broker Admin portal
-* Set the acr_values="urn:vipps:acr:app_auth" in the OIDC request.
-
-See MobilePay docs: [https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/step-up-authentication/](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/step-up-authentication/)
-
-This requires the merchant to be at the advanced pricing tier.
-
-### Example transaction_token :
-The optional transaction token demonstrates expected claims.
-
-```
-{
-  "birthdate": "19..3",
-  "address": "{\"street_address\":\"Weldon Trafficway 48w\\ne\",\"formatted\":\"Weldon Trafficway 48w\\ne\\n4267\\nSouth Jazminchester\\nDK\",\"region\":\"South Jazminchester\",\"postal_code\":\"4267\",\"country\":\"DK\",\"address_type\":\"home\"}",
-  "gender": "male",
-  "given_name": "Lacey",
-  "name": "Lacey Walter",
-  "phone_number": "45..19",
-  "family_name": "Walter",
-  "email": "b...m",
-  "idp": "mobilepay",
-  "idp_identity_id": "c2fa...ed",
-  "auth_time": "1777626074",
-  "sub": "c2fa...ed",
-  "transaction_id": "eeab..a",
-  "redirect_uri": "https://brokerdemo-pp.signaturgruppen.dk/signin-oidc",
-  "transaction_actions": "mobilepay_authenticated",
-  "transaction_client_ip": "1....9",
-  "reference_id": "demo_normal_flow_requestid",
-  "nbf": 1777626075,
-  "exp": 1967014875,
-  "iat": 1777626075,
-  "nin": 2......4
-  "iss": "https://pp.netseidbroker.dk/op",
-  "aud": "14...36"
-}
-```
-
-
-## Setting up Prod integration
-For production, two paths are available: 
-
-* Setup client_id, client_secret and redirect_uri as for PP, setup these in Signaturgruppen Broker Admin UI.
-* Point to **IN Groupe Signaturgruppen A/S** as your partner in the MobilePay Login portal and provide your Merchant Serial Number (MSN) in the Signaturgruppen Broker Admin UI or to our support.
-
-See: [MobilePay Login finding your MSN](https://developer.vippsmobilepay.com/docs/knowledge-base/portal/#how-to-find-the-merchant-serial-number).
-
-### Advantages of partner login setup
-Using the partner approach provides a non-technical binding from your MobilePay merchant unit and the Signaturgruppen Broker integration.
-No technical details are required such as client_id and client_secret, only the MSN is needed.
-
-### Redirect URIs
-```
-https://netseidbroker.dk/op/signin-oidc-dynamic-mobilepay
-```
-
-```
-https://idbroker.eu/op/signin-oidc-dynamic-mobilepay
-```
