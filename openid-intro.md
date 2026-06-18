@@ -62,7 +62,7 @@ Hybrid Flow: Combining Implicit and Authorization Code flows, here, the ID Token
    - `scope`: Defines the OpenID Connect scopes (e.g., `openid mitid`).
    - **Authorization Endpoint**:  
      The request is sent to the following PP environment authorization endpoint:  
-     `https://pp.signaturgruppen.dk/op/connect/authorize`
+     `https://pp.netseidbroker.dk/op/connect/authorize`
 
 3. **User Authenticates**:  
    The user logs in at the authorization server and approves the client’s access request.
@@ -78,7 +78,7 @@ Hybrid Flow: Combining Implicit and Authorization Code flows, here, the ID Token
    - `client_id` and `client_secret`: For client authentication.
    - **Token Endpoint**:  
      The token exchange is made with the PP environment token endpoint:  
-     `https://pp.signaturgruppen.dk/op/connect/token`
+     `https://pp.netseidbroker.dk/op/connect/token`
 
 6. **Token Response**:  
    The authorization server returns a response containing:
