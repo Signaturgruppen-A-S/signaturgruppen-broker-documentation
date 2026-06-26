@@ -20,6 +20,7 @@ Contact Signaturgruppen for access to MobilePay login.
 
 * Setup your sales unit / merchant in the MobilePay portal: https://developer.vippsmobilepay.com/docs/knowledge-base/applying-for-services/.
 * For production setup, ask our sales/support for help enabling IN Groupe Signaturgruppen A/S as your technical Partner for MobilePay Login.
+* Your production client must be configured for client secret type: "client_secret_basic" (default), in order to us to manage your integration.
 * For PP setup, see section at the bottom of this documentation.
 
 As soon as IN Groupe Signaturgruppen A/S has been setup as the technical partner within the MobilePay administration for your registered merchant unit, you can enable MobilePay Login for your services in Signaturgruppen Broker Admin UI.
