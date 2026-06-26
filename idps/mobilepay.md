@@ -39,6 +39,53 @@ Supported MobilePay scopes: [https://developer.vippsmobilepay.com/docs/APIs/logi
 ### NIN (national identity number)
 MobilePay Login supports handout of user NIN (CPR). This requires user consent, just as any other requested information, and requires the merchant to be at the advanced pricing tier.
 
+### Custom Flow
+To setup your integration to utilize the [MobilePay Custom Flow](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/custom-flow-migration/), specify the additional scope: **mobilepay_customFlow**.
+
+Example scope request: 
+```
+scope=openid name phoneNumber mobilepay_customFlow
+```
+
+This will trigger your configured Custom Flow and result in the additional **mobilepay_flowResult** claim in both Userinfo Endpoint and Transaction claims (transaction token).
+
+Example **mobilepay_flowResult** claim:
+```
+{
+  "flowResult": {
+    "language": "EN",
+    "screens": [
+      {
+        "title": "Extra consent",
+        "description": "Accept terms and conditions",
+        "terms": {
+          "links": [
+            {
+              "title": "Terms of Service",
+              "url": "https://example.com/terms"
+            }
+          ]
+        },
+        "elements": [
+          {
+            "type": "checkbox",
+            "id": "cf_accept_terms",
+            "title": "Accept T&C",
+            "checked": true,
+            "required": true,
+            "readMore": {
+              "title": "Read more",
+              "description": "Details about the custom flow"
+            }
+          }
+        ]
+      }
+    ],
+    "timeOfConsent": "2026-01-17T09:31:00Z"
+  }
+}
+```
+
 ### MobilePay Step-up
 Default for MobilePay Login is a frictionless login experience, which allows the user to "remember" the browser used and reuse the authentication in that browser for subsequent logins. If the service provider requires a new MobilePay App authentication, the "step-up" flow can be utilized. 
 To invoke the "step-up" flow, either
