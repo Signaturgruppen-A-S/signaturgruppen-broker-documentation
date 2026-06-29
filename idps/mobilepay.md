@@ -40,6 +40,17 @@ Supported MobilePay scopes: [https://developer.vippsmobilepay.com/docs/APIs/logi
 ### NIN (national identity number)
 MobilePay Login supports handout of user NIN (CPR). This requires user consent, just as any other requested information, and requires the merchant to be at the advanced pricing tier.
 
+In order to be able to receive the "nin" (CPR) claim, you will need:
+
+* Setup agreement for NIN with MobilePay: https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/user-info/#nin
+* Set pricing tier for your MSN to **ADVANCED**.
+
+If the nin claim is requested but not returned, a status claim will be set:
+
+```
+mobilepay_nin_status=NoNinReturned
+```
+
 ### Custom Flow
 To setup your integration to utilize the [MobilePay Custom Flow](https://developer.vippsmobilepay.com/docs/APIs/login-api/api-guide/custom-flow-migration/), specify the additional scope: **mobilepay_customFlow**.
 
