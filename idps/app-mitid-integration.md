@@ -7,6 +7,11 @@ has_children: true
 nav_order: 2
 ---
 
+# Android and iOS native app guidelines
+
+* Updated 31-07-2026
+See the [updated guide for app integrations for Android and iOS](https://signaturgruppen-a-s.github.io/signaturgruppen-broker-documentation/native_app_integration.html)
+
 # Key Terminology
 
 | **Term**                        | **Description**                                                                                                                                                                                                                                                                                                                       |
@@ -29,45 +34,10 @@ MitID only supports browsers that hold at least a 2% market share on each platfo
   You can detect the presence of Chrome or Samsung Browser before launching the Custom Tabs intent. Chrome is the preferred target because issues have been noted with Samsung Browser on certain devices.
 
 - **Security Requirement:**  
-  It is essential that users see the browser’s address bar during the MitID flow. This visibility confirms the **mitid.dk** domain and ensures a secure and familiar experience. The address bar must remain visible in both Custom Tabs and SFSafariViewController instances.
+  It is essential that users see the browser’s address bar during the MitID flow. This visibility confirms the **mitid.dk** domain and ensures a secure and familiar experience. The address bar must remain visible in both Custom Tabs and ASWebAuthenticationSession instances.
 
 - **Hybrid Web-Apps:**  
   Even if your app predominantly uses an embedded web view, the MitID integration must occur outside this component to guarantee proper user experience and security.
-
-# MitID App Switch Flow Overview
-
-The recommended MitID integration follows these steps:
-
-1. **Initiate the Flow:**  
-   The app’s backend creates the initial authentication URL.
-
-2. **Open in Browser:**  
-   The URL is then opened in the system browser (via Android Custom Tabs, SFSafariViewController, or ASWebAuthenticationSession).
-
-3. **User Interaction:**  
-   The user completes the MitID flow and taps the blue button to switch from the browser to the MitID app.
-
-4. **App Switch Back:**  
-   After finishing in the MitID app, the user is redirected to the preconfigured App Links or Universal Links URL, which triggers a switch back to the original app.
-
-5. **Completion in Browser:**  
-   The browser regains focus so that the MitID client can finalize the flow. Ultimately, the process ends at the "redirect_uri" as defined by the OIDC protocol:
-   - **Android:**  
-     The redirect URI should be an HTTPS page under your domain, where JavaScript’s postMessage API communicates back to the app or backend.
-   - **iOS with SFSafariViewController:**  
-     Termination is challenging because using a custom scheme (e.g., your-app://) can expose security vulnerabilities. Instead, a button should be provided to trigger the app switch.
-   - **iOS with ASWebAuthenticationSession:**  
-     The session automatically ends when it detects a redirect using a secure, app-bound scheme (e.g., your-app://), ensuring a secure and smooth transition without extra clicks.
-
-### Handling the Final Redirect
-
-The last step—returning from the browser to the app—is often problematic since App Links and Universal Links do not trigger automatically without user interaction. To address this:
-- **Recommended Approach:**  
-  Include a button on the final redirect page to allow the app to regain focus.
-- **Alternatives:**  
-  Using Custom Tabs’ postMessage hook or ASWebAuthenticationSession’s termination hook can eliminate the need for an extra click.
-- **Note on Custom Schemes:**  
-  Relying on custom scheme redirection without ASWebAuthenticationSession is discouraged due to security risks and potential issues with Chrome on Android, which may prompt a user-approval dialog.
 
 # Configuring App Switch for OIDC with Signaturgruppen Broker
 
