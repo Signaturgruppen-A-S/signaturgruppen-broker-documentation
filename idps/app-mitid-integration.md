@@ -91,3 +91,16 @@ When using app switching to return from the MitID app to the service provider ap
   - On **iOS**, the back arrow is used for navigation; however, it might return the user to the MitID app rather than the original calling app if the navigation stack includes multiple jumps.
 
 This behavior should be considered when deciding whether to enable app switching back to the service provider app.
+
+# Bringing the Android Auth Tab / Custom Tab to the Foreground
+MitID handles app-switch flows by sending the user directly via redirect back to the caller app via a redirect. This means, that using Universal Links / App Links triggers your app, but will on Android not trigger the correct "Tab" in focus in all cases. 
+
+Instead, the activity handling the app switch is displayed. To bring the Custom Tab to the front after the app switch, you can (as a fallback mechanism):
+
+- **Register an Empty Activity:**  
+  Create a minimal activity to handle the app-switch URL provided by the MitID flow. Once this activity receives the event, it immediately closes itself, which causes the Custom Tab to pop to the foreground.
+
+- **Mode Requirement:**  
+  This solution requires that the Custom Tab is launched in **single-task mode**.
+
+---
