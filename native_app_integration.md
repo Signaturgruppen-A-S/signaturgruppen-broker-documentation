@@ -1,7 +1,7 @@
 ---
 title: Native App integration on Android and iOS
 layout: home
-nav_order: 25
+nav_order: 23
 has_children: true
 ---
 
