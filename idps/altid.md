@@ -7,9 +7,12 @@ nav_order: 20
 ---
 
 # AltID
-AltID is a Danish national wallet implementation - https://digst.dk/it-loesninger/altid/
-It is currently not a fully verified EU Digital Identity Wallet, however the interface and design remains similar to an EU Digital Identity Wallet.
-It is however a verified age verification app as can be seen by the official [EU Age Verification trust list](https://eidas.ec.europa.eu/efda/trust-services/browse/av-tl).
+AltID is a Danish national wallet implementation - https://digst.dk/it-loesninger/altid/.
+It is currently not a fully verified EU Digital Identity Wallet, however the interface and design remains similar to an EU Digital Identity Wallet. The goal is also for AltID to eventually become a EU Digital Identity Wallet.
+
+AltID is however a verified age verification app as can be seen by the official [EU Age Verification trust list](https://eidas.ec.europa.eu/efda/trust-services/browse/av-tl).
+
+We distinguish between two primary flows: Age Verification and Person Identification Data (PID). The reason for this distinction is that the Age Verification flow does not require a Relying Party Registration. This makes it easy to use and very accessible.
 
 ## Age Verification
 This flow supports any Proof of Age Attestation Services on the official [EU Age Verification trust list](https://eidas.ec.europa.eu/efda/trust-services/browse/av-tl) and is not just limited to AltID.
@@ -49,13 +52,14 @@ If the wallet can satisfy the request, it will return a corresponding claim for 
 
 AltID currently supports the following age thresholds:
 
-| Provider | Supported age_over scopes                                               |
-|----------|-------------------------------------------------------------------------|
-| **AltID** | **13**, **15**, **16**, a**18**, **21**, **23**, **25**, **27**, **67** |
+| Provider | Supported age_over scopes                                              |
+|----------|------------------------------------------------------------------------|
+| **AltID** | **13**, **15**, **16**, **18**, **21**, **23**, **25**, **27**, **67** |
 
+For more information on the Age Verification flow and other supported identity providers see [Age Verification](../ageverification/age_verification_eu.md).
 
 ## Person Identification Data (PID)
-Requesting person identification data (PID) is a more complex configuration. This requires a Relying Party certificate and verifier info.
+Requesting person identification data (PID) requires more configuration. This requires a Relying Party certificate and verifier info.
 For AltID this certificate should be a system certificate issued from MitID erhverv added to AltIDs Relying Party Register. Details of how this can be done can be found at [AltID modtagerregister](https://modtager.tegnebog.dk/).
 Once added to the AltID Relying Party Register it must be added to the broker administration site along the verifier info provided by the AltID Relying Party register. 
 
