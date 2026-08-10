@@ -1,4 +1,4 @@
-﻿---
+---
 title: AltID
 layout: home
 parent: Identity providers
