@@ -11,22 +11,22 @@ has_children: true
 
 ### International identity providers
 
-| Identity provider | Identifier | Description |
-|--------|------|--------|
-| EU Wallet ID       | euid      | A digital ID and personal digital wallet for EU citizens - [https://ec.europa.eu/](https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU+Digital+Identity+Wallet+Home) |
-| EU Wallet Age Verification       | euav      | European wallet age verification (AV) - https://digital-strategy.ec.europa.eu/en/policies/eu-age-verification        |
-| SoloID       | soloid      | A secure and flexible eID provided by Signaturgruppen |
-| PasskeyID       | passkeyid      | PasskeyID is a strong eID based around a passkeys-as-a-service approach - https://passkeyid.eu/ |
-| e-Boks       | eboks      | e-Boks ID is a digital eID provided by e-Boks - https://global.e-boks.com/digital-wallet/e-boks-id/       |
-| MobilePay       | mobilepay     | MobilePay Login - [https://mobilepay.dk/] - (https://mobilepay.dk/) [https://vippsmobilepay.com/da-DK/login](https://vippsmobilepay.com/da-DK/login) |
+| Identity provider          | Identifier | Description |
+|----------------------------|------------|--------|
+| EU Digital Identity Wallet | eudi       | A digital ID and personal digital wallet for EU citizens - [https://ec.europa.eu/](https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU+Digital+Identity+Wallet+Home) |
+| EU Wallet Age Verification | euav       | European wallet age verification (AV) - https://digital-strategy.ec.europa.eu/en/policies/eu-age-verification        |
+| SoloID                     | soloid     | A secure and flexible eID provided by Signaturgruppen |
+| PasskeyID                  | passkeyid  | PasskeyID is a strong eID based around a passkeys-as-a-service approach - https://passkeyid.eu/ |
+| e-Boks                     | eboks      | e-Boks ID is a digital eID provided by e-Boks - https://global.e-boks.com/digital-wallet/e-boks-id/       |
+| MobilePay                  | mobilepay  | MobilePay Login - [https://mobilepay.dk/] - (https://mobilepay.dk/) [https://vippsmobilepay.com/da-DK/login](https://vippsmobilepay.com/da-DK/login) |
 
 ### Danish identity providers
 
-| Identity provider | Identifier | Description |
-|--------|------|--------|
-| MitID       | mitid      | Danish national eID - https://www.mitid.dk/       |
-| MitID Erhverv       | mitid_erhverv      | Danish national professional eID - https://mitid-erhverv.dk/       |
-| AltID       | euid + euav      | Danish national EU wallet implementation - https://digst.dk/it-loesninger/altid/ |
+| Identity provider | Identifier    | Description |
+|--------|---------------|--------|
+| MitID       | mitid         | Danish national eID - https://www.mitid.dk/       |
+| MitID Erhverv       | mitid_erhverv | Danish national professional eID - https://mitid-erhverv.dk/       |
+| AltID       | eudi + euav   | Danish national EU wallet implementation - https://digst.dk/it-loesninger/altid/ |
 
 
 ## OIDC parameters
