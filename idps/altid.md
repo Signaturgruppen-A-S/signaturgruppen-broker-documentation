@@ -28,7 +28,7 @@ To request age verification, include one or more `age_over:{age}` values in the 
 For example:
 
 ```text
-scope=openid age_over:18 age_over:21
+scope=openid age_over:18 age_over:21 age_over:67
 ```
 
 If the wallet can satisfy the request, it will return a corresponding claim for each requested scope:
@@ -36,18 +36,21 @@ If the wallet can satisfy the request, it will return a corresponding claim for 
 ```json
 {
   "age_over_18": true,
-  "age_over_21": true
+  "age_over_21": true,
+  "age_over_67": false
 }
 ```
 
-> Different identity providers may support different age thresholds. Requests for unsupported ages may be ignored and not returned.
+AltID returns false if the user is below the requested age. Some providers may not give this information
+
+
 
 ### Supported Age Verification scope values
 
 | Scope | Claim            | Description |
 |----------------|------------------|-------------|
 | `age_over:{age}` | `age_over_{age}` | Requests verification that the holder is over the specified age. Multiple `age_over:{age}` scopes may be included in a single request. A corresponding claim is returned for each requested scope that is successfully verified. |
-
+> Different identity providers may support different age thresholds. Requests for unsupported ages may be ignored and not returned.
 ### AltID supported ages
 
 AltID currently supports the following age thresholds:
