@@ -27,8 +27,6 @@ In this section all the claims that are always present in transaction tokens are
 
 Transaction tokens will be set in the Token endpoint response, if configured for the client and if requested using the **transaction_token** scope.
 
-An accompanying OCSP revocation check response for the signing certificate, will be set in the Token endpoint response, formatted as a UTF-8+Base64 encoded string. The **signing_cert_ocsp_nonce** claim set in the transaction token is the nonce used for the OCSP response.
-
 Token endpoint response:
 
 ```
