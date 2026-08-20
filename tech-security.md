@@ -62,7 +62,7 @@ To verify the authentication response the following steps from the OIDC specific
 * The iat Claim can be used to reject tokens that were issued too far away from the current time, limiting the amount of time that nonces need to be stored to prevent attacks. The acceptable range is client specific.
 * If the auth_time claim was requested, either through a specific request for this claim or by using the max_age parameter, the client SHOULD check the auth_time claim value and request re-authentication if it determines too much time has elapsed since the last end-user authentication.
 * The client MUST validate that the expected restrictions for acr, ial, amr, idp and identity_type are as expected.
-* Optionally, validate the OCSP response of the signing certificate, set as transaction_token_ocsp_resp in the token response (currently not implemented, will be released soon).
+* Optionally, validate the OCSP response of the signing certificate, set as transaction_token_ocsp_resp in the token response.
 * Optionally, validate the NONCE parameter by correlating the transaction_id found in the transaction token with the ID token, as the NONCE parameter is only set in the ID token.
 
 ## Verification of UserInfo endpoint response
