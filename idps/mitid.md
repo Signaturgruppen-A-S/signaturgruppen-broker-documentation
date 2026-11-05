@@ -331,7 +331,7 @@ It is possible to request detailed information about the person based of the Dan
     </tr>
     <tr>
       <td>ssn.details_address</td>
-      <td><p>List of claims:</p><ul><li>ssn.details.care_of_name</li><li>ssn.details.city_name</li><li>ssn.details.floor</li><li>ssn.details.street_name</li><li>ssn.details.street_number</li><li>ssn.details.unit</li><li>ssn.details.zip_code</li><li>ssn.details.zip_name</li></ul></td>
+      <td><p>List of claims:</p><ul><li>ssn.details.care_of_name</li><li>ssn.details.city_name</li><li>ssn.details.floor</li><li>ssn.details.street_name</li><li>ssn.details.street_number</li><li>ssn.details.unit</li><li>ssn.details.zip_code</li><li>ssn.details.zip_name</li><li>ssn.details.municipality_code</li><li>ssn.details.municipality_name</li></ul></td>
     </tr>
   </tbody>
 </table>

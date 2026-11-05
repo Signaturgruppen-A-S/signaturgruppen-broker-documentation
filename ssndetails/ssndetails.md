@@ -50,7 +50,9 @@ Authorization: Bearer {Your_Service_Token}
     "ssn.details.city_name": "Copenhagen",
     "ssn.details.street_name": "Main Street",
     "ssn.details.zip_code": "1234",
-    "ssn.details.zip_name": "Copenhagen"
+    "ssn.details.zip_name": "Copenhagen",
+    "ssn.details.municipality_code": "0101",
+    "ssn.details.municipality_name": "Copenhagen"
 }
 ```
 
@@ -108,22 +110,24 @@ Content-Type: application/json
 
 ## Response Details
 
-| Field                                 | Description                                                      |
-|---------------------------------------|------------------------------------------------------------------|
-| `ssn.details.status`                  | `success` or `unable_to_lookup`                                  |
-| `ssn.details.name_address_protected`  | `true` or `false`                                                |
-| `ssn.details.person_status`           | See [Person Status Values](#person-status-values)                |
-| `ssn.details.given_name`              | The person's given (first) name                                  |
-| `ssn.details.middle_name`             | The person's middle name                                         |
-| `ssn.details.surname`                 | The person's surname (last name)                                 |
-| `ssn.details.care_of_name`            | Care-of name (c/o)                                               |
-| `ssn.details.city_name`               | City name                                                        |
-| `ssn.details.floor`                   | Floor number                                                     |
-| `ssn.details.street_name`             | Street name                                                      |
-| `ssn.details.street_number`           | Street number                                                    |
-| `ssn.details.unit`                    | Unit or apartment number                                         |
-| `ssn.details.zip_code`                | Postal code                                                      |
-| `ssn.details.zip_name`                | Name corresponding to the postal code                            |
+| Field                                | Description                                       |
+|--------------------------------------|---------------------------------------------------|
+| `ssn.details.status`                 | `success` or `unable_to_lookup`                   |
+| `ssn.details.name_address_protected` | `true` or `false`                                 |
+| `ssn.details.person_status`          | See [Person Status Values](#person-status-values) |
+| `ssn.details.given_name`             | The person's given (first) name                   |
+| `ssn.details.middle_name`            | The person's middle name                          |
+| `ssn.details.surname`                | The person's surname (last name)                  |
+| `ssn.details.care_of_name`           | Care-of name (c/o)                                |
+| `ssn.details.city_name`              | City name                                         |
+| `ssn.details.floor`                  | Floor number                                      |
+| `ssn.details.street_name`            | Street name                                       |
+| `ssn.details.street_number`          | Street number                                     |
+| `ssn.details.unit`                   | Unit or apartment number                          |
+| `ssn.details.zip_code`               | Postal code                                       |
+| `ssn.details.zip_name`               | Name corresponding to the postal code             |
+| `ssn.details.municipality_code`      | Code of the municipality                          |
+| `ssn.details.municipality_name`      | Name of the municipality                          |
 
 **Note**: Only fields with values are returned.
 
